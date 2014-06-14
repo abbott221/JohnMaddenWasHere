@@ -31,10 +31,17 @@ public class MainCoreClass implements ApplicationListener {
 	ShapeRenderer shapes;
 	
 	
+	
+	Model_Main mainModel;
+	
+	Graph_Main drawMe;
+	
+	
 	@Override
 	public void create () {
 		//camera = new OrthographicCamera();
 		//camera.setToOrtho(false, 960, 540);
+		
 		shapes = new ShapeRenderer();
 		
 		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
@@ -50,26 +57,24 @@ public class MainCoreClass implements ApplicationListener {
 		
 		firstSelectBox = new SelectBox( skin );
 		firstSelectBox.setItems("one", "two", "three", "four");
-		
-		//firstSelectBox.setBounds(leftSide, pbTopRow, barWidth, 0);
-		//firstSelectBox.setBounds(x, y, width, height);
 		firstSelectBox.setBounds(100, 500, 100, 20);
-		//firstSelectBox.setPosition(300, 300);
-		//firstSelectBox.set
-		
-		//firstSelectBox.addCaptureListener(null);
-		//firstSelectBox.setSelectionListener();
 		
 		
 		stage.addActor(firstSelectBox);
-		//stage.addActor(table);
+		
+		mainModel = new Model_Main();
 		
 		
-		/*
-		Button third = new Button( skin );
-		third.setBounds(500, 200, 100, 40);
-		stage.addActor(third);
-		/**/
+		
+		drawMe = new Graph_Main(mainModel, 50, 50, 600, 400);
+		drawMe.setGridSize(500, 300);
+		
+		int[] xData = {3, 4, 6};
+		int[] yData = {5, 6, 7};
+		
+		drawMe.setData(xData, yData);
+		
+		
 	}
 
 	@Override
@@ -92,6 +97,9 @@ public class MainCoreClass implements ApplicationListener {
 		
 		
 		shapes.begin(ShapeType.Filled);
+		
+		drawMe.drawMainGraph(shapes);
+		
 		shapes.end();
 		
 	}
