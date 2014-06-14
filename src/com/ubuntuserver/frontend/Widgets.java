@@ -3,7 +3,6 @@ package com.ubuntuserver.frontend;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
@@ -17,7 +16,7 @@ public class Widgets {
 	
 	
 	public Stage stage;
-	SpriteBatch batch;
+	//SpriteBatch batch;
 	private SelectBox firstSelectBox;
 	private Skin skin;
 	ShapeRenderer shapes;
@@ -28,15 +27,19 @@ public class Widgets {
 		
 		shapes = new ShapeRenderer();
 		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
-		stage = new Stage();
+		
+		stage = mediator.stage;
+		//stage = new Stage();
+		
 		Gdx.input.setInputProcessor(stage);
-		batch = new SpriteBatch();
+		//batch = new SpriteBatch();
 		
 		
 		
 		firstSelectBox = new SelectBox( skin );
 		firstSelectBox.setItems("one", "two", "three", "four");
 		firstSelectBox.setBounds(100, 500, 100, 20);
+		//firstSelectBox.setBounds(200, 1000, 200, 40);
 		
 		stage.addActor(firstSelectBox);
 	}
@@ -44,19 +47,17 @@ public class Widgets {
 	
 	
 	public void drawWidgets() {
-		//background
 		
 		shapes.begin(ShapeType.Filled);
 		
-		//drawMe.drawMainGraph(shapes);
-		
-		int numGraphs = mediator.graphs.size();
+		int numGraphs = mediator.model.graphs.size();
 		
 		for (int i = 0; i < numGraphs; i++) {
-			mediator.graphs.get(i).drawMainGraph(shapes);
+			mediator.model.graphs.get(i).drawMainGraph(shapes);
 		}
 		
 		shapes.end();
+		
 		
 		
 		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
@@ -64,18 +65,6 @@ public class Widgets {
 		
 	}
 	
-	/*
-	public void drawWidgets(ShapeRenderer paint) {
-		//background
-		
-		shapes.begin(ShapeType.Filled);
-		
-		drawMe.drawMainGraph(shapes);
-		
-		shapes.end();
-		
-	}
-	/**/
 	
 }
 
