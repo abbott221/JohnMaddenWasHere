@@ -17,22 +17,20 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
 public class MainCoreClass implements ApplicationListener {
 	
-	public Stage stage;
+	//public Stage stage;
 	
-	SpriteBatch batch;
-	//Texture img;
+	//SpriteBatch batch;
 	
-	private SelectBox firstSelectBox;
+	//private SelectBox firstSelectBox;
 	
-	private Skin skin;
+	//private Skin skin;
 	
 	
-	//OrthographicCamera camera;
-	ShapeRenderer shapes;
+	//ShapeRenderer shapes;
 	
 	
 	
-	Model_Main mainModel;
+	Mediator mediator;
 	
 	Graph_Main drawMe;
 	
@@ -42,38 +40,38 @@ public class MainCoreClass implements ApplicationListener {
 		//camera = new OrthographicCamera();
 		//camera.setToOrtho(false, 960, 540);
 		
-		shapes = new ShapeRenderer();
+		//shapes = new ShapeRenderer();
 		
-		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
+		//skin = new Skin(Gdx.files.internal("data/uiskin.json"));
 		
-		stage = new Stage();
-		Gdx.input.setInputProcessor(stage);
+		//stage = new Stage();
+		//Gdx.input.setInputProcessor(stage);
 		
-		batch = new SpriteBatch();
+		//batch = new SpriteBatch();
 		//img = new Texture("badlogic.jpg");
 		
 		
 		
 		
-		firstSelectBox = new SelectBox( skin );
-		firstSelectBox.setItems("one", "two", "three", "four");
-		firstSelectBox.setBounds(100, 500, 100, 20);
+		//firstSelectBox = new SelectBox( skin );
+		//firstSelectBox.setItems("one", "two", "three", "four");
+		//firstSelectBox.setBounds(100, 500, 100, 20);
 		
 		
-		stage.addActor(firstSelectBox);
+		//stage.addActor(firstSelectBox);
 		
-		mainModel = new Model_Main();
+		mediator = new Mediator();
 		
 		
-		
-		drawMe = new Graph_Main(mainModel, 50, 50, 600, 400);
+		/*
+		drawMe = new Graph_Main(mediator, 50, 50, 600, 400);
 		drawMe.setGridSize(500, 300);
 		
 		int[] xData = {3, 4, 6};
 		int[] yData = {5, 6, 7};
 		
 		drawMe.setData(xData, yData);
-		
+		/**/
 		
 	}
 
@@ -86,21 +84,22 @@ public class MainCoreClass implements ApplicationListener {
 		
 		
 		
-		batch.begin();
+		//batch.begin();
 		//batch.draw(img, 0, 0);
-		batch.end();
-		
-		
-		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
-		stage.draw();
+		//batch.end();
 		
 		
 		
-		shapes.begin(ShapeType.Filled);
+		//shapes.begin(ShapeType.Filled);
 		
-		drawMe.drawMainGraph(shapes);
+		//drawMe.drawMainGraph(shapes);
 		
-		shapes.end();
+		//shapes.end();
+		mediator.widgets.drawWidgets();
+		
+		
+		//stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
+		//stage.draw();
 		
 	}
 

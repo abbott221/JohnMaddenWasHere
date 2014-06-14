@@ -26,18 +26,18 @@ public class Graph_Main {
 	public int yCount;
 	
 	
-	Model_Main model;
+	Mediator mediator;
 	
 	
 	
-	public Graph_Main(Model_Main mod) {
-		model = mod;
+	public Graph_Main(Mediator med) {
+		mediator = med;
 	}
 	
 	
 	
-	public Graph_Main(Model_Main mod, int x, int y, int w, int h) {
-		model = mod;
+	public Graph_Main(Mediator med, int x, int y, int w, int h) {
+		mediator = med;
 		left = x;
 		bottom = y;
 		width = w;
