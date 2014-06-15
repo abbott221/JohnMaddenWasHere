@@ -6,7 +6,8 @@ install Eclipse
 
 install Gradle plug-in
 
-download the code branch
+download the github branch labelled "code" and extract it
+https://github.com/abbott221/JohnMaddenWasHere/archive/code.zip
 
-import the folder 1 above the "desktop" and "core" folders as a Gradle Project
+in the extracted folder, import the folder 1 above the "desktop" and "core" folders as a Gradle Project
 Select this folder, the desktop folder, and the core folder for importing to Eclipse
