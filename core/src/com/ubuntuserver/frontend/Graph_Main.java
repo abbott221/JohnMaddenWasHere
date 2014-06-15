@@ -7,6 +7,13 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 public class Graph_Main {
 	
 	
+	public static enum GraphMode {
+		BAR_GRAPH, LINE_CHART
+	}
+	
+	private GraphMode mode;
+	
+	
 	public int left;
 	public int bottom;
 	public int height;
@@ -37,6 +44,10 @@ public class Graph_Main {
 	
 	
 	public Graph_Main(Mediator med, int x, int y, int w, int h) {
+		
+		mode = GraphMode.BAR_GRAPH;
+		//mode = GraphMode.LINE_CHART;
+		
 		mediator = med;
 		left = x;
 		bottom = y;
@@ -87,8 +98,188 @@ public class Graph_Main {
 		}
 		/**/
 		
+		
+		
+		
+		if (mode == GraphMode.BAR_GRAPH) {
+			drawBars(paint);
+		}
+		else if (mode == GraphMode.LINE_CHART) {
+			drawDataPoints(paint);
+		}
+		
+		
+		
 	}
 	
+	
+	
+	public void drawBars(ShapeRenderer paint) {
+		
+		//going to use yData in order for evenly distributed bars
+		
+		paint.end();
+		paint.begin(ShapeType.Filled);
+		
+		paint.setColor(Color.GREEN);
+		
+		
+		int xTicIncr = gridWidth / xCount;
+		int barLeft;
+		int barRight;
+		int barWidth;
+		int barHeight = 0; //bottom is at gridBottom
+		
+		int maxValue = y[0];
+		for (int i = 1; i < yCount; i++) {
+			if (y[i] > maxValue) {
+				maxValue = y[i];
+			}
+		}
+		
+		
+		for (int i = 0; i < yCount; i++) {
+			//xTemp = gridLeft + (i+1) * xTicIncr;
+			
+			barLeft = gridLeft + (i * xTicIncr);
+			barRight = gridLeft + ((i+1) * xTicIncr);
+			
+			barHeight = (int) ((y[i] / (float) maxValue) * gridHeight);
+			
+			//paint.line(barLeft, gridBottom, barLeft, gridBottom - 10);
+			paint.rect(barLeft, gridBottom, barRight - barLeft, barHeight);
+		}
+		
+		
+		
+		//draw outlines around the bars
+		
+		paint.end();
+		paint.begin(ShapeType.Line);
+		
+		paint.setColor(Color.BLACK);
+		
+		for (int i = 0; i < yCount; i++) {
+			//xTemp = gridLeft + (i+1) * xTicIncr;
+			
+			barLeft = gridLeft + (i * xTicIncr);
+			barRight = gridLeft + ((i+1) * xTicIncr);
+			barWidth = barRight - barLeft;
+			
+			barHeight = (int) ((y[i] / (float) maxValue) * gridHeight);
+			
+			//paint.line(barLeft, gridBottom, barLeft, gridBottom - 10);
+			//paint.rect(barLeft, gridBottom, barRight - barLeft, barHeight);
+			
+			//bottom isn't needed
+			
+			//left
+			paint.line(barLeft, gridBottom, barLeft, gridBottom + barHeight);
+			
+			//top
+			paint.line(barLeft, gridBottom + barHeight, barLeft + barWidth, gridBottom + barHeight);
+			
+			//right
+			paint.line(barLeft + barWidth, gridBottom, barLeft + barWidth, gridBottom + barHeight);
+			
+		}
+	}
+	
+	
+	
+	
+	public void drawDataPoints(ShapeRenderer paint) {
+		
+		int dotMargin = 5;
+		
+		//going to use yData in order for evenly distributed bars
+		
+		paint.end();
+		paint.begin(ShapeType.Filled);
+		
+		paint.setColor(Color.GREEN);
+		
+		
+		int xTicIncr = gridWidth / xCount;
+		int barLeft;
+		int barRight;
+		int barWidth;
+		int barHeight = 0; //bottom is at gridBottom
+		
+		int dotMid;
+		
+		
+		//determine max value
+		int maxValue = y[0];
+		for (int i = 1; i < yCount; i++) {
+			if (y[i] > maxValue) {
+				maxValue = y[i];
+			}
+		}
+		
+		
+		//draw green rectangles
+		
+		for (int i = 0; i < yCount; i++) {
+			//xTemp = gridLeft + (i+1) * xTicIncr;
+			
+			barLeft = gridLeft + (i * xTicIncr);
+			barRight = gridLeft + ((i+1) * xTicIncr);
+			barWidth = barRight - barLeft;
+			
+			barHeight = (int) ((y[i] / (float) maxValue) * gridHeight);
+			
+			
+			
+			
+			dotMid = barLeft + (barWidth / 2);
+			
+			//paint.rect(barLeft, gridBottom, barRight - barLeft, barHeight);
+			//paint.rect(barLeft-dotMargin, gridHeight-dotMargin, 2*dotMargin, 2*dotMargin);
+			//paint.rect(barLeft-dotMargin, barHeight-dotMargin, 2*dotMargin, 2*dotMargin);
+			paint.rect(dotMid-dotMargin, gridBottom+barHeight-dotMargin, 2*dotMargin, 2*dotMargin);
+			
+		}
+		
+		
+		
+		//draw outlines around the bars
+		
+		/*
+		
+		paint.end();
+		paint.begin(ShapeType.Line);
+		
+		paint.setColor(Color.BLACK);
+		
+		for (int i = 0; i < xCount; i++) {
+			//xTemp = gridLeft + (i+1) * xTicIncr;
+			
+			barLeft = gridLeft + (i * xTicIncr);
+			barRight = gridLeft + ((i+1) * xTicIncr);
+			barWidth = barRight - barLeft;
+			
+			barHeight = (int) ((y[i] / (float) maxValue) * gridHeight);
+			
+			//paint.line(barLeft, gridBottom, barLeft, gridBottom - 10);
+			//paint.rect(barLeft, gridBottom, barRight - barLeft, barHeight);
+			
+			//bottom isn't needed
+			
+			//left
+			paint.line(barLeft, gridBottom, barLeft, gridBottom + barHeight);
+			
+			//top
+			paint.line(barLeft, gridBottom + barHeight, barLeft + barWidth, gridBottom + barHeight);
+			
+			//right
+			paint.line(barLeft + barWidth, gridBottom, barLeft + barWidth, gridBottom + barHeight);
+			
+		}
+		
+		/**/
+		
+	}
 	
 	
 	

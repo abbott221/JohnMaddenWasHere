@@ -9,13 +9,33 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		
-		config.height = 540;
-		config.width = 960;
 		
-		//config.height = 1080;
-		//config.width = 1920;
+		int h = 100;
+		int w = 100;
 		
-		new LwjglApplication(new MainCoreClass(), config);
+		//h = 540;
+		//w = 960;
+		
+		h = 744;
+		w = 1301;
+		
+		//h = 1080;
+		//w = 1920;
+		
+		config.height = h;
+		config.width = w;
+		
+		
+		MainCoreClass core = new MainCoreClass();
+		
+		new LwjglApplication(core, config);
 		//new LwjglApplication(new UITest(), config);
+		
+		
+		//System.out.println("blah");
+		
+		core.showHeight = h;
+		core.showWidth = w;
+		
 	}
 }

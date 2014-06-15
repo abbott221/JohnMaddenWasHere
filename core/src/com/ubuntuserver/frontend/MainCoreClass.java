@@ -11,6 +11,9 @@ public class MainCoreClass implements ApplicationListener {
 	
 	public Stage stage;
 	
+	public int showHeight;
+	public int showWidth;
+	
 	
 	@Override
 	public void create () {
@@ -34,6 +37,9 @@ public class MainCoreClass implements ApplicationListener {
 		
 	}
 
+	
+	//occurs once on initial display
+	
 	@Override
 	public void resize(int width, int height) {
 		// TODO Auto-generated method stub
@@ -42,8 +48,13 @@ public class MainCoreClass implements ApplicationListener {
 		
 		stage.getViewport().update(width, height, true);
 		
-		System.out.println(width);
-		System.out.println(height);
+		//System.out.println(width);
+		//System.out.println(height);
+		
+		
+		mediator.displayHeight = showHeight;
+		mediator.displayWidth = showWidth;
+		mediator.widgets.adjustBox();
 	}
 
 	@Override

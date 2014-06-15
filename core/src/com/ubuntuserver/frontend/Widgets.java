@@ -38,6 +38,11 @@ public class Widgets {
 		
 		firstSelectBox = new SelectBox( skin );
 		firstSelectBox.setItems("one", "two", "three", "four");
+		
+		
+		//int boxLeft = 100;
+		//int boxBottom = 500;
+		
 		firstSelectBox.setBounds(100, 500, 100, 20);
 		//firstSelectBox.setBounds(200, 1000, 200, 40);
 		
@@ -62,6 +67,26 @@ public class Widgets {
 		
 		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
 		stage.draw();
+		
+	}
+	
+	
+	public void adjustBox() {
+		
+		//int boxLeft = 100;
+		int boxBottom = 500;
+		
+		int h = mediator.displayHeight;
+		int w = mediator.displayWidth;
+		
+		if (h > 540 && w > 960) {
+			
+			//boxLeft = 100;
+			boxBottom = h - 40;
+			
+			firstSelectBox.setBounds(100, boxBottom, 100, 20);
+		}
+		
 		
 	}
 	

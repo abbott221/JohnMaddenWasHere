@@ -17,6 +17,9 @@ public class Mediator {
 	
 	Stage stage;
 	
+	public int displayHeight;
+	public int displayWidth;
+	
 	
 	public Mediator(Stage newStage) {
 		
@@ -30,8 +33,8 @@ public class Mediator {
 		drawMe = new Graph_Main(this, 50, 50, 600, 400);
 		drawMe.setGridSize(500, 300);
 		
-		int[] xData = {3, 4, 6};
-		int[] yData = {5, 6, 7};
+		int[] xData = {3, 4, 6, 5, 8};
+		int[] yData = {5, 6, 7, 3, 4};
 		
 		drawMe.setData(xData, yData);
 		
