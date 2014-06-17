@@ -2,9 +2,16 @@ To set up the programming environment,
 
 install the JRE
 install JDK 7
-install Eclipse
+http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
+
+install "Eclipse IDE for Java Developers"
+http://www.eclipse.org/downloads/
 
 install Gradle plug-in
+In Eclipse, Help -> Install New Software...
+Click Add...
+Type something like "Gradle" for the name, and the following url for location
+http://dist.springsource.com/release/TOOLS/gradle
 
 download the github branch labelled "code" and extract it
 https://github.com/abbott221/JohnMaddenWasHere/archive/code.zip
