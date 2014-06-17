@@ -45,8 +45,8 @@ public class Graph_Main {
 	
 	public Graph_Main(Mediator med, int x, int y, int w, int h) {
 		
-		mode = GraphMode.BAR_GRAPH;
-		//mode = GraphMode.LINE_CHART;
+		//mode = GraphMode.BAR_GRAPH;
+		mode = GraphMode.LINE_CHART;
 		
 		mediator = med;
 		left = x;

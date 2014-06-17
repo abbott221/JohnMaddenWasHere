@@ -44,8 +44,8 @@ public class Model_General {
 		secondGraph = new Graph_Main(med, 500, 50, 400, 400);
 		secondGraph.setGridSize(300, 300);
 		
-		int[] x2Data = {3, 4, 6, 5, 8};
-		int[] y2Data = {5, 6, 7, 3, 4};
+		int[] x2Data = {3, 4, 6, 5, 8, 3, 3, 2};
+		int[] y2Data = {5, 6, 7, 3, 4, 3, 2, 4};
 		
 		secondGraph.setData(x2Data, y2Data);
 		
