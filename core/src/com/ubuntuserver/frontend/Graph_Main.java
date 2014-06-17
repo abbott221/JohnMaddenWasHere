@@ -62,6 +62,7 @@ public class Graph_Main {
 	public void drawMainGraph(ShapeRenderer paint) {
 		
 		//background
+		paint.begin(ShapeType.Filled);
 		paint.setColor(Color.WHITE);
 		paint.rect(left, bottom, width, height);
 		
@@ -108,7 +109,7 @@ public class Graph_Main {
 			drawDataPoints(paint);
 		}
 		
-		
+		paint.end();
 		
 	}
 	

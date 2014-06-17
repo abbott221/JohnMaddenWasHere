@@ -9,7 +9,7 @@ public class Mediator {
 	//will be moved to a model if one is created in the future
 	//ArrayList<Graph_Main> graphs;
 	
-	Graph_Main drawMe;
+	//Graph_Main drawMe;
 	
 	Model_General model;
 	
@@ -30,6 +30,9 @@ public class Mediator {
 		//graphs = new ArrayList<Graph_Main>();
 		
 		
+		
+		/*
+		
 		drawMe = new Graph_Main(this, 50, 50, 600, 400);
 		drawMe.setGridSize(500, 300);
 		
@@ -40,6 +43,10 @@ public class Mediator {
 		
 		model.graphs.add(drawMe);
 		//graphs.add(drawMe);
+		
+		/**/
+		
+		
 		
 		
 		widgets = new Widgets(this);

@@ -10,6 +10,9 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		
 		
+		//h and w are the dimensions of the intended display
+		//the widgets scale best to these dimensions
+		
 		int h = 100;
 		int w = 100;
 		
@@ -18,6 +21,9 @@ public class DesktopLauncher {
 		
 		h = 744;
 		w = 1301;
+		
+		//h = 838;
+		//w = 1600;
 		
 		//h = 1080;
 		//w = 1920;
