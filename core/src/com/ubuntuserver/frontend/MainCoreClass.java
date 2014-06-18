@@ -35,6 +35,28 @@ public class MainCoreClass implements ApplicationListener {
 		mediator.widgets.drawWidgets();
 		
 		
+		boolean isTouched = Gdx.input.isTouched();
+		if (isTouched) {
+			int firstX = Gdx.input.getX();
+			int firstY = showHeight - Gdx.input.getY();
+			
+			int count = mediator.model.graphs.size();
+			Graph_Main tempGraph;
+			
+			for (int i = 0; i < count; i++) {
+				tempGraph = mediator.model.graphs.get(i);
+				
+				if (firstX > tempGraph.left && firstX < (tempGraph.left + tempGraph.width) ) {
+					if (firstY > tempGraph.bottom && firstY < (tempGraph.bottom + tempGraph.height) ) {
+						mediator.model.selectedGraph = tempGraph;
+					}
+				}
+				
+			}
+			
+		}
+		
+		
 	}
 
 	
@@ -55,6 +77,8 @@ public class MainCoreClass implements ApplicationListener {
 		mediator.displayHeight = showHeight;
 		mediator.displayWidth = showWidth;
 		mediator.widgets.adjustBox();
+		
+		Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
 	}
 
 	@Override

@@ -45,8 +45,8 @@ public class Graph_Main {
 	
 	public Graph_Main(Mediator med, int x, int y, int w, int h) {
 		
-		//mode = GraphMode.BAR_GRAPH;
-		mode = GraphMode.LINE_CHART;
+		mode = GraphMode.BAR_GRAPH;
+		//mode = GraphMode.LINE_CHART;
 		
 		mediator = med;
 		left = x;
@@ -303,6 +303,21 @@ public class Graph_Main {
 	}
 	
 	
+	
+	
+	
+	
+	public void setGraphLocation(int x, int y) {
+		this.left = x;
+		this.bottom = y;
+	}
+	
+	public void setGraphSize(int w, int h) {
+		this.width = w;
+		this.height = h;
+		
+		this.setGridSize(w - 40, h - 40);
+	}
 	
 	
 }
