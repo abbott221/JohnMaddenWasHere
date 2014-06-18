@@ -21,6 +21,17 @@ public class Mediator {
 	public int displayWidth;
 	
 	
+	
+	
+	//old system
+	public boolean widgetChanging = false;
+	
+	//new system
+	public boolean boxActivity = false;
+	
+	
+	
+	
 	public Mediator(Stage newStage) {
 		
 		stage = newStage;

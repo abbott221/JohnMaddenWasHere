@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -30,6 +31,10 @@ public class Widgets {
 	
 	public SelectBox startDateBox;
 	public SelectBox endDateBox;
+	
+	public SelectBox station;
+	public SelectBox dataType;
+	
 	
 	private Skin skin;
 	ShapeRenderer shapes;
@@ -55,19 +60,46 @@ public class Widgets {
 		//batch = new SpriteBatch();
 		
 		
+		int[] items = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+		Object[] listEntries = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+		
+		
 		
 		
 		
 		startDateBox = new SelectBox( skin );
 		//startDateBox.setItems("one", "two", "three", "four");
-		startDateBox.setItems(1, 2, 3, 4);
+		//startDateBox.setItems(1, 2, 3, 4);
+		//startDateBox.setItems(items);
+		startDateBox.setItems(listEntries);
+		//startDateBox.setI
 		
 		startDateBox.setBounds(100, 500, 100, 20);
 		
 		startDateBox.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
+				
+				mediator.widgetChanging = true;
+				
+				
 				//System.out.println("change occurred");
-				Logic_SelectBox.changeEvent(mediator, startDateBox);
+				//Logic_SelectBox.changeEvent(mediator, startDateBox);
+				
+				int startIndex = startDateBox.getSelectedIndex();
+				mediator.model.selectedGraph.dataClipStart = startIndex;
+				
+				int endIndex = mediator.model.selectedGraph.dataClipEnd;
+				
+				int[] tempData = new int[(endIndex - startIndex) + 1];
+				
+				for (int i = 0; i < tempData.length; i++) {
+					tempData[i] = mediator.model.waterData[i + startIndex];
+				}
+				mediator.model.selectedGraph.setData(tempData);
+				
+				
+				
+				
 			}
 		});
 		
@@ -79,13 +111,28 @@ public class Widgets {
 		
 		endDateBox = new SelectBox( skin );
 		endDateBox.setItems(1, 2, 3, 4);
+		endDateBox.setItems(listEntries);
 		
-		endDateBox.setBounds(300, 500, 100, 20);
+		endDateBox.setBounds(250, 500, 100, 20);
 		
 		endDateBox.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
+				
 				//System.out.println("change occurred");
-				Logic_SelectBox.changeEvent(mediator, endDateBox);
+				//Logic_SelectBox.changeEvent(mediator, endDateBox);
+				
+				int endIndex = endDateBox.getSelectedIndex();
+				mediator.model.selectedGraph.dataClipEnd = endIndex;
+				
+				int startIndex = mediator.model.selectedGraph.dataClipStart;
+				
+				int[] tempData = new int[(endIndex - startIndex) + 1];
+				
+				for (int i = 0; i < tempData.length; i++) {
+					tempData[i] = mediator.model.waterData[i + startIndex];
+				}
+				mediator.model.selectedGraph.setData(tempData);
+				
 			}
 		});
 		
@@ -94,24 +141,68 @@ public class Widgets {
 		
 		
 		
-		newGraph = new TextButton("New Graph", skin);
-		newGraph.setBounds(500, 500, 100, 20);
-		/*
-		newGraph.addListener(new InputListener() {
-			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-				//process up event
-				//System.out.println("up");
-				
-				//return true;
+		
+		station = new SelectBox( skin );
+		station.setItems(1, 2, 3, 4);
+		
+		station.setBounds(400, 500, 100, 20);
+		
+		station.addListener(new ChangeListener() {
+			public void changed (ChangeEvent event, Actor actor) {
+				//System.out.println("change occurred");
+				//Logic_SelectBox.changeEvent(mediator, endDateBox);
 			}
 		});
-		/**/
+		
+		stage.addActor(station);
+		
+		
+		
+		
+		
+		dataType = new SelectBox( skin );
+		dataType.setItems(1, 2, 3, 4);
+		
+		dataType.setBounds(550, 500, 100, 20);
+		
+		dataType.addListener(new ChangeListener() {
+			public void changed (ChangeEvent event, Actor actor) {
+				//System.out.println("change occurred");
+				//Logic_SelectBox.changeEvent(mediator, endDateBox);
+			}
+		});
+		
+		stage.addActor(dataType);
+		
+		
+		
+		
+		
+		newGraph = new TextButton("New Graph", skin);
+		newGraph.setBounds(700, 500, 100, 20);
+		
 		newGraph.addListener(new ChangeListener() {
 			
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
+				
 				// TODO Auto-generated method stub
-				System.out.println("changed");
+				//System.out.println("changed");
+				
+				Graph_Main tempGraph = new Graph_Main(mediator, 500, 50, 400, 400);
+				tempGraph.setGridSize(300, 300);
+				
+				int[] x5Data = {3, 4, 6, 5, 8, 3, 3, 2};
+				int[] y5Data = {5, 6, 7, 3, 4, 3, 2, 4};
+				
+				tempGraph.setData(x5Data, y5Data);
+				
+				mediator.model.graphs.add(tempGraph);
+				
+				
+				
+				Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
+				
 			}
 			
 		});
@@ -122,25 +213,12 @@ public class Widgets {
 		
 		
 		deleteGraph = new TextButton("Delete Graph", skin);
-		deleteGraph.setBounds(700, 500, 100, 20);
-		/*
-		deleteGraph.addListener(new InputListener() {
-			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-				if (mediator.model.selectedGraph != null) {
-					
-					//System.out.println("Delete");
-					//mediator.model.selectedGraph.
-					//mediator.model.graphs.remove(mediator.model.selectedGraph);
-				}
-			}
-		});
-		/**/
+		deleteGraph.setBounds(850, 500, 100, 20);
+		
 		deleteGraph.addListener(new ChangeListener() {
 			
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				// TODO Auto-generated method stub
-				//System.out.println("changed");
 				
 				if (mediator.model.selectedGraph != null) {
 					mediator.model.graphs.remove(mediator.model.selectedGraph);
@@ -243,14 +321,20 @@ public class Widgets {
 			
 			startDateBox.setBounds(100, boxBottom, 100, 20);
 			
+			endDateBox.setBounds(250, boxBottom, 100, 20);
 			
-			endDateBox.setBounds(300, boxBottom, 100, 20);
+			station.setBounds(400, boxBottom, 100, 20);
+			
+			dataType.setBounds(550, boxBottom, 100, 20);
 			
 			
 			
-			newGraph.setBounds(500, boxBottom, 100, 20);
+			newGraph.setBounds(700, boxBottom, 100, 20);
 			
-			deleteGraph.setBounds(700, boxBottom, 100, 20);
+			deleteGraph.setBounds(850, boxBottom, 100, 20);
+			
+			
+			
 		}
 		
 		

@@ -19,8 +19,23 @@ public class DesktopLauncher {
 		//h = 540;
 		//w = 960;
 		
+		
+		
+		
+		//my laptop
 		h = 744;
 		w = 1301;
+		
+		//work monitor
+		//h = 962;
+		//w = 1280;
+		
+		//work laptop
+		//h = 746;
+		//w = 1366;
+		
+		
+		
 		
 		//h = 838;
 		//w = 1600;

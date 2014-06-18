@@ -27,9 +27,9 @@ public class Graph_Main {
 	
 	
 	
-	public int[] x;
+	//public int[] x;
 	public int[] y;
-	public int xCount;
+	//public int xCount;
 	public int yCount;
 	
 	
@@ -37,8 +37,42 @@ public class Graph_Main {
 	
 	
 	
-	public Graph_Main(Mediator med) {
+	public int dataClipStart;
+	public int dataClipEnd;
+	
+	
+	
+	
+	public Graph_Main(Mediator med, Model_General mod) {
+		
+		mode = GraphMode.BAR_GRAPH;
+		//mode = GraphMode.LINE_CHART;
+		
 		mediator = med;
+		
+		left = 25;
+		bottom = 25;
+		width = 500;
+		height = 500;
+		
+		setGridSize(100,100);
+		
+		
+		/*
+		if (mediator.model == null) {
+			System.out.println("LOL NULL");
+		}
+		if (mod == null) {
+			System.out.println("LOL NULL 2");
+		}
+		/**/
+		
+		
+		dataClipStart = 0;
+		dataClipEnd = mod.waterDataSize - 1;
+		
+		//this.y = mediator.model.waterData;
+		this.setData(mod.waterData); //sets yCount as well
 	}
 	
 	
@@ -56,6 +90,15 @@ public class Graph_Main {
 		
 		
 		setGridSize(100,100);
+		
+		
+		//===========================================================
+		
+		
+		//dataClipStart = 0;
+		//dataClipEnd = mediator.model.waterDataSize - 1;
+		
+		//this.y = mediator.model.waterData;
 	}
 	
 	
@@ -125,7 +168,7 @@ public class Graph_Main {
 		paint.setColor(Color.GREEN);
 		
 		
-		int xTicIncr = gridWidth / xCount;
+		int xTicIncr = gridWidth / yCount;
 		int barLeft;
 		int barRight;
 		int barWidth;
@@ -201,7 +244,7 @@ public class Graph_Main {
 		paint.setColor(Color.GREEN);
 		
 		
-		int xTicIncr = gridWidth / xCount;
+		int xTicIncr = gridWidth / yCount;
 		int barLeft;
 		int barRight;
 		int barWidth;
@@ -294,12 +337,24 @@ public class Graph_Main {
 		gridBottom = bottom + ((height - h) / 2);
 	}
 	
+	
+	
+	
 	public void setData(int[] xNew, int[] yNew) {
-		x = xNew;
+		//x = xNew;
 		y = yNew;
 		
-		xCount = xNew.length;
+		//xCount = xNew.length;
 		yCount = yNew.length;
+	}
+	
+	
+	public void setData(int[] data) {
+		//x = xNew;
+		y = data;
+		
+		//xCount = xNew.length;
+		yCount = data.length;
 	}
 	
 	
