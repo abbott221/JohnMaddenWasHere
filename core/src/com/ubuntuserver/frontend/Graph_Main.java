@@ -27,26 +27,26 @@ public class Graph_Main {
 	
 	
 	
-	//public int[] x;
-	public int[] y;
-	//public int xCount;
-	public int yCount;
-	
-	
 	Mediator mediator;
 	
 	
+	public Model_Graph dataModel;
 	
-	public int dataClipStart;
-	public int dataClipEnd;
+	//public int[] x;
+	//public int[] y;
+	//public int xCount;
+	//public int yCount;
+	
+	//public int dataClipStart;
+	//public int dataClipEnd;
 	
 	
 	
 	
 	public Graph_Main(Mediator med, Model_General mod) {
 		
-		mode = GraphMode.BAR_GRAPH;
-		//mode = GraphMode.LINE_CHART;
+		//mode = GraphMode.BAR_GRAPH;
+		mode = GraphMode.LINE_CHART;
 		
 		mediator = med;
 		
@@ -67,39 +67,23 @@ public class Graph_Main {
 		}
 		/**/
 		
+		dataModel = new Model_Graph(med, mod);
 		
-		dataClipStart = 0;
-		dataClipEnd = mod.waterDataSize - 1;
+		dataModel.dataClipStart = 0;
+		dataModel.dataClipEnd = mod.waterDataSize - 1;
 		
-		//this.y = mediator.model.waterData;
-		this.setData(mod.waterData); //sets yCount as well
-	}
-	
-	
-	
-	public Graph_Main(Mediator med, int x, int y, int w, int h) {
-		
-		mode = GraphMode.BAR_GRAPH;
-		//mode = GraphMode.LINE_CHART;
-		
-		mediator = med;
-		left = x;
-		bottom = y;
-		width = w;
-		height = h;
-		
-		
-		setGridSize(100,100);
-		
-		
-		//===========================================================
+		dataModel.setData(mod.waterData);
 		
 		
 		//dataClipStart = 0;
-		//dataClipEnd = mediator.model.waterDataSize - 1;
+		//dataClipEnd = mod.waterDataSize - 1;
 		
 		//this.y = mediator.model.waterData;
+		//this.setData(mod.waterData); //sets yCount as well
 	}
+	
+	
+	
 	
 	
 	public void drawMainGraph(ShapeRenderer paint) {
@@ -168,27 +152,27 @@ public class Graph_Main {
 		paint.setColor(Color.GREEN);
 		
 		
-		int xTicIncr = gridWidth / yCount;
+		int xTicIncr = gridWidth / dataModel.dataCount;
 		int barLeft;
 		int barRight;
 		int barWidth;
 		int barHeight = 0; //bottom is at gridBottom
 		
-		int maxValue = y[0];
-		for (int i = 1; i < yCount; i++) {
-			if (y[i] > maxValue) {
-				maxValue = y[i];
+		int maxValue = dataModel.data[0];
+		for (int i = 1; i < dataModel.dataCount; i++) {
+			if (dataModel.data[i] > maxValue) {
+				maxValue = dataModel.data[i];
 			}
 		}
 		
 		
-		for (int i = 0; i < yCount; i++) {
+		for (int i = 0; i < dataModel.dataCount; i++) {
 			//xTemp = gridLeft + (i+1) * xTicIncr;
 			
 			barLeft = gridLeft + (i * xTicIncr);
 			barRight = gridLeft + ((i+1) * xTicIncr);
 			
-			barHeight = (int) ((y[i] / (float) maxValue) * gridHeight);
+			barHeight = (int) ((dataModel.data[i] / (float) maxValue) * gridHeight);
 			
 			//paint.line(barLeft, gridBottom, barLeft, gridBottom - 10);
 			paint.rect(barLeft, gridBottom, barRight - barLeft, barHeight);
@@ -203,14 +187,14 @@ public class Graph_Main {
 		
 		paint.setColor(Color.BLACK);
 		
-		for (int i = 0; i < yCount; i++) {
+		for (int i = 0; i < dataModel.dataCount; i++) {
 			//xTemp = gridLeft + (i+1) * xTicIncr;
 			
 			barLeft = gridLeft + (i * xTicIncr);
 			barRight = gridLeft + ((i+1) * xTicIncr);
 			barWidth = barRight - barLeft;
 			
-			barHeight = (int) ((y[i] / (float) maxValue) * gridHeight);
+			barHeight = (int) ((dataModel.data[i] / (float) maxValue) * gridHeight);
 			
 			//paint.line(barLeft, gridBottom, barLeft, gridBottom - 10);
 			//paint.rect(barLeft, gridBottom, barRight - barLeft, barHeight);
@@ -244,7 +228,7 @@ public class Graph_Main {
 		paint.setColor(Color.GREEN);
 		
 		
-		int xTicIncr = gridWidth / yCount;
+		int xTicIncr = gridWidth / dataModel.dataCount;
 		int barLeft;
 		int barRight;
 		int barWidth;
@@ -254,24 +238,24 @@ public class Graph_Main {
 		
 		
 		//determine max value
-		int maxValue = y[0];
-		for (int i = 1; i < yCount; i++) {
-			if (y[i] > maxValue) {
-				maxValue = y[i];
+		int maxValue = dataModel.data[0];
+		for (int i = 1; i < dataModel.dataCount; i++) {
+			if (dataModel.data[i] > maxValue) {
+				maxValue = dataModel.data[i];
 			}
 		}
 		
 		
 		//draw green rectangles
 		
-		for (int i = 0; i < yCount; i++) {
+		for (int i = 0; i < dataModel.dataCount; i++) {
 			//xTemp = gridLeft + (i+1) * xTicIncr;
 			
 			barLeft = gridLeft + (i * xTicIncr);
 			barRight = gridLeft + ((i+1) * xTicIncr);
 			barWidth = barRight - barLeft;
 			
-			barHeight = (int) ((y[i] / (float) maxValue) * gridHeight);
+			barHeight = (int) ((dataModel.data[i] / (float) maxValue) * gridHeight);
 			
 			
 			
@@ -339,7 +323,7 @@ public class Graph_Main {
 	
 	
 	
-	
+	/*
 	public void setData(int[] xNew, int[] yNew) {
 		//x = xNew;
 		y = yNew;
@@ -347,14 +331,15 @@ public class Graph_Main {
 		//xCount = xNew.length;
 		yCount = yNew.length;
 	}
+	/**/
 	
 	
 	public void setData(int[] data) {
 		//x = xNew;
-		y = data;
+		dataModel.data = data;
 		
 		//xCount = xNew.length;
-		yCount = data.length;
+		dataModel.dataCount = data.length;
 	}
 	
 	

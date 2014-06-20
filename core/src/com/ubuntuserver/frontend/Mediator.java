@@ -24,7 +24,7 @@ public class Mediator {
 	
 	
 	//old system
-	public boolean widgetChanging = false;
+	//public boolean widgetChanging = false;
 	
 	//new system
 	public boolean boxActivity = false;

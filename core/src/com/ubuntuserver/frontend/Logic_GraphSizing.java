@@ -27,23 +27,177 @@ public class Logic_GraphSizing {
 		int graphWidth;
 		
 		
-		if (graphCount == 1) {
-			graphList.get(0).setGraphLocation(25, 25);
-			graphList.get(0).setGraphSize(spaceWidth, spaceHeight);
+		/*
+		if (med.widgets == null) {
+			System.out.println("NULL");
 		}
+		/**/
 		
-		else if (graphCount == 2) {
-			graphWidth = (spaceWidth - 25) / 2;
+		if (med.widgets == null || med.widgets.thumbnails.isChecked() == false)
+		{
+			if (graphCount == 1) {
+				graphList.get(0).setGraphLocation(25, 25);
+				graphList.get(0).setGraphSize(spaceWidth, spaceHeight);
+			}
 			
-			graphList.get(0).setGraphLocation(25, 25);
-			graphList.get(0).setGraphSize(graphWidth, spaceHeight);
+			else if (graphCount == 2) {
+				graphWidth = (spaceWidth - 25) / 2;
+				
+				graphList.get(0).setGraphLocation(25, 25);
+				graphList.get(0).setGraphSize(graphWidth, spaceHeight);
+				
+				graphList.get(1).setGraphLocation(graphWidth + 50, 25); //25 + width + 25
+				graphList.get(1).setGraphSize(graphWidth, spaceHeight);
+			}
 			
-			graphList.get(1).setGraphLocation(graphWidth + 50, 25); //25 + width + 25
-			graphList.get(1).setGraphSize(graphWidth, spaceHeight);
+			else if (graphCount == 3) {
+				graphWidth = (spaceWidth - 25 * 2) / 3;
+				
+				graphList.get(0).setGraphLocation(25, 25); //25
+				graphList.get(0).setGraphSize(graphWidth, spaceHeight);
+				
+				graphList.get(1).setGraphLocation(graphWidth + 50, 25); //25 + width + 25
+				graphList.get(1).setGraphSize(graphWidth, spaceHeight);
+				
+				graphList.get(2).setGraphLocation(graphWidth * 2 + 75, 25); //25 + width + 25 + width + 25
+				graphList.get(2).setGraphSize(graphWidth, spaceHeight);
+			}
+			
+			else if (graphCount == 4) {
+				graphWidth = (spaceWidth - 25) / 2;
+				graphHeight = (spaceHeight - 25) / 2;
+				
+				graphList.get(0).setGraphLocation(25, 25);
+				graphList.get(0).setGraphSize(graphWidth, graphHeight);
+				
+				graphList.get(1).setGraphLocation(graphWidth + 50, 25); //25 + width + 25
+				graphList.get(1).setGraphSize(graphWidth, graphHeight);
+				
+				
+				
+				graphList.get(2).setGraphLocation(25, graphHeight + 50);
+				graphList.get(2).setGraphSize(graphWidth, graphHeight);
+				
+				graphList.get(3).setGraphLocation(graphWidth + 50, graphHeight + 50);
+				graphList.get(3).setGraphSize(graphWidth, graphHeight);
+			}
+			
+			
+			else if (graphCount == 5) {
+				graphWidth = (spaceWidth - 25 * 2) / 3;
+				graphHeight = (spaceHeight - 25) / 2;
+				
+				graphList.get(0).setGraphLocation(25, 25); //25
+				graphList.get(0).setGraphSize(graphWidth, graphHeight);
+				
+				graphList.get(1).setGraphLocation(graphWidth + 50, 25); //25 + width + 25
+				graphList.get(1).setGraphSize(graphWidth, graphHeight);
+				
+				graphList.get(2).setGraphLocation(graphWidth * 2 + 75, 25); //25 + width + 25 + width + 25
+				graphList.get(2).setGraphSize(graphWidth, graphHeight);
+				
+				
+				
+				graphList.get(3).setGraphLocation(25, graphHeight + 50);
+				graphList.get(3).setGraphSize(graphWidth, graphHeight);
+				
+				graphList.get(4).setGraphLocation(graphWidth + 50, graphHeight + 50);
+				graphList.get(4).setGraphSize(graphWidth, graphHeight);
+				
+				//graphList.get(5).setGraphLocation(graphWidth * 2 + 75, graphHeight + 50);
+				//graphList.get(5).setGraphSize(graphWidth, graphHeight);
+			}
+			
+			else if (graphCount == 6) {
+				graphWidth = (spaceWidth - 25 * 2) / 3;
+				graphHeight = (spaceHeight - 25) / 2;
+				
+				graphList.get(0).setGraphLocation(25, 25); //25
+				graphList.get(0).setGraphSize(graphWidth, graphHeight);
+				
+				graphList.get(1).setGraphLocation(graphWidth + 50, 25); //25 + width + 25
+				graphList.get(1).setGraphSize(graphWidth, graphHeight);
+				
+				graphList.get(2).setGraphLocation(graphWidth * 2 + 75, 25); //25 + width + 25 + width + 25
+				graphList.get(2).setGraphSize(graphWidth, graphHeight);
+				
+				
+				
+				graphList.get(3).setGraphLocation(25, graphHeight + 50);
+				graphList.get(3).setGraphSize(graphWidth, graphHeight);
+				
+				graphList.get(4).setGraphLocation(graphWidth + 50, graphHeight + 50);
+				graphList.get(4).setGraphSize(graphWidth, graphHeight);
+				
+				graphList.get(5).setGraphLocation(graphWidth * 2 + 75, graphHeight + 50);
+				graphList.get(5).setGraphSize(graphWidth, graphHeight);
+			}
+			
+			
 		}
-		
-		else if (graphCount == 3) {
-			graphWidth = (spaceWidth - 25 * 2) / 3;
+		else {
+			//System.out.println("BLAH");
+			
+			//graphList.get(0).setGraphLocation(25, 25);
+			//graphList.get(0).setGraphSize(spaceWidth, spaceHeight);
+			
+			
+			
+			
+			//graphWidth = (spaceWidth - 25 * 2) / 3;
+			int sideWidth = (spaceWidth - 25 * 2) / 3; //thirds
+			//int sideWidth = (spaceWidth - 25 * 3) / 4; //fourths
+			int sideHeight = spaceHeight;
+			
+			graphWidth = (sideWidth - 10) / 2;
+			graphHeight = (spaceHeight - 4 * 10) / 5;
+			
+			
+			
+			
+			
+			//something with graphCount
+			
+			int xLeft = 2 * sideWidth + 3 * 25; //thirds
+			int yTop = 25 + sideHeight - graphHeight;
+			int x = xLeft;
+			int y = yTop;
+			
+			for (int i = 0; i < graphCount; i ++) {
+				
+				//int x = 0;
+				//int y = 0;
+				
+				//thirds
+				//x = 2 * sideWidth + 3 * 25;
+				
+				
+				if (i % 2 == 0) //if even, starting at 0
+				{
+					x = xLeft;
+					//y = yTop - ( ((i+1)/2) * (10+graphHeight) ); //move out
+					y = yTop - ( (i/2) * (10+graphHeight) ); //move out
+					
+					graphList.get(i).setGraphLocation(x, y); //move out
+					graphList.get(i).setGraphSize(graphWidth, graphHeight);
+				}
+				else
+				{
+					x = xLeft + graphWidth + 10;
+					//y = yTop - ( ((i+1)/2) * (10+graphHeight) ); //move out
+					y = yTop - ( (i/2) * (10+graphHeight) ); //move out
+					
+					graphList.get(i).setGraphLocation(x, y); //move out
+					graphList.get(i).setGraphSize(graphWidth, graphHeight);
+				}
+				
+			}
+			
+			
+			
+			
+			
+			/*
 			
 			graphList.get(0).setGraphLocation(25, 25); //25
 			graphList.get(0).setGraphSize(graphWidth, spaceHeight);
@@ -53,77 +207,23 @@ public class Logic_GraphSizing {
 			
 			graphList.get(2).setGraphLocation(graphWidth * 2 + 75, 25); //25 + width + 25 + width + 25
 			graphList.get(2).setGraphSize(graphWidth, spaceHeight);
-		}
-		
-		else if (graphCount == 4) {
-			graphWidth = (spaceWidth - 25) / 2;
-			graphHeight = (spaceHeight - 25) / 2;
 			
-			graphList.get(0).setGraphLocation(25, 25);
-			graphList.get(0).setGraphSize(graphWidth, graphHeight);
-			
-			graphList.get(1).setGraphLocation(graphWidth + 50, 25); //25 + width + 25
-			graphList.get(1).setGraphSize(graphWidth, graphHeight);
+			/**/
 			
 			
 			
-			graphList.get(2).setGraphLocation(25, graphHeight + 50);
-			graphList.get(2).setGraphSize(graphWidth, graphHeight);
+			med.model.bigGraph = new Graph_Main(med, med.model);
 			
-			graphList.get(3).setGraphLocation(graphWidth + 50, graphHeight + 50);
-			graphList.get(3).setGraphSize(graphWidth, graphHeight);
+			med.model.bigGraph.dataModel = med.model.selectedGraph.dataModel;
+			
+			med.model.bigGraph.setGraphLocation(25, 25);
+			med.model.bigGraph.setGraphSize(2*sideWidth + 25, spaceHeight); //thirds
+			
 		}
 		
 		
-		else if (graphCount == 5) {
-			graphWidth = (spaceWidth - 25 * 2) / 3;
-			graphHeight = (spaceHeight - 25) / 2;
-			
-			graphList.get(0).setGraphLocation(25, 25); //25
-			graphList.get(0).setGraphSize(graphWidth, graphHeight);
-			
-			graphList.get(1).setGraphLocation(graphWidth + 50, 25); //25 + width + 25
-			graphList.get(1).setGraphSize(graphWidth, graphHeight);
-			
-			graphList.get(2).setGraphLocation(graphWidth * 2 + 75, 25); //25 + width + 25 + width + 25
-			graphList.get(2).setGraphSize(graphWidth, graphHeight);
-			
-			
-			
-			graphList.get(3).setGraphLocation(25, graphHeight + 50);
-			graphList.get(3).setGraphSize(graphWidth, graphHeight);
-			
-			graphList.get(4).setGraphLocation(graphWidth + 50, graphHeight + 50);
-			graphList.get(4).setGraphSize(graphWidth, graphHeight);
-			
-			//graphList.get(5).setGraphLocation(graphWidth * 2 + 75, graphHeight + 50);
-			//graphList.get(5).setGraphSize(graphWidth, graphHeight);
-		}
-		
-		else if (graphCount == 6) {
-			graphWidth = (spaceWidth - 25 * 2) / 3;
-			graphHeight = (spaceHeight - 25) / 2;
-			
-			graphList.get(0).setGraphLocation(25, 25); //25
-			graphList.get(0).setGraphSize(graphWidth, graphHeight);
-			
-			graphList.get(1).setGraphLocation(graphWidth + 50, 25); //25 + width + 25
-			graphList.get(1).setGraphSize(graphWidth, graphHeight);
-			
-			graphList.get(2).setGraphLocation(graphWidth * 2 + 75, 25); //25 + width + 25 + width + 25
-			graphList.get(2).setGraphSize(graphWidth, graphHeight);
-			
-			
-			
-			graphList.get(3).setGraphLocation(25, graphHeight + 50);
-			graphList.get(3).setGraphSize(graphWidth, graphHeight);
-			
-			graphList.get(4).setGraphLocation(graphWidth + 50, graphHeight + 50);
-			graphList.get(4).setGraphSize(graphWidth, graphHeight);
-			
-			graphList.get(5).setGraphLocation(graphWidth * 2 + 75, graphHeight + 50);
-			graphList.get(5).setGraphSize(graphWidth, graphHeight);
-		}
+		//NULL error originates from here?
+		//med.model.bigGraph = new Graph_Main(med, med.model);
 		
 		
 		

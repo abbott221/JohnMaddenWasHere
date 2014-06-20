@@ -8,11 +8,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.scenes.scene2d.*;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -46,6 +43,9 @@ public class Widgets {
 	TextButton deleteGraph;
 	
 	
+	CheckBox thumbnails;
+	
+	
 	
 	public Widgets(Mediator med) {
 		mediator = med;
@@ -61,7 +61,7 @@ public class Widgets {
 		
 		
 		int[] items = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-		Object[] listEntries = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+		Object[] listEntries = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
 		
 		
 		
@@ -79,16 +79,16 @@ public class Widgets {
 		startDateBox.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
 				
-				mediator.widgetChanging = true;
+				//mediator.widgetChanging = true;
 				
 				
 				//System.out.println("change occurred");
 				//Logic_SelectBox.changeEvent(mediator, startDateBox);
 				
 				int startIndex = startDateBox.getSelectedIndex();
-				mediator.model.selectedGraph.dataClipStart = startIndex;
+				mediator.model.selectedGraph.dataModel.dataClipStart = startIndex;
 				
-				int endIndex = mediator.model.selectedGraph.dataClipEnd;
+				int endIndex = mediator.model.selectedGraph.dataModel.dataClipEnd;
 				
 				int[] tempData = new int[(endIndex - startIndex) + 1];
 				
@@ -122,9 +122,9 @@ public class Widgets {
 				//Logic_SelectBox.changeEvent(mediator, endDateBox);
 				
 				int endIndex = endDateBox.getSelectedIndex();
-				mediator.model.selectedGraph.dataClipEnd = endIndex;
+				mediator.model.selectedGraph.dataModel.dataClipEnd = endIndex;
 				
-				int startIndex = mediator.model.selectedGraph.dataClipStart;
+				int startIndex = mediator.model.selectedGraph.dataModel.dataClipStart;
 				
 				int[] tempData = new int[(endIndex - startIndex) + 1];
 				
@@ -189,6 +189,12 @@ public class Widgets {
 				// TODO Auto-generated method stub
 				//System.out.println("changed");
 				
+				Graph_Main tempGraph = new Graph_Main(mediator, mediator.model);
+				mediator.model.graphs.add(tempGraph);
+				
+				
+				
+				/*
 				Graph_Main tempGraph = new Graph_Main(mediator, 500, 50, 400, 400);
 				tempGraph.setGridSize(300, 300);
 				
@@ -198,6 +204,7 @@ public class Widgets {
 				tempGraph.setData(x5Data, y5Data);
 				
 				mediator.model.graphs.add(tempGraph);
+				/**/
 				
 				
 				
@@ -239,31 +246,21 @@ public class Widgets {
 		
 		
 		
+		thumbnails = new CheckBox("Thumbnails", skin);
+		thumbnails.setBounds(1000, 500, 100, 20);
 		
-		//int boxLeft = 100;
-		//int boxBottom = 500;
-		
-		//startDateBox.setBounds(100, 500, 100, 20);
-		//firstSelectBox.setBounds(200, 1000, 200, 40);
-		
-		/*
-		firstSelectBox.addListener(new ChangeListener() {
-			public void keyTyped (TextField textField, char key) {
-				if (key == '\n') textField.getOnscreenKeyboard().show(false);
-			}
-		});
-		/**/
-		
-		/*
-		startDateBox.addListener(new ChangeListener() {
-			public void changed (ChangeEvent event, Actor actor) {
-				System.out.println("change occurred");
+		thumbnails.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
 			}
 		});
 		
-		stage.addActor(startDateBox);
-		//firstSelectBox.remove()
-		/**/
+		//thumbnails.isChecked()
+		//Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
+		
+		stage.addActor(thumbnails);
+		
 	}
 	
 	
@@ -291,6 +288,10 @@ public class Widgets {
 		
 		for (int i = 0; i < numGraphs; i++) {
 			mediator.model.graphs.get(i).drawMainGraph(shapes);
+		}
+		
+		if (mediator.widgets.thumbnails.isChecked() == true) {
+			mediator.model.bigGraph.drawMainGraph(shapes);
 		}
 		
 		//shapes.end();
@@ -334,6 +335,8 @@ public class Widgets {
 			deleteGraph.setBounds(850, boxBottom, 100, 20);
 			
 			
+			
+			thumbnails.setBounds(1000, boxBottom, 100, 20);
 			
 		}
 		

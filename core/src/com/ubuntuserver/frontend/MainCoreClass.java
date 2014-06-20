@@ -33,7 +33,11 @@ public class MainCoreClass implements ApplicationListener {
 		Gdx.gl.glClearColor(0.9f, 0.9f, 0.9f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
+		
+		
+		//DRAW STUFF
 		mediator.widgets.drawWidgets();
+		
 		
 		
 		boolean isTouched = Gdx.input.isTouched();
@@ -116,47 +120,21 @@ public class MainCoreClass implements ApplicationListener {
 			}
 			else if (graphClicked) {
 				mediator.model.selectedGraph = potentialGraph;
-			}
-		}
-		
-		
-		
-		
-		//=======================================================
-		
-		/*
-		
-		if (isTouched) {
-			System.out.println( mediator.widgetChanging );
-			System.out.println( "just: " + justTouched );
-		}
-		
-		if (isTouched && mediator.widgetChanging == false && justTouched == false) {
-			int firstX = Gdx.input.getX();
-			int firstY = showHeight - Gdx.input.getY();
-			
-			int count = mediator.model.graphs.size();
-			Graph_Main tempGraph;
-			
-			for (int i = 0; i < count; i++) {
-				tempGraph = mediator.model.graphs.get(i);
 				
-				if (firstX > tempGraph.left && firstX < (tempGraph.left + tempGraph.width) ) {
-					if (firstY > tempGraph.bottom && firstY < (tempGraph.bottom + tempGraph.height) ) {
-						mediator.model.selectedGraph = tempGraph;
-					}
+				
+				//is a check for null necessary?
+				if (mediator.widgets.thumbnails.isChecked() == true)
+				{
+					mediator.model.bigGraph.dataModel = potentialGraph.dataModel;
 				}
 				
+				
+				
 			}
-			
-			
-			
-		}
-		else if (mediator.widgetChanging == true) {
-			//do stuff
 		}
 		
-		/**/
+		
+		
 		
 	}
 
