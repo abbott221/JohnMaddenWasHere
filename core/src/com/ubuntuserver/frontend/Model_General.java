@@ -55,8 +55,8 @@ public class Model_General {
 		
 		
 		
-		int[] tempGauge = {2, 3, 4, 5, 4, 5, 6, 7, 6, 7, 8, 9};
-		int[] tempForecast = {2, 3, 4, 3, 4, 5, 4, 5, 6, 5, 6, 7};
+		int[] tempGauge = {2, 3, 4, 5,   4, 5, 6, 7,   6, 7, 8, 9};
+		int[] tempForecast = {2, 3, 4,   3, 4, 5,   4, 5, 6,   5, 6, 7};
 		
 		Model_Station tempStation = new Model_Station(mediator);
 		tempStation.setGauge(tempGauge);

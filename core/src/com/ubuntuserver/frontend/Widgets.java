@@ -31,7 +31,7 @@ public class Widgets {
 	public SelectBox endDateBox;
 	
 	public SelectBox stationBox;
-	public SelectBox dataType;
+	public SelectBox dataModeBox;
 	
 	
 	private Skin skin;
@@ -186,55 +186,40 @@ public class Widgets {
 				Graph_Main activeGraph = mediator.model.selectedGraph;
 				
 				
-				//int endIndex = endDateBox.getSelectedIndex();
-				//activeGraph.dataModel.dataClipEnd = endIndex;
+				
 				
 				int endIndex = activeGraph.dataModel.dataClipEnd;
 				
 				int startIndex = activeGraph.dataModel.dataClipStart;
 				
+				int[] tempData = new int[(endIndex - startIndex) + 1];
+				
+				
 				
 				
 				int stationIndex = stationBox.getSelectedIndex();
 				
-				
-				
-				int[] tempData = new int[(endIndex - startIndex) + 1];
-				
-				
-				//Graph_Main activeGraph = mediator.model.selectedGraph;
-				//activeGraph.dataModel.myStation
 				Model_Station newStation = mediator.model.stations.get(stationIndex);
 				
+				activeGraph.dataModel.myStation = newStation;
 				
 				
-				/*
-				if (newStation == null) {
-					System.out.println("newStation is NULL");
-				}
-				if (newStation.gauge == null) {
-					System.out.println("newStation.gauge is NULL");
-				}
-				//System.out.println("value: " + newStation.gauge[4] );
-				/**/
 				
 				
 				for (int i = 0; i < tempData.length; i++) {
-
-					//tempData[i] = mediator.model.waterData[i + startIndex];
 					
 					if (activeGraph.dataModel.dataMode == ShowMode.SHOW_GAUGE)
 					{
-						//tempData[i] = activeGraph.dataModel.myStation.gauge[i + startIndex];
-						tempData[i] = newStation.gauge[i + startIndex]; //NULL ERROR IS HERE
+						tempData[i] = activeGraph.dataModel.myStation.gauge[i + startIndex];
 					}
 					else //ShowMode.SHOW_FORECAST
 					{
-						//tempData[i] = activeGraph.dataModel.myStation.forecast[i + startIndex];
-						tempData[i] = newStation.forecast[i + startIndex];
+						tempData[i] = activeGraph.dataModel.myStation.forecast[i + startIndex];
 					}
 				}
 				activeGraph.setData(tempData);
+				
+				
 				
 			}
 		});
@@ -245,19 +230,85 @@ public class Widgets {
 		
 		
 		
-		dataType = new SelectBox( skin );
-		dataType.setItems(1, 2, 3, 4);
+		dataModeBox = new SelectBox( skin );
+		dataModeBox.setItems("1 RG", "2 FC");
 		
-		dataType.setBounds(550, 500, 100, 20);
+		dataModeBox.setBounds(550, 500, 100, 20);
 		
-		dataType.addListener(new ChangeListener() {
+		dataModeBox.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
+				
 				//System.out.println("change occurred");
 				//Logic_SelectBox.changeEvent(mediator, endDateBox);
+				
+				
+				Graph_Main activeGraph = mediator.model.selectedGraph;
+				
+				
+				
+				
+				int endIndex = activeGraph.dataModel.dataClipEnd;
+				
+				int startIndex = activeGraph.dataModel.dataClipStart;
+				
+				int[] tempData = new int[(endIndex - startIndex) + 1];
+				
+				
+				
+				/*
+				int stationIndex = stationBox.getSelectedIndex();
+				
+				Model_Station newStation = mediator.model.stations.get(stationIndex);
+				
+				activeGraph.dataModel.myStation = newStation;
+				/**/
+				
+				
+				
+				//int dataModeIndex = stationBox.getSelectedIndex(); //THIS REALLY SUCKED
+				int dataModeIndex = dataModeBox.getSelectedIndex();
+				
+				
+				//Model_Station newStation = mediator.model.stations.get(stationIndex);
+				
+				//activeGraph.dataModel.myStation = newStation;
+				
+				if (dataModeIndex == 0) {
+					//activeGraph.dataModel.myStation = newStation;
+					activeGraph.dataModel.dataMode = ShowMode.SHOW_GAUGE;
+				}
+				else if (dataModeIndex == 1) {
+					//activeGraph.dataModel.myStation = newStation;
+					activeGraph.dataModel.dataMode = ShowMode.SHOW_FORECAST;
+				}
+				/*
+				else {
+					System.out.println("COUNTING ERROR: " + dataModeIndex);
+					System.out.println("COUNTING ERROR");
+				}
+				/**/
+				
+				
+				
+				for (int i = 0; i < tempData.length; i++) {
+					
+					if (activeGraph.dataModel.dataMode == ShowMode.SHOW_GAUGE)
+					{
+						tempData[i] = activeGraph.dataModel.myStation.gauge[i + startIndex];
+					}
+					else //ShowMode.SHOW_FORECAST
+					{
+						tempData[i] = activeGraph.dataModel.myStation.forecast[i + startIndex];
+					}
+				}
+				activeGraph.setData(tempData);
+				
+				
+				
 			}
 		});
 		
-		stage.addActor(dataType);
+		stage.addActor(dataModeBox);
 		
 		
 		
@@ -411,7 +462,7 @@ public class Widgets {
 			
 			stationBox.setBounds(400, boxBottom, 100, 20);
 			
-			dataType.setBounds(550, boxBottom, 100, 20);
+			dataModeBox.setBounds(550, boxBottom, 100, 20);
 			
 			
 			
