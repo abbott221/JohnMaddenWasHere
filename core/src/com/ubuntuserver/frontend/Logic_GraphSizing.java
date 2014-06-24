@@ -19,7 +19,14 @@ public class Logic_GraphSizing {
 		
 		//also account for number of graphs?
 		int spaceHeight = med.displayHeight - 90; //40 + 25 * 2 = 90
-		spaceHeight -= 45; //for extra space between graphs and button stuff
+		
+		
+		
+		//spaceHeight -= 45; //for extra space between graphs and button stuff
+		spaceHeight -= 145; //45 + ?
+		
+		
+		
 		
 		int spaceWidth = med.displayWidth - 50; //40 + 25 * 2 = 90
 		

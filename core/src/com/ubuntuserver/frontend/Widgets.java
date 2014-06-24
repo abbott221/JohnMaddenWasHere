@@ -153,36 +153,15 @@ public class Widgets {
 		newGraph.setBounds(700, 500, 100, 20);
 		
 		newGraph.addListener(new ChangeListener() {
-			
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				
-				// TODO Auto-generated method stub
-				//System.out.println("changed");
 				
 				Graph_Main tempGraph = new Graph_Main(mediator, mediator.model);
 				mediator.model.graphs.add(tempGraph);
 				
-				
-				
-				/*
-				Graph_Main tempGraph = new Graph_Main(mediator, 500, 50, 400, 400);
-				tempGraph.setGridSize(300, 300);
-				
-				int[] x5Data = {3, 4, 6, 5, 8, 3, 3, 2};
-				int[] y5Data = {5, 6, 7, 3, 4, 3, 2, 4};
-				
-				tempGraph.setData(x5Data, y5Data);
-				
-				mediator.model.graphs.add(tempGraph);
-				/**/
-				
-				
-				
 				Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
 				
 			}
-			
 		});
 		
 		stage.addActor(newGraph);
@@ -194,7 +173,6 @@ public class Widgets {
 		deleteGraph.setBounds(850, 500, 100, 20);
 		
 		deleteGraph.addListener(new ChangeListener() {
-			
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				
@@ -209,7 +187,6 @@ public class Widgets {
 				}
 				
 			}
-			
 		});
 		
 		stage.addActor(deleteGraph);
