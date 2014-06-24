@@ -23,13 +23,10 @@ public class Logic_SelectBox {
 	
 	
 	public static void startDateChange(Mediator mediator, SelectBox startDateBox) {
-
 		
 		Graph_Main activeGraph = mediator.model.selectedGraph;
 		
-		
 		activeGraph.dataModel.dataClipStart = startDateBox.getSelectedIndex();
-		
 		
 		setDisplayData(activeGraph);
 	}
@@ -37,14 +34,34 @@ public class Logic_SelectBox {
 	
 	public static void endDateChange(Mediator mediator, SelectBox endDateBox) {
 		
+		Graph_Main activeGraph = mediator.model.selectedGraph;
+		
+		activeGraph.dataModel.dataClipEnd = endDateBox.getSelectedIndex();
+		
+		setDisplayData(activeGraph);
+	}
+	
+	
+	
+	public static void stationChange(Mediator mediator, SelectBox stationBox) {
+		
 		
 		Graph_Main activeGraph = mediator.model.selectedGraph;
 		
 		
-		activeGraph.dataModel.dataClipEnd = endDateBox.getSelectedIndex();
+		//====================== Reused code ======================
+		
+		int stationIndex = stationBox.getSelectedIndex();
+		
+		//Model_Station newStation = mediator.model.stations.get(stationIndex);
+		//activeGraph.dataModel.myStation = newStation;
+		activeGraph.dataModel.myStation = mediator.model.stations.get(stationIndex);
+		
+		//====================== Reused code ======================
 		
 		
 		setDisplayData(activeGraph);
+		
 	}
 	
 	

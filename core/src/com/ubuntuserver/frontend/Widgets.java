@@ -80,43 +80,7 @@ public class Widgets {
 		startDateBox.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
 				
-				/*
-				//mediator.widgetChanging = true;
-				
-				
-				//System.out.println("change occurred");
-				//Logic_SelectBox.changeEvent(mediator, startDateBox);
-				
-				
-				Graph_Main activeGraph = mediator.model.selectedGraph;
-				
-				
-				int startIndex = startDateBox.getSelectedIndex();
-				activeGraph.dataModel.dataClipStart = startIndex;
-				
-				int endIndex = activeGraph.dataModel.dataClipEnd;
-				
-				int[] tempData = new int[(endIndex - startIndex) + 1];
-				
-				for (int i = 0; i < tempData.length; i++) {
-					
-					//tempData[i] = mediator.model.waterData[i + startIndex];
-					
-					if (activeGraph.dataModel.dataMode == ShowMode.SHOW_GAUGE)
-					{
-						tempData[i] = activeGraph.dataModel.myStation.gauge[i + startIndex];
-					}
-					else //ShowMode.SHOW_FORECAST
-					{
-						tempData[i] = activeGraph.dataModel.myStation.forecast[i + startIndex];
-					}
-				}
-				activeGraph.setData(tempData);
-				
-				/**/
-				
 				Logic_SelectBox.startDateChange(mediator, startDateBox);
-				
 				
 			}
 		});
@@ -155,47 +119,7 @@ public class Widgets {
 		stationBox.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
 				
-				//System.out.println("change occurred");
-				//Logic_SelectBox.changeEvent(mediator, endDateBox);
-				
-				
-				Graph_Main activeGraph = mediator.model.selectedGraph;
-				
-				
-				
-				
-				int endIndex = activeGraph.dataModel.dataClipEnd;
-				
-				int startIndex = activeGraph.dataModel.dataClipStart;
-				
-				int[] tempData = new int[(endIndex - startIndex) + 1];
-				
-				
-				
-				
-				int stationIndex = stationBox.getSelectedIndex();
-				
-				Model_Station newStation = mediator.model.stations.get(stationIndex);
-				
-				activeGraph.dataModel.myStation = newStation;
-				
-				
-				
-				
-				for (int i = 0; i < tempData.length; i++) {
-					
-					if (activeGraph.dataModel.dataMode == ShowMode.SHOW_GAUGE)
-					{
-						tempData[i] = activeGraph.dataModel.myStation.gauge[i + startIndex];
-					}
-					else //ShowMode.SHOW_FORECAST
-					{
-						tempData[i] = activeGraph.dataModel.myStation.forecast[i + startIndex];
-					}
-				}
-				activeGraph.setData(tempData);
-				
-				
+				Logic_SelectBox.stationChange(mediator, stationBox);
 				
 			}
 		});
