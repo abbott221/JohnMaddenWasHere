@@ -19,14 +19,22 @@ public class MainCoreClass implements ApplicationListener {
 	@Override
 	public void create () {
 		
+		//Logic_Construct.construct(this);
+		//Logic_Construct.fill(this);
+		
+		
 		stage = new Stage();
 		
 		mediator = new Mediator(stage);
 		
-		
-		
 	}
-
+	
+	
+	public void registerMediator(Mediator med) {
+		mediator = med;
+	}
+	
+	
 	@Override
 	public void render () {
 		
