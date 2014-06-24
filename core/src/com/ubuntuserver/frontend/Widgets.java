@@ -17,6 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
+import com.ubuntuserver.frontend.Model_Graph.ShowMode;
 
 public class Widgets {
 	
@@ -29,7 +30,7 @@ public class Widgets {
 	public SelectBox startDateBox;
 	public SelectBox endDateBox;
 	
-	public SelectBox station;
+	public SelectBox stationBox;
 	public SelectBox dataType;
 	
 	
@@ -85,17 +86,31 @@ public class Widgets {
 				//System.out.println("change occurred");
 				//Logic_SelectBox.changeEvent(mediator, startDateBox);
 				
-				int startIndex = startDateBox.getSelectedIndex();
-				mediator.model.selectedGraph.dataModel.dataClipStart = startIndex;
 				
-				int endIndex = mediator.model.selectedGraph.dataModel.dataClipEnd;
+				Graph_Main activeGraph = mediator.model.selectedGraph;
+				
+				
+				int startIndex = startDateBox.getSelectedIndex();
+				activeGraph.dataModel.dataClipStart = startIndex;
+				
+				int endIndex = activeGraph.dataModel.dataClipEnd;
 				
 				int[] tempData = new int[(endIndex - startIndex) + 1];
 				
 				for (int i = 0; i < tempData.length; i++) {
-					tempData[i] = mediator.model.waterData[i + startIndex];
+					
+					//tempData[i] = mediator.model.waterData[i + startIndex];
+					
+					if (activeGraph.dataModel.dataMode == ShowMode.SHOW_GAUGE)
+					{
+						tempData[i] = activeGraph.dataModel.myStation.gauge[i + startIndex];
+					}
+					else //ShowMode.SHOW_FORECAST
+					{
+						tempData[i] = activeGraph.dataModel.myStation.forecast[i + startIndex];
+					}
 				}
-				mediator.model.selectedGraph.setData(tempData);
+				activeGraph.setData(tempData);
 				
 				
 				
@@ -121,17 +136,31 @@ public class Widgets {
 				//System.out.println("change occurred");
 				//Logic_SelectBox.changeEvent(mediator, endDateBox);
 				
-				int endIndex = endDateBox.getSelectedIndex();
-				mediator.model.selectedGraph.dataModel.dataClipEnd = endIndex;
 				
-				int startIndex = mediator.model.selectedGraph.dataModel.dataClipStart;
+				Graph_Main activeGraph = mediator.model.selectedGraph;
+				
+				
+				int endIndex = endDateBox.getSelectedIndex();
+				activeGraph.dataModel.dataClipEnd = endIndex;
+				
+				int startIndex = activeGraph.dataModel.dataClipStart;
 				
 				int[] tempData = new int[(endIndex - startIndex) + 1];
 				
 				for (int i = 0; i < tempData.length; i++) {
-					tempData[i] = mediator.model.waterData[i + startIndex];
+
+					//tempData[i] = mediator.model.waterData[i + startIndex];
+					
+					if (activeGraph.dataModel.dataMode == ShowMode.SHOW_GAUGE)
+					{
+						tempData[i] = activeGraph.dataModel.myStation.gauge[i + startIndex];
+					}
+					else //ShowMode.SHOW_FORECAST
+					{
+						tempData[i] = activeGraph.dataModel.myStation.forecast[i + startIndex];
+					}
 				}
-				mediator.model.selectedGraph.setData(tempData);
+				activeGraph.setData(tempData);
 				
 			}
 		});
@@ -142,19 +171,75 @@ public class Widgets {
 		
 		
 		
-		station = new SelectBox( skin );
-		station.setItems(1, 2, 3, 4);
+		stationBox = new SelectBox( skin );
+		stationBox.setItems(1, 2, 3);
 		
-		station.setBounds(400, 500, 100, 20);
+		stationBox.setBounds(400, 500, 100, 20);
 		
-		station.addListener(new ChangeListener() {
+		stationBox.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
+				
 				//System.out.println("change occurred");
 				//Logic_SelectBox.changeEvent(mediator, endDateBox);
+				
+				
+				Graph_Main activeGraph = mediator.model.selectedGraph;
+				
+				
+				//int endIndex = endDateBox.getSelectedIndex();
+				//activeGraph.dataModel.dataClipEnd = endIndex;
+				
+				int endIndex = activeGraph.dataModel.dataClipEnd;
+				
+				int startIndex = activeGraph.dataModel.dataClipStart;
+				
+				
+				
+				int stationIndex = stationBox.getSelectedIndex();
+				
+				
+				
+				int[] tempData = new int[(endIndex - startIndex) + 1];
+				
+				
+				//Graph_Main activeGraph = mediator.model.selectedGraph;
+				//activeGraph.dataModel.myStation
+				Model_Station newStation = mediator.model.stations.get(stationIndex);
+				
+				
+				
+				/*
+				if (newStation == null) {
+					System.out.println("newStation is NULL");
+				}
+				if (newStation.gauge == null) {
+					System.out.println("newStation.gauge is NULL");
+				}
+				//System.out.println("value: " + newStation.gauge[4] );
+				/**/
+				
+				
+				for (int i = 0; i < tempData.length; i++) {
+
+					//tempData[i] = mediator.model.waterData[i + startIndex];
+					
+					if (activeGraph.dataModel.dataMode == ShowMode.SHOW_GAUGE)
+					{
+						//tempData[i] = activeGraph.dataModel.myStation.gauge[i + startIndex];
+						tempData[i] = newStation.gauge[i + startIndex]; //NULL ERROR IS HERE
+					}
+					else //ShowMode.SHOW_FORECAST
+					{
+						//tempData[i] = activeGraph.dataModel.myStation.forecast[i + startIndex];
+						tempData[i] = newStation.forecast[i + startIndex];
+					}
+				}
+				activeGraph.setData(tempData);
+				
 			}
 		});
 		
-		stage.addActor(station);
+		stage.addActor(stationBox);
 		
 		
 		
@@ -324,7 +409,7 @@ public class Widgets {
 			
 			endDateBox.setBounds(250, boxBottom, 100, 20);
 			
-			station.setBounds(400, boxBottom, 100, 20);
+			stationBox.setBounds(400, boxBottom, 100, 20);
 			
 			dataType.setBounds(550, boxBottom, 100, 20);
 			

@@ -3,6 +3,7 @@ package com.ubuntuserver.frontend;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.ubuntuserver.frontend.Model_Graph.ShowMode;
 
 public class Graph_Main {
 	
@@ -70,9 +71,21 @@ public class Graph_Main {
 		dataModel = new Model_Graph(med, mod);
 		
 		dataModel.dataClipStart = 0;
-		dataModel.dataClipEnd = mod.waterDataSize - 1;
 		
-		dataModel.setData(mod.waterData);
+		
+		//dataModel.dataClipEnd = mod.waterDataSize - 1;
+		//dataModel.setData(mod.waterData);
+		
+		if (dataModel.dataMode == ShowMode.SHOW_GAUGE)
+		{
+			dataModel.dataClipEnd = dataModel.myStation.gaugeCount - 1;
+			dataModel.setData(dataModel.myStation.gauge);
+		}
+		else //ShowMode.SHOW_FORECAST
+		{
+			dataModel.dataClipEnd = dataModel.myStation.forecastCount - 1;
+			dataModel.setData(dataModel.myStation.forecast);
+		}
 		
 		
 		//dataClipStart = 0;

@@ -76,7 +76,7 @@ public class MainCoreClass implements ApplicationListener {
 				}
 			}
 			
-			tempWidget = mediator.widgets.station;
+			tempWidget = mediator.widgets.stationBox;
 			if (firstX > tempWidget.getX() && firstX < tempWidget.getRight() ) {
 				if (firstY > tempWidget.getY() && firstY < tempWidget.getTop() ) {
 					boxClicked = true;
