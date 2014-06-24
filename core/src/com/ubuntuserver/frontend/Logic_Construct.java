@@ -3,64 +3,96 @@ package com.ubuntuserver.frontend;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.scenes.scene2d.*;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.TextField;
-import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.ubuntuserver.frontend.Model_Graph.ShowMode;
 
-public class Widgets {
-	
-	Mediator mediator;
-	
-	
-	public Stage stage;
-	//SpriteBatch batch;
-	
-	public SelectBox startDateBox;
-	public SelectBox endDateBox;
-	
-	public SelectBox stationBox;
-	public SelectBox dataModeBox;
-	
-	
-	private Skin skin;
-	ShapeRenderer shapes;
+public class Logic_Construct {
 	
 	
 	
-	//Button buttonMulti = new TextButton("Multi\nLine\nToggle", skin, "toggle");
-	TextButton newGraph;
-	TextButton deleteGraph;
-	
-	
-	CheckBox thumbnails;
-	
-	
-	
-	
-	//Logic_Construct
-	public Widgets() {
-		//
+	public static void construct(MainCoreClass core) {
+		
+		Mediator mediatorL = new Mediator();
+		
+		
+		//Stage stageL = new Stage();
+		
+		
+		mediatorL.model = new Model_General();
+		mediatorL.widgets = new Widgets();
+		//Model_General model_generalL = new Model_General();
+		//Widgets widgetsL = new Widgets();
+		
+		//Stage stageL = new Stage();
+		//mediatorL.widgets.stage = new Stage();
+		
+		mediatorL.model.mediator = mediatorL;
+		mediatorL.widgets.mediator = mediatorL;
+		
+		
+		mediatorL.widgets.stage = new Stage();
+		
+		
+		
+		constructModel(mediatorL);
+		constructWidgets(mediatorL);
+		
+		
+		//activate to test
+		core.registerMediator(mediatorL);
 	}
 	
 	
 	
-	public Widgets(Mediator med) {
-		mediator = med;
+	public static void fill(MainCoreClass core) {
+		//
+		fillModel(core.mediator);
+	}
+	
+	
+	public static void constructModel(Mediator mediator) {
+		
+		
+		
+		mediator.model.stations = new ArrayList<Model_Station>();
+		
+		
+		
+		mediator.model.graphs = new ArrayList<Graph_Main>();
+		
+		
+		//Logic_GraphSizing.setSizeByCount(mediator, graphs);
+		
+		mediator.model.selectedGraph = null;
+		
+		mediator.model.bigGraph = null;
+		
+	}
+	
+	
+	
+	
+	public static void constructWidgets(Mediator mediator) {
+		
+		
+		//mediator = med;
 		
 		shapes = new ShapeRenderer();
 		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
+		
+		
+		
+		
+		
+		
 		
 		stage = mediator.stage;
 		//stage = new Stage();
@@ -221,86 +253,105 @@ public class Widgets {
 	
 	
 	
-	public void drawWidgets() {
-		
-		//shapes.begin(ShapeType.Filled);
-		
-		int numGraphs = mediator.model.graphs.size();
-		
-		
-		shapes.begin(ShapeType.Filled);
-		shapes.setColor(Color.CYAN);
-		
-		if ( mediator.model.selectedGraph != null ) {
-			int x = mediator.model.selectedGraph.left - 5;
-			int y = mediator.model.selectedGraph.bottom - 5;
-			int w = mediator.model.selectedGraph.width + 10;
-			int h = mediator.model.selectedGraph.height + 10;
-			
-			shapes.rect(x, y, w, h);
-		}
-		
-		shapes.end();
-		
-		for (int i = 0; i < numGraphs; i++) {
-			mediator.model.graphs.get(i).drawMainGraph(shapes);
-		}
-		
-		if (mediator.widgets.thumbnails.isChecked() == true) {
-			mediator.model.bigGraph.drawMainGraph(shapes);
-		}
-		
-		//shapes.end();
+	
+	public static void constructStage(Mediator mediator) {
 		
 		
 		
-		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
-		stage.draw();
+		mediator.model.stations = new ArrayList<Model_Station>();
+		
+		
+		
+		mediator.model.graphs = new ArrayList<Graph_Main>();
+		
+		
+		//Logic_GraphSizing.setSizeByCount(mediator, graphs);
+		
+		mediator.model.selectedGraph = null;
+		
+		mediator.model.bigGraph = null;
 		
 	}
 	
 	
-	public void adjustBox() {
+	
+	
+	
+	public static void fillModel(Mediator mediator) {
 		
-		//int boxLeft = 100;
-		int boxBottom = 500;
 		
-		int h = mediator.displayHeight;
-		int w = mediator.displayWidth;
 		
-		if (h > 540 && w > 960) {
-			
-			//boxLeft = 100;
-			boxBottom = h - 40;
-			
-			
-			
-			
-			startDateBox.setBounds(100, boxBottom, 100, 20);
-			
-			endDateBox.setBounds(250, boxBottom, 100, 20);
-			
-			stationBox.setBounds(400, boxBottom, 100, 20);
-			
-			dataModeBox.setBounds(550, boxBottom, 100, 20);
-			
-			
-			
-			newGraph.setBounds(700, boxBottom, 100, 20);
-			
-			deleteGraph.setBounds(850, boxBottom, 100, 20);
-			
-			
-			
-			thumbnails.setBounds(1000, boxBottom, 100, 20);
-			
-		}
+		
+		/**/
+		int[] tempGauge = {2, 3, 4, 5,   4, 5, 6, 7,   6, 7, 8, 9};
+		int[] tempForecast = {2, 3, 4,   3, 4, 5,   4, 5, 6,   5, 6, 7};
+		
+		Model_Station tempStation = new Model_Station(mediator);
+		tempStation.setGauge(tempGauge);
+		tempStation.setForecast(tempForecast);
+		
+		mediator.model.stations.add(tempStation);
+		
+		
+		
+		int[] tempGauge2 = {9, 8, 7, 6, 7, 6, 5, 4, 5, 4, 3, 2};
+		int[] tempForecast2 = {7, 6, 5, 6, 5, 4, 5, 4, 3, 4, 3, 2};
+		
+		Model_Station tempStation2 = new Model_Station(mediator);
+		tempStation2.setGauge(tempGauge2);
+		tempStation2.setForecast(tempForecast2);
+		
+		mediator.model.stations.add(tempStation2);
+		
+		
+		
+		int[] tempGauge3 = {3, 4, 5, 6, 3, 4, 5, 6, 3, 4, 5, 6};
+		int[] tempForecast3 = {3, 4, 5, 3, 4, 5, 3, 4, 5, 3, 4, 5};
+		
+		Model_Station tempStation3 = new Model_Station(mediator);
+		tempStation3.setGauge(tempGauge3);
+		tempStation3.setForecast(tempForecast3);
+		
+		mediator.model.stations.add(tempStation3);
+		/**/
+		
+		
+		
+		
+		
+		
+		/**/
+		Graph_Main tempGraph1 = new Graph_Main(mediator, mediator.model);
+		
+		mediator.model.graphs.add(tempGraph1);
+		
+		
+		
+		Graph_Main tempGraph2 = new Graph_Main(mediator, mediator.model);
+		
+		mediator.model.graphs.add(tempGraph2);
+		/**/
+		
+		
+		
+		
+		
+		//save this for rendering
+		//Logic_GraphSizing.setSizeByCount(mediator, graphs);
+		
+		mediator.model.selectedGraph = tempGraph1;
+		
+		mediator.model.bigGraph = tempGraph1;
 		
 		
 	}
+	
+	
+	
 	
 	
 }
+
 
 
 
