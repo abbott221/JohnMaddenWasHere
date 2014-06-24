@@ -34,7 +34,7 @@ public class Widgets {
 	public SelectBox dataModeBox;
 	
 	
-	private Skin skin;
+	public Skin skin;
 	ShapeRenderer shapes;
 	
 	
@@ -45,14 +45,6 @@ public class Widgets {
 	
 	
 	CheckBox thumbnails;
-	
-	
-	
-	
-	//Logic_Construct
-	public Widgets() {
-		//
-	}
 	
 	
 	

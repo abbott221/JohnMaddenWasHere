@@ -31,13 +31,6 @@ public class Mediator {
 	
 	
 	
-
-	//Logic_Construction
-	public Mediator() {
-		//
-	}
-	
-	
 	
 	public Mediator(Stage newStage) {
 		
@@ -49,12 +42,26 @@ public class Mediator {
 		
 		
 		
+		/*
+		
+		drawMe = new Graph_Main(this, 50, 50, 600, 400);
+		drawMe.setGridSize(500, 300);
+		
+		int[] xData = {3, 4, 6, 5, 8};
+		int[] yData = {5, 6, 7, 3, 4};
+		
+		drawMe.setData(xData, yData);
+		
+		model.graphs.add(drawMe);
+		//graphs.add(drawMe);
+		
+		/**/
+		
+		
+		
 		
 		widgets = new Widgets(this);
 	}
-	
-	
-	
 	
 	
 }

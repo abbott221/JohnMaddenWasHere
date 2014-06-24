@@ -19,22 +19,14 @@ public class MainCoreClass implements ApplicationListener {
 	@Override
 	public void create () {
 		
-		//Logic_Construct.construct(this);
-		//Logic_Construct.fill(this);
-		
-		
 		stage = new Stage();
 		
 		mediator = new Mediator(stage);
 		
+		
+		
 	}
-	
-	
-	public void registerMediator(Mediator med) {
-		mediator = med;
-	}
-	
-	
+
 	@Override
 	public void render () {
 		
@@ -44,6 +36,7 @@ public class MainCoreClass implements ApplicationListener {
 		
 		
 		//DRAW STUFF
+		//Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
 		mediator.widgets.drawWidgets();
 		
 		

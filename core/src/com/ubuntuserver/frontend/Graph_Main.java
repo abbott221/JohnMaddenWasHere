@@ -336,6 +336,24 @@ public class Graph_Main {
 	
 	
 	
+	/**
+	 * setGridLocationRelativeToGraph
+	 */
+	public void setGridLocRelToGraph(int x, int y) {
+		gridLeft = left + x;
+		gridBottom = bottom + y;
+	}
+	
+	
+	
+	
+	public void displaceGrid(int x, int y) {
+		gridLeft += x;
+		gridBottom += y;
+	}
+	
+	
+	
 	/*
 	public void setData(int[] xNew, int[] yNew) {
 		//x = xNew;

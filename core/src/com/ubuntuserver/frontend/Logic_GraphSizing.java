@@ -223,8 +223,45 @@ public class Logic_GraphSizing {
 			
 			med.model.bigGraph.dataModel = med.model.selectedGraph.dataModel;
 			
-			med.model.bigGraph.setGraphLocation(25, 25);
-			med.model.bigGraph.setGraphSize(2*sideWidth + 25, spaceHeight); //thirds
+			
+			
+			
+			Graph_Main bigTemp = med.model.bigGraph;
+			bigTemp.setGraphLocation(25, 25);
+			//bigTemp.setGridSize(bigTemp.gridWidth - 40, bigTemp.gridHeight - 40);
+			//bigTemp.displaceGrid(40, 40);
+			//it is normally 40 between gridWidth and gridHeight
+			//bigTemp.setGridSize(bigTemp.gridWidth - 100, bigTemp.gridHeight - 100);
+			//bigTemp.displaceGrid(40, 40);
+			
+			//med.model.bigGraph.setGraphLocation(25, 25);
+			//med.model.bigGraph.setGridSize(bigTemp.gridWidth - 100, bigTemp.gridHeight - 100);
+			//med.model.bigGraph.displaceGrid(40, 40);
+			
+			
+			
+			
+			int graphW = 2*sideWidth + 25; //thirds
+			int graphH = spaceHeight; //thirds
+			//med.model.bigGraph.setGraphSize(graphW, graphH); //thirds
+			bigTemp.setGraphSize(graphW, graphH);
+			
+			
+			
+			//bigTemp.setGridSize(bigTemp.gridWidth - 100, bigTemp.gridHeight - 100);
+			//bigTemp.displaceGrid(40, 40);
+			
+			//it is normally 40 between gridWidth and gridHeight
+			//"padding" of 20 to top and right between graph and grid
+			
+			//bigTemp.setGridSize(bigTemp.gridWidth - 40, bigTemp.gridHeight - 40);
+			//bigTemp.displaceGrid(40, 40);
+			
+			//bigTemp.setGridSize(bigTemp.width - 40, bigTemp.height - 40);
+			bigTemp.setGridSize(bigTemp.width - 100, bigTemp.height - 100);
+			bigTemp.setGridLocRelToGraph(80, 80);
+			
+			
 			
 		}
 		

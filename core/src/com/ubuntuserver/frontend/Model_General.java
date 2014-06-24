@@ -20,21 +20,19 @@ public class Model_General {
 	
 	
 	
+	//Graph_Main firstGraph;
+	//Graph_Main secondGraph;
 	
 	
 	
+	
+	//public int[] waterData;
+	//int waterDataSize;
 	
 	
 	ArrayList<Model_Station> stations;
 	
-	
-	
-	
-	
-	//Logic_Construction
-	public Model_General() {
-		//
-	}
+	//Model_Station firstStation;
 	
 	
 	
@@ -43,8 +41,12 @@ public class Model_General {
 		mediator = med;
 		
 		
+		//int[] temp = {5, 6, 7, 3, 4, 3, 2, 4};
+		int[] temp = {5, 6, 7, 5, 6, 3, 4, 2, 6, 5, 7, 3};
 		
 		
+		//waterData = temp;
+		//waterDataSize = waterData.length;
 		
 		
 		
@@ -73,6 +75,9 @@ public class Model_General {
 		
 		stations.add(tempStation2);
 		
+		/*
+		System.out.println("Value: " + tempStation2.gauge[3]);
+		/**/
 		
 		
 		int[] tempGauge3 = {3, 4, 5, 6, 3, 4, 5, 6, 3, 4, 5, 6};
@@ -85,11 +90,32 @@ public class Model_General {
 		stations.add(tempStation3);
 		
 		
+		//System.out.println(stations.size());
 		
 		
 		
 		
 		graphs = new ArrayList<Graph_Main>();
+		
+		
+		
+		
+		/*
+		//600, 400 graph size
+		//500, 300 grid size
+		//firstGraph = new Graph_Main(med, 50, 50, 400, 400);
+		firstGraph = new Graph_Main(med, 25, 25, 400, 400);
+		firstGraph.setGridSize(300, 300);
+		
+		int[] xData = {3, 4, 6, 5, 8};
+		int[] yData = {5, 6, 7, 3, 4};
+		
+		firstGraph.setData(xData, yData);
+		
+		graphs.add(firstGraph);
+		/**/
+		
+		//====================================================
 		
 		
 		
@@ -99,9 +125,12 @@ public class Model_General {
 		
 		
 		
+		
 		Graph_Main tempGraph2 = new Graph_Main(med, this);
 		
 		graphs.add(tempGraph2);
+		//tempGraph2.dataModel.myStation = stations.get(1);
+		//tempGraph2.dataModel.dataMode = ShowMode.SHOW_FORECAST;
 		
 		
 		
@@ -109,6 +138,7 @@ public class Model_General {
 		
 		
 		
+		//System.out.println( graphs.size() );
 		Logic_GraphSizing.setSizeByCount(mediator, graphs);
 		
 		selectedGraph = tempGraph1;

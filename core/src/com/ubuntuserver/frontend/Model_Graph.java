@@ -2,6 +2,8 @@ package com.ubuntuserver.frontend;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+
 public class Model_Graph {
 	
 	Mediator mediator;
@@ -25,6 +27,17 @@ public class Model_Graph {
 	public Model_Station myStation;
 	
 	
+	
+	Label xAxis;
+	Label yAxis;
+	
+	
+	
+	
+	
+	
+	
+	
 	public Model_Graph(Mediator med, Model_General mod) {
 		
 		mediator = med;
@@ -34,6 +47,12 @@ public class Model_Graph {
 		
 		myStation = mod.stations.get(0);
 		dataMode = ShowMode.SHOW_GAUGE;
+		
+		
+		
+		
+		xAxis = new Label("fps:", mediator.widgets.skin);
+		
 	}
 	
 	
