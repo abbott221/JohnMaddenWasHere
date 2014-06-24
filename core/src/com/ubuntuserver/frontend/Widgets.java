@@ -25,7 +25,7 @@ public class Widgets {
 	
 	
 	public Stage stage;
-	//SpriteBatch batch;
+	SpriteBatch batch;
 	
 	public SelectBox startDateBox;
 	public SelectBox endDateBox;
@@ -58,7 +58,9 @@ public class Widgets {
 		//stage = new Stage();
 		
 		Gdx.input.setInputProcessor(stage);
-		//batch = new SpriteBatch();
+		
+		
+		batch = new SpriteBatch();
 		
 		
 		int[] items = {1, 2, 3, 4, 5, 6, 7, 8, 9};
@@ -248,6 +250,8 @@ public class Widgets {
 		
 		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
 		stage.draw();
+		
+		mediator.model.selectedGraph.dataModel.drawPics(batch);
 		
 	}
 	

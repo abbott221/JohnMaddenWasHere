@@ -42,7 +42,7 @@ public class Model_General {
 		
 		
 		//int[] temp = {5, 6, 7, 3, 4, 3, 2, 4};
-		int[] temp = {5, 6, 7, 5, 6, 3, 4, 2, 6, 5, 7, 3};
+		//int[] temp = {5, 6, 7, 5, 6, 3, 4, 2, 6, 5, 7, 3};
 		
 		
 		//waterData = temp;
@@ -100,52 +100,37 @@ public class Model_General {
 		
 		
 		
-		/*
-		//600, 400 graph size
-		//500, 300 grid size
-		//firstGraph = new Graph_Main(med, 50, 50, 400, 400);
-		firstGraph = new Graph_Main(med, 25, 25, 400, 400);
-		firstGraph.setGridSize(300, 300);
 		
-		int[] xData = {3, 4, 6, 5, 8};
-		int[] yData = {5, 6, 7, 3, 4};
+		selectedGraph = null;
+		bigGraph = null;
 		
-		firstGraph.setData(xData, yData);
+	}
+	
+	
+	
+	public void fillModel() {
 		
-		graphs.add(firstGraph);
-		/**/
-		
-		//====================================================
-		
-		
-		
-		Graph_Main tempGraph1 = new Graph_Main(med, this);
-		
+		Graph_Main tempGraph1 = new Graph_Main(mediator, this);
 		graphs.add(tempGraph1);
 		
 		
-		
-		
-		Graph_Main tempGraph2 = new Graph_Main(med, this);
-		
+		Graph_Main tempGraph2 = new Graph_Main(mediator, this);
 		graphs.add(tempGraph2);
-		//tempGraph2.dataModel.myStation = stations.get(1);
-		//tempGraph2.dataModel.dataMode = ShowMode.SHOW_FORECAST;
 		
 		
 		
-		
-		
-		
-		
-		//System.out.println( graphs.size() );
 		Logic_GraphSizing.setSizeByCount(mediator, graphs);
+		
+		
 		
 		selectedGraph = tempGraph1;
 		
 		bigGraph = tempGraph1;
 		
 	}
+	
+	
+	
 	
 	
 }

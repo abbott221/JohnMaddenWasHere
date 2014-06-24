@@ -61,6 +61,13 @@ public class Mediator {
 		
 		
 		widgets = new Widgets(this);
+		
+		
+		
+		
+		
+		model.fillModel();
+		
 	}
 	
 	
