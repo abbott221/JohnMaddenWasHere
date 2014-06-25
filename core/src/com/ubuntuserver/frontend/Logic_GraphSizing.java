@@ -260,7 +260,7 @@ public class Logic_GraphSizing {
 			//bigTemp.setGridSize(bigTemp.width - 40, bigTemp.height - 40);
 			
 			
-			/*
+			/**/
 			bigTemp.setGridSize(bigTemp.width - 100, bigTemp.height - 100);
 			bigTemp.setGridLocRelToGraph(80, 80);
 			/**/
