@@ -54,6 +54,10 @@ public class Widgets {
 		shapes = new ShapeRenderer();
 		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
 		
+		
+		
+		
+		
 		stage = mediator.stage;
 		//stage = new Stage();
 		

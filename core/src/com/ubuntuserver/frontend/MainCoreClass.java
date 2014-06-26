@@ -22,9 +22,10 @@ public class MainCoreClass implements ApplicationListener {
 		stage = new Stage();
 		
 		mediator = new Mediator(stage);
+		mediator.registerCore(this);
 		
 		
-		
+		Logic_Stage.constructStage(mediator);
 	}
 
 	@Override

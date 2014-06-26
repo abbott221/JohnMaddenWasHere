@@ -11,9 +11,15 @@ public class Mediator {
 	
 	//Graph_Main drawMe;
 	
+	MainCoreClass core;
+	
+	
+	
+	
 	Model_General model;
 	
 	Widgets widgets;
+	Widgets2 widgets2;
 	
 	Stage stage;
 	
@@ -22,11 +28,6 @@ public class Mediator {
 	
 	
 	
-	
-	//old system
-	//public boolean widgetChanging = false;
-	
-	//new system
 	public boolean boxActivity = false;
 	
 	
@@ -38,32 +39,10 @@ public class Mediator {
 		
 		model = new Model_General(this);
 		
-		//graphs = new ArrayList<Graph_Main>();
-		
-		
-		
-		/*
-		
-		drawMe = new Graph_Main(this, 50, 50, 600, 400);
-		drawMe.setGridSize(500, 300);
-		
-		int[] xData = {3, 4, 6, 5, 8};
-		int[] yData = {5, 6, 7, 3, 4};
-		
-		drawMe.setData(xData, yData);
-		
-		model.graphs.add(drawMe);
-		//graphs.add(drawMe);
-		
-		/**/
-		
-		
 		
 		
 		widgets = new Widgets(this);
-		
-		
-		
+		widgets2 = new Widgets2(this);
 		
 		
 		model.fillModel();
@@ -71,4 +50,15 @@ public class Mediator {
 	}
 	
 	
+	public void registerCore(MainCoreClass newObject) {
+		core = newObject;
+	}
+	
+	
+	
 }
+
+
+
+
+
