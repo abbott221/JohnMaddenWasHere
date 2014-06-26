@@ -40,6 +40,8 @@ public class Logic_JSON {
 		httpGet.setUrl("http://localhost/FCEMHS/michael_recorded.php");
 		
 		
+		//http://10.119.0.52/michael/michael_recorded.php
+		
 		
 		Gdx.net.sendHttpRequest(httpGet, new HttpResponseListener() {
 			
