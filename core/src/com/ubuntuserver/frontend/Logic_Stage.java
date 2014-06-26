@@ -40,7 +40,7 @@ public class Logic_Stage {
 		newStage.addActor(mediator.widgets.newGraph);
 		newStage.addActor(mediator.widgets.deleteGraph);
 		
-		newStage.addActor(mediator.widgets.thumbnails);
+		//newStage.addActor(mediator.widgets.thumbnails);
 		
 		
 		

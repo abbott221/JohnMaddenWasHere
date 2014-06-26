@@ -70,9 +70,33 @@ public class Widgets2 {
 		
 		TextButton close = new TextButton("X", mediator.widgets.skin);
 		
-		Listener_Close tempListener = new Listener_Close(window);
+		window.getButtonTable().add(close).height(window.getPadTop());
 		
-		close.addListener(tempListener);
+		//Listener_Close tempListener = new Listener_Close(window);
+		
+		close.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				
+				/*
+				System.out.println(actor.toString());
+				
+				if (actor.getParent().getParent() == null) {
+					System.out.println("NULL");
+				}
+				else
+				{
+					System.out.println(actor.getParent().getParent().toString());
+				}
+				/**/
+				
+				//first parent = Table
+				//second parent = window
+				actor.getParent().getParent().remove();
+			}
+		});
+		
+		//close.addListener(tempListener);
 		
 		
 		
@@ -83,6 +107,14 @@ public class Widgets2 {
 		thumbnails.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
+				//thumbnails.isChecked();
+				
+				CheckBox useThis = (CheckBox) actor;
+				
+				boolean newState = useThis.isChecked();
+				
+				mediator.model.thumbnailsView = newState;
+				
 				Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
 			}
 		});
@@ -91,7 +123,7 @@ public class Widgets2 {
 		
 		
 		
-		window.getButtonTable().add(close).height(window.getPadTop());
+		//window.getButtonTable().add(close).height(window.getPadTop());
 		//window.getButtonTable().add(close);
 		
 		

@@ -40,7 +40,11 @@ public class Logic_GraphSizing {
 		}
 		/**/
 		
-		if (med.widgets == null || med.widgets.thumbnails.isChecked() == false)
+		
+		
+		
+		//if (med.widgets == null || med.widgets.thumbnails.isChecked() == false)
+		if (med.widgets == null || med.model.thumbnailsView == false)
 		{
 			if (graphCount == 1) {
 				graphList.get(0).setGraphLocation(25, 25);

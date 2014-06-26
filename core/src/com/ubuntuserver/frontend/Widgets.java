@@ -44,7 +44,7 @@ public class Widgets {
 	TextButton deleteGraph;
 	
 	
-	CheckBox thumbnails;
+	//CheckBox thumbnails;
 	
 	
 	
@@ -199,7 +199,7 @@ public class Widgets {
 		
 		
 		
-		
+		/*
 		thumbnails = new CheckBox("Thumbnails", skin);
 		thumbnails.setBounds(1000, 500, 100, 20);
 		
@@ -217,6 +217,7 @@ public class Widgets {
 		//Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
 		
 		stage.addActor(thumbnails);
+		/**/
 		
 	}
 	
@@ -247,9 +248,20 @@ public class Widgets {
 			mediator.model.graphs.get(i).drawMainGraph(shapes);
 		}
 		
+		
+		
+		
+		/*
 		if (mediator.widgets.thumbnails.isChecked() == true) {
 			mediator.model.bigGraph.drawMainGraph(shapes);
 		}
+		/**/
+		if (mediator.model.thumbnailsView == true) {
+			mediator.model.bigGraph.drawMainGraph(shapes);
+		}
+		
+		
+		
 		
 		//shapes.end();
 		
@@ -295,7 +307,7 @@ public class Widgets {
 			
 			
 			
-			thumbnails.setBounds(1000, boxBottom, 100, 20);
+			//thumbnails.setBounds(1000, boxBottom, 100, 20);
 			
 		}
 		

@@ -125,7 +125,13 @@ public class MainCoreClass implements ApplicationListener {
 				
 				
 				//is a check for null necessary?
+				/*
 				if (mediator.widgets.thumbnails.isChecked() == true)
+				{
+					mediator.model.bigGraph.dataModel = potentialGraph.dataModel;
+				}
+				/**/
+				if (mediator.model.thumbnailsView == true)
 				{
 					mediator.model.bigGraph.dataModel = potentialGraph.dataModel;
 				}
