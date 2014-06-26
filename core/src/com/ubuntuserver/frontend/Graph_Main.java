@@ -12,7 +12,7 @@ public class Graph_Main {
 		BAR_GRAPH, LINE_CHART
 	}
 	
-	private GraphMode mode;
+	public GraphMode mode;
 	
 	
 	public int left;
@@ -28,7 +28,7 @@ public class Graph_Main {
 	
 	
 	
-	Mediator mediator;
+	public Mediator mediator;
 	
 	
 	public Model_Graph dataModel;
@@ -171,7 +171,7 @@ public class Graph_Main {
 		int barWidth;
 		int barHeight = 0; //bottom is at gridBottom
 		
-		int maxValue = dataModel.data[0];
+		float maxValue = dataModel.data[0];
 		for (int i = 1; i < dataModel.dataCount; i++) {
 			if (dataModel.data[i] > maxValue) {
 				maxValue = dataModel.data[i];
@@ -251,7 +251,7 @@ public class Graph_Main {
 		
 		
 		//determine max value
-		int maxValue = dataModel.data[0];
+		float maxValue = dataModel.data[0];
 		for (int i = 1; i < dataModel.dataCount; i++) {
 			if (dataModel.data[i] > maxValue) {
 				maxValue = dataModel.data[i];
@@ -365,7 +365,7 @@ public class Graph_Main {
 	/**/
 	
 	
-	public void setData(int[] data) {
+	public void setData(float[] data) {
 		//x = xNew;
 		dataModel.data = data;
 		

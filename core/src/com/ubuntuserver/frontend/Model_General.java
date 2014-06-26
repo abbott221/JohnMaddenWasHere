@@ -65,8 +65,8 @@ public class Model_General {
 	
 	public void fillModel() {
 		
-		int[] tempGauge = {2, 3, 4, 5,   4, 5, 6, 7,   6, 7, 8, 9};
-		int[] tempForecast = {2, 3, 4,   3, 4, 5,   4, 5, 6,   5, 6, 7};
+		float[] tempGauge = {2, 3, 4, 5,   4, 5, 6, 7,   6, 7, 8, 9};
+		float[] tempForecast = {2, 3, 4,   3, 4, 5,   4, 5, 6,   5, 6, 7};
 		
 		Model_Station tempStation = new Model_Station(mediator);
 		tempStation.setGauge(tempGauge);
@@ -76,8 +76,8 @@ public class Model_General {
 		
 		
 		
-		int[] tempGauge2 = {9, 8, 7, 6, 7, 6, 5, 4, 5, 4, 3, 2};
-		int[] tempForecast2 = {7, 6, 5, 6, 5, 4, 5, 4, 3, 4, 3, 2};
+		float[] tempGauge2 = {9, 8, 7, 6, 7, 6, 5, 4, 5, 4, 3, 2};
+		float[] tempForecast2 = {7, 6, 5, 6, 5, 4, 5, 4, 3, 4, 3, 2};
 		
 		Model_Station tempStation2 = new Model_Station(mediator);
 		tempStation2.setGauge(tempGauge2);
@@ -87,8 +87,8 @@ public class Model_General {
 		
 		
 		
-		int[] tempGauge3 = {3, 4, 5, 6, 3, 4, 5, 6, 3, 4, 5, 6};
-		int[] tempForecast3 = {3, 4, 5, 3, 4, 5, 3, 4, 5, 3, 4, 5};
+		float[] tempGauge3 = {3, 4, 5, 6, 3, 4, 5, 6, 3, 4, 5, 6};
+		float[] tempForecast3 = {3, 4, 5, 3, 4, 5, 3, 4, 5, 3, 4, 5};
 		
 		Model_Station tempStation3 = new Model_Station(mediator);
 		tempStation3.setGauge(tempGauge3);

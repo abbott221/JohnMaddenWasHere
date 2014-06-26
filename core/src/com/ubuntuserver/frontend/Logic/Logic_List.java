@@ -102,7 +102,7 @@ public class Logic_List {
 		int startIndex = activeGraph.dataModel.dataClipStart;
 		
 		//allocate space for the data that will be displayed
-		int[] tempData = new int[(endIndex - startIndex) + 1];
+		float[] tempData = new float[(endIndex - startIndex) + 1];
 		
 		
 		

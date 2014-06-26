@@ -21,7 +21,7 @@ public class Model_Graph {
 	}
 	public ShowMode dataMode;
 	/**/
-	public int[] data;
+	public float[] data;
 	public int dataCount;
 	/**/
 	
@@ -94,12 +94,12 @@ public class Model_Graph {
 	
 	
 	
-	public void setData(int[] newData) {
+	public void setData(float[] gauge) {
 		//x = xNew;
-		data = newData;
+		data = gauge;
 		
 		//xCount = xNew.length;
-		dataCount = newData.length;
+		dataCount = gauge.length;
 	}
 	
 	

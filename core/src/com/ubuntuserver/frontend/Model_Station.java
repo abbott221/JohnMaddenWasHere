@@ -6,8 +6,8 @@ public class Model_Station {
 	
 	Mediator mediator;
 	
-	public int[] gauge;
-	public int[] forecast;
+	public float[] gauge;
+	public float[] forecast;
 	
 	
 	public int gaugeCount;
@@ -24,14 +24,14 @@ public class Model_Station {
 	
 	
 	
-	public void setGauge(int[] newData) {
+	public void setGauge(float[] newData) {
 		gauge = newData;
 		gaugeCount = newData.length;
 	}
 	
 	
 	
-	public void setForecast(int[] newData) {
+	public void setForecast(float[] newData) {
 		forecast = newData;
 		forecastCount = newData.length;
 	}

@@ -170,7 +170,7 @@ public class Widgets2 {
 				
 				//System.out.println("Run update");
 				
-				Logic_JSON2.getJSONfromURL4();
+				Logic_JSON.getJSONfromURL(mediator);
 				
 			}
 		});

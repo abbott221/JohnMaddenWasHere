@@ -18,6 +18,9 @@ import com.badlogic.gdx.net.HttpParametersUtils;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
+import com.ubuntuserver.frontend.Graph_Main;
+import com.ubuntuserver.frontend.Mediator;
+import com.ubuntuserver.frontend.Model_Station;
 
 
 
@@ -26,256 +29,224 @@ public class Logic_JSON {
 	
 	
 	
-	/*
-	public static JSONArray getJSONfromURL(String url) {
-    	
-    	String result = "";
-    	
-	    InputStream is = null;
-	    //JSONObject jArray = null;
-	    JSONArray jArray = null;
-
-	    
-	    
-	    // Download JSON data from URL
-	    //http post
-	    try {
-	        //System.out.println("MRA 1");
-	    	HttpClient httpclient = new DefaultHttpClient();
-	    	//System.out.println("MRA 2");
-	    	HttpPost httppost = new HttpPost(url);
-	    	//System.out.println("MRA 3");
-	        
-	        //this fucker is the problem.
-	        HttpResponse response = httpclient.execute(httppost);
-	        
-	        //System.out.println("MRA 4");
-	        
-	        //GET ENTITY
-	        HttpEntity entity = response.getEntity();
-	        
-	        //System.out.println("MRA 5");
-	        
-	        is = entity.getContent();
-
-	    } catch (Exception e) {
-	        Log.e("log_tag", "lol1 Error in http connection " + e.toString());
-	    }
-
-	    
-	    
-	    
-	    
-	    
-	    // Convert response to string
-	    try {
-	        BufferedReader reader = new BufferedReader(new InputStreamReader(is, "iso-8859-1"), 8);
-	        StringBuilder sb = new StringBuilder();
-	        
-	        
-	        String line = null;
-	        while ((line = reader.readLine()) != null) {
-	            sb.append(line + "\n");
-	        }
-	        is.close();
-	        
-	        result = sb.toString();
-	        
-	    } catch (Exception e) {
-	        Log.e("log_tag", "lol2 Error converting result " + e.toString());
-	    }
-
-	    try {
-
-	        //jArray = new JSONObject(result);
-	        jArray = new JSONArray(result);
-	        
-	        
-	    } catch (JSONException e) {
-	        
-	    	
-	    	
-	    	//PROBLEM IS HERE
-	    	
-	    	Log.e("log_tag", "lol3 Error parsing data " + e.toString());
-	        
-	    } catch (Exception e) {
-	        Log.e("log_tag", "toplel Error parsing data " + e.toString());
-	    }
-
-	    return jArray;
-	    
-    }
-	/**/
-	
-	
-	
-	public static void getJSONfromURL2(String url) {
+	public static void getJSONfromURL(final Mediator mediator) {
 		
-		
-		//Map<String, String> parameters = new HashMap<String, String>();
-		//parameters.put("user", "myuser");
+		//System.out.println("main");
 		
 		HttpRequest httpGet = new HttpRequest(HttpMethods.GET);
-		//httpGet.setUrl("http://somewhere.net");
-		httpGet.setUrl(url);
-		//httpGet.setContent(HttpParametersUtils.convertHttpParameters(parameters));
+		
+		
+		//httpGet.setUrl("http://wtfismyip.com/json"); //handled
+		httpGet.setUrl("http://localhost/FCEMHS/michael_recorded.php");
+		
 		
 		
 		Gdx.net.sendHttpRequest(httpGet, new HttpResponseListener() {
 			
 			@Override
 			public void handleHttpResponse(HttpResponse httpResponse) {
-				// TODO Auto-generated method stub
 				
-				
-				
-				
-				
-				Json json = new Json();
-				
-				//String text = json.toJson(person, Object.class);
-				//String text = json.toJson(httpResponse, Object.class);
-				
-				//httpResponse.getResultAsStream();
-				
-				//THIS!!!
-				String text = httpResponse.getResultAsString();
-				
-				//json VALUE = a JSON object, array, string, float, long, boolean, or null
-				JsonValue root = new JsonReader().parse(text);
-				//root.
-				
-				
-			}
-			
-			@Override
-			public void failed(Throwable t) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void cancelled() {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-		
-		
-		//send an HttpRequest
-		//Gdx.net.sendHttpRequest(HttpRequest httpRequest, HttpResponseListener httpResponseListener);
-		
-		//Gdx.net.
-		
-	}
-	
-	
-	
-	
-	public static void getJSONfromURL3() {
-		
-		System.out.println("JSON 3");
-		
-		HttpRequest httpGet = new HttpRequest(HttpMethods.GET);
-		
-		
-		
-		//httpGet.setUrl("http://google.com"); //handled
-		//httpGet.setUrl("google.com"); //failed
-		
-		//httpGet.setUrl("wtfismyip.com/json"); //failed
-		httpGet.setUrl("http://wtfismyip.com/json"); //handled
-		
-		//http://wtfismyip.com/json
-		
-		
-		//httpGet.setUrl(url);
-		
-		
-		Gdx.net.sendHttpRequest(httpGet, new HttpResponseListener() {
-			
-			@Override
-			public void handleHttpResponse(HttpResponse httpResponse) {
-				// TODO Auto-generated method stub
-				
-				System.out.println("handled");
-				
-				//String text = httpResponse.getResultAsString();
-				
-				//httpResponse.getResult(); //[]byte
-				//httpResponse.getResultAsStream();
-				//httpResponse.getResultAsString();
-				//httpResponse.toString();
-				//httpResponse.
-				
-				
-				
-				//don't use this
-				//System.out.println( httpResponse.toString() );
-				//use this one
-				//System.out.println( httpResponse.getResultAsString() );
-				
-				
+				System.out.println("handler start");
 				
 				String text = httpResponse.getResultAsString();
-				
 				JsonValue root = new JsonReader().parse(text);
-				
-				//root is an object
-				//root.toString();
 				System.out.println( root.toString() );
 				
+				System.out.println("handler 1");
 				
-				String guess = "something";
 				
-				if (root.has(guess)) {
-					System.out.println(guess);
-				} else {
-					System.out.println("NOT " + guess);
+				
+				/*
+				
+				//true
+				if (root.isArray()) {
+					//System.out.println("root is array");
 				}
 				
-				guess = "YourFuckingIPAddress";
-				
-				if (root.has(guess)) {
-					System.out.println(guess);
-				} else {
-					System.out.println("NOT " + guess);
+				//true
+				//30
+				if (root.child() != null) {
+					//System.out.println("root has child");
+					
+					//System.out.println("root child size: " + root.child.size);
 				}
 				
-				guess = "YourFuckingLocation";
-				
-				if (root.has(guess)) {
-					System.out.println(guess);
-				} else {
-					System.out.println("NOT " + guess);
+				//true
+				//30
+				if (root.child != null) {
+					//System.out.println("root has child instance");
+					
+					//System.out.println("root child size: " + root.child.size);
 				}
 				
+				//2
+				//System.out.println("root size: " + root.size + "\n\n\n");
+				
+				
+				//true
+				//0
+				if (root.child.child != null) {
+					//System.out.println("has child");
+					
+					//System.out.println("child size: " + root.child.child.size);
+				}
+				
+				/**/
+				
+				
+				
+				int recordCount = root.size;
+				int columnCount = 30;
+				
+				if (root.child != null) {
+					//System.out.println("has child");
+					columnCount = root.child.size;
+				}
+				
+				JsonValue currentRecord;
+				
+				/*
+				for (int i = 0; i < recordCount; i++) {
+					root.get(i);
+				}
+				/**/
+				
+				
+				
+				
+				/*
+				
+				JsonValue record;
+				JsonValue column;
+				
+				for (record = root.child; record != null; record = record.next) {
+					//root.get(i);
+					
+					for (column = record.child; column != null; column = column.next) {
+						
+						System.out.println(column.name + " = " + column.asString());
+						
+					}
+				}
+				
+				/**/
+				
+				//=================================================================
+				
+				//ArrayList<Model_Station> stations = new ArrayList<Model_Station>();
+				
+				int stationCount = (columnCount / 2) - 2;
+				
+				ArrayList<Model_Station> stations = mediator.model.stations;
+				
+				int extraStations = stationCount - stations.size();
+				
+				
+				float[] tempGauge = {1, 2, 3};
+				float[] tempForecast = {1, 2, 3};
+				
+				for (int i = 0; i < extraStations; i++) {
+					Model_Station tempStation = new Model_Station(mediator);
+					tempStation.setGauge(tempGauge);
+					tempStation.setForecast(tempForecast);
+					
+					stations.add(tempStation);
+				}
+				
+				//System.out.println("Size: " + mediator.model.stations.size());
+				//=================================================================
+				
+				System.out.println("handler 2");
+				
+				ArrayList<float[]> data = new ArrayList<float[]>();
+				
+				for (int i = 0; i < stationCount; i++) {
+					float[] recordSize = new float[recordCount];
+					data.add(recordSize);
+				}
+				
+				
+				JsonValue record;
+				JsonValue column;
+				int a;
+				
+				for (record = root.child, a = 0; record != null; record = record.next, a++) {
+					//root.get(i);
+					
+					/*
+					for (column = record.child; column != null; column = column.next) {
+						System.out.println(column.name + " = " + column.asString());
+					}
+					/**/
+					
+					for (int i = 5, j = 0; i < columnCount; i += 2, j++) {
+						column = record.get(i);
+						
+						column.asFloat();
+						
+						data.get(j)[a] = column.asFloat();
+						
+						//System.out.println(column.name + " = " + column.asString());
+					}
+				}
+				
+				
+				//set the data for each rain gauge
+				for (int i = 0; i < stationCount; i++) {
+					stations.get(i).setGauge(data.get(i));
+				}
+				
+				//stations.get(0).setForecast(newData);
+				
+				
+				System.out.println("handler 3");
+				
+				int clipSize = 2;
+				
+				Graph_Main tempGraph;
+				
+				//for (int i = 0; i < stationCount; i++) {
+				for (int i = 0; i < mediator.model.graphs.size(); i++) {
+					
+					tempGraph = mediator.model.graphs.get(i);
+					
+					//mediator.model.graphs.get(i).dataModel.dataClipEnd;
+					clipSize = tempGraph.dataModel.dataClipEnd;
+					
+					if (clipSize > (data.get(i).length - 1) ) {
+						tempGraph.dataModel.dataClipEnd = data.get(i).length - 1;
+					}
+				}
+				
+				
+				System.out.println("handler 4");
+				
+				
+				mediator.model.stations = stations;
+				
+				Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
+				
+				
+				
+				
+				
+				
+				System.out.println("handler end");
 			}
 			
 			@Override
 			public void failed(Throwable t) {
-				// TODO Auto-generated method stub
-				
-				System.out.println("failed");
-				
+				System.out.println("http failed");
 			}
 			
 			@Override
 			public void cancelled() {
-				// TODO Auto-generated method stub
-				
 				System.out.println("cancelled");
-				
 			}
 			
 		});
 		
-		
-		
 	}
-	
 	
 	
 	
