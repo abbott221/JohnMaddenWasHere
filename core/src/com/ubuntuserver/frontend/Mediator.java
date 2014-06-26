@@ -11,22 +11,22 @@ public class Mediator {
 	
 	//Graph_Main drawMe;
 	
-	MainCoreClass core;
+	public MainCoreClass core;
 	
 	
 	
 	
-	Model_General model;
+	public Model_General model;
 	
 	
 	
-	Widgets widgets;
-	Widgets2 widgets2;
-	Widgets_Scrollpanes scrollpanes;
+	public Widgets widgets;
+	public Widgets2 widgets2;
+	public Widgets_Scrollpanes scrollpanes;
 	
 	
 	
-	Stage stage;
+	public Stage stage;
 	
 	public int displayHeight;
 	public int displayWidth;

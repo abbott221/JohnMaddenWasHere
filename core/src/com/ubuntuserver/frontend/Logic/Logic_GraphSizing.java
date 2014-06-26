@@ -1,9 +1,11 @@
-package com.ubuntuserver.frontend;
+package com.ubuntuserver.frontend.Logic;
 
 import java.util.ArrayList;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
+import com.ubuntuserver.frontend.Graph_Main;
+import com.ubuntuserver.frontend.Mediator;
 
 public class Logic_GraphSizing {
 	

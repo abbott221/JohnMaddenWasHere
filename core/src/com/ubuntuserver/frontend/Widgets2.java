@@ -18,13 +18,16 @@ import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
+import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
+import com.ubuntuserver.frontend.Logic.Logic_JSON;
+import com.ubuntuserver.frontend.Logic.Logic_JSON2;
 import com.ubuntuserver.frontend.Model_Graph.ShowMode;
 
 public class Widgets2 {
 	
-	Mediator mediator;
+	public Mediator mediator;
 	
-	TextButton optionsButton;
+	public TextButton optionsButton;
 	
 	
 	
@@ -148,6 +151,33 @@ public class Widgets2 {
 		});
 		
 		window.add(scrollpanes);
+		
+		
+		
+		
+		
+		window.row();
+		
+		
+		
+		TextButton update = new TextButton("Update", mediator.widgets.skin);
+		
+		update.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				
+				//Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
+				
+				//System.out.println("Run update");
+				
+				Logic_JSON2.getJSONfromURL4();
+				
+			}
+		});
+		
+		window.add(update);
+		
+		
 		
 		
 		//window.getButtonTable().add(close).height(window.getPadTop());

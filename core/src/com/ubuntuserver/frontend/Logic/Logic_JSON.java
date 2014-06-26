@@ -1,4 +1,4 @@
-package com.ubuntuserver.frontend;
+package com.ubuntuserver.frontend.Logic;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -123,7 +123,7 @@ public class Logic_JSON {
 		
 		
 		Gdx.net.sendHttpRequest(httpGet, new HttpResponseListener() {
-
+			
 			@Override
 			public void handleHttpResponse(HttpResponse httpResponse) {
 				// TODO Auto-generated method stub
@@ -148,13 +148,13 @@ public class Logic_JSON {
 				
 				
 			}
-
+			
 			@Override
 			public void failed(Throwable t) {
 				// TODO Auto-generated method stub
 				
 			}
-
+			
 			@Override
 			public void cancelled() {
 				// TODO Auto-generated method stub
@@ -168,6 +168,111 @@ public class Logic_JSON {
 		//Gdx.net.sendHttpRequest(HttpRequest httpRequest, HttpResponseListener httpResponseListener);
 		
 		//Gdx.net.
+		
+	}
+	
+	
+	
+	
+	public static void getJSONfromURL3() {
+		
+		System.out.println("JSON 3");
+		
+		HttpRequest httpGet = new HttpRequest(HttpMethods.GET);
+		
+		
+		
+		//httpGet.setUrl("http://google.com"); //handled
+		//httpGet.setUrl("google.com"); //failed
+		
+		//httpGet.setUrl("wtfismyip.com/json"); //failed
+		httpGet.setUrl("http://wtfismyip.com/json"); //handled
+		
+		//http://wtfismyip.com/json
+		
+		
+		//httpGet.setUrl(url);
+		
+		
+		Gdx.net.sendHttpRequest(httpGet, new HttpResponseListener() {
+			
+			@Override
+			public void handleHttpResponse(HttpResponse httpResponse) {
+				// TODO Auto-generated method stub
+				
+				System.out.println("handled");
+				
+				//String text = httpResponse.getResultAsString();
+				
+				//httpResponse.getResult(); //[]byte
+				//httpResponse.getResultAsStream();
+				//httpResponse.getResultAsString();
+				//httpResponse.toString();
+				//httpResponse.
+				
+				
+				
+				//don't use this
+				//System.out.println( httpResponse.toString() );
+				//use this one
+				//System.out.println( httpResponse.getResultAsString() );
+				
+				
+				
+				String text = httpResponse.getResultAsString();
+				
+				JsonValue root = new JsonReader().parse(text);
+				
+				//root is an object
+				//root.toString();
+				System.out.println( root.toString() );
+				
+				
+				String guess = "something";
+				
+				if (root.has(guess)) {
+					System.out.println(guess);
+				} else {
+					System.out.println("NOT " + guess);
+				}
+				
+				guess = "YourFuckingIPAddress";
+				
+				if (root.has(guess)) {
+					System.out.println(guess);
+				} else {
+					System.out.println("NOT " + guess);
+				}
+				
+				guess = "YourFuckingLocation";
+				
+				if (root.has(guess)) {
+					System.out.println(guess);
+				} else {
+					System.out.println("NOT " + guess);
+				}
+				
+			}
+			
+			@Override
+			public void failed(Throwable t) {
+				// TODO Auto-generated method stub
+				
+				System.out.println("failed");
+				
+			}
+			
+			@Override
+			public void cancelled() {
+				// TODO Auto-generated method stub
+				
+				System.out.println("cancelled");
+				
+			}
+			
+		});
+		
+		
 		
 	}
 	

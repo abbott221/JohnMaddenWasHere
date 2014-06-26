@@ -1,42 +1,36 @@
-package com.ubuntuserver.frontend;
+package com.ubuntuserver.frontend.Logic;
 
 import java.util.ArrayList;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
+import com.ubuntuserver.frontend.Graph_Main;
+import com.ubuntuserver.frontend.Mediator;
 import com.ubuntuserver.frontend.Model_Graph.ShowMode;
 
-public class Logic_SelectBox {
+public class Logic_List {
 	
 	
 	
-	/*
-	public static void changeEvent(Mediator med, SelectBox changedBox) {
-		changedBox.getSelected();
-		changedBox.getSelectedIndex();
-		changedBox.getSelection();
-		
-		//if (changedBox == med.widgets.startDateBox)
-	}
-	/**/
 	
 	
 	
-	public static void startDateChange(Mediator mediator, SelectBox startDateBox) {
+	public static void startDateChange(Mediator mediator, List startDateList) {
 		
 		Graph_Main activeGraph = mediator.model.selectedGraph;
 		
-		activeGraph.dataModel.dataClipStart = startDateBox.getSelectedIndex();
+		activeGraph.dataModel.dataClipStart = startDateList.getSelectedIndex();
 		
 		setDisplayData(activeGraph);
 	}
 	
 	
-	public static void endDateChange(Mediator mediator, SelectBox endDateBox) {
+	public static void endDateChange(Mediator mediator, List endDateList) {
 		
 		Graph_Main activeGraph = mediator.model.selectedGraph;
 		
-		activeGraph.dataModel.dataClipEnd = endDateBox.getSelectedIndex();
+		activeGraph.dataModel.dataClipEnd = endDateList.getSelectedIndex();
 		
 		setDisplayData(activeGraph);
 	}

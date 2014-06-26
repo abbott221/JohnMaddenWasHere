@@ -76,13 +76,13 @@ public class Model_Graph {
 		
 		
 		
-		Label tempLab = new Label("Date", mediator.widgets.skin);
+		//Label tempLab = new Label("Date", mediator.widgets.skin);
 		//xAxis.setBounds(40, 40, 100, 20);
-		tempLab.setPosition(300, 50);
+		//tempLab.setPosition(300, 50);
 		
-		tempLab.setColor(Color.GRAY);
+		//tempLab.setColor(Color.GRAY);
 		
-		mediator.widgets.stage.addActor(tempLab);
+		//mediator.widgets.stage.addActor(tempLab);
 		
 		
 		

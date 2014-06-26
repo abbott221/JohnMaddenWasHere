@@ -2,30 +2,31 @@ package com.ubuntuserver.frontend;
 
 import java.util.ArrayList;
 
+import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Model_Graph.ShowMode;
 
 public class Model_General {
 	
-	Mediator mediator;
+	public Mediator mediator;
 	
 	
 	
 	
-	ArrayList<Graph_Main> graphs;
+	public ArrayList<Graph_Main> graphs;
 	
-	Graph_Main selectedGraph;
+	public Graph_Main selectedGraph;
 	
-	Graph_Main bigGraph;
-	
-	
+	public Graph_Main bigGraph;
 	
 	
 	
-	ArrayList<Model_Station> stations;
+	
+	
+	public ArrayList<Model_Station> stations;
 	
 	
 	
-	boolean thumbnailsView = true;
+	public boolean thumbnailsView = true;
 	boolean scrollpanesView = false;
 	
 	
