@@ -118,14 +118,17 @@ public class Model_General {
 		graphs.add(tempGraph2);
 		
 		
-		
-		Logic_GraphSizing.setSizeByCount(mediator, graphs);
+		//is thumbnails is checked, selectedGraph can't be null
+		//Logic_GraphSizing.setSizeByCount(mediator, graphs);
 		
 		
 		
 		selectedGraph = tempGraph1;
 		
 		bigGraph = tempGraph1;
+		
+		
+		Logic_GraphSizing.setSizeByCount(mediator, graphs);
 		
 	}
 	

@@ -206,6 +206,9 @@ public class Widgets {
 			}
 		});
 		
+		
+		thumbnails.setChecked(true);
+		
 		//thumbnails.isChecked()
 		//Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
 		
