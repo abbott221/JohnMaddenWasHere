@@ -33,10 +33,10 @@ public class Model_Graph {
 	
 	
 	
-	Label xAxis;
-	Label yAxis;
+	//Label xAxis;
+	//Label yAxis;
 	
-	Texture texture1;
+	//Texture texture1;
 	
 	
 	
@@ -55,7 +55,7 @@ public class Model_Graph {
 		
 		
 		
-		/**/
+		/*
 		xAxis = new Label("Forecast", mediator.widgets.skin);
 		//xAxis.setBounds(40, 40, 100, 20);
 		xAxis.setPosition(50, 50);
@@ -72,7 +72,7 @@ public class Model_Graph {
 		yAxis.setColor(Color.GRAY);
 		
 		mediator.widgets.stage.addActor(yAxis);
-		
+		/**/
 		
 		
 		
@@ -86,17 +86,11 @@ public class Model_Graph {
 		
 		
 		
-		texture1 = new Texture(Gdx.files.internal("axisText.png"));
+		//texture1 = new Texture(Gdx.files.internal("axisText.png"));
 		
 	}
 	
 	
-	
-	/*
-	public void setDefault() {
-		//x = xNew;
-	}
-	/**/
 	
 	
 	
@@ -109,11 +103,12 @@ public class Model_Graph {
 	}
 	
 	
+	/*
 	public void drawPics(SpriteBatch batch) {
 		batch.begin();
 		batch.draw(texture1, 100, 100);
 		batch.end();
 	}
-	
+	/**/
 	
 }

@@ -166,6 +166,7 @@ public class MainCoreClass implements ApplicationListener {
 		
 		mediator.widgets.adjustBox();
 		mediator.widgets2.adjustBox();
+		mediator.scrollpanes.adjustBox();
 		
 		Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
 	}

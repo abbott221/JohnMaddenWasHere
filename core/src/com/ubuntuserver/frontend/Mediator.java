@@ -18,8 +18,13 @@ public class Mediator {
 	
 	Model_General model;
 	
+	
+	
 	Widgets widgets;
 	Widgets2 widgets2;
+	Widgets_Scrollpanes scrollpanes;
+	
+	
 	
 	Stage stage;
 	
@@ -43,6 +48,7 @@ public class Mediator {
 		
 		widgets = new Widgets(this);
 		widgets2 = new Widgets2(this);
+		scrollpanes = new Widgets_Scrollpanes(this);
 		
 		
 		model.fillModel();

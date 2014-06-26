@@ -26,6 +26,7 @@ public class Model_General {
 	
 	
 	boolean thumbnailsView = true;
+	boolean scrollpanesView = false;
 	
 	
 	

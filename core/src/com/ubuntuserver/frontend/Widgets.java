@@ -44,7 +44,6 @@ public class Widgets {
 	TextButton deleteGraph;
 	
 	
-	//CheckBox thumbnails;
 	
 	
 	
@@ -98,7 +97,7 @@ public class Widgets {
 		
 		
 		endDateBox = new SelectBox( skin );
-		endDateBox.setItems(1, 2, 3, 4);
+		//endDateBox.setItems(1, 2, 3, 4);
 		endDateBox.setItems(listEntries);
 		
 		endDateBox.setBounds(250, 500, 100, 20);
@@ -199,25 +198,6 @@ public class Widgets {
 		
 		
 		
-		/*
-		thumbnails = new CheckBox("Thumbnails", skin);
-		thumbnails.setBounds(1000, 500, 100, 20);
-		
-		thumbnails.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
-			}
-		});
-		
-		
-		thumbnails.setChecked(true);
-		
-		//thumbnails.isChecked()
-		//Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
-		
-		stage.addActor(thumbnails);
-		/**/
 		
 	}
 	
@@ -251,11 +231,6 @@ public class Widgets {
 		
 		
 		
-		/*
-		if (mediator.widgets.thumbnails.isChecked() == true) {
-			mediator.model.bigGraph.drawMainGraph(shapes);
-		}
-		/**/
 		if (mediator.model.thumbnailsView == true) {
 			mediator.model.bigGraph.drawMainGraph(shapes);
 		}
@@ -270,7 +245,11 @@ public class Widgets {
 		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
 		stage.draw();
 		
-		mediator.model.selectedGraph.dataModel.drawPics(batch);
+		
+		
+		
+		
+		//mediator.model.selectedGraph.dataModel.drawPics(batch);
 		
 	}
 	

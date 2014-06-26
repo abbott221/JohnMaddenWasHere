@@ -32,7 +32,7 @@ public class Widgets2 {
 		
 		mediator = med;
 		
-		optionsButton = new TextButton("New Graph", mediator.widgets.skin);
+		optionsButton = new TextButton("Options", mediator.widgets.skin);
 		optionsButton.setBounds(1100, 500, 100, 20);
 		
 		/**/
@@ -72,36 +72,20 @@ public class Widgets2 {
 		
 		window.getButtonTable().add(close).height(window.getPadTop());
 		
-		//Listener_Close tempListener = new Listener_Close(window);
-		
 		close.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				
-				/*
-				System.out.println(actor.toString());
-				
-				if (actor.getParent().getParent() == null) {
-					System.out.println("NULL");
-				}
-				else
-				{
-					System.out.println(actor.getParent().getParent().toString());
-				}
-				/**/
-				
 				//first parent = Table
 				//second parent = window
 				actor.getParent().getParent().remove();
 			}
 		});
 		
-		//close.addListener(tempListener);
 		
 		
 		
 		
-		CheckBox thumbnails = new CheckBox("Check me", mediator.widgets.skin);
+		CheckBox thumbnails = new CheckBox("Thumbnails", mediator.widgets.skin);
 		thumbnails.setChecked(mediator.model.thumbnailsView);
 		
 		thumbnails.addListener(new ChangeListener() {
@@ -111,9 +95,9 @@ public class Widgets2 {
 				
 				CheckBox useThis = (CheckBox) actor;
 				
-				boolean newState = useThis.isChecked();
-				
-				mediator.model.thumbnailsView = newState;
+				//boolean newState = useThis.isChecked();
+				//mediator.model.thumbnailsView = newState;
+				mediator.model.thumbnailsView = useThis.isChecked();
 				
 				Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
 			}
@@ -123,9 +107,55 @@ public class Widgets2 {
 		
 		
 		
+		
+		window.row();
+		
+		CheckBox scrollpanes = new CheckBox("ScrollPanes", mediator.widgets.skin);
+		scrollpanes.setChecked(mediator.model.scrollpanesView);
+		
+		scrollpanes.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				//thumbnails.isChecked();
+				
+				CheckBox useThis = (CheckBox) actor;
+				
+				boolean newState = useThis.isChecked();
+				//mediator.model.thumbnailsView = newState;
+				mediator.model.scrollpanesView = newState;
+				//mediator.model.scrollpanesView = useThis.isChecked();
+				
+				
+				if (newState == true) {
+					mediator.widgets.startDateBox.remove();
+					mediator.widgets.endDateBox.remove();
+					
+					mediator.widgets.stage.addActor(mediator.scrollpanes.startPane);
+					mediator.widgets.stage.addActor(mediator.scrollpanes.endPane);
+				}
+				else {
+					mediator.scrollpanes.startPane.remove();
+					mediator.scrollpanes.endPane.remove();
+					
+					mediator.widgets.stage.addActor(mediator.widgets.startDateBox);
+					mediator.widgets.stage.addActor(mediator.widgets.endDateBox);
+				}
+				
+				
+				
+				Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
+			}
+		});
+		
+		window.add(scrollpanes);
+		
+		
 		//window.getButtonTable().add(close).height(window.getPadTop());
 		//window.getButtonTable().add(close);
 		
+		
+		//window.setPosition(300, 300);
+		window.setBounds(300, 300, 250, 150);
 		
 		
 		//window.pack();
