@@ -66,8 +66,13 @@ public class UITest extends ApplicationAdapter {
 		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
 		//texture1 = new Texture(Gdx.files.internal("data/badlogicsmall.jpg"));
 		//texture2 = new Texture(Gdx.files.internal("data/badlogic.jpg"));
-		texture1 = new Texture(Gdx.files.internal("badlogic.jpg"));
-		texture2 = new Texture(Gdx.files.internal("badlogic.jpg"));
+		
+		//texture1 = new Texture(Gdx.files.internal("badlogic.jpg"));
+		//texture2 = new Texture(Gdx.files.internal("badlogic.jpg"));
+		
+		texture1 = new Texture(Gdx.files.internal("kitten.jpg"));
+		texture2 = new Texture(Gdx.files.internal("kitten.jpg"));
+		
 		TextureRegion image = new TextureRegion(texture1);
 		TextureRegion imageFlipped = new TextureRegion(image);
 		imageFlipped.flip(true, true);

@@ -9,13 +9,33 @@ public class Mediator {
 	//will be moved to a model if one is created in the future
 	//ArrayList<Graph_Main> graphs;
 	
-	Graph_Main drawMe;
+	//Graph_Main drawMe;
+	
+	MainCoreClass core;
+	
+	
+	
 	
 	Model_General model;
 	
+	
+	
 	Widgets widgets;
+	Widgets2 widgets2;
+	Widgets_Scrollpanes scrollpanes;
+	
+	
 	
 	Stage stage;
+	
+	public int displayHeight;
+	public int displayWidth;
+	
+	
+	
+	public boolean boxActivity = false;
+	
+	
 	
 	
 	public Mediator(Stage newStage) {
@@ -24,23 +44,27 @@ public class Mediator {
 		
 		model = new Model_General(this);
 		
-		//graphs = new ArrayList<Graph_Main>();
-		
-		
-		drawMe = new Graph_Main(this, 50, 50, 600, 400);
-		drawMe.setGridSize(500, 300);
-		
-		int[] xData = {3, 4, 6};
-		int[] yData = {5, 6, 7};
-		
-		drawMe.setData(xData, yData);
-		
-		model.graphs.add(drawMe);
-		//graphs.add(drawMe);
 		
 		
 		widgets = new Widgets(this);
+		widgets2 = new Widgets2(this);
+		scrollpanes = new Widgets_Scrollpanes(this);
+		
+		
+		model.fillModel();
+		
 	}
 	
 	
+	public void registerCore(MainCoreClass newObject) {
+		core = newObject;
+	}
+	
+	
+	
 }
+
+
+
+
+
