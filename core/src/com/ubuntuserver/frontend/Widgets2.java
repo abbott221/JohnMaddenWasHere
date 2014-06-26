@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
@@ -23,7 +24,7 @@ public class Widgets2 {
 	
 	Mediator mediator;
 	
-	TextButton optionsMenu;
+	TextButton optionsButton;
 	
 	
 	
@@ -31,28 +32,89 @@ public class Widgets2 {
 		
 		mediator = med;
 		
-		optionsMenu = new TextButton("New Graph", mediator.widgets.skin);
-		optionsMenu.setBounds(1100, 500, 100, 20);
+		optionsButton = new TextButton("New Graph", mediator.widgets.skin);
+		optionsButton.setBounds(1100, 500, 100, 20);
 		
-		/*
-		newGraph.addListener(new ChangeListener() {
+		/**/
+		optionsButton.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				
-				Graph_Main tempGraph = new Graph_Main(mediator, mediator.model);
-				mediator.model.graphs.add(tempGraph);
-				
-				Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
-				
+				displayWindow();
 			}
 		});
 		
-		stage.addActor(newGraph);
+		med.widgets.stage.addActor(optionsButton);
 		
 		/**/
 		
 		
 	}
+	
+	
+	
+	
+	public void displayWindow() {
+		
+		//System.out.println("Display Window");
+		
+		
+		CheckBox thumbnails = new CheckBox("Check me", mediator.widgets.skin);
+		
+		TextButton close = new TextButton("X", mediator.widgets.skin);
+		
+		
+		Window window = new Window("Advanced Options", mediator.widgets.skin);
+		
+		
+		
+		
+		/*
+		ChangeListener tempListener = new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				//window.remove();
+			}
+		};
+		
+		close.addListener(new ChangeListener() {
+			public void changed (ChangeEvent event, Actor actor) {
+				//can't refer window in this inner class
+				//window.remove();
+			}
+		});
+		/**/
+		
+		
+		
+		//ChangeListener tempListener = new ChangeListener();
+		
+		
+		
+		Listener_Close tempListener = new Listener_Close(window);
+		
+		//Listener_Close tempListener = new Listener_Close();
+		//tempListener.registerWindow(window);
+		
+		close.addListener(tempListener);
+		
+		
+		
+		//close.addListener()
+		
+		
+		
+		window.getButtonTable().add(close).height(window.getPadTop());
+		//window.getButtonTable().add(close);
+		
+		
+		
+		//window.pack();
+		
+		mediator.widgets.stage.addActor(window);
+		
+	}
+	
+	
 	
 	
 	
@@ -74,6 +136,7 @@ public class Widgets2 {
 			
 			
 			//thumbnails.setBounds(1000, boxBottom, 100, 20);
+			optionsButton.setBounds(1100, boxBottom, 100, 20);
 			
 		}
 		
