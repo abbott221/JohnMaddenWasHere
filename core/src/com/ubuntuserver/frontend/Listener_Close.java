@@ -24,7 +24,6 @@ public class Listener_Close extends ChangeListener {
 
 	@Override
 	public void changed(ChangeEvent event, Actor actor) {
-		// TODO Auto-generated method stub
 		window.remove();
 	}
 	

@@ -20,19 +20,12 @@ public class Model_General {
 	
 	
 	
-	//Graph_Main firstGraph;
-	//Graph_Main secondGraph;
-	
-	
-	
-	
-	//public int[] waterData;
-	//int waterDataSize;
-	
 	
 	ArrayList<Model_Station> stations;
 	
-	//Model_Station firstStation;
+	
+	
+	boolean thumbnailsView = true;
 	
 	
 	
@@ -55,6 +48,21 @@ public class Model_General {
 		
 		
 		
+		
+		graphs = new ArrayList<Graph_Main>();
+		
+		
+		
+		
+		selectedGraph = null;
+		bigGraph = null;
+		
+	}
+	
+	
+	
+	public void fillModel() {
+		
 		int[] tempGauge = {2, 3, 4, 5,   4, 5, 6, 7,   6, 7, 8, 9};
 		int[] tempForecast = {2, 3, 4,   3, 4, 5,   4, 5, 6,   5, 6, 7};
 		
@@ -75,9 +83,6 @@ public class Model_General {
 		
 		stations.add(tempStation2);
 		
-		/*
-		System.out.println("Value: " + tempStation2.gauge[3]);
-		/**/
 		
 		
 		int[] tempGauge3 = {3, 4, 5, 6, 3, 4, 5, 6, 3, 4, 5, 6};
@@ -90,25 +95,8 @@ public class Model_General {
 		stations.add(tempStation3);
 		
 		
-		//System.out.println(stations.size());
 		
 		
-		
-		
-		graphs = new ArrayList<Graph_Main>();
-		
-		
-		
-		
-		
-		selectedGraph = null;
-		bigGraph = null;
-		
-	}
-	
-	
-	
-	public void fillModel() {
 		
 		Graph_Main tempGraph1 = new Graph_Main(mediator, this);
 		graphs.add(tempGraph1);
@@ -118,7 +106,8 @@ public class Model_General {
 		graphs.add(tempGraph2);
 		
 		
-		//is thumbnails is checked, selectedGraph can't be null
+		
+		//if thumbnails is checked, selectedGraph can't be null
 		//Logic_GraphSizing.setSizeByCount(mediator, graphs);
 		
 		

@@ -58,9 +58,9 @@ public class Widgets2 {
 		//System.out.println("Display Window");
 		
 		
-		CheckBox thumbnails = new CheckBox("Check me", mediator.widgets.skin);
+		//CheckBox thumbnails = new CheckBox("Check me", mediator.widgets.skin);
 		
-		TextButton close = new TextButton("X", mediator.widgets.skin);
+		
 		
 		
 		Window window = new Window("Advanced Options", mediator.widgets.skin);
@@ -68,38 +68,26 @@ public class Widgets2 {
 		
 		
 		
-		/*
-		ChangeListener tempListener = new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				//window.remove();
-			}
-		};
-		
-		close.addListener(new ChangeListener() {
-			public void changed (ChangeEvent event, Actor actor) {
-				//can't refer window in this inner class
-				//window.remove();
-			}
-		});
-		/**/
-		
-		
-		
-		//ChangeListener tempListener = new ChangeListener();
-		
-		
+		TextButton close = new TextButton("X", mediator.widgets.skin);
 		
 		Listener_Close tempListener = new Listener_Close(window);
-		
-		//Listener_Close tempListener = new Listener_Close();
-		//tempListener.registerWindow(window);
 		
 		close.addListener(tempListener);
 		
 		
 		
-		//close.addListener()
+		
+		CheckBox thumbnails = new CheckBox("Check me", mediator.widgets.skin);
+		thumbnails.setChecked(mediator.model.thumbnailsView);
+		
+		thumbnails.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
+			}
+		});
+		
+		window.add(thumbnails);
 		
 		
 		
