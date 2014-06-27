@@ -9,10 +9,40 @@ import com.ubuntuserver.frontend.Graph_Main;
 import com.ubuntuserver.frontend.Mediator;
 import com.ubuntuserver.frontend.Model_Graph.ShowMode;
 
-public class Logic_List {
+public class Logic_Dates {
 	
 	
 	
+	/*
+	public static void changeEvent(Mediator med, SelectBox changedBox) {
+		changedBox.getSelected();
+		changedBox.getSelectedIndex();
+		changedBox.getSelection();
+		
+		//if (changedBox == med.widgets.startDateBox)
+	}
+	/**/
+	
+	
+	
+	public static void startDateChange(Mediator mediator, SelectBox startDateBox) {
+		
+		Graph_Main activeGraph = mediator.model.selectedGraph;
+		
+		activeGraph.dataModel.dataClipStart = startDateBox.getSelectedIndex();
+		
+		setDisplayData(activeGraph);
+	}
+	
+	
+	public static void endDateChange(Mediator mediator, SelectBox endDateBox) {
+		
+		Graph_Main activeGraph = mediator.model.selectedGraph;
+		
+		activeGraph.dataModel.dataClipEnd = endDateBox.getSelectedIndex();
+		
+		setDisplayData(activeGraph);
+	}
 	
 	
 	

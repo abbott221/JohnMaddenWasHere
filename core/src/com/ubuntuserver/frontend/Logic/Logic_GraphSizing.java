@@ -25,10 +25,16 @@ public class Logic_GraphSizing {
 		
 		
 		//spaceHeight -= 45; //for extra space between graphs and button stuff
-		spaceHeight -= 145; //45 + ?
+		//spaceHeight -= 145; //45 + ?
+		
+		if (med.model.scrollpanesView == true) {
+			spaceHeight -= 145;
+		}
 		
 		
 		
+		
+		//System.out.println("graph width reading" + med.displayWidth);
 		
 		int spaceWidth = med.displayWidth - 50; //40 + 25 * 2 = 90
 		

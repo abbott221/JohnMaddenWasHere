@@ -37,8 +37,10 @@ public class Logic_JSON {
 		
 		
 		//httpGet.setUrl("http://wtfismyip.com/json"); //handled
-		httpGet.setUrl("http://localhost/FCEMHS/michael_recorded.php");
 		
+		//httpGet.setUrl("http://localhost/FCEMHS/michael_recorded.php");
+		
+		httpGet.setUrl("http://10.119.0.52/michael/michael_recorded.php");
 		
 		//http://10.119.0.52/michael/michael_recorded.php
 		

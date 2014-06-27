@@ -157,20 +157,47 @@ public class MainCoreClass implements ApplicationListener {
 		//mediator.widgets.stage.setViewport(width, height, false);
 		//stage.setViewport(viewport);
 		
-		stage.getViewport().update(width, height, true);
+		
+		
+		//stage.getViewport().update(width, height, true);
+		
+		
+		
+		//====================================================
+		
+		//Logic_Stage.constructStage(mediator);
+		
+		
+		showHeight = height;
+		showWidth = width;
+		
+		mediator.displayHeight = height;
+		mediator.displayWidth = width;
+		
+		Logic_Stage.constructStage(mediator);
+		
+		
+		//====================================================
+		
 		
 		//System.out.println(width);
 		//System.out.println(height);
 		
 		
-		mediator.displayHeight = showHeight;
-		mediator.displayWidth = showWidth;
+		//mediator.displayHeight = showHeight;
+		//mediator.displayWidth = showWidth;
+		
+		
+		//====================================================
+		
 		
 		mediator.widgets.adjustBox();
 		mediator.widgets2.adjustBox();
 		mediator.scrollpanes.adjustBox();
 		
 		Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
+		
+		//System.out.println(mediator.displayWidth);
 	}
 
 	@Override

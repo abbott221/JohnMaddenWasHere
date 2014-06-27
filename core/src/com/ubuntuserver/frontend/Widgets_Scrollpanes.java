@@ -20,7 +20,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
-import com.ubuntuserver.frontend.Logic.Logic_List;
+import com.ubuntuserver.frontend.Logic.Logic_Dates;
 import com.ubuntuserver.frontend.Model_Graph.ShowMode;
 
 public class Widgets_Scrollpanes {
@@ -51,7 +51,7 @@ public class Widgets_Scrollpanes {
 		startDateList.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
 				
-				Logic_List.startDateChange(mediator, startDateList);
+				Logic_Dates.startDateChange(mediator, startDateList);
 				
 			}
 		});
@@ -71,7 +71,7 @@ public class Widgets_Scrollpanes {
 		endDateList.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
 				
-				Logic_List.endDateChange(mediator, endDateList);
+				Logic_Dates.endDateChange(mediator, endDateList);
 				
 			}
 		});

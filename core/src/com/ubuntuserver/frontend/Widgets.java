@@ -18,7 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
-import com.ubuntuserver.frontend.Logic.Logic_SelectBox;
+import com.ubuntuserver.frontend.Logic.Logic_Dates;
 import com.ubuntuserver.frontend.Model_Graph.ShowMode;
 
 public class Widgets {
@@ -87,7 +87,7 @@ public class Widgets {
 		startDateBox.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
 				
-				Logic_SelectBox.startDateChange(mediator, startDateBox);
+				Logic_Dates.startDateChange(mediator, startDateBox);
 				
 			}
 		});
@@ -107,7 +107,7 @@ public class Widgets {
 		endDateBox.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
 				
-				Logic_SelectBox.endDateChange(mediator, endDateBox);
+				Logic_Dates.endDateChange(mediator, endDateBox);
 				
 			}
 		});
@@ -126,7 +126,7 @@ public class Widgets {
 		stationBox.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
 				
-				Logic_SelectBox.stationChange(mediator, stationBox);
+				Logic_Dates.stationChange(mediator, stationBox);
 				
 			}
 		});
@@ -145,7 +145,7 @@ public class Widgets {
 		dataModeBox.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
 				
-				Logic_SelectBox.dataModeChange(mediator, dataModeBox);
+				Logic_Dates.dataModeChange(mediator, dataModeBox);
 				
 			}
 		});

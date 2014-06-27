@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.ubuntuserver.frontend.Model_Graph.ShowMode;
+import com.ubuntuserver.frontend.Model_Station.AlertLevel;
 
 public class Graph_Main {
 	
@@ -40,6 +41,9 @@ public class Graph_Main {
 	
 	//public int dataClipStart;
 	//public int dataClipEnd;
+	
+	
+	public float maxValue;
 	
 	
 	
@@ -138,6 +142,65 @@ public class Graph_Main {
 			paint.line(gridLeft, yTemp, gridLeft - 10, yTemp);
 		}
 		/**/
+		
+		
+		
+		
+		
+		//check if it is currently big graph?
+		//also check if forecast or waterlevel is selected -- check ShowMode from Model_Graph
+		
+		if (this.dataModel.dataMode == ShowMode.SHOW_GAUGE) {
+			paint.end();
+			paint.begin(ShapeType.Line);
+			
+			//paint.setColor(Color.GREEN);
+			
+			int lineLeft = gridLeft;
+			int lineRight = gridLeft + gridWidth;
+			
+			AlertLevel current;
+			
+			float lineHeight;
+			
+			
+			
+			
+			//this.setMaxValue();
+			//float maxValue = this.maxValue;
+			/*
+			float maxValue = dataModel.data[0];
+			for (int i = 1; i < dataModel.dataCount; i++) {
+				if (dataModel.data[i] > maxValue) {
+					maxValue = dataModel.data[i];
+				}
+			}
+			/**/
+			
+			this.setMaxValue();
+			
+			
+			//System.out.println( dataModel.myStation.alerts.size() );
+			
+			for (int i = 0; i < dataModel.myStation.alerts.size(); i++) {
+				
+				//System.out.println(i);
+				
+				current = this.dataModel.myStation.alerts.get(i);
+				
+				paint.setColor(current.lineColor);
+				
+				
+				
+				//lineHeight = (current.waterLevel / this.maxValue) * gridHeight;
+				lineHeight = this.scaleValueToGrid(current.waterLevel) * gridHeight;
+				
+				
+				
+				paint.line(lineLeft, gridBottom + lineHeight, lineRight, gridBottom + lineHeight);
+			}
+		}
+		
 		
 		
 		
@@ -245,7 +308,7 @@ public class Graph_Main {
 		int barLeft;
 		int barRight;
 		int barWidth;
-		int barHeight = 0; //bottom is at gridBottom
+		float barHeight = 0; //bottom is at gridBottom
 		
 		int dotMid;
 		
@@ -268,7 +331,11 @@ public class Graph_Main {
 			barRight = gridLeft + ((i+1) * xTicIncr);
 			barWidth = barRight - barLeft;
 			
-			barHeight = (int) ((dataModel.data[i] / (float) maxValue) * gridHeight);
+			
+			
+			
+			//barHeight = (int) ((dataModel.data[i] / (float) maxValue) * gridHeight);
+			barHeight = (dataModel.data[i] / (float) maxValue) * gridHeight;
 			
 			
 			
@@ -321,6 +388,61 @@ public class Graph_Main {
 		/**/
 		
 	}
+	
+	
+	
+	
+	
+	
+	/**
+	 * scans through the data array for the max value
+	 * may, possibly, be affected by the values stored in alert levels
+	 * 
+	 * set, determine, or reassess maxValue
+	 */
+	public void setMaxValue() {
+		float nMaxValue = dataModel.data[0];
+		for (int i = 1; i < dataModel.dataCount; i++) {
+			if (dataModel.data[i] > nMaxValue) {
+				nMaxValue = dataModel.data[i];
+			}
+		}
+		
+		this.maxValue = nMaxValue;
+	}
+	
+	/**
+	 * pseudocode:
+	 * check if yTop and yBottom are negative
+	 * if not, scale values by yTop and yBottom
+	 * 
+	 * if yTop and yBottom aren't set,
+	 * scale incoming value to the maxValue
+	 */
+	public float scaleValueToGrid(float inValue) {
+		
+		float outValue = -1;
+		
+		Model_Station thisStation = this.dataModel.myStation;
+		
+		
+		//if yBounds aren't set
+		if (thisStation.yBottom < 0 && thisStation.yTop < 0) {
+			outValue = inValue / this.maxValue;
+		}
+		//yBounds are set
+		else {
+			outValue = (inValue - thisStation.yBottom) / (thisStation.yTop - thisStation.yBottom);
+		}
+		
+		
+		return outValue;
+	}
+	
+	
+	
+	
+	
 	
 	
 	

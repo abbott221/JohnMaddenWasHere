@@ -2,6 +2,7 @@ package com.ubuntuserver.frontend;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.graphics.Color;
 import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Model_Graph.ShowMode;
 
@@ -27,7 +28,7 @@ public class Model_General {
 	
 	
 	public boolean thumbnailsView = true;
-	boolean scrollpanesView = false;
+	public boolean scrollpanesView = false;
 	
 	
 	
@@ -71,6 +72,11 @@ public class Model_General {
 		Model_Station tempStation = new Model_Station(mediator);
 		tempStation.setGauge(tempGauge);
 		tempStation.setForecast(tempForecast);
+		
+		tempStation.addAlertLine(Color.RED, "warning", 8);
+		tempStation.addAlertLine(Color.GREEN, "standard", 6);
+		
+		//tempStation.setYScale(1.0f, 12.0f);
 		
 		stations.add(tempStation);
 		
