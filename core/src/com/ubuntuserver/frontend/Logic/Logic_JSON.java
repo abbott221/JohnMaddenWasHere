@@ -266,9 +266,9 @@ public class Logic_JSON {
 		
 		
 		JsonValue root = new JsonReader().parse(text);
-		System.out.println( root.toString() );
+		//System.out.println( root.toString() );
 		
-		System.out.println("handler 1");
+		//System.out.println("handler 1");
 		
 		
 		
@@ -334,7 +334,7 @@ public class Logic_JSON {
 		//System.out.println("Size: " + mediator.model.stations.size());
 		//=================================================================
 		
-		System.out.println("handler 2");
+		//System.out.println("handler 2");
 		
 		ArrayList<float[]> data = new ArrayList<float[]>();
 		
@@ -377,7 +377,7 @@ public class Logic_JSON {
 		//stations.get(0).setForecast(newData);
 		
 		
-		System.out.println("handler 3");
+		//System.out.println("handler 3");
 		
 		int clipSize = 2;
 		
@@ -397,19 +397,19 @@ public class Logic_JSON {
 		}
 		
 		
-		System.out.println("handler 4");
+		//System.out.println("handler 4");
 		
 		
 		mediator.model.stations = stations;
 		
-		Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
+		//Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
 		
 		
 		
 		
 		
 		
-		System.out.println("handler end");
+		//System.out.println("handler end");
 		
 	}
 	

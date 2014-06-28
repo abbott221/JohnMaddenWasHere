@@ -119,7 +119,28 @@ public class Widgets {
 		
 		
 		stationBox = new SelectBox( skin );
-		stationBox.setItems(1, 2, 3);
+		
+		
+		
+		String s1 = "O'shaughness Dam";
+		String s2 = "Alum Creek - Africa Road";
+		String s3 = "Big Walnut Creek - Sunbury";
+		String s4 = "Olentangy River Delaware";
+		String s5 = "Scioto River below O'shaughnessy Dam";
+		String s6 = "Grigg's Dam";
+		String s7 = "Hoover Dam";
+		String s8 = "Big Walnut Creek - Central College";
+		String s9 = "Big Walnut Creek - Rees";
+		String s10 = "Olentangy River near Worthington";
+		String s11 = "Scioto River near Columbus";
+		String s12 = "Alum Creek Dam";
+		String s13 = "Delaware Lake Dam";
+		
+		Object[] stationEntries = {s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13};
+		//stationBox.setItems(1, 2, 3);
+		//stationBox.setItems(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13);
+		stationBox.setItems(stationEntries);
+		
 		
 		stationBox.setBounds(400, 500, 100, 20);
 		
@@ -276,7 +297,7 @@ public class Widgets {
 			
 			endDateBox.setBounds(250, boxBottom, 100, 20);
 			
-			stationBox.setBounds(400, boxBottom, 100, 20);
+			//stationBox.setBounds(400, boxBottom, 100, 20);
 			
 			dataModeBox.setBounds(550, boxBottom, 100, 20);
 			
@@ -288,7 +309,10 @@ public class Widgets {
 			
 			
 			
-			//thumbnails.setBounds(1000, boxBottom, 100, 20);
+			//moved for more space
+			boxBottom -= 50;
+			stationBox.setBounds(400, boxBottom, 300, 20);
+			
 			
 		}
 		

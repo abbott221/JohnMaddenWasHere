@@ -30,6 +30,10 @@ public class Logic_GraphSizing {
 		if (med.model.scrollpanesView == true) {
 			spaceHeight -= 145;
 		}
+		//temporary space for station names
+		else {
+			spaceHeight -= 65;
+		}
 		
 		
 		

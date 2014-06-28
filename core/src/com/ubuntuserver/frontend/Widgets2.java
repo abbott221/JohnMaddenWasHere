@@ -180,12 +180,86 @@ public class Widgets2 {
 		
 		
 		
+		
+		window.row();
+		
+		
+		
+		
+		TextField yBottomIn = new TextField("", mediator.widgets.skin);
+		yBottomIn.setMessageText("Y Bottom");
+		
+		yBottomIn.setTextFieldListener(new TextFieldListener() {
+			public void keyTyped (TextField textField, char key) {
+				
+				String inText = textField.getText();
+				
+				if ( key == ';' ) {
+					
+					inText = inText.substring(0, inText.length() - 1);
+					int thisNum = 0;
+					
+					try {
+						thisNum = Integer.parseInt(inText);
+						
+						//System.out.println(thisNum);
+						Model_Station tempStation = mediator.model.bigGraph.dataModel.myStation;
+						
+						tempStation.setYScale(thisNum, tempStation.yTop);
+						
+					} catch (Exception e) {
+						//incorrect format
+					}
+				}
+				
+			}
+		});
+		
+		window.add(yBottomIn);
+		
+		
+		
+		TextField yTopIn = new TextField("", mediator.widgets.skin);
+		yTopIn.setMessageText("Y Top");
+		
+		yTopIn.setTextFieldListener(new TextFieldListener() {
+			public void keyTyped (TextField textField, char key) {
+				
+				String inText = textField.getText();
+				
+				if ( key == ';' ) {
+					
+					inText = inText.substring(0, inText.length() - 1);
+					int thisNum = 0;
+					
+					try {
+						thisNum = Integer.parseInt(inText);
+						
+						//System.out.println(thisNum);
+						Model_Station tempStation = mediator.model.bigGraph.dataModel.myStation;
+						
+						tempStation.setYScale(tempStation.yBottom, thisNum);
+						
+					} catch (Exception e) {
+						//incorrect format
+					}
+				}
+				
+			}
+		});
+		
+		window.add(yTopIn);
+		
+		
+		
+		
 		//window.getButtonTable().add(close).height(window.getPadTop());
 		//window.getButtonTable().add(close);
 		
 		
 		//window.setPosition(300, 300);
-		window.setBounds(300, 300, 250, 150);
+		//window.setBounds(300, 300, 250, 150);
+		window.setBounds(300, 300, 350, 350);
 		
 		
 		//window.pack();

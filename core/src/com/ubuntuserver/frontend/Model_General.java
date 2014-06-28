@@ -50,7 +50,7 @@ public class Model_General {
 		//FileHandle file = Gdx.files.internal("waterlevel.json");
 		FileHandle file = Gdx.files.internal("waterlevelSys.json");
 		this.bigJSON = file.readString();
-		System.out.println(this.bigJSON);
+		//System.out.println(this.bigJSON);
 		
 		
 		
@@ -101,9 +101,9 @@ public class Model_General {
 		tempStation1.setForecast(tempForecast1);
 		
 		tempStation1.addAlertLine(Color.RED, "warning", 848.5f);
-		tempStation1.addAlertLine(Color.GREEN, "standard", 600);
+		//tempStation1.addAlertLine(Color.GREEN, "standard", 600);
 		
-		tempStation1.setYScale(845.0f, 855.0f);
+		tempStation1.setYScale(847.0f, 852.0f);
 		
 		stations.add(tempStation1);
 		
@@ -116,8 +116,8 @@ public class Model_General {
 		tempStation2.setGauge(tempGauge2);
 		tempStation2.setForecast(tempForecast2);
 		
-		tempStation2.addAlertLine(Color.RED, "warning", 4);
-		tempStation2.addAlertLine(Color.GREEN, "standard", 3);
+		tempStation2.addAlertLine(Color.RED, "warning", 5.2f);
+		//tempStation2.addAlertLine(Color.GREEN, "standard", 3);
 		
 		stations.add(tempStation2);
 		
@@ -130,10 +130,26 @@ public class Model_General {
 		tempStation3.setGauge(tempGauge3);
 		tempStation3.setForecast(tempForecast3);
 		
-		tempStation3.addAlertLine(Color.RED, "warning", 4);
-		tempStation3.addAlertLine(Color.GREEN, "standard", 3);
+		tempStation3.addAlertLine(Color.RED, "warning", 10.05f);
+		//tempStation3.addAlertLine(Color.GREEN, "standard", 3);
 		
 		stations.add(tempStation3);
+		
+		
+		
+		
+		/**
+		 * The next line of code adds old data to hold in all stations
+		 */
+		Logic_JSON.parseJSONfromString(mediator, this.bigJSON);
+		
+		
+		this.stations.get(0).setYScale(847.0f, 852.0f);
+		
+		
+		
+		
+		
 		
 		
 		
@@ -143,8 +159,8 @@ public class Model_General {
 		graphs.add(tempGraph1);
 		
 		
-		Graph_Main tempGraph2 = new Graph_Main(mediator, this);
-		graphs.add(tempGraph2);
+		//Graph_Main tempGraph2 = new Graph_Main(mediator, this);
+		//graphs.add(tempGraph2);
 		
 		
 		
@@ -160,7 +176,7 @@ public class Model_General {
 		
 		
 		
-		Logic_JSON.parseJSONfromString(mediator, this.bigJSON);
+		//Logic_JSON.parseJSONfromString(mediator, this.bigJSON);
 		
 		
 		
