@@ -91,7 +91,7 @@ public class Model_General {
 		//Logic_JSON.parseJSONfromString(mediator, this.bigJSON);
 		
 		
-		
+		/*
 		
 		float[] tempGauge1 = {2, 3, 4, 5,   4, 5, 6, 7,   6, 7, 8, 9};
 		float[] tempForecast1 = {2, 3, 4,   3, 4, 5,   4, 5, 6,   5, 6, 7};
@@ -100,14 +100,14 @@ public class Model_General {
 		tempStation1.setGauge(tempGauge1);
 		tempStation1.setForecast(tempForecast1);
 		
-		tempStation1.addAlertLine(Color.RED, "warning", 848.5f);
+		//tempStation1.addAlertLine(Color.RED, "warning", 848.5f);
 		//tempStation1.addAlertLine(Color.GREEN, "standard", 600);
 		
-		tempStation1.setYScale(847.0f, 852.0f);
+		//tempStation1.setYScale(847.0f, 852.0f);
 		
 		stations.add(tempStation1);
 		
-		
+		/*
 		
 		float[] tempGauge2 = {9, 8, 7, 6, 7, 6, 5, 4, 5, 4, 3, 2};
 		float[] tempForecast2 = {7, 6, 5, 6, 5, 4, 5, 4, 3, 4, 3, 2};
@@ -136,6 +136,8 @@ public class Model_General {
 		stations.add(tempStation3);
 		
 		
+		/**/
+		
 		
 		
 		/**
@@ -143,10 +145,51 @@ public class Model_General {
 		 */
 		Logic_JSON.parseJSONfromString(mediator, this.bigJSON);
 		
-		
+		//O'Shaughness Dam
 		this.stations.get(0).setYScale(847.0f, 852.0f);
+		this.stations.get(0).addAlertLine(Color.RED, "warning", 848.5f);
 		
+		//Alum Creek - Africa Road
+		this.stations.get(1).setYScale(0.0f, 6.0f);
+		this.stations.get(1).addAlertLine(Color.RED, "warning", 5.2f);
 		
+		//Big Walnut Creek - Sunbury
+		this.stations.get(2).setYScale(0.0f, 13.0f);
+		this.stations.get(2).addAlertLine(Color.RED, "warning", 10.05f);
+		
+		//Olentangy River Delaware
+		this.stations.get(3).addAlertLine(Color.RED, "warning", 9.00f);
+		
+		//Scioto River below O'shaughnessy Dam
+		this.stations.get(4).addAlertLine(Color.RED, "warning", 12.00f);
+		
+		//Grigg's Dam
+		this.stations.get(5).addAlertLine(Color.RED, "warning", 756.18f);
+		this.stations.get(5).setYScale(750.0f, 762.0f);
+		
+		//Hoover Dam
+		this.stations.get(6).addAlertLine(Color.RED, "warning", 905.0f);
+		this.stations.get(6).setYScale(888.0f, 908.0f);
+		
+		//Big Walnut Creek at Central College
+		this.stations.get(7).addAlertLine(Color.RED, "warning", 11.0f);
+		
+		//Big Walnut Creek at Rees
+		this.stations.get(8).addAlertLine(Color.RED, "warning", 12.0f);
+		
+		//Olentangy River near Worthington
+		this.stations.get(9).addAlertLine(Color.RED, "warning", 7.8f);
+		
+		//Scioto River near Columbus
+		this.stations.get(10).addAlertLine(Color.RED, "warning", 24.0f);
+		
+		//Alum Creek Dam
+		this.stations.get(11).addAlertLine(Color.RED, "alert pool", 892.0f);
+		this.stations.get(11).setYScale(884.0f, 895.0f);
+		
+		//Delaware Lake Dam
+		this.stations.get(12).addAlertLine(Color.RED, "alert pool", 935.0f);
+		this.stations.get(12).setYScale(910.0f, 960.0f);
 		
 		
 		
