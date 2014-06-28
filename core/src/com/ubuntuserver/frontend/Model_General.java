@@ -2,8 +2,11 @@ package com.ubuntuserver.frontend;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
+import com.ubuntuserver.frontend.Logic.Logic_JSON;
 import com.ubuntuserver.frontend.Model_Graph.ShowMode;
 
 public class Model_General {
@@ -32,9 +35,24 @@ public class Model_General {
 	
 	
 	
+	
+	public String bigJSON;
+	
+	
+	
+	
 	public Model_General(Mediator med) {
 		
 		mediator = med;
+		
+		
+		
+		//FileHandle file = Gdx.files.internal("waterlevel.json");
+		FileHandle file = Gdx.files.internal("waterlevelSys.json");
+		this.bigJSON = file.readString();
+		System.out.println(this.bigJSON);
+		
+		
 		
 		
 		//int[] temp = {5, 6, 7, 3, 4, 3, 2, 4};
@@ -66,19 +84,28 @@ public class Model_General {
 	
 	public void fillModel() {
 		
-		float[] tempGauge = {2, 3, 4, 5,   4, 5, 6, 7,   6, 7, 8, 9};
-		float[] tempForecast = {2, 3, 4,   3, 4, 5,   4, 5, 6,   5, 6, 7};
 		
-		Model_Station tempStation = new Model_Station(mediator);
-		tempStation.setGauge(tempGauge);
-		tempStation.setForecast(tempForecast);
+		//run the Logic_JSON script here but with the other text
+		//Logic_JSON.getJSONfromURL(mediator);
 		
-		tempStation.addAlertLine(Color.RED, "warning", 8);
-		tempStation.addAlertLine(Color.GREEN, "standard", 6);
+		//Logic_JSON.parseJSONfromString(mediator, this.bigJSON);
 		
-		//tempStation.setYScale(1.0f, 12.0f);
 		
-		stations.add(tempStation);
+		
+		
+		float[] tempGauge1 = {2, 3, 4, 5,   4, 5, 6, 7,   6, 7, 8, 9};
+		float[] tempForecast1 = {2, 3, 4,   3, 4, 5,   4, 5, 6,   5, 6, 7};
+		
+		Model_Station tempStation1 = new Model_Station(mediator);
+		tempStation1.setGauge(tempGauge1);
+		tempStation1.setForecast(tempForecast1);
+		
+		tempStation1.addAlertLine(Color.RED, "warning", 848.5f);
+		tempStation1.addAlertLine(Color.GREEN, "standard", 600);
+		
+		tempStation1.setYScale(845.0f, 855.0f);
+		
+		stations.add(tempStation1);
 		
 		
 		
@@ -88,6 +115,9 @@ public class Model_General {
 		Model_Station tempStation2 = new Model_Station(mediator);
 		tempStation2.setGauge(tempGauge2);
 		tempStation2.setForecast(tempForecast2);
+		
+		tempStation2.addAlertLine(Color.RED, "warning", 4);
+		tempStation2.addAlertLine(Color.GREEN, "standard", 3);
 		
 		stations.add(tempStation2);
 		
@@ -99,6 +129,9 @@ public class Model_General {
 		Model_Station tempStation3 = new Model_Station(mediator);
 		tempStation3.setGauge(tempGauge3);
 		tempStation3.setForecast(tempForecast3);
+		
+		tempStation3.addAlertLine(Color.RED, "warning", 4);
+		tempStation3.addAlertLine(Color.GREEN, "standard", 3);
 		
 		stations.add(tempStation3);
 		
@@ -123,6 +156,13 @@ public class Model_General {
 		selectedGraph = tempGraph1;
 		
 		bigGraph = tempGraph1;
+		
+		
+		
+		
+		Logic_JSON.parseJSONfromString(mediator, this.bigJSON);
+		
+		
 		
 		
 		Logic_GraphSizing.setSizeByCount(mediator, graphs);

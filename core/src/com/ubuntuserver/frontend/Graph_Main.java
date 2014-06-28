@@ -24,8 +24,8 @@ public class Graph_Main {
 	public int gridLeft;
 	public int gridBottom;
 	
-	public int gridWidth;
-	public int gridHeight;
+	public float gridWidth;
+	public float gridHeight;
 	
 	
 	
@@ -145,6 +145,7 @@ public class Graph_Main {
 		
 		
 		
+		this.setMaxValue();
 		
 		
 		//check if it is currently big graph?
@@ -157,7 +158,7 @@ public class Graph_Main {
 			//paint.setColor(Color.GREEN);
 			
 			int lineLeft = gridLeft;
-			int lineRight = gridLeft + gridWidth;
+			int lineRight = (int) (gridLeft + gridWidth);
 			
 			AlertLevel current;
 			
@@ -177,7 +178,11 @@ public class Graph_Main {
 			}
 			/**/
 			
-			this.setMaxValue();
+			
+			
+			//moved out of area specific to rain gauge
+			//this.setMaxValue();
+			
 			
 			
 			//System.out.println( dataModel.myStation.alerts.size() );
@@ -228,11 +233,11 @@ public class Graph_Main {
 		paint.setColor(Color.GREEN);
 		
 		
-		int xTicIncr = gridWidth / dataModel.dataCount;
-		int barLeft;
-		int barRight;
-		int barWidth;
-		int barHeight = 0; //bottom is at gridBottom
+		float xTicIncr = gridWidth / dataModel.dataCount;
+		float barLeft;
+		float barRight;
+		float barWidth;
+		float barHeight = 0; //bottom is at gridBottom
 		
 		float maxValue = dataModel.data[0];
 		for (int i = 1; i < dataModel.dataCount; i++) {
@@ -294,7 +299,7 @@ public class Graph_Main {
 	
 	public void drawDataPoints(ShapeRenderer paint) {
 		
-		int dotMargin = 5;
+		float dotMargin = 3;
 		
 		//going to use yData in order for evenly distributed bars
 		
@@ -304,13 +309,13 @@ public class Graph_Main {
 		paint.setColor(Color.GREEN);
 		
 		
-		int xTicIncr = gridWidth / dataModel.dataCount;
-		int barLeft;
-		int barRight;
-		int barWidth;
+		float xTicIncr = gridWidth / dataModel.dataCount;
+		float barLeft;
+		float barRight;
+		float barWidth;
 		float barHeight = 0; //bottom is at gridBottom
 		
-		int dotMid;
+		float dotMid;
 		
 		
 		//determine max value
@@ -335,7 +340,7 @@ public class Graph_Main {
 			
 			
 			//barHeight = (int) ((dataModel.data[i] / (float) maxValue) * gridHeight);
-			barHeight = (dataModel.data[i] / (float) maxValue) * gridHeight;
+			barHeight = this.scaleValueToGrid(dataModel.data[i]) * gridHeight;
 			
 			
 			

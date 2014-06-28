@@ -138,7 +138,7 @@ public class Widgets {
 		
 		
 		dataModeBox = new SelectBox( skin );
-		dataModeBox.setItems("1 RG", "2 FC");
+		dataModeBox.setItems("Water Level", "Forecast");
 		
 		dataModeBox.setBounds(550, 500, 100, 20);
 		

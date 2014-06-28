@@ -38,9 +38,9 @@ public class Logic_JSON {
 		
 		//httpGet.setUrl("http://wtfismyip.com/json"); //handled
 		
-		//httpGet.setUrl("http://localhost/FCEMHS/michael_recorded.php");
+		httpGet.setUrl("http://localhost/FCEMHS/michael_recorded.php");
 		
-		httpGet.setUrl("http://10.119.0.52/michael/michael_recorded.php");
+		//httpGet.setUrl("http://10.119.0.52/michael/michael_recorded.php");
 		
 		//http://10.119.0.52/michael/michael_recorded.php
 		
@@ -249,6 +249,167 @@ public class Logic_JSON {
 			}
 			
 		});
+		
+	}
+	
+	
+	
+	
+	public static void parseJSONfromString(final Mediator mediator, String JSONtext) {
+		
+		
+		String text = JSONtext;
+		
+		
+		//=============================================
+		//The text part starts here
+		
+		
+		JsonValue root = new JsonReader().parse(text);
+		System.out.println( root.toString() );
+		
+		System.out.println("handler 1");
+		
+		
+		
+		
+		int recordCount = root.size;
+		int columnCount = 30;
+		
+		if (root.child != null) {
+			//System.out.println("has child");
+			columnCount = root.child.size;
+		}
+		
+		JsonValue currentRecord;
+		
+		/*
+		for (int i = 0; i < recordCount; i++) {
+			root.get(i);
+		}
+		/**/
+		
+		
+		
+		
+		/*
+		
+		JsonValue record;
+		JsonValue column;
+		
+		for (record = root.child; record != null; record = record.next) {
+			//root.get(i);
+			
+			for (column = record.child; column != null; column = column.next) {
+				
+				System.out.println(column.name + " = " + column.asString());
+				
+			}
+		}
+		
+		/**/
+		
+		//=================================================================
+		
+		//ArrayList<Model_Station> stations = new ArrayList<Model_Station>();
+		
+		int stationCount = (columnCount / 2) - 2;
+		
+		ArrayList<Model_Station> stations = mediator.model.stations;
+		
+		int extraStations = stationCount - stations.size();
+		
+		
+		float[] tempGauge = {1, 2, 3};
+		float[] tempForecast = {1, 2, 3};
+		
+		for (int i = 0; i < extraStations; i++) {
+			Model_Station tempStation = new Model_Station(mediator);
+			tempStation.setGauge(tempGauge);
+			tempStation.setForecast(tempForecast);
+			
+			stations.add(tempStation);
+		}
+		
+		//System.out.println("Size: " + mediator.model.stations.size());
+		//=================================================================
+		
+		System.out.println("handler 2");
+		
+		ArrayList<float[]> data = new ArrayList<float[]>();
+		
+		for (int i = 0; i < stationCount; i++) {
+			float[] recordSize = new float[recordCount];
+			data.add(recordSize);
+		}
+		
+		
+		JsonValue record;
+		JsonValue column;
+		int a;
+		
+		for (record = root.child, a = 0; record != null; record = record.next, a++) {
+			//root.get(i);
+			
+			/*
+			for (column = record.child; column != null; column = column.next) {
+				System.out.println(column.name + " = " + column.asString());
+			}
+			/**/
+			
+			for (int i = 5, j = 0; i < columnCount; i += 2, j++) {
+				column = record.get(i);
+				
+				column.asFloat();
+				
+				data.get(j)[a] = column.asFloat();
+				
+				//System.out.println(column.name + " = " + column.asString());
+			}
+		}
+		
+		
+		//set the data for each rain gauge
+		for (int i = 0; i < stationCount; i++) {
+			stations.get(i).setGauge(data.get(i));
+		}
+		
+		//stations.get(0).setForecast(newData);
+		
+		
+		System.out.println("handler 3");
+		
+		int clipSize = 2;
+		
+		Graph_Main tempGraph;
+		
+		//for (int i = 0; i < stationCount; i++) {
+		for (int i = 0; i < mediator.model.graphs.size(); i++) {
+			
+			tempGraph = mediator.model.graphs.get(i);
+			
+			//mediator.model.graphs.get(i).dataModel.dataClipEnd;
+			clipSize = tempGraph.dataModel.dataClipEnd;
+			
+			if (clipSize > (data.get(i).length - 1) ) {
+				tempGraph.dataModel.dataClipEnd = data.get(i).length - 1;
+			}
+		}
+		
+		
+		System.out.println("handler 4");
+		
+		
+		mediator.model.stations = stations;
+		
+		Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
+		
+		
+		
+		
+		
+		
+		System.out.println("handler end");
 		
 	}
 	
