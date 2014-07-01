@@ -122,14 +122,7 @@ public class Logic_Polling {
 	}
 	
 	
-	public static void startDateChange(Mediator mediator, SelectBox startDateBox) {
-		
-		Graph_Main activeGraph = mediator.model.selectedGraph;
-		
-		activeGraph.dataModel.dataClipStart = startDateBox.getSelectedIndex();
-		
-		//setDisplayData(activeGraph);
-	}
+	
 	
 	
 }

@@ -19,17 +19,42 @@ public class MainCoreClass implements ApplicationListener {
 	public int showWidth;
 	
 	
+	boolean loggedIn = false;
+	
+	
 	@Override
 	public void create () {
 		
 		stage = new Stage();
+		
+		
+		Widgets_Login loginWidgets = new Widgets_Login(this);
+		
+		/*
 		
 		mediator = new Mediator(stage);
 		mediator.registerCore(this);
 		
 		
 		Logic_Stage.constructStage(mediator);
+		
+		/**/
+		
 	}
+	
+	
+	public void logInSuccess () {
+		
+		//treat as resize event
+		
+		mediator = new Mediator(stage);
+		mediator.registerCore(this);
+		
+		Logic_Stage.constructStage(mediator);
+		
+		this.resize(this.showWidth, this.showHeight);
+	}
+	
 
 	@Override
 	public void render () {
@@ -41,14 +66,23 @@ public class MainCoreClass implements ApplicationListener {
 		
 		//DRAW STUFF
 		//Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
-		mediator.widgets.drawWidgets();
 		
 		
+		if (loggedIn) {
+			
+			mediator.widgets.drawWidgets();
+			
+			Logic_Polling.checkWidgetTouch(mediator);
+		}
+		else {
+			stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
+			stage.draw();
+		}
 		
 		
+		//mediator.widgets.drawWidgets();
 		
-		Logic_Polling.checkWidgetTouch(mediator);
-		
+		//Logic_Polling.checkWidgetTouch(mediator);
 		
 	}
 	
@@ -76,33 +110,45 @@ public class MainCoreClass implements ApplicationListener {
 		showHeight = height;
 		showWidth = width;
 		
-		mediator.displayHeight = height;
-		mediator.displayWidth = width;
-		
-		Logic_Stage.constructStage(mediator);
 		
 		
-		//====================================================
+		if (loggedIn) {
+			
+			
+			mediator.displayHeight = height;
+			mediator.displayWidth = width;
+			
+			Logic_Stage.constructStage(mediator);
+			
+			
+			//====================================================
+			
+			
+			//System.out.println(width);
+			//System.out.println(height);
+			
+			
+			//mediator.displayHeight = showHeight;
+			//mediator.displayWidth = showWidth;
+			
+			
+			//====================================================
+			
+			
+			mediator.widgets.adjustBox();
+			mediator.widgets2.adjustBox();
+			mediator.scrollpanes.adjustBox();
+			mediator.tablepane.adjustBox();
+			
+			Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
+			
+		}
 		
 		
-		//System.out.println(width);
-		//System.out.println(height);
+		else {
+			//resize log-in stuff
+		}
 		
-		
-		//mediator.displayHeight = showHeight;
-		//mediator.displayWidth = showWidth;
-		
-		
-		//====================================================
-		
-		
-		mediator.widgets.adjustBox();
-		mediator.widgets2.adjustBox();
-		mediator.scrollpanes.adjustBox();
-		
-		Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
-		
-		//System.out.println(mediator.displayWidth);
 	}
 
 	@Override

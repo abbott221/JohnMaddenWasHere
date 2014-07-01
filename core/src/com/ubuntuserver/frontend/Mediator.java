@@ -23,6 +23,9 @@ public class Mediator {
 	public Widgets widgets;
 	public Widgets2 widgets2;
 	public Widgets_Scrollpanes scrollpanes;
+	public Widgets_ScrollTable tablepane;
+	
+	
 	
 	
 	
@@ -49,10 +52,11 @@ public class Mediator {
 		widgets = new Widgets(this);
 		widgets2 = new Widgets2(this);
 		scrollpanes = new Widgets_Scrollpanes(this);
+		tablepane = new Widgets_ScrollTable(this);
 		
 		
 		model.fillModel();
-		
+		tablepane.fillTable();
 	}
 	
 	

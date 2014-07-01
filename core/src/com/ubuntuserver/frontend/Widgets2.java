@@ -156,6 +156,47 @@ public class Widgets2 {
 		
 		
 		
+		
+		window.row();
+		
+		
+		
+		
+		CheckBox dataTable = new CheckBox("Data Table", mediator.widgets.skin);
+		dataTable.setChecked(mediator.model.dataTableView);
+		
+		dataTable.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				//thumbnails.isChecked();
+				
+				CheckBox useThis = (CheckBox) actor;
+				
+				boolean newState = useThis.isChecked();
+				
+				mediator.model.dataTableView = newState;
+				
+				
+				
+				if (newState == true) {
+					//mediator.tablepane.tablePane.remove();
+					mediator.widgets.stage.addActor(mediator.tablepane.tablePane);
+				}
+				else {
+					mediator.tablepane.tablePane.remove();
+				}
+				
+				
+				
+				Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
+			}
+		});
+		
+		window.add(dataTable);
+		
+		
+		
+		
 		window.row();
 		
 		

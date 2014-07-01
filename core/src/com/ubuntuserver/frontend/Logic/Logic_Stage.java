@@ -61,6 +61,10 @@ public class Logic_Stage {
 		
 		
 		
+		
+		newStage.addActor(mediator.tablepane.tablePane);
+		
+		
 	}
 	
 	

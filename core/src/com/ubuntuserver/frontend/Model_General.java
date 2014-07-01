@@ -32,6 +32,7 @@ public class Model_General {
 	
 	public boolean thumbnailsView = true;
 	public boolean scrollpanesView = false;
+	public boolean dataTableView = true;
 	
 	
 	
