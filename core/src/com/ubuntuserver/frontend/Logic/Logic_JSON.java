@@ -357,6 +357,10 @@ public class Logic_JSON {
 			}
 			/**/
 			
+			column = record.get(3);
+			mediator.model.gaugeTimes.add( column.asString() );
+			
+			
 			for (int i = 5, j = 0; i < columnCount; i += 2, j++) {
 				column = record.get(i);
 				

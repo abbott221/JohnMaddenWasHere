@@ -20,6 +20,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.ubuntuserver.frontend.Logic.Logic_Dates;
@@ -35,8 +36,8 @@ public class Widgets_ScrollTable {
 	public ScrollPane tablePane;
 	Table table;
 	
-	ArrayList<Label> recordsC1;
-	ArrayList<Label> recordsC2;
+	//ArrayList<Label> recordsC1;
+	//ArrayList<Label> recordsC2;
 	
 	
 	public Widgets_ScrollTable(Mediator med) {
@@ -47,7 +48,8 @@ public class Widgets_ScrollTable {
 		
 		
 		table = new Table();
-		
+		//table.setFillParent(true);
+		//table.set
 		
 		
 		
@@ -57,8 +59,12 @@ public class Widgets_ScrollTable {
 		
 		tablePane = new ScrollPane(table, med.widgets.skin);
 		
+		
+		
 		tablePane.setBounds(100, 100, 300, 300);
 		
+		
+		//table.setWidth(300);
 		
 		//mediator.widgets.stage.addActor(tablePane);
 		
@@ -66,8 +72,8 @@ public class Widgets_ScrollTable {
 		
 		
 		
-		recordsC1 = new ArrayList<Label>();
-		recordsC2 = new ArrayList<Label>();
+		//recordsC1 = new ArrayList<Label>();
+		//recordsC2 = new ArrayList<Label>();
 		
 		
 	}
@@ -94,23 +100,43 @@ public class Widgets_ScrollTable {
 		
 		
 		
+		
+		Label temp = new Label("Water Level Data", mediator.widgets.skin);
+		table.add(temp).expandX().fillX().colspan(2);
+		table.row();
+		
+		
+		
 		for (int i = 0; i < arraySize; i++) {
 			//
 			//Label tempLabel = new Label(345, mediator.widgets.skin);
 			
-			float data = theStation.gauge[theGraph.dataModel.dataClipStart + i];
-			Label tempLabel = new Label(Float.toString(data), mediator.widgets.skin);
-			table.add(tempLabel);
 			
 			
-			Label tempLabel2 = new Label("date", mediator.widgets.skin);
+			String dateStamp = mediator.model.gaugeTimes.get(theGraph.dataModel.dataClipStart + i);
+			//Label tempLabel2 = new Label("date", mediator.widgets.skin);
+			Label tempLabel2 = new Label(dateStamp, mediator.widgets.skin);
+			//tempLabel2.setAlignment(Align.center);
+			//tempLabel2.setWidth(150);
 			table.add(tempLabel2);
 			
+			
+			
+			
+			float data = theStation.gauge[theGraph.dataModel.dataClipStart + i];
+			Label tempLabel = new Label(Float.toString(data), mediator.widgets.skin);
+			//tempLabel2.setAlignment(Align.center);
+			table.add(tempLabel);
+			
+			/*
+			Label tempLabel2 = new Label("date", mediator.widgets.skin);
+			table.add(tempLabel2);
+			/**/
 			
 			table.row();
 		}
 		
-		
+		//table.setWidth(300);
 		
 		//mediator.model.bigGraph.dataModel.dataClipStart
 		

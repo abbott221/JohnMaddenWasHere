@@ -40,11 +40,19 @@ public class Model_General {
 	public String bigJSON;
 	
 	
+	public ArrayList<String> gaugeTimes;
+	
 	
 	
 	public Model_General(Mediator med) {
 		
 		mediator = med;
+		
+		
+		
+		
+		gaugeTimes = new ArrayList<String>();
+		
 		
 		
 		
