@@ -102,6 +102,11 @@ public class Widgets_ScrollTable {
 			Label tempLabel = new Label(Float.toString(data), mediator.widgets.skin);
 			table.add(tempLabel);
 			
+			
+			Label tempLabel2 = new Label("date", mediator.widgets.skin);
+			table.add(tempLabel2);
+			
+			
 			table.row();
 		}
 		
@@ -146,7 +151,9 @@ public class Widgets_ScrollTable {
 			
 			//tablePane.setBounds(25, 25, graphW, graphH);
 			
-			tablePane.setBounds(25, 25, 300, graphH);
+			tablePane.setBounds(25, 25, sideWidth, graphH);
+			
+			//tablePane.setBounds(25, 25, 300, graphH);
 		}
 		
 		

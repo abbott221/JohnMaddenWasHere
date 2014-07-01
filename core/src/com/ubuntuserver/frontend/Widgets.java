@@ -234,9 +234,12 @@ public class Widgets {
 		
 		
 		shapes.begin(ShapeType.Filled);
+		
+		
+		
 		shapes.setColor(Color.CYAN);
 		
-		if ( mediator.model.selectedGraph != null ) {
+		if ( mediator.model.selectedGraph != null && mediator.model.thumbnailsView == true) {
 			int x = mediator.model.selectedGraph.left - 5;
 			int y = mediator.model.selectedGraph.bottom - 5;
 			int w = mediator.model.selectedGraph.width + 10;
@@ -245,7 +248,11 @@ public class Widgets {
 			shapes.rect(x, y, w, h);
 		}
 		
+		
+		
 		shapes.end();
+		
+		
 		
 		for (int i = 0; i < numGraphs; i++) {
 			mediator.model.graphs.get(i).drawMainGraph(shapes);
@@ -253,11 +260,12 @@ public class Widgets {
 		
 		
 		
-		
+		/*
 		if (mediator.model.thumbnailsView == true) {
 			mediator.model.bigGraph.drawMainGraph(shapes);
 		}
-		
+		/**/
+		mediator.model.bigGraph.drawMainGraph(shapes);
 		
 		
 		

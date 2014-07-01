@@ -96,7 +96,8 @@ public class Logic_Polling {
 			if (boxClicked) {
 				mediator.boxActivity = true;
 			}
-			else if (graphClicked) {
+			//else if (graphClicked) {
+			else if (graphClicked && mediator.model.thumbnailsView == true) {
 				mediator.model.selectedGraph = potentialGraph;
 				
 				
