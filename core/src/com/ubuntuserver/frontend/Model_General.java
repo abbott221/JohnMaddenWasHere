@@ -159,9 +159,11 @@ public class Model_General {
 		
 		//Olentangy River Delaware
 		this.stations.get(3).addAlertLine(Color.RED, "warning", 9.00f);
+		this.stations.get(3).setYScale(0.0f, 10.0f);
 		
 		//Scioto River below O'shaughnessy Dam
 		this.stations.get(4).addAlertLine(Color.RED, "warning", 12.00f);
+		this.stations.get(4).setYScale(0.0f, 14.0f);
 		
 		//Grigg's Dam
 		this.stations.get(5).addAlertLine(Color.RED, "warning", 756.18f);
@@ -182,6 +184,7 @@ public class Model_General {
 		
 		//Scioto River near Columbus
 		this.stations.get(10).addAlertLine(Color.RED, "warning", 24.0f);
+		this.stations.get(10).setYScale(0.0f, 26.0f);
 		
 		//Alum Creek Dam
 		this.stations.get(11).addAlertLine(Color.RED, "alert pool", 892.0f);
