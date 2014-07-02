@@ -33,6 +33,12 @@ public class Widgets_ScrollTable {
 	
 	
 	
+	public List dateList;
+	public List waterList;
+	public List dateWaterList;
+	
+	
+	
 	public ScrollPane tablePane;
 	Table table;
 	
@@ -71,6 +77,10 @@ public class Widgets_ScrollTable {
 		
 		
 		
+		dateList = new List( med.widgets.skin );
+		waterList = new List( med.widgets.skin );
+		dateWaterList = new List( med.widgets.skin );
+		
 		
 		//recordsC1 = new ArrayList<Label>();
 		//recordsC2 = new ArrayList<Label>();
@@ -106,35 +116,100 @@ public class Widgets_ScrollTable {
 		table.row();
 		
 		
-		
+		/*
 		for (int i = 0; i < arraySize; i++) {
-			//
-			//Label tempLabel = new Label(345, mediator.widgets.skin);
-			
-			
 			
 			String dateStamp = mediator.model.gaugeTimes.get(theGraph.dataModel.dataClipStart + i);
-			//Label tempLabel2 = new Label("date", mediator.widgets.skin);
 			Label tempLabel2 = new Label(dateStamp, mediator.widgets.skin);
-			//tempLabel2.setAlignment(Align.center);
-			//tempLabel2.setWidth(150);
-			table.add(tempLabel2);
-			
-			
+			//table.add(tempLabel2);
 			
 			
 			float data = theStation.gauge[theGraph.dataModel.dataClipStart + i];
 			Label tempLabel = new Label(Float.toString(data), mediator.widgets.skin);
-			//tempLabel2.setAlignment(Align.center);
-			table.add(tempLabel);
+			//table.add(tempLabel);
+			
+			
+			//table.row();
+		}
+		/**/
+		
+		
+		//Object[] dateEntries = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+		Object[] dateEntries = new Object[arraySize];
+		Object[] waterEntries = new Object[arraySize];
+		Object[] dateWaterEntries = new Object[arraySize];
+		
+		
+		
+		for (int i = 0; i < arraySize; i++) {
+			
+			String dateStamp = mediator.model.gaugeTimes.get(theGraph.dataModel.dataClipStart + i);
+			dateEntries[i] = dateStamp;
+			
+			float data = theStation.gauge[theGraph.dataModel.dataClipStart + i];
+			waterEntries[i] = Float.toString(data);
+			
+			
+			String dateWaterStr = dateStamp + "      " + Float.toString(data);
+			dateWaterEntries[i] = dateWaterStr;
 			
 			/*
-			Label tempLabel2 = new Label("date", mediator.widgets.skin);
+			String dateStamp = mediator.model.gaugeTimes.get(theGraph.dataModel.dataClipStart + i);
+			Label tempLabel2 = new Label(dateStamp, mediator.widgets.skin);
 			table.add(tempLabel2);
-			/**/
+			
+			
+			float data = theStation.gauge[theGraph.dataModel.dataClipStart + i];
+			Label tempLabel = new Label(Float.toString(data), mediator.widgets.skin);
+			table.add(tempLabel);
+			
 			
 			table.row();
+			/**/
 		}
+		
+		dateList.setItems(dateEntries);
+		dateList.getSelection().setMultiple(true);
+		dateList.addListener(new ChangeListener() {
+			public void changed (ChangeEvent event, Actor actor) {
+				
+				//startDateBox.getSelectedIndex();
+				
+				System.out.println( dateList.getSelectedIndex() );
+				//System.out.println( dateList.getSelection().set(item); );
+				
+				waterList.setSelectedIndex( dateList.getSelectedIndex() );
+				//waterList.getSelection().set(waterList.setSelectedIndex(index));
+				
+				//Logic_Dates.endDateChange(mediator, endDateList);
+			}
+		});
+		
+		
+		
+		waterList.setItems(waterEntries);
+		waterList.getSelection().setMultiple(true);
+		waterList.addListener(new ChangeListener() {
+			public void changed (ChangeEvent event, Actor actor) {
+				//Logic_Dates.endDateChange(mediator, endDateList);
+			}
+		});
+		
+		
+		
+		dateWaterList.setItems(dateWaterEntries);
+		dateWaterList.getSelection().setMultiple(true);
+		dateWaterList.addListener(new ChangeListener() {
+			public void changed (ChangeEvent event, Actor actor) {
+				//Logic_Dates.endDateChange(mediator, endDateList);
+			}
+		});
+		
+		
+		table.add(dateList);
+		table.add(waterList);
+		//table.add(dateWaterList).colspan(2);
+		
 		
 		//table.setWidth(300);
 		

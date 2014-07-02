@@ -17,6 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
+import com.ubuntuserver.frontend.Logic.Logic_DateStrings;
 import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Logic.Logic_Dates;
 import com.ubuntuserver.frontend.Model_Graph.ShowMode;
@@ -87,8 +88,8 @@ public class Widgets {
 		startDateBox.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
 				
-				Logic_Dates.startDateChange(mediator, startDateBox);
-				
+				//Logic_Dates.startDateChange(mediator, startDateBox);
+				Logic_DateStrings.startDateChange(mediator, startDateBox);
 			}
 		});
 		
@@ -107,8 +108,8 @@ public class Widgets {
 		endDateBox.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
 				
-				Logic_Dates.endDateChange(mediator, endDateBox);
-				
+				//Logic_Dates.endDateChange(mediator, endDateBox);
+				Logic_DateStrings.endDateChange(mediator, endDateBox);
 			}
 		});
 		

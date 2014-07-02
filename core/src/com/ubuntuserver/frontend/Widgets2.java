@@ -18,6 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
+import com.ubuntuserver.frontend.Logic.Logic_DateStrings;
 import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Logic.Logic_JSON;
 import com.ubuntuserver.frontend.Logic.Logic_JSON2;
@@ -68,7 +69,7 @@ public class Widgets2 {
 		
 		Window window = new Window("Advanced Options", mediator.widgets.skin);
 		
-		
+		window.defaults().pad(5.0f);
 		
 		
 		TextButton close = new TextButton("X", mediator.widgets.skin);
@@ -290,6 +291,28 @@ public class Widgets2 {
 		});
 		
 		window.add(yTopIn);
+		
+		
+		
+		
+		
+		window.row();
+		
+		
+		
+		TextButton runLogic = new TextButton("Run Logic", mediator.widgets.skin);
+		
+		runLogic.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				
+				//Logic_JSON.getJSONfromURL(mediator);
+				Logic_DateStrings.determineDates(mediator);
+				
+			}
+		});
+		
+		window.add(runLogic);
 		
 		
 		
