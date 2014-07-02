@@ -175,7 +175,7 @@ public class Widgets_ScrollTable {
 				
 				//startDateBox.getSelectedIndex();
 				
-				System.out.println( dateList.getSelectedIndex() );
+				//System.out.println( dateList.getSelectedIndex() );
 				//System.out.println( dateList.getSelection().set(item); );
 				
 				waterList.setSelectedIndex( dateList.getSelectedIndex() );

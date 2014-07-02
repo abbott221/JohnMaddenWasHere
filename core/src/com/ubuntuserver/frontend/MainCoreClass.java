@@ -147,6 +147,9 @@ public class MainCoreClass implements ApplicationListener {
 		
 		else {
 			//resize log-in stuff
+			
+			stage = new Stage();
+			Widgets_Login loginWidgets = new Widgets_Login(this);
 		}
 		
 	}

@@ -7,6 +7,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Logic.Logic_JSON;
+import com.ubuntuserver.frontend.Logic.Logic_JSON2;
 import com.ubuntuserver.frontend.Model_Graph.ShowMode;
 
 public class Model_General {
@@ -152,7 +153,12 @@ public class Model_General {
 		/**
 		 * The next line of code adds old data to hold in all stations
 		 */
+		
+		
+		//Logic_JSON.parseJSONfromString(mediator, this.bigJSON);
 		Logic_JSON.parseJSONfromString(mediator, this.bigJSON);
+		
+		
 		
 		//O'Shaughness Dam
 		this.stations.get(0).setYScale(847.0f, 852.0f);

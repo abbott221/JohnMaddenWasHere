@@ -212,7 +212,7 @@ public class Widgets2 {
 				
 				//System.out.println("Run update");
 				
-				Logic_JSON.getJSONfromURL(mediator);
+				Logic_JSON2.getJSONfromURL(mediator);
 				
 			}
 		});

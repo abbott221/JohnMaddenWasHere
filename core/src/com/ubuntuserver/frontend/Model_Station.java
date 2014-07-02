@@ -16,9 +16,12 @@ public class Model_Station {
 	public int forecastCount;
 	
 	
+	
+	public ArrayList<GaugeRecord> records;
+	
 	//====================================================
 	
-	ArrayList<AlertLevel> alerts;
+	public ArrayList<AlertLevel> alerts;
 	
 	//check if less than 0 for displaying stuff on graph
 	float yBottom = -1;
@@ -38,12 +41,19 @@ public class Model_Station {
 	}
 	
 	
+	public class GaugeRecord {
+		public String timeStamp;
+		
+		public float waterLevel;
+	}
 	
 	
 	
 	public Model_Station(Mediator med) {
 		
 		mediator = med;
+		
+		records = new ArrayList<GaugeRecord>();
 		
 		alerts = new ArrayList<AlertLevel>();
 	}
@@ -60,6 +70,21 @@ public class Model_Station {
 		
 		alerts.add(temp);
 	}
+	
+	
+	public void addRecord(String stamp, float level) {
+		GaugeRecord temp = new GaugeRecord();
+		
+		temp.timeStamp = stamp;
+		temp.waterLevel = level;
+		
+		records.add(temp);
+	}
+	
+	
+	
+	
+	
 	
 	public void setYScale(float yBottomIn, float yTopIn) {
 		this.yBottom = yBottomIn;
