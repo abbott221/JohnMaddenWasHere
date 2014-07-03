@@ -292,7 +292,7 @@ public class Logic_JSON {
 				
 				String text = httpResponse.getResultAsString();
 				JsonValue root = new JsonReader().parse(text);
-				System.out.println( root.toString() );
+				//System.out.println( root.toString() );
 				
 				System.out.println("handler 1");
 				

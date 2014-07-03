@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.ubuntuserver.frontend.Graph_Main;
 import com.ubuntuserver.frontend.Mediator;
 import com.ubuntuserver.frontend.Model_Graph.ShowMode;
+import com.ubuntuserver.frontend.Model_Station;
 
 public class Logic_DateStrings {
 	
@@ -15,7 +16,28 @@ public class Logic_DateStrings {
 	
 	public static ArrayList<String> determineDates(Mediator mediator) {
 		
+		Model_Station theStation = mediator.model.selectedGraph.dataModel.myStation;
+		
+		//ORIGINAL
 		Object[] listEntries = mediator.tablepane.dateList.getItems().toArray();
+		
+		
+		
+		//Object[] listEntries = mediator.model.selectedGraph.dataModel.myStation.records;
+		
+		if (theStation.records.size() > 0) {
+			
+			listEntries = new Object[theStation.records.size()];
+			
+			for (int i = 0; i < theStation.records.size(); i++) {
+				listEntries[i] = theStation.records.get(i).timeStamp;
+			}
+			
+		}
+		
+		//===========================================================
+		
+		
 		
 		ArrayList<String> dates = new ArrayList<String>();
 		
@@ -165,7 +187,8 @@ public class Logic_DateStrings {
 		int startIndex = activeGraph.dataModel.dataClipStart;
 		
 		//allocate space for the data that will be displayed
-		float[] tempData = new float[(endIndex - startIndex) + 1];
+		//float[] tempData = new float[(endIndex - startIndex) + 1];
+		float[] tempData = new float[(endIndex - startIndex) + 0];
 		
 		
 		

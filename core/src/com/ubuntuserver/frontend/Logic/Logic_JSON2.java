@@ -31,6 +31,14 @@ public class Logic_JSON2 {
 	
 	
 	
+	final static String dbURL = "http://localhost/FCEMHS/michael_recorded.php";
+	//httpGet.setUrl("http://wtfismyip.com/json"); //handled
+	//httpGet.setUrl("http://localhost/FCEMHS/michael_recorded.php");
+	//httpGet.setUrl("http://10.119.0.52/michael/michael_recorded.php");
+	//http://10.119.0.52/michael/michael_recorded.php
+	
+	
+	
 	
 	//NOTE: the JSON response has twice as many columns as the SQL table
 	//sql columns : 1 - 29
@@ -77,7 +85,7 @@ public class Logic_JSON2 {
 	final static int STATION_COL_INCR = 4; //2
 	
 	//The number of stations
-	final static int STATION_COUNT = 13;
+	final static int STATION_COUNT = 14;
 	
 	
 	
@@ -253,7 +261,11 @@ public class Logic_JSON2 {
 					//mediator.model.gaugeTimes.add( column.asString() );
 				}
 				
-				mediator.model.stations.get(j).addRecord(tempStamp, tempFloat);
+				
+				
+				if (tempFloat > -0.5f) {
+					mediator.model.stations.get(j).addRecord(tempStamp, tempFloat);
+				}
 				
 				//tempRecord.timeStamp;
 				//System.out.println(column.name + " = " + column.asString());
@@ -302,9 +314,13 @@ public class Logic_JSON2 {
 			
 			//if clipSize > number of gauge readings at that station
 			//if (clipSize > (data.get(i).length - 1) ) {
-			if (clipSize > (mediator.model.stations.get(i).records.size() - 1) ) {
+			//if (clipSize > (mediator.model.stations.get(i).records.size() - 1) ) {
+			if (clipSize > (tempGraph.dataModel.myStation.gauge.length - 1) ) {
 				//tempGraph.dataModel.dataClipEnd = data.get(i).length - 1;
-				tempGraph.dataModel.dataClipEnd = mediator.model.stations.get(i).records.size() - 1;
+				//tempGraph.dataModel.dataClipEnd = mediator.model.stations.get(i).records.size() - 1;
+				tempGraph.dataModel.dataClipEnd = tempGraph.dataModel.myStation.gauge.length - 1;
+				
+				tempGraph.dataModel.dataClipStart = 0;
 			}
 			
 			
@@ -325,9 +341,80 @@ public class Logic_JSON2 {
 		
 		//System.out.println("handler end");
 		
+		
+		convertToGaugeArray(mediator);
+		
 	}
 	
 	
+	
+	public static void convertToGaugeArray(final Mediator mediator) {
+		
+		ArrayList<Model_Station> stations = mediator.model.stations;
+		int stationCount = STATION_COUNT;
+		
+		Model_Station tempStation;
+		
+		
+		
+		for (int i = 0; i < stationCount; i++) {
+			//stations.get(i).setGauge(data.get(i));
+			tempStation = stations.get(i);
+			
+			tempStation.gauge = new float[tempStation.records.size()];
+			
+			//for (int j = 0; j < tempStation.records.size(); j++) {
+			for (int j = 0; j < tempStation.gauge.length; j++) {
+				//stations.get(i).setGauge(data.get(i));
+				//tempStation = stations.get(i);
+				
+				tempStation.gauge[j] = tempStation.records.get(i).waterLevel;
+			}
+			
+			
+		}
+		
+		/*
+		for (int i = 0; i < stationCount; i++) {
+			//stations.get(i).setGauge(data.get(i));
+		}
+		/**/
+		
+		Graph_Main tempGraph;
+		int clipEnd;
+		
+		for (int i = 0; i < mediator.model.graphs.size(); i++) {
+			
+			tempGraph = mediator.model.graphs.get(i);
+			
+			//mediator.model.graphs.get(i).dataModel.dataClipEnd;
+			//clipEnd = tempGraph.dataModel.dataClipEnd;
+			
+			
+			//if clipSize > number of gauge readings at that station
+			//if (clipSize > (data.get(i).length - 1) ) {
+			//if (clipEnd > (mediator.model.stations.get(i).records.size() - 1) ) {
+			//if (clipEnd > (tempGraph.dataModel.myStation.gauge.length - 1) ) {
+			//	//tempGraph.dataModel.dataClipEnd = data.get(i).length - 1;
+			//	tempGraph.dataModel.dataClipEnd = tempGraph.dataModel.myStation.gauge.length - 1;
+			//}
+			
+			
+			tempGraph.dataModel.dataClipEnd = tempGraph.dataModel.myStation.gauge.length - 1;
+			tempGraph.dataModel.dataClipStart = 0;
+		}
+		
+		
+		
+		
+		tempGraph = mediator.model.selectedGraph;
+		clipEnd = tempGraph.dataModel.dataClipEnd;
+		
+		
+		
+		
+		
+	}
 	
 	
 	
@@ -340,11 +427,13 @@ public class Logic_JSON2 {
 		HttpRequest httpGet = new HttpRequest(HttpMethods.GET);
 		
 		
+		httpGet.setUrl(dbURL);
+		
 		//httpGet.setUrl("http://wtfismyip.com/json"); //handled
 		
 		//httpGet.setUrl("http://localhost/FCEMHS/michael_recorded.php");
 		
-		httpGet.setUrl("http://10.119.0.52/michael/michael_recorded.php");
+		//httpGet.setUrl("http://10.119.0.52/michael/michael_recorded.php");
 		
 		//http://10.119.0.52/michael/michael_recorded.php
 		
@@ -358,7 +447,7 @@ public class Logic_JSON2 {
 				
 				String text = httpResponse.getResultAsString();
 				JsonValue root = new JsonReader().parse(text);
-				System.out.println( root.toString() );
+				//System.out.println( root.toString() );
 				
 				System.out.println("handler 1");
 				

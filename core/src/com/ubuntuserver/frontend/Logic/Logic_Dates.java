@@ -132,7 +132,8 @@ public class Logic_Dates {
 		int startIndex = activeGraph.dataModel.dataClipStart;
 		
 		//allocate space for the data that will be displayed
-		float[] tempData = new float[(endIndex - startIndex) + 1];
+		//float[] tempData = new float[(endIndex - startIndex) + 1];
+		float[] tempData = new float[(endIndex - startIndex) + 0];
 		
 		
 		
@@ -141,7 +142,14 @@ public class Logic_Dates {
 		if (activeGraph.dataModel.dataMode == ShowMode.SHOW_GAUGE)
 		{
 			for (int i = 0; i < tempData.length; i++) {
-				tempData[i] = activeGraph.dataModel.myStation.gauge[i + startIndex];
+				if (activeGraph.dataModel.myStation.records.size() == 0) {
+					tempData[i] = activeGraph.dataModel.myStation.gauge[i + startIndex];
+				}
+				else {
+					tempData[i] = activeGraph.dataModel.myStation.records.get(i + startIndex).waterLevel;
+				}
+				//tempData[i] = activeGraph.dataModel.myStation.gauge[i + startIndex];
+				//tempData[i] = activeGraph.dataModel.myStation.records.get(i + startIndex).waterLevel;
 			}
 		}
 		else //ShowMode.SHOW_FORECAST
