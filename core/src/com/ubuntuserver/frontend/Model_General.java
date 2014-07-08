@@ -109,62 +109,15 @@ public class Model_General {
 		//Logic_JSON.parseJSONfromString(mediator, this.bigJSON);
 		
 		
-		/*
-		
-		float[] tempGauge1 = {2, 3, 4, 5,   4, 5, 6, 7,   6, 7, 8, 9};
-		float[] tempForecast1 = {2, 3, 4,   3, 4, 5,   4, 5, 6,   5, 6, 7};
-		
-		Model_Station tempStation1 = new Model_Station(mediator);
-		tempStation1.setGauge(tempGauge1);
-		tempStation1.setForecast(tempForecast1);
-		
-		//tempStation1.addAlertLine(Color.RED, "warning", 848.5f);
-		//tempStation1.addAlertLine(Color.GREEN, "standard", 600);
-		
-		//tempStation1.setYScale(847.0f, 852.0f);
-		
-		stations.add(tempStation1);
-		
-		/*
-		
-		float[] tempGauge2 = {9, 8, 7, 6, 7, 6, 5, 4, 5, 4, 3, 2};
-		float[] tempForecast2 = {7, 6, 5, 6, 5, 4, 5, 4, 3, 4, 3, 2};
-		
-		Model_Station tempStation2 = new Model_Station(mediator);
-		tempStation2.setGauge(tempGauge2);
-		tempStation2.setForecast(tempForecast2);
-		
-		tempStation2.addAlertLine(Color.RED, "warning", 5.2f);
-		//tempStation2.addAlertLine(Color.GREEN, "standard", 3);
-		
-		stations.add(tempStation2);
-		
-		
-		
-		float[] tempGauge3 = {3, 4, 5, 6, 3, 4, 5, 6, 3, 4, 5, 6};
-		float[] tempForecast3 = {3, 4, 5, 3, 4, 5, 3, 4, 5, 3, 4, 5};
-		
-		Model_Station tempStation3 = new Model_Station(mediator);
-		tempStation3.setGauge(tempGauge3);
-		tempStation3.setForecast(tempForecast3);
-		
-		tempStation3.addAlertLine(Color.RED, "warning", 10.05f);
-		//tempStation3.addAlertLine(Color.GREEN, "standard", 3);
-		
-		stations.add(tempStation3);
-		
-		
-		/**/
-		
 		
 		
 		/**
 		 * The next line of code adds old data to hold in all stations
 		 */
 		
-		
 		//Logic_JSON.parseJSONfromString(mediator, this.bigJSON);
 		Logic_JSON2.parseJSONfromString(mediator, this.bigJSON);
+		
 		
 		
 		

@@ -34,13 +34,6 @@ public class Graph_Main {
 	
 	public Model_Graph dataModel;
 	
-	//public int[] x;
-	//public int[] y;
-	//public int xCount;
-	//public int yCount;
-	
-	//public int dataClipStart;
-	//public int dataClipEnd;
 	
 	
 	public float maxValue;
@@ -182,22 +175,6 @@ public class Graph_Main {
 			
 			
 			
-			
-			//this.setMaxValue();
-			//float maxValue = this.maxValue;
-			/*
-			float maxValue = dataModel.data[0];
-			for (int i = 1; i < dataModel.dataCount; i++) {
-				if (dataModel.data[i] > maxValue) {
-					maxValue = dataModel.data[i];
-				}
-			}
-			/**/
-			
-			
-			
-			//moved out of area specific to rain gauge
-			//this.setMaxValue();
 			
 			
 			
@@ -372,41 +349,6 @@ public class Graph_Main {
 		
 		
 		
-		//draw outlines around the bars
-		
-		/*
-		
-		paint.end();
-		paint.begin(ShapeType.Line);
-		
-		paint.setColor(Color.BLACK);
-		
-		for (int i = 0; i < xCount; i++) {
-			//xTemp = gridLeft + (i+1) * xTicIncr;
-			
-			barLeft = gridLeft + (i * xTicIncr);
-			barRight = gridLeft + ((i+1) * xTicIncr);
-			barWidth = barRight - barLeft;
-			
-			barHeight = (int) ((y[i] / (float) maxValue) * gridHeight);
-			
-			//paint.line(barLeft, gridBottom, barLeft, gridBottom - 10);
-			//paint.rect(barLeft, gridBottom, barRight - barLeft, barHeight);
-			
-			//bottom isn't needed
-			
-			//left
-			paint.line(barLeft, gridBottom, barLeft, gridBottom + barHeight);
-			
-			//top
-			paint.line(barLeft, gridBottom + barHeight, barLeft + barWidth, gridBottom + barHeight);
-			
-			//right
-			paint.line(barLeft + barWidth, gridBottom, barLeft + barWidth, gridBottom + barHeight);
-			
-		}
-		
-		/**/
 		
 	}
 	
@@ -497,15 +439,6 @@ public class Graph_Main {
 	
 	
 	
-	/*
-	public void setData(int[] xNew, int[] yNew) {
-		//x = xNew;
-		y = yNew;
-		
-		//xCount = xNew.length;
-		yCount = yNew.length;
-	}
-	/**/
 	
 	
 	public void setData(float[] data) {

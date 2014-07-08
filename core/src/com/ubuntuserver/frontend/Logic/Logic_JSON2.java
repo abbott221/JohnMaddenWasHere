@@ -176,19 +176,6 @@ public class Logic_JSON2 {
 		
 		
 		
-		/*
-		if (root.child != null) {
-			//System.out.println("has child");
-			columnCount = root.child.size;
-		}
-		/**/
-		
-		
-		
-		//JsonValue currentRecord;
-		
-		
-		
 		
 		
 		
@@ -216,22 +203,6 @@ public class Logic_JSON2 {
 			stations.add(tempStation);
 		}
 		
-		//System.out.println("Size: " + mediator.model.stations.size());
-		//=================================================================
-		
-		//System.out.println("handler 2");
-		
-		//arraylist of the water level data
-		//ArrayList<float[]> data = new ArrayList<float[]>();
-		//ArrayList<Model_Station.GaugeRecord> data = new ArrayList<Model_Station.GaugeRecord>();
-		
-		//construct/allocate space for each array in this arraylist
-		/*
-		for (int i = 0; i < stationCount; i++) {
-			float[] recordSize = new float[recordCount];
-			data.add(recordSize);
-		}
-		/**/
 		
 		
 		
@@ -297,59 +268,24 @@ public class Logic_JSON2 {
 				//System.out.println(column.name + " = " + column.asString());
 			}
 			
-			/*
-			//loop through the columns in each record, collecting the waterlevel data
-			//for (int i = 5, j = 0; i < columnCount; i += 2, j++) {
-			for (int i = WATERLEVEL_COL_FIRST, j = 0; i < columnCount; i += WATERLEVEL_COL_INCR, j++) {
-				column = record.get(i);
-				
-				column.asFloat();
-				
-				data.get(j)[a] = column.asFloat();
-				
-				//System.out.println(column.name + " = " + column.asString());
-			}
-			/**/
 		}
 		
 		
-		//set the data for each rain gauge
-		/*
-		for (int i = 0; i < stationCount; i++) {
-			stations.get(i).setGauge(data.get(i));
-		}
-		/**/
-		
-		//stations.get(0).setForecast(newData);
-		
-		
-		//System.out.println("handler 3");
 		
 		int clipSize = 2;
 		
 		Graph_Main tempGraph;
 		
-		//for (int i = 0; i < stationCount; i++) {
 		for (int i = 0; i < mediator.model.graphs.size(); i++) {
 			
 			tempGraph = mediator.model.graphs.get(i);
 			
-			//mediator.model.graphs.get(i).dataModel.dataClipEnd;
-			//clipSize = tempGraph.dataModel.dataClipEnd;
 			clipSize = tempGraph.dataModel.getClipEnd();
 			
 			
 			
-			//if clipSize > number of gauge readings at that station
-			//if (clipSize > (data.get(i).length - 1) ) {
-			//if (clipSize > (mediator.model.stations.get(i).records.size() - 1) ) {
-			//if (clipSize > (tempGraph.dataModel.myStation.gauge.length - 1) ) {
 			if (clipSize > (tempGraph.dataModel.myStation.records.size() - 1) ) {
-				//tempGraph.dataModel.dataClipEnd = data.get(i).length - 1;
-				//tempGraph.dataModel.dataClipEnd = mediator.model.stations.get(i).records.size() - 1;
 				
-				//tempGraph.dataModel.dataClipEnd = tempGraph.dataModel.myStation.gauge.length - 1;
-				//tempGraph.dataModel.dataClipEnd = tempGraph.dataModel.myStation.records.size() - 1;
 				tempGraph.dataModel.setClipEnd( tempGraph.dataModel.myStation.records.size() - 1 );
 				
 				tempGraph.dataModel.dataClipStart = 0;
@@ -368,135 +304,10 @@ public class Logic_JSON2 {
 		
 		
 		
-		
-		
-		
 		//System.out.println("handler end");
 		
-		
-		//convertToGaugeArray(mediator, root);
-		
 	}
 	
-	
-	/*
-	public static void convertToGaugeArray(final Mediator mediator, JsonValue root) {
-		
-		ArrayList<Model_Station> stations = mediator.model.stations;
-		int stationCount = STATION_COUNT;
-		
-		Model_Station tempStation;
-		
-		
-		
-		for (int i = 0; i < stationCount; i++) {
-			//stations.get(i).setGauge(data.get(i));
-			tempStation = stations.get(i);
-			
-			
-			
-			//System.out.println(tempStation.records.size());
-			
-			
-			
-			tempStation.gauge = new float[tempStation.records.size()];
-			
-			
-			
-			//System.out.println(tempStation.gauge.length);
-			
-			
-			
-			//for (int j = 0; j < tempStation.records.size(); j++) {
-			for (int j = 0; j < tempStation.gauge.length; j++) {
-				//stations.get(i).setGauge(data.get(i));
-				//tempStation = stations.get(i);
-				
-				tempStation.gauge[j] = tempStation.records.get(i).waterLevel;
-			}
-			
-			
-		}
-		
-		/*
-		for (int i = 0; i < stationCount; i++) {
-			//stations.get(i).setGauge(data.get(i));
-		}
-		/**/
-		/*
-		
-		Graph_Main tempGraph;
-		int clipEnd;
-		
-		for (int i = 0; i < mediator.model.graphs.size(); i++) {
-			
-			tempGraph = mediator.model.graphs.get(i);
-			
-			//mediator.model.graphs.get(i).dataModel.dataClipEnd;
-			//clipEnd = tempGraph.dataModel.dataClipEnd;
-			
-			
-			//if clipSize > number of gauge readings at that station
-			//if (clipSize > (data.get(i).length - 1) ) {
-			//if (clipEnd > (mediator.model.stations.get(i).records.size() - 1) ) {
-			//if (clipEnd > (tempGraph.dataModel.myStation.gauge.length - 1) ) {
-			//	//tempGraph.dataModel.dataClipEnd = data.get(i).length - 1;
-			//	tempGraph.dataModel.dataClipEnd = tempGraph.dataModel.myStation.gauge.length - 1;
-			//}
-			
-			
-			tempGraph.dataModel.dataClipEnd = tempGraph.dataModel.myStation.gauge.length - 1;
-			tempGraph.dataModel.dataClipStart = 0;
-		}
-		
-		
-		
-		
-		//tempGraph = mediator.model.selectedGraph;
-		//clipEnd = tempGraph.dataModel.dataClipEnd;
-		//tempGraph.dataModel.dataClipEnd = tempGraph.dataModel.myStation.gauge.length - 1;
-		//tempGraph.dataModel.dataClipStart = 0;
-		
-		
-		
-		
-		
-		/**
-		 * DateStrings into Model_General's storage
-		 * mediator.model.gaugeTimes
-		 */
-		
-		/*
-		
-		JsonValue record;
-		JsonValue column;
-		//JsonValue column;
-		int a;
-		
-		int columnCount = COL_COUNT;
-		
-		String tempStamp;
-		float tempFloat;
-		
-		
-		//loop through the records
-		//for (record = root.child, a = 0; record != null; record = record.next, a++) {
-		for (record = root.get(0), a = 0; record != null; record = record.next, a++) {
-			//root.get(i);
-			
-			
-			//Time stamp via old method
-			column = record.get(STAMP_COL_FIRST);
-			mediator.model.gaugeTimes.add( column.asString() );
-			
-		}
-		
-		
-		
-		
-	}
-	
-	/**/
 	
 	
 	
