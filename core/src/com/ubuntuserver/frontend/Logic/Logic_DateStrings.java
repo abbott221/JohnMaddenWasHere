@@ -121,6 +121,9 @@ public class Logic_DateStrings {
 		
 		
 		mediator.model.gaugeTimes.get(0);
+		
+		System.out.println( mediator.model.gaugeTimes.get(0) );
+		
 		String current;
 		boolean leaveLoop = false;
 		
@@ -155,6 +158,9 @@ public class Logic_DateStrings {
 		
 		
 		mediator.model.gaugeTimes.get(0);
+		
+		System.out.println( mediator.model.gaugeTimes.get(0) );
+		
 		String current;
 		boolean leaveLoop = false;
 		
@@ -163,7 +169,10 @@ public class Logic_DateStrings {
 			current = dateWithoutTime(current);
 			
 			if (current.equals(newStartDate) == true) {
-				activeGraph.dataModel.dataClipEnd = i;
+				
+				//activeGraph.dataModel.dataClipEnd = i;
+				activeGraph.dataModel.setClipEnd(i);
+				
 				//leaveLoop = true;
 			}
 		}
@@ -182,7 +191,8 @@ public class Logic_DateStrings {
 	public static void setDisplayData(Graph_Main activeGraph) {
 		
 		//store the start and end indexes
-		int endIndex = activeGraph.dataModel.dataClipEnd;
+		//int endIndex = activeGraph.dataModel.dataClipEnd;
+		int endIndex = activeGraph.dataModel.getClipEnd();
 		
 		int startIndex = activeGraph.dataModel.dataClipStart;
 		
@@ -197,7 +207,10 @@ public class Logic_DateStrings {
 		if (activeGraph.dataModel.dataMode == ShowMode.SHOW_GAUGE)
 		{
 			for (int i = 0; i < tempData.length; i++) {
-				tempData[i] = activeGraph.dataModel.myStation.gauge[i + startIndex];
+				
+				//tempData[i] = activeGraph.dataModel.myStation.gauge[i + startIndex];
+				tempData[i] = activeGraph.dataModel.myStation.records.get(i + startIndex).waterLevel;
+				
 			}
 		}
 		else //ShowMode.SHOW_FORECAST

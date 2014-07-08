@@ -106,8 +106,14 @@ public class Widgets_ScrollTable {
 		Graph_Main theGraph = mediator.model.bigGraph;
 		Model_Station theStation = theGraph.dataModel.myStation;
 		
-		int arraySize = theGraph.dataModel.dataClipEnd - theGraph.dataModel.dataClipStart;
 		
+		//System.out.println("End: " + theGraph.dataModel.dataClipEnd);
+		System.out.println( "End: " + theGraph.dataModel.getClipEnd() );
+		System.out.println("Start: " + theGraph.dataModel.dataClipStart);
+		
+		
+		//int arraySize = theGraph.dataModel.dataClipEnd - theGraph.dataModel.dataClipStart;
+		int arraySize = theGraph.dataModel.getClipEnd() - theGraph.dataModel.dataClipStart;
 		
 		
 		
@@ -146,7 +152,9 @@ public class Widgets_ScrollTable {
 			String dateStamp = mediator.model.gaugeTimes.get(theGraph.dataModel.dataClipStart + i);
 			dateEntries[i] = dateStamp;
 			
-			float data = theStation.gauge[theGraph.dataModel.dataClipStart + i];
+			//float data = theStation.gauge[theGraph.dataModel.dataClipStart + i];
+			float data = theStation.records.get(i).waterLevel;
+			
 			waterEntries[i] = Float.toString(data);
 			
 			

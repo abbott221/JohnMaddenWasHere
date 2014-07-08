@@ -39,7 +39,8 @@ public class Logic_Dates {
 		
 		Graph_Main activeGraph = mediator.model.selectedGraph;
 		
-		activeGraph.dataModel.dataClipEnd = endDateBox.getSelectedIndex();
+		//activeGraph.dataModel.dataClipEnd = endDateBox.getSelectedIndex();
+		activeGraph.dataModel.setClipEnd( endDateBox.getSelectedIndex() );
 		
 		setDisplayData(activeGraph);
 	}
@@ -60,7 +61,8 @@ public class Logic_Dates {
 		
 		Graph_Main activeGraph = mediator.model.selectedGraph;
 		
-		activeGraph.dataModel.dataClipEnd = endDateList.getSelectedIndex();
+		//activeGraph.dataModel.dataClipEnd = endDateList.getSelectedIndex();
+		activeGraph.dataModel.setClipEnd( endDateList.getSelectedIndex() );
 		
 		setDisplayData(activeGraph);
 	}
@@ -127,7 +129,8 @@ public class Logic_Dates {
 	public static void setDisplayData(Graph_Main activeGraph) {
 		
 		//store the start and end indexes
-		int endIndex = activeGraph.dataModel.dataClipEnd;
+		//int endIndex = activeGraph.dataModel.dataClipEnd;
+		int endIndex = activeGraph.dataModel.getClipEnd();
 		
 		int startIndex = activeGraph.dataModel.dataClipStart;
 		
@@ -143,7 +146,10 @@ public class Logic_Dates {
 		{
 			for (int i = 0; i < tempData.length; i++) {
 				if (activeGraph.dataModel.myStation.records.size() == 0) {
-					tempData[i] = activeGraph.dataModel.myStation.gauge[i + startIndex];
+					
+					//tempData[i] = activeGraph.dataModel.myStation.gauge[i + startIndex];
+					tempData[i] = activeGraph.dataModel.myStation.records.get(i + startIndex).waterLevel;
+					
 				}
 				else {
 					tempData[i] = activeGraph.dataModel.myStation.records.get(i + startIndex).waterLevel;

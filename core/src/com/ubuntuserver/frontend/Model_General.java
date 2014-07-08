@@ -45,6 +45,14 @@ public class Model_General {
 	
 	
 	
+	
+	public Model_JSONread firstTable;
+	public Model_JSONread secondTable;
+	
+	
+	
+	
+	
 	public Model_General(Mediator med) {
 		
 		mediator = med;
@@ -156,7 +164,7 @@ public class Model_General {
 		
 		
 		//Logic_JSON.parseJSONfromString(mediator, this.bigJSON);
-		Logic_JSON.parseJSONfromString(mediator, this.bigJSON);
+		Logic_JSON2.parseJSONfromString(mediator, this.bigJSON);
 		
 		
 		
@@ -243,6 +251,42 @@ public class Model_General {
 		
 		
 		Logic_GraphSizing.setSizeByCount(mediator, graphs);
+		
+		
+		
+		
+		firstTable = new Model_JSONread(mediator);
+		secondTable = new Model_JSONread(mediator);
+		
+		
+		
+		firstTable.stampMulti = false;
+		firstTable.stampColFirst = 3;
+		
+		firstTable.waterlevelPos = 0;
+		firstTable.stampPos = -1;
+		
+		firstTable.stationColFirst = 5;
+		firstTable.stationColIncr = 2;
+		firstTable.stationCount = 13;
+		
+		firstTable.colCount = 30;
+		
+		
+		
+		
+		secondTable.stampMulti = true;
+		secondTable.stampColFirst = 5; //-1
+		
+		secondTable.waterlevelPos = 0;
+		secondTable.stampPos = 2;
+		
+		secondTable.stationColFirst = 3;
+		secondTable.stationColIncr = 4;
+		secondTable.stationCount = 14;
+		
+		secondTable.colCount = 58;
+		
 		
 	}
 	

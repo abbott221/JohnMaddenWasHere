@@ -27,7 +27,7 @@ public class Model_Graph {
 	
 	
 	public int dataClipStart;
-	public int dataClipEnd;
+	private int dataClipEnd;
 	
 	public Model_Station myStation;
 	
@@ -101,6 +101,16 @@ public class Model_Graph {
 		//xCount = xNew.length;
 		dataCount = gauge.length;
 	}
+	
+	
+	/**/
+	public void setClipEnd(int newValue) {
+		this.dataClipEnd = newValue;
+	}
+	public int getClipEnd() {
+		return this.dataClipEnd;
+	}
+	/**/
 	
 	
 	/*

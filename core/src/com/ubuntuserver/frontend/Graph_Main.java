@@ -82,12 +82,28 @@ public class Graph_Main {
 		
 		if (dataModel.dataMode == ShowMode.SHOW_GAUGE)
 		{
-			dataModel.dataClipEnd = dataModel.myStation.gaugeCount - 1;
-			dataModel.setData(dataModel.myStation.gauge);
+			//dataModel.dataClipEnd = dataModel.myStation.gaugeCount - 1;
+			//dataModel.setClipEnd(dataModel.myStation.gaugeCount - 1);
+			dataModel.setClipEnd(dataModel.myStation.records.size() - 1);
+			
+			
+			float[] recordArray = new float[dataModel.myStation.records.size()];
+			
+			for (int i = 0; i < dataModel.myStation.records.size(); i++) {
+				recordArray[i] = dataModel.myStation.records.get(i).waterLevel;
+			}
+			
+			
+			//dataModel.setData(dataModel.myStation.gauge);
+			dataModel.setData(recordArray);
+			
+			
 		}
 		else //ShowMode.SHOW_FORECAST
 		{
-			dataModel.dataClipEnd = dataModel.myStation.forecastCount - 1;
+			//dataModel.dataClipEnd = dataModel.myStation.forecastCount - 1;
+			dataModel.setClipEnd(dataModel.myStation.forecastCount - 1);
+			
 			dataModel.setData(dataModel.myStation.forecast);
 		}
 		

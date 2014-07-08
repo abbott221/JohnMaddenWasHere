@@ -48,7 +48,7 @@ public class Logic_JSON2 {
 	
 	
 	//new table style
-	/**/
+	/*
 	
 	//whether there are multiple time stamps (a timestamp for each separate station)
 	final static boolean STAMP_MULTI = true;
@@ -58,16 +58,16 @@ public class Logic_JSON2 {
 	
 	//increment for getting next column -- in the table passed via JSON
 	//ignored and only reads first if MULTI_STAMPS == false
-	final static int STAMP_COL_INCR = 4; //2
+	//final static int STAMP_COL_INCR = 4; //2
 	
 	
 	
 	
 	//first column of water data -- in the table passed via JSON
-	final static int WATERLEVEL_COL_FIRST = 3; //2
+	//final static int WATERLEVEL_COL_FIRST = 3; //2
 	
 	//increment for getting next column -- in the table passed via JSON
-	final static int WATERLEVEL_COL_INCR = 4; //2
+	//final static int WATERLEVEL_COL_INCR = 4; //2
 	
 	
 	
@@ -99,26 +99,49 @@ public class Logic_JSON2 {
 	
 	
 	//old table style
-	/*
+	/**/
 	
 	//whether there are multiple time stamps (a timestamp for each separate station)
-	final static boolean MULTI_STAMPS = false;
+	final static boolean STAMP_MULTI = false;
 	
 	//first column of water data -- in the table passed via JSON
 	final static int STAMP_COL_FIRST = 3; //2
 	
 	//increment for getting next column -- in the table passed via JSON
 	//ignored and only reads first if MULTI_STAMPS == false
-	final static int STAMP_COL_INCR = -1; //Not applicable
+	//final static int STAMP_COL_INCR = -1; //Not applicable
 	
 	
 	
 	
 	//first column of water data -- in the table passed via JSON
-	final static int WATERLEVEL_COL_FIRST = 5; //3
+	//final static int WATERLEVEL_COL_FIRST = 5; //3
 	
 	//increment for getting next column -- in the table passed via JSON
-	final static int WATERLEVEL_COL_INCR = 2; //1
+	//final static int WATERLEVEL_COL_INCR = 2; //1
+	
+	
+	
+	
+	//"Column Count": number of columns in JSON
+	//final static int COL_COUNT = 30; //15, 0 - 29, end of for loop = 30
+	
+	
+	//position of water level data in grouping of station columns
+	final static int WATERLEVEL_POS = 0;
+	
+	//position of timestamp data in grouping of station columns
+	final static int STAMP_POS = -1;
+	
+	//first column of station data -- in the table passed via JSON
+	final static int STATION_COL_FIRST = 5; //2
+	
+	//increment for getting next station -- in the table passed via JSON
+	final static int STATION_COL_INCR = 2; //2
+	
+	
+	//The number of stations
+	final static int STATION_COUNT = 13;
 	
 	
 	
@@ -126,8 +149,6 @@ public class Logic_JSON2 {
 	//"Column Count": number of columns in JSON
 	final static int COL_COUNT = 30; //15, 0 - 29, end of for loop = 30
 	
-	//The number of stations
-	final static int STATION_COUNT = 13;
 	
 	/**/
 	
@@ -186,7 +207,10 @@ public class Logic_JSON2 {
 		//make enough stations for the data coming in
 		for (int i = 0; i < extraStations; i++) {
 			Model_Station tempStation = new Model_Station(mediator);
-			tempStation.setGauge(tempGauge);
+			
+			//This may crash the application
+			//tempStation.setGauge(tempGauge);
+			
 			tempStation.setForecast(tempForecast);
 			
 			stations.add(tempStation);
@@ -237,7 +261,9 @@ public class Logic_JSON2 {
 			if (STAMP_MULTI == false) {
 				column = record.get(STAMP_COL_FIRST);
 				tempStamp = column.asString();
+				
 				//mediator.model.gaugeTimes.add( column.asString() );
+				mediator.model.gaugeTimes.add( column.asString() );
 			}
 			//column = record.get(STAMP_COL_FIRST);
 			//mediator.model.gaugeTimes.add( column.asString() );
@@ -262,7 +288,7 @@ public class Logic_JSON2 {
 				}
 				
 				
-				
+				//only add the record if the float value is greater than -0.5
 				if (tempFloat > -0.5f) {
 					mediator.model.stations.get(j).addRecord(tempStamp, tempFloat);
 				}
@@ -309,16 +335,22 @@ public class Logic_JSON2 {
 			tempGraph = mediator.model.graphs.get(i);
 			
 			//mediator.model.graphs.get(i).dataModel.dataClipEnd;
-			clipSize = tempGraph.dataModel.dataClipEnd;
+			//clipSize = tempGraph.dataModel.dataClipEnd;
+			clipSize = tempGraph.dataModel.getClipEnd();
+			
 			
 			
 			//if clipSize > number of gauge readings at that station
 			//if (clipSize > (data.get(i).length - 1) ) {
 			//if (clipSize > (mediator.model.stations.get(i).records.size() - 1) ) {
-			if (clipSize > (tempGraph.dataModel.myStation.gauge.length - 1) ) {
+			//if (clipSize > (tempGraph.dataModel.myStation.gauge.length - 1) ) {
+			if (clipSize > (tempGraph.dataModel.myStation.records.size() - 1) ) {
 				//tempGraph.dataModel.dataClipEnd = data.get(i).length - 1;
 				//tempGraph.dataModel.dataClipEnd = mediator.model.stations.get(i).records.size() - 1;
-				tempGraph.dataModel.dataClipEnd = tempGraph.dataModel.myStation.gauge.length - 1;
+				
+				//tempGraph.dataModel.dataClipEnd = tempGraph.dataModel.myStation.gauge.length - 1;
+				//tempGraph.dataModel.dataClipEnd = tempGraph.dataModel.myStation.records.size() - 1;
+				tempGraph.dataModel.setClipEnd( tempGraph.dataModel.myStation.records.size() - 1 );
 				
 				tempGraph.dataModel.dataClipStart = 0;
 			}
@@ -342,13 +374,13 @@ public class Logic_JSON2 {
 		//System.out.println("handler end");
 		
 		
-		convertToGaugeArray(mediator);
+		//convertToGaugeArray(mediator, root);
 		
 	}
 	
 	
-	
-	public static void convertToGaugeArray(final Mediator mediator) {
+	/*
+	public static void convertToGaugeArray(final Mediator mediator, JsonValue root) {
 		
 		ArrayList<Model_Station> stations = mediator.model.stations;
 		int stationCount = STATION_COUNT;
@@ -361,7 +393,19 @@ public class Logic_JSON2 {
 			//stations.get(i).setGauge(data.get(i));
 			tempStation = stations.get(i);
 			
+			
+			
+			//System.out.println(tempStation.records.size());
+			
+			
+			
 			tempStation.gauge = new float[tempStation.records.size()];
+			
+			
+			
+			//System.out.println(tempStation.gauge.length);
+			
+			
 			
 			//for (int j = 0; j < tempStation.records.size(); j++) {
 			for (int j = 0; j < tempStation.gauge.length; j++) {
@@ -379,6 +423,7 @@ public class Logic_JSON2 {
 			//stations.get(i).setGauge(data.get(i));
 		}
 		/**/
+		/*
 		
 		Graph_Main tempGraph;
 		int clipEnd;
@@ -407,16 +452,51 @@ public class Logic_JSON2 {
 		
 		
 		
-		tempGraph = mediator.model.selectedGraph;
-		clipEnd = tempGraph.dataModel.dataClipEnd;
+		//tempGraph = mediator.model.selectedGraph;
+		//clipEnd = tempGraph.dataModel.dataClipEnd;
+		//tempGraph.dataModel.dataClipEnd = tempGraph.dataModel.myStation.gauge.length - 1;
+		//tempGraph.dataModel.dataClipStart = 0;
 		
+		
+		
+		
+		
+		/**
+		 * DateStrings into Model_General's storage
+		 * mediator.model.gaugeTimes
+		 */
+		
+		/*
+		
+		JsonValue record;
+		JsonValue column;
+		//JsonValue column;
+		int a;
+		
+		int columnCount = COL_COUNT;
+		
+		String tempStamp;
+		float tempFloat;
+		
+		
+		//loop through the records
+		//for (record = root.child, a = 0; record != null; record = record.next, a++) {
+		for (record = root.get(0), a = 0; record != null; record = record.next, a++) {
+			//root.get(i);
+			
+			
+			//Time stamp via old method
+			column = record.get(STAMP_COL_FIRST);
+			mediator.model.gaugeTimes.add( column.asString() );
+			
+		}
 		
 		
 		
 		
 	}
 	
-	
+	/**/
 	
 	
 	

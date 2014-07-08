@@ -163,7 +163,10 @@ public class Logic_JSON {
 		//make enough stations for the data coming in
 		for (int i = 0; i < extraStations; i++) {
 			Model_Station tempStation = new Model_Station(mediator);
-			tempStation.setGauge(tempGauge);
+			
+			//This may crash the application
+			//tempStation.setGauge(tempGauge);
+			
 			tempStation.setForecast(tempForecast);
 			
 			stations.add(tempStation);
@@ -219,7 +222,11 @@ public class Logic_JSON {
 		
 		//set the data for each rain gauge
 		for (int i = 0; i < stationCount; i++) {
-			stations.get(i).setGauge(data.get(i));
+			
+			//This may/will crash the application
+			//However, Logic_JSON2 is used instead now
+			//stations.get(i).setGauge(data.get(i));
+			
 		}
 		
 		//stations.get(0).setForecast(newData);
@@ -237,10 +244,13 @@ public class Logic_JSON {
 			tempGraph = mediator.model.graphs.get(i);
 			
 			//mediator.model.graphs.get(i).dataModel.dataClipEnd;
-			clipSize = tempGraph.dataModel.dataClipEnd;
+			//clipSize = tempGraph.dataModel.dataClipEnd;
+			clipSize = tempGraph.dataModel.getClipEnd();
 			
 			if (clipSize > (data.get(i).length - 1) ) {
-				tempGraph.dataModel.dataClipEnd = data.get(i).length - 1;
+				
+				//tempGraph.dataModel.dataClipEnd = data.get(i).length - 1;
+				tempGraph.dataModel.setClipEnd( data.get(i).length - 1 );
 			}
 		}
 		
