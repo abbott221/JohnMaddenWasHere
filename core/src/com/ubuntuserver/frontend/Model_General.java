@@ -5,9 +5,15 @@ import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.JsonReader;
+import com.badlogic.gdx.utils.JsonValue;
+import com.badlogic.gdx.utils.JsonWriter.OutputType;
 import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Logic.Logic_JSON;
 import com.ubuntuserver.frontend.Logic.Logic_JSON2;
+import com.ubuntuserver.frontend.Logic.Logic_JSON3;
+import com.ubuntuserver.frontend.Logic.Logic_JSON3.DataSource;
 import com.ubuntuserver.frontend.Model_Graph.ShowMode;
 
 public class Model_General {
@@ -65,10 +71,33 @@ public class Model_General {
 		
 		
 		
+		//Logic_JSON.getJSONfromURL(mediator);
+		
+		/*
 		//FileHandle file = Gdx.files.internal("waterlevel.json");
-		FileHandle file = Gdx.files.internal("waterlevelSys.json");
+		//FileHandle file = Gdx.files.internal("waterlevelSys.json");
+		FileHandle file = Gdx.files.internal("waterlevels_messy2.json");
 		this.bigJSON = file.readString();
+		JsonValue root = new JsonReader().parse(this.bigJSON);
 		//System.out.println(this.bigJSON);
+		//System.out.println( root.toString() );
+		//root.prettyPrint(OutputType.minimal)
+		System.out.println( root.prettyPrint(OutputType.minimal, 0) );
+		/**/
+		
+		/*
+		FileHandle file = Gdx.files.internal("waterlevels_messy.json");
+		Json json = new Json();
+		json.setOutputType(OutputType.minimal);
+		//String text = json.toJson(person, Object.class);
+		String text = file.readString();
+		System.out.println(json.prettyPrint(text));
+		//Object person2 = json.fromJson(Object.class, text);
+		/**/
+		
+		
+		
+		
 		
 		
 		
@@ -110,13 +139,61 @@ public class Model_General {
 		
 		
 		
+		//=================================================================
+		
+		
+		firstTable = new Model_JSONread(mediator);
+		secondTable = new Model_JSONread(mediator);
+		
+		
+		//old
+		firstTable.stampMulti = false;
+		firstTable.stampColFirst = 3;
+		
+		firstTable.waterlevelPos = 0;
+		firstTable.stampPos = -1;
+		
+		firstTable.stationColFirst = 5;
+		firstTable.stationColIncr = 2;
+		firstTable.stationCount = 13;
+		
+		firstTable.colCount = 30;
+		
+		
+		
+		//new
+		secondTable.stampMulti = true;
+		secondTable.stampColFirst = 5; //-1
+		
+		secondTable.waterlevelPos = 0;
+		secondTable.stampPos = 2;
+		
+		secondTable.stationColFirst = 3;
+		secondTable.stationColIncr = 4;
+		secondTable.stationCount = 14;
+		
+		secondTable.colCount = 58;
+		
+		
+		//=================================================================
 		
 		/**
 		 * The next line of code adds old data to hold in all stations
 		 */
 		
+		
+		
 		//Logic_JSON.parseJSONfromString(mediator, this.bigJSON);
-		Logic_JSON2.parseJSONfromString(mediator, this.bigJSON);
+		//Logic_JSON2.parseJSONfromString(mediator, this.bigJSON);
+		//Logic_JSON3.EntryPoint(mediator, source, table);
+		
+		
+		//Logic_JSON3.EntryPoint(mediator, DataSource.FILE_2, firstTable);
+		Logic_JSON3.EntryPoint(mediator, DataSource.FILE_3, secondTable);
+		//Logic_JSON3.EntryPoint(mediator, DataSource.LOCALHOST, secondTable);
+		
+		
+		
 		
 		
 		
@@ -208,11 +285,15 @@ public class Model_General {
 		
 		
 		
+		
+		//=================================================================
+		
+		/*
 		firstTable = new Model_JSONread(mediator);
 		secondTable = new Model_JSONread(mediator);
 		
 		
-		
+		//old
 		firstTable.stampMulti = false;
 		firstTable.stampColFirst = 3;
 		
@@ -227,7 +308,7 @@ public class Model_General {
 		
 		
 		
-		
+		//new
 		secondTable.stampMulti = true;
 		secondTable.stampColFirst = 5; //-1
 		
@@ -239,7 +320,14 @@ public class Model_General {
 		secondTable.stationCount = 14;
 		
 		secondTable.colCount = 58;
+		/**/
 		
+		//=================================================================
+		
+		
+		
+		//Logic_JSON2.parseJSONfromString(mediator, this.bigJSON);
+		//Logic_JSON3.EntryPoint(mediator, DataSource.FILE_2, firstTable);
 		
 	}
 	
