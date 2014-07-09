@@ -157,15 +157,45 @@ public class Logic_DateStrings {
 		
 		
 		
-		mediator.model.gaugeTimes.get(0);
 		
-		System.out.println( mediator.model.gaugeTimes.get(0) );
+		
+		/*
+		if (mediator.model.multiStamps = false) {
+			mediator.model.gaugeTimes.get(0);
+		}
+		else {
+			//
+			//dateStamp = theStation.records.get(theGraph.dataModel.dataClipStart + i).timeStamp;
+		}
+		/**/
+		
+		//mediator.model.gaugeTimes.get(0);
+		
+		
+		
+		
+		
+		
+		//System.out.println( mediator.model.gaugeTimes.get(0) );
 		
 		String current;
 		boolean leaveLoop = false;
 		
 		for (int i = 0; i < mediator.model.gaugeTimes.size(); i++) {
-			current = mediator.model.gaugeTimes.get(i);
+			
+			
+			
+			if (mediator.model.multiStamps = false) {
+				current = mediator.model.gaugeTimes.get(i);
+			}
+			else {
+				current = activeGraph.dataModel.myStation.records.get(i).timeStamp;
+			}
+			//current = mediator.model.gaugeTimes.get(i);
+			
+			
+			
+			
 			current = dateWithoutTime(current);
 			
 			if (current.equals(newStartDate) == true) {

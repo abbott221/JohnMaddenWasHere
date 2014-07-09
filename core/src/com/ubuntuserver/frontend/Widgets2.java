@@ -22,6 +22,8 @@ import com.ubuntuserver.frontend.Logic.Logic_DateStrings;
 import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Logic.Logic_JSON;
 import com.ubuntuserver.frontend.Logic.Logic_JSON2;
+import com.ubuntuserver.frontend.Logic.Logic_JSON3;
+import com.ubuntuserver.frontend.Logic.Logic_JSON3.DataSource;
 import com.ubuntuserver.frontend.Model_Graph.ShowMode;
 
 public class Widgets2 {
@@ -212,7 +214,9 @@ public class Widgets2 {
 				
 				//System.out.println("Run update");
 				
-				Logic_JSON2.getJSONfromURL(mediator);
+				//Logic_JSON2.getJSONfromURL(mediator);
+				Logic_JSON3.EntryPoint(mediator, DataSource.LOCALHOST, mediator.model.secondTable);
+				
 				
 			}
 		});
