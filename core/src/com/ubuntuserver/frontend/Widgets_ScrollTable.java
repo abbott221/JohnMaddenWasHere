@@ -149,7 +149,20 @@ public class Widgets_ScrollTable {
 		
 		for (int i = 0; i < arraySize; i++) {
 			
-			String dateStamp = mediator.model.gaugeTimes.get(theGraph.dataModel.dataClipStart + i);
+			String dateStamp = "";
+			
+			
+			if (mediator.model.multiStamps = false) {
+				dateStamp = mediator.model.gaugeTimes.get(theGraph.dataModel.dataClipStart + i);
+			}
+			else {
+				//Model_Station theStation = mediator.model.selectedGraph.dataModel.myStation;
+				//dateStamp = mediator.model.selectedGraph.dataModel.myStation.records.get(i);
+				dateStamp = theStation.records.get(theGraph.dataModel.dataClipStart + i).timeStamp;
+			}
+			
+			
+			//String dateStamp = mediator.model.gaugeTimes.get(theGraph.dataModel.dataClipStart + i);
 			dateEntries[i] = dateStamp;
 			
 			//float data = theStation.gauge[theGraph.dataModel.dataClipStart + i];

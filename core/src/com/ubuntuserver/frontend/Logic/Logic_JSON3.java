@@ -196,7 +196,7 @@ public class Logic_JSON3 {
 		STATION_COUNT = table.stationCount;
 		COL_COUNT = table.colCount;
 		
-		
+		mediator.model.multiStamps = STAMP_MULTI;
 		
 		
 		
@@ -217,6 +217,9 @@ public class Logic_JSON3 {
 		}
 		
 		else if (source == DataSource.LOCALHOST) {
+			
+			//System.out.println("local host case");
+			
 			url = "http://localhost/FCEMHS/michael_recorded.php";
 			getJSONfromURL(mediator, url);
 		}
@@ -243,6 +246,7 @@ public class Logic_JSON3 {
 	
 	public static void parseJSONfromString(final Mediator mediator, String JSONtext) {
 		
+		mediator.model.multiStamps = STAMP_MULTI;
 		
 		String text = JSONtext;
 		
@@ -406,10 +410,18 @@ public class Logic_JSON3 {
 		
 		//System.out.println("main");
 		
+		//System.out.println("checkpoint 1");
+		
 		HttpRequest httpGet = new HttpRequest(HttpMethods.GET);
 		
+		//System.out.println(url);
 		
 		httpGet.setUrl(url);
+		
+		//System.out.println("checkpoint 2");
+		
+		
+		
 		
 		//httpGet.setUrl("http://wtfismyip.com/json"); //handled
 		
