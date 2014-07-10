@@ -120,15 +120,52 @@ public class Logic_DateStrings {
 		
 		
 		
-		mediator.model.gaugeTimes.get(0);
 		
-		System.out.println( mediator.model.gaugeTimes.get(0) );
+		
+		String tempStamp = "";
+		
+		if (mediator.model.multiStamps = false) {
+			tempStamp = mediator.model.gaugeTimes.get(0);
+		}
+		else {
+			tempStamp = activeGraph.dataModel.myStation.records.get(0).timeStamp;
+		}
+		
+		
+		//mediator.model.gaugeTimes.get(0);
+		
+		//System.out.println( mediator.model.gaugeTimes.get(0) );
+		System.out.println( tempStamp );
+		
+		
+		
+		
 		
 		String current;
 		boolean leaveLoop = false;
 		
-		for (int i = 0; i < mediator.model.gaugeTimes.size() && !leaveLoop; i++) {
+		//========================================================
+		/*
+		if (mediator.model.multiStamps = false) {
 			current = mediator.model.gaugeTimes.get(i);
+		}
+		else {
+			current = activeGraph.dataModel.myStation.records.get(i).timeStamp;
+		}
+		/**/
+		
+		/*
+		for (int i = 0; i < mediator.model.gaugeTimes.size() && !leaveLoop; i++) {
+			
+			//current = mediator.model.gaugeTimes.get(i);
+			
+			if (mediator.model.multiStamps = false) {
+				current = mediator.model.gaugeTimes.get(i);
+			}
+			else {
+				current = activeGraph.dataModel.myStation.records.get(i).timeStamp;
+			}
+			
 			current = dateWithoutTime(current);
 			
 			if (current.equals(newStartDate) == true) {
@@ -136,6 +173,41 @@ public class Logic_DateStrings {
 				leaveLoop = true;
 			}
 		}
+		/**/
+		//========================================================
+		
+		System.out.println("DateStrings multiStamps: " + mediator.model.multiStamps);
+		
+		if (mediator.model.multiStamps = false) {
+			//tempStamp = mediator.model.gaugeTimes.get(0);
+			
+			for (int i = 0; i < mediator.model.gaugeTimes.size() && !leaveLoop; i++) {
+				current = mediator.model.gaugeTimes.get(i);
+				current = dateWithoutTime(current);
+				
+				if (current.equals(newStartDate) == true) {
+					activeGraph.dataModel.dataClipStart = i;
+					leaveLoop = true;
+				}
+			}
+		}
+		else {
+			//tempStamp = activeGraph.dataModel.myStation.records.get(0).timeStamp;
+			
+			//for (int i = 0; i < mediator.model.gaugeTimes.size() && !leaveLoop; i++) {
+			for (int i = 0; i < activeGraph.dataModel.myStation.records.size() && !leaveLoop; i++) {
+				//current = mediator.model.gaugeTimes.get(i);
+				current = activeGraph.dataModel.myStation.records.get(i).timeStamp;
+				current = dateWithoutTime(current);
+				
+				if (current.equals(newStartDate) == true) {
+					activeGraph.dataModel.dataClipStart = i;
+					leaveLoop = true;
+				}
+			}
+		}
+		
+		
 		
 		
 		
@@ -157,7 +229,7 @@ public class Logic_DateStrings {
 		
 		
 		
-		
+		String tempStamp = "";
 		
 		/*
 		if (mediator.model.multiStamps = false) {
@@ -181,9 +253,11 @@ public class Logic_DateStrings {
 		String current;
 		boolean leaveLoop = false;
 		
+		
+		//========================================================
+		
+		/**/
 		for (int i = 0; i < mediator.model.gaugeTimes.size(); i++) {
-			
-			
 			
 			if (mediator.model.multiStamps = false) {
 				current = mediator.model.gaugeTimes.get(i);
@@ -192,9 +266,6 @@ public class Logic_DateStrings {
 				current = activeGraph.dataModel.myStation.records.get(i).timeStamp;
 			}
 			//current = mediator.model.gaugeTimes.get(i);
-			
-			
-			
 			
 			current = dateWithoutTime(current);
 			
@@ -206,6 +277,52 @@ public class Logic_DateStrings {
 				//leaveLoop = true;
 			}
 		}
+		/**/
+		
+		
+		
+		//========================================================
+		
+		System.out.println("DateStrings multiStamps: " + mediator.model.multiStamps);
+		
+		if (mediator.model.multiStamps = false) {
+			//tempStamp = mediator.model.gaugeTimes.get(0);
+			
+			for (int i = 0; i < mediator.model.gaugeTimes.size() && !leaveLoop; i++) {
+				current = mediator.model.gaugeTimes.get(i);
+				current = dateWithoutTime(current);
+				
+				if (current.equals(newStartDate) == true) {
+					//activeGraph.dataModel.dataClipStart = i;
+					activeGraph.dataModel.setClipEnd(i);
+					
+					//leaveLoop = true;
+				}
+			}
+		}
+		else {
+			//tempStamp = activeGraph.dataModel.myStation.records.get(0).timeStamp;
+			
+			//for (int i = 0; i < mediator.model.gaugeTimes.size() && !leaveLoop; i++) {
+			for (int i = 0; i < activeGraph.dataModel.myStation.records.size() && !leaveLoop; i++) {
+				//current = mediator.model.gaugeTimes.get(i);
+				current = activeGraph.dataModel.myStation.records.get(i).timeStamp;
+				current = dateWithoutTime(current);
+				
+				if (current.equals(newStartDate) == true) {
+					//activeGraph.dataModel.dataClipStart = i;
+					activeGraph.dataModel.setClipEnd(i);
+					
+					//leaveLoop = true;
+				}
+			}
+		}
+		
+		
+		
+		
+		
+		
 		
 		
 		
@@ -225,6 +342,11 @@ public class Logic_DateStrings {
 		int endIndex = activeGraph.dataModel.getClipEnd();
 		
 		int startIndex = activeGraph.dataModel.dataClipStart;
+		
+		
+		System.out.println("DateStrings endIndex: " + endIndex);
+		System.out.println("DateStrings startIndex: " + startIndex);
+		
 		
 		//allocate space for the data that will be displayed
 		//float[] tempData = new float[(endIndex - startIndex) + 1];
