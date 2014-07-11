@@ -1,3 +1,5 @@
+GITHUB DOES NOT PROPERLY FORMAT THIS TEXT FILE. VIEW IT RAW FOR BETTER FORMATTING
+
 To set up the programming environment,
 
 
