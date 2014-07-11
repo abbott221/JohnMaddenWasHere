@@ -37,3 +37,15 @@ download the github branch labelled "code" and extract it
 in the extracted folder, import the folder 1 above the "desktop" and "core" folders as a Gradle Project into Eclipse
 
 Select this folder, the desktop folder, and the core folder for importing to Eclipse
+
+
+JDBC help: http://marksman.wordpress.com/2009/03/01/setting-up-mysqljdbc-driver-on-ubuntu/
+sudo apt-get install libmysql-java
+
+add gradle persisted dependency:
+https://stackoverflow.com/questions/12576413/including-local-jar-file-in-project-at-build-time-using-gradle
+paste the jar file into the libs folder
+add a line to the workspace's gradle.build file in the same format as the following:
+compile files('libs/mysql-connector-java.jar')
+
+
