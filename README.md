@@ -10,7 +10,7 @@ install the JRE
 install JDK 7
 
 - http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
-
+- sudo apt-get install openjdk-7-jre
 
 
 
