@@ -214,9 +214,12 @@ public class Widgets2 {
 				
 				//System.out.println("Run update");
 				
-				//Logic_JSON2.getJSONfromURL(mediator);
-				Logic_JSON3.EntryPoint(mediator, DataSource.LOCALHOST, mediator.model.secondTable);
 				
+				
+				//Logic_JSON2.getJSONfromURL(mediator);
+				
+				Logic_JSON3.EntryPoint(mediator, DataSource.LOCALHOST, mediator.model.secondTable);
+				//Logic_JSON3.EntryPoint(mediator, DataSource.INTERNAL_IP, mediator.model.secondTable);
 				
 			}
 		});

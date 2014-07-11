@@ -190,9 +190,9 @@ public class Model_General {
 		//Logic_JSON3.EntryPoint(mediator, source, table);
 		
 		
-		//Logic_JSON3.EntryPoint(mediator, DataSource.FILE_2, firstTable);
+		Logic_JSON3.EntryPoint(mediator, DataSource.FILE_2, firstTable);
 		
-		Logic_JSON3.EntryPoint(mediator, DataSource.FILE_3, secondTable);
+		//Logic_JSON3.EntryPoint(mediator, DataSource.FILE_3, secondTable);
 		//Logic_JSON3.EntryPoint(mediator, DataSource.LOCALHOST, secondTable);
 		
 		
