@@ -1,5 +1,8 @@
 package com.ubuntuserver.frontend;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
@@ -320,6 +323,39 @@ public class Widgets2 {
 		});
 		
 		window.add(runLogic);
+		
+		
+		
+		
+		
+		TextButton runSQLping = new TextButton("Ping SQL", mediator.widgets.skin);
+		
+		runSQLping.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				
+				//Logic_JSON.getJSONfromURL(mediator);
+				//Logic_DateStrings.determineDates(mediator);
+				
+				//String url = "jdbc:mysql://localhost/";
+				String url = "jdbc:mysql://192.168.1.140/";
+				
+				String user = "root";
+				
+				String password = "password";
+				
+				try {
+					Connection con = DriverManager.getConnection(url, user, password);
+					System.out.println("Success");
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+		});
+		
+		window.add(runSQLping);
 		
 		
 		
