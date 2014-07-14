@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Logic.Logic_Polling;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
+import com.ubuntuserver.frontend.Login.Widgets_Login;
 
 public class MainCoreClass implements ApplicationListener {
 	

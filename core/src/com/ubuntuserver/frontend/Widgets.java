@@ -92,7 +92,7 @@ public class Widgets {
 				Logic_EventCall.startDateEvent(mediator, startDateBox);
 				
 				//Logic_Dates.startDateChange(mediator, startDateBox);
-				Logic_DateStrings.startDateChange(mediator, startDateBox);
+				//Logic_DateStrings.startDateChange(mediator, startDateBox);
 			}
 		});
 		
@@ -111,10 +111,11 @@ public class Widgets {
 		endDateBox.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
 				
-				Logic_EventCall.endDateEvent(mediator, startDateBox);
+				Logic_EventCall.endDateEvent(mediator, endDateBox);
 				
 				//Logic_Dates.endDateChange(mediator, endDateBox);
-				Logic_DateStrings.endDateChange(mediator, endDateBox);
+				
+				//Logic_DateStrings.endDateChange(mediator, endDateBox);
 			}
 		});
 		
@@ -153,9 +154,9 @@ public class Widgets {
 		stationBox.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
 				
-				Logic_EventCall.stationEvent(mediator, startDateBox);
+				Logic_EventCall.stationEvent(mediator, stationBox);
 				
-				Logic_Dates.stationChange(mediator, stationBox);
+				//Logic_Dates.stationChange(mediator, stationBox);
 				
 			}
 		});
