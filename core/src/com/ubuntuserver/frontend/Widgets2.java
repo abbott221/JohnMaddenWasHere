@@ -337,8 +337,8 @@ public class Widgets2 {
 				//Logic_JSON.getJSONfromURL(mediator);
 				//Logic_DateStrings.determineDates(mediator);
 				
-				//String url = "jdbc:mysql://localhost/";
-				String url = "jdbc:mysql://192.168.1.140/";
+				String url = "jdbc:mysql://localhost/";
+				//String url = "jdbc:mysql://192.168.1.140/";
 				
 				String user = "root";
 				

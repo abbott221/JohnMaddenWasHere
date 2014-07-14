@@ -19,7 +19,7 @@ public class MainCoreClass implements ApplicationListener {
 	public int showWidth;
 	
 	
-	boolean loggedIn = false;
+	public boolean loggedIn = false;
 	
 	
 	@Override
