@@ -18,6 +18,8 @@ public class Mediator {
 	
 	public Model_General model;
 	
+	//public Model_WidgetSizing widgetSizes;
+	
 	
 	
 	public Widgets widgets;
@@ -46,6 +48,7 @@ public class Mediator {
 		stage = newStage;
 		
 		model = new Model_General(this);
+		
 		
 		
 		

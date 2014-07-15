@@ -374,13 +374,13 @@ public class Widgets2 {
 				
 				
 				/**/
-				String user = "root";
-				String password = "gisintern";
+				String user = "user";
+				String password = "password";
 				/**/
 				
 				/*
-				String user = "gisintern";
-				String password = "gisinterns";
+				String user = "user";
+				String password = "password";
 				/**/
 				
 				try {

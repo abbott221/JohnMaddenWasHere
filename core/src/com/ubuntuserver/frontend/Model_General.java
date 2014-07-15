@@ -59,13 +59,16 @@ public class Model_General {
 	
 	
 	
+	public Model_WidgetSizes widgetSizes;
+	
+	
 	
 	
 	public Model_General(Mediator med) {
 		
 		mediator = med;
 		
-		
+		widgetSizes = new Model_WidgetSizes(mediator);
 		
 		
 		gaugeTimes = new ArrayList<String>();
@@ -287,45 +290,6 @@ public class Model_General {
 		
 		
 		
-		
-		
-		//=================================================================
-		
-		/*
-		firstTable = new Model_JSONread(mediator);
-		secondTable = new Model_JSONread(mediator);
-		
-		
-		//old
-		firstTable.stampMulti = false;
-		firstTable.stampColFirst = 3;
-		
-		firstTable.waterlevelPos = 0;
-		firstTable.stampPos = -1;
-		
-		firstTable.stationColFirst = 5;
-		firstTable.stationColIncr = 2;
-		firstTable.stationCount = 13;
-		
-		firstTable.colCount = 30;
-		
-		
-		
-		//new
-		secondTable.stampMulti = true;
-		secondTable.stampColFirst = 5; //-1
-		
-		secondTable.waterlevelPos = 0;
-		secondTable.stampPos = 2;
-		
-		secondTable.stationColFirst = 3;
-		secondTable.stationColIncr = 4;
-		secondTable.stationCount = 14;
-		
-		secondTable.colCount = 58;
-		/**/
-		
-		//=================================================================
 		
 		
 		

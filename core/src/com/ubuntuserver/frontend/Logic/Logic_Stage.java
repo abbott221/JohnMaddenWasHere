@@ -43,12 +43,17 @@ public class Logic_Stage {
 		
 		
 		
+		newStage.addActor(mediator.widgets.startDateLabel);
+		newStage.addActor(mediator.widgets.endDateLabel);
+		newStage.addActor(mediator.widgets.stationLabel);
+		
 		
 		newStage.addActor(mediator.widgets.startDateBox);
 		newStage.addActor(mediator.widgets.endDateBox);
 		
 		newStage.addActor(mediator.widgets.stationBox);
-		newStage.addActor(mediator.widgets.dataModeBox);
+		
+		//newStage.addActor(mediator.widgets.dataModeBox);
 		
 		newStage.addActor(mediator.widgets.newGraph);
 		newStage.addActor(mediator.widgets.deleteGraph);

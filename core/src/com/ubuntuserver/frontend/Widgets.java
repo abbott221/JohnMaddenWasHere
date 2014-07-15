@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -48,6 +49,9 @@ public class Widgets {
 	public TextButton deleteGraph;
 	
 	
+	public Label startDateLabel;
+	public Label endDateLabel;
+	public Label stationLabel;
 	
 	
 	
@@ -68,6 +72,26 @@ public class Widgets {
 		
 		
 		batch = new SpriteBatch();
+		
+		
+		
+		
+		
+		startDateLabel = new Label( "Start Date", skin );
+		//the bounds will be changed in "adjustBox"
+		startDateLabel.setBounds(100, 100, 100, 100);
+		stage.addActor(startDateLabel);
+		
+		endDateLabel = new Label( "End Date", skin );
+		//the bounds will be changed in "adjustBox"
+		endDateLabel.setBounds(100, 100, 100, 100);
+		stage.addActor(endDateLabel);
+		
+		stationLabel = new Label( "Station", skin );
+		//the bounds will be changed in "adjustBox"
+		stationLabel.setBounds(100, 100, 100, 100);
+		stage.addActor(stationLabel);
+		
 		
 		
 		int[] items = {1, 2, 3, 4, 5, 6, 7, 8, 9};
@@ -296,7 +320,7 @@ public class Widgets {
 	
 	public void adjustBox() {
 		
-		//int boxLeft = 100;
+		//a default size for the box
 		int boxBottom = 500;
 		
 		int h = mediator.displayHeight;
@@ -305,16 +329,12 @@ public class Widgets {
 		if (h > 540 && w > 960) {
 			
 			//boxLeft = 100;
-			boxBottom = h - 40;
+			//boxBottom = h - 40;
+			boxBottom = (int) (h - mediator.model.widgetSizes.dropDown_Row1);
 			
 			
 			
 			
-			startDateBox.setBounds(100, boxBottom, 100, 20);
-			
-			endDateBox.setBounds(250, boxBottom, 100, 20);
-			
-			//stationBox.setBounds(400, boxBottom, 100, 20);
 			
 			dataModeBox.setBounds(550, boxBottom, 100, 20);
 			
@@ -326,10 +346,40 @@ public class Widgets {
 			
 			
 			
-			//moved for more space
-			boxBottom -= 50;
-			stationBox.setBounds(400, boxBottom, 300, 20);
+			/*
+			float xStartDate = 100;
+			float xEndDate = 250;
+			float xStation = 400;
+			/**/
 			
+			/**/
+			float xStartDate = 50;
+			float xEndDate = 200;
+			float xStation = 350;
+			/**/
+			
+			startDateLabel.setColor(Color.WHITE);
+			endDateLabel.setColor(Color.WHITE);
+			stationLabel.setColor(Color.WHITE);
+			
+			startDateLabel.setBounds(xStartDate, boxBottom, 100, 20);
+			endDateLabel.setBounds(xEndDate, boxBottom, 100, 20);
+			stationLabel.setBounds(xStation, boxBottom, 100, 20);
+			
+			
+			//moved for more space
+			
+			//boxBottom -= 50;
+			//boxBottom -= 30; // h - 70 total
+			boxBottom = (int) (h - mediator.model.widgetSizes.dropDown_Row2);
+			
+			
+			startDateBox.setBounds(xStartDate, boxBottom, 100, 20);
+			
+			endDateBox.setBounds(xEndDate, boxBottom, 100, 20);
+			
+			stationBox.setBounds(xStation, boxBottom, 300, 20);
+			//stationBox.setBounds(xStation, boxBottom, 100, 20);
 			
 		}
 		
