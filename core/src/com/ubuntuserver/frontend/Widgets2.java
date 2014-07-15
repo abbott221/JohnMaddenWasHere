@@ -334,18 +334,60 @@ public class Widgets2 {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				
+				
+				try {
+					Class.forName("com.mysql.jdbc.Driver");
+					//Class.forName("com.mysql.jdbc.Driver").newInstance();
+					
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					
+					System.out.println("Driver failed");
+					
+					e1.printStackTrace();
+				}
+				/*
+				catch (InstantiationException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				/**/
+				
+				//Class.forName("com.mysql.jdbc.Driver").newInstance();
+				
 				//Logic_JSON.getJSONfromURL(mediator);
 				//Logic_DateStrings.determineDates(mediator);
 				
-				String url = "jdbc:mysql://localhost/";
+				//work internal ip
+				//"http://10.119.0.52/michael/michael_recorded.php"
+				
+				
+				//String url = "jdbc:mysql://localhost/";
 				//String url = "jdbc:mysql://192.168.1.140/";
 				
-				String user = "root";
+				//String url = "jdbc:mysql://10.119.0.52/";
+				String url = "jdbc:mysql://10.119.0.52:3306/";
 				
-				String password = "password";
+				
+				
+				/**/
+				String user = "root";
+				String password = "gisintern";
+				/**/
+				
+				/*
+				String user = "gisintern";
+				String password = "gisinterns";
+				/**/
 				
 				try {
 					Connection con = DriverManager.getConnection(url, user, password);
+					
+					//conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","mypassword");
+					
 					System.out.println("Success");
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
