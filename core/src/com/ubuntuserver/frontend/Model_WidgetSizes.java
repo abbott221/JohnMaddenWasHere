@@ -13,7 +13,8 @@ public class Model_WidgetSizes {
 	Mediator mediator;
 	
 	
-	public float dropDown_Space = 120;
+	//public float dropDown_Space = 120;
+	public float dropDown_Space = 95;
 	
 	public float dropDown_Row1 = 40; //labels
 	public float dropDown_Row2 = 70; //start, end, and station

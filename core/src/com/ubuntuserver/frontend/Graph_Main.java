@@ -459,6 +459,14 @@ public class Graph_Main {
 		this.bottom = y;
 	}
 	
+	//this should probably use generics
+	public void setGraphLocation(float x, float y) {
+		this.left = (int) x;
+		this.bottom = (int) y;
+	}
+	
+	
+	
 	public void setGraphSize(int w, int h) {
 		this.width = w;
 		this.height = h;

@@ -48,9 +48,11 @@ public class Logic_GraphSizing {
 		
 		
 		
+		//==================================================================
+		
 		//section = available absolute space from resizing
+		
 		float sectionHeight = med.displayHeight - sizing.dropDown_Space;
-		//sectionHeight -= (sizing.PARS_COLS + 1) * sizing.PARS_MARGNS;
 		sectionHeight -= sizing.PAR1_ABS_TTL_BOTTOM;
 		
 		float sectionWidth = med.displayWidth;
@@ -58,35 +60,80 @@ public class Logic_GraphSizing {
 		
 		
 		
-		float partitionLeft = sizing.PAR1_ABS_USE_LEFT;
 		float partitionBottom = sizing.PAR1_ABS_USE_BOTTOM;
+		partitionBottom += sectionHeight * sizing.PAR1_BOTTOM;
 		
-		float partitionWidth = med.displayWidth;
-		partitionWidth -= (sizing.PARS_COLS + 1) * sizing.PARS_MARGNS;
-		//partitionWidth *= sizing.PAR_1_WIDTH;
+		float partitionLeft = sizing.PAR1_ABS_USE_LEFT;
+		partitionLeft += sectionWidth * sizing.PAR1_LEFT;
 		
-		float partitionHeight = med.displayHeight - sizing.dropDown_Space;
-		partitionWidth -= 2 * sizing.PARS_MARGNS; //there is only one partition row
+		
+		float partitionHeight = sectionHeight * sizing.PAR1_HEIGHT;
+		//float partitionHeight = sectionHeight;
+		//partitionWidth -= 2 * sizing.PARS_MARGNS; //there is only one partition row
 		//height fraction/portion is 1.0
+		
+		float partitionWidth = sectionWidth * sizing.PAR1_WIDTH;
+		//float partitionWidth = med.displayWidth;
+		//partitionWidth -= (sizing.PARS_COLS + 1) * sizing.PARS_MARGNS;
+		//partitionWidth -= sizing.;
+		//partitionWidth *= sizing.PAR_1_WIDTH;
 		
 		//float partitionLeft = sizing.PAR1_ABS_USE_LEFT;
 		//float partitionBottom = sizing.PAR1_ABS_USE_BOTTOM;
 		
 		
-		
+		/**/
 		float lol;
 		lol = sectionHeight;
 		lol = sectionWidth;
+		
 		lol = partitionLeft;
 		lol = partitionBottom;
 		lol = partitionWidth;
 		lol = partitionHeight;
+		/**/
 		
 		//==================================================================
 		
 		
 		
-		System.out.println("THUMBNAILS VIEW = TRUE?");
+		med.model.bigGraph = new Graph_Main(med, med.model);
+		
+		med.model.bigGraph.dataModel = med.model.selectedGraph.dataModel;
+		
+		
+		
+		
+		Graph_Main bigTemp = med.model.bigGraph;
+		//bigTemp.setGraphLocation(25, 25);
+		bigTemp.setGraphLocation(partitionLeft, partitionBottom);
+		
+		
+		//int graphW = 2*sideWidth + 25; //thirds
+		//int graphH = spaceHeight; //thirds
+		//med.model.bigGraph.setGraphSize(graphW, graphH); //thirds
+		
+		//bigTemp.setGraphSize(graphW, graphH);
+		bigTemp.setGraphSize((int) (partitionWidth), (int) (partitionHeight));
+		
+		
+		/**/
+		bigTemp.setGridSize(bigTemp.width - 100, bigTemp.height - 100);
+		bigTemp.setGridLocRelToGraph(80, 80);
+		/**/
+		
+		
+		
+		
+		
+		//==================================================================
+		
+		
+		
+		
+		//System.out.println("THUMBNAILS VIEW = TRUE?");
+		
+		
 		
 		
 		//System.out.println("BLAH");
@@ -166,42 +213,6 @@ public class Logic_GraphSizing {
 		/**/
 		
 		
-		
-		med.model.bigGraph = new Graph_Main(med, med.model);
-		
-		med.model.bigGraph.dataModel = med.model.selectedGraph.dataModel;
-		
-		
-		
-		
-		Graph_Main bigTemp = med.model.bigGraph;
-		bigTemp.setGraphLocation(25, 25);
-		
-		
-		
-		int graphW = 2*sideWidth + 25; //thirds
-		int graphH = spaceHeight; //thirds
-		//med.model.bigGraph.setGraphSize(graphW, graphH); //thirds
-		bigTemp.setGraphSize(graphW, graphH);
-		
-		
-		
-		//bigTemp.setGridSize(bigTemp.gridWidth - 100, bigTemp.gridHeight - 100);
-		//bigTemp.displaceGrid(40, 40);
-		
-		//it is normally 40 between gridWidth and gridHeight
-		//"padding" of 20 to top and right between graph and grid
-		
-		//bigTemp.setGridSize(bigTemp.gridWidth - 40, bigTemp.gridHeight - 40);
-		//bigTemp.displaceGrid(40, 40);
-		
-		//bigTemp.setGridSize(bigTemp.width - 40, bigTemp.height - 40);
-		
-		
-		/**/
-		bigTemp.setGridSize(bigTemp.width - 100, bigTemp.height - 100);
-		bigTemp.setGridLocRelToGraph(80, 80);
-		/**/
 		
 		//==================================================================
 		
