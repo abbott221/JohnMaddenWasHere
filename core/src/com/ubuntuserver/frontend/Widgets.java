@@ -28,6 +28,7 @@ import com.ubuntuserver.frontend.Logic.Logic_DateStrings;
 import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Logic.Logic_Dates;
 import com.ubuntuserver.frontend.Model_Graph.ShowMode;
+import com.ubuntuserver.frontend.Model_Portion.Results;
 
 public class Widgets {
 	
@@ -423,7 +424,7 @@ public class Widgets {
 			
 			Model_WidgetSizes sizing = mediator.model.widgetSizes;
 			
-			
+			/**/
 			float sectionHeight = mediator.displayHeight - sizing.dropDown_Space;
 			sectionHeight -= sizing.PAR2_ABS_TTL_BOTTOM;
 			
@@ -442,6 +443,10 @@ public class Widgets {
 			float partitionHeight = sectionHeight * sizing.PAR2_HEIGHT;
 			
 			float partitionWidth = sectionWidth * sizing.PAR2_WIDTH;
+			/**/
+			
+			//sizing.
+			
 			
 			//==================================================================
 			
@@ -453,7 +458,7 @@ public class Widgets {
 			
 			sizing = mediator.model.widgetSizes;
 			
-			
+			/*
 			sectionHeight = mediator.displayHeight - sizing.dropDown_Space;
 			sectionHeight -= sizing.PAR4_ABS_TTL_BOTTOM;
 			
@@ -472,11 +477,15 @@ public class Widgets {
 			partitionHeight = sectionHeight * sizing.PAR4_HEIGHT;
 			
 			partitionWidth = sectionWidth * sizing.PAR4_WIDTH;
+			/**/
+			
+			Results bounds = sizing.portions.get(3).getResults();
 			
 			//==================================================================
 			
 			//report.setBounds(partitionLeft, partitionBottom, partitionWidth, partitionHeight);
-			reportPane.setBounds(partitionLeft, partitionBottom, partitionWidth, partitionHeight);
+			//reportPane.setBounds(partitionLeft, partitionBottom, partitionWidth, partitionHeight);
+			reportPane.setBounds(bounds.left, bounds.bottom, bounds.width, bounds.height);
 			
 		}
 		
