@@ -153,10 +153,29 @@ public class Abstract_Screen {
 		Gdx.input.setInputProcessor(stage);
 		
 		
+		//System.out.println( this.widgetsOnStage.size() );
 		
+		
+		
+		
+		/**/
+		try {
+			core.currentScreen = core.currentScreen.getClass().newInstance();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		/**/
+		
+		
+		/*
 		for (Actor widget : widgetsOnStage) {
 			stage.addActor(widget);
 		}
+		/**/
 	}
 	
 	

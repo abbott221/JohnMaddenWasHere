@@ -56,6 +56,9 @@ public class Widgets_Login2 extends Abstract_Screen {
 		
 		
 		super(coreIn);
+		//core.currentScreen = this;
+		
+		
 		
 		
 		
@@ -128,8 +131,12 @@ public class Widgets_Login2 extends Abstract_Screen {
 				getUser();
 				
 				
-				core.setupGraphView();
 				
+				
+				//core.setupGraphView();
+				core.currentScreen.thisRemoveScreen();
+				core.currentScreen = null;
+				Screen_Landing  landingScreen = new Screen_Landing(core);
 			}
 		});
 		window.add(logInButton);

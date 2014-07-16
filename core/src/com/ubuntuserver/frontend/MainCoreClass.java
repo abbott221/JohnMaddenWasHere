@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Logic.Logic_Polling;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
+import com.ubuntuserver.frontend.Login.Screen_Landing;
 import com.ubuntuserver.frontend.Login.Widgets_Login2;
 
 public class MainCoreClass implements ApplicationListener {
@@ -25,7 +26,7 @@ public class MainCoreClass implements ApplicationListener {
 	
 	
 	//possibly unnecessary
-	Abstract_Screen currentScreen;
+	public Abstract_Screen currentScreen;
 	
 	
 	
@@ -37,16 +38,23 @@ public class MainCoreClass implements ApplicationListener {
 		
 		//Widgets_Login loginWidgets = new Widgets_Login(this);
 		
+		
+		
+		
+		
 		Widgets_Login2 loginWidgets2 = new Widgets_Login2(this);
 		
-		/*
+		//Screen_Landing screenLanding = new Screen_Landing(this);
 		
+		
+		
+		
+		
+		/*
 		mediator = new Mediator(stage);
 		mediator.registerCore(this);
 		
-		
 		Logic_Stage.constructStage(mediator);
-		
 		/**/
 		
 	}
@@ -166,7 +174,26 @@ public class MainCoreClass implements ApplicationListener {
 			//resize log-in stuff
 			
 			stage = new Stage();
-			Widgets_Login2 loginWidgets = new Widgets_Login2(this);
+			
+			
+			
+			
+			//this.currentScreen.thisResizeEvent();
+			
+			
+			
+			
+			if (this.currentScreen instanceof Widgets_Login2) {
+				this.currentScreen = new Widgets_Login2(this);
+			}
+			else if (this.currentScreen instanceof Screen_Landing) {
+				this.currentScreen = new Screen_Landing(this);
+			}
+			
+			
+			
+			
+			//Widgets_Login2 loginWidgets = new Widgets_Login2(this);
 		}
 		
 	}
