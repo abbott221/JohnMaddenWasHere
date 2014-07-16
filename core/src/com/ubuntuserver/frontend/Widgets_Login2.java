@@ -1,4 +1,4 @@
-package com.ubuntuserver.frontend.Login;
+package com.ubuntuserver.frontend;
 
 import java.util.ArrayList;
 
@@ -25,7 +25,7 @@ import com.ubuntuserver.frontend.Logic.Logic_Stage;
 import com.ubuntuserver.frontend.MainCoreClass;
 import com.ubuntuserver.frontend.Model_Graph.ShowMode;
 
-public class Widgets_Login {
+public class Widgets_Login2 extends Abstract_Screen {
 	
 	//Mediator mediator;
 	
@@ -51,8 +51,12 @@ public class Widgets_Login {
 	
 	
 	
-	public Widgets_Login(MainCoreClass coreIn) {
+	public Widgets_Login2(MainCoreClass coreIn) {
 		
+		
+		super(coreIn);
+		
+		/*
 		core = coreIn;
 		
 		stage = core.stage;
@@ -61,7 +65,7 @@ public class Widgets_Login {
 		
 		//mediator = med;
 		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
-		
+		/**/
 		
 		
 		//=====================================================

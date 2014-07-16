@@ -23,6 +23,11 @@ public class MainCoreClass implements ApplicationListener {
 	public boolean loggedIn = false;
 	
 	
+	//possibly unnecessary
+	Abstract_Screen currentScreen;
+	
+	
+	
 	@Override
 	public void create () {
 		
