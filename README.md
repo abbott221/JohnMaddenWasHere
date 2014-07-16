@@ -51,3 +51,4 @@ add a line to the workspace's gradle.build file in the same format as the follow
 compile files('libs/mysql-connector-java.jar')
 
 
+The project is run from the main class located in DesktopLauncher
