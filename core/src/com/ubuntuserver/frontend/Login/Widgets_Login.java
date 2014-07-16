@@ -125,7 +125,13 @@ public class Widgets_Login {
 				
 				actor.getParent().remove();
 				
-				core.loggedIn = true;
+				
+				
+				
+				//core.loggedIn = true;
+				
+				
+				
 				
 				//userText.getText();
 				getUser();
@@ -135,7 +141,13 @@ public class Widgets_Login {
 				
 				//Logic_Stage.constructStage(mediator);
 				
-				core.logInSuccess();
+				
+				
+				
+				core.setupGraphView();
+				
+				
+				
 				
 			}
 		});

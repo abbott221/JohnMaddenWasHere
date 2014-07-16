@@ -34,11 +34,12 @@ public class Abstract_Screen {
 	/**
 	 * indicates whether the screen is still in use
 	 * 
-	 * used by Login, others may change through listeners that will unload these components,
-	 * then construct a new screen and reference it from mediator, core, or model_general
+	 * used by Login, other screens may be loaded through listeners that
+	 * will unload these components, then construct a new screen and
+	 * reference it from mediator, core, or model_general
 	 * most likely from core
 	 */
-	boolean screenStillInUse;
+	//boolean screenStillInUse = true;
 	
 	
 	
@@ -51,10 +52,6 @@ public class Abstract_Screen {
 	public Stage stage;
 	public Skin skin;
 	
-	//Window window;
-	//TextField userText;
-	
-	TextField userText;
 	
 	
 	
@@ -76,7 +73,9 @@ public class Abstract_Screen {
 		//=====================================================
 		
 		
+		widgetsOnStage = new ArrayList<Actor>();
 		
+		/*
 		Window window = new Window("Log In Options", skin);
 		
 		window.defaults().pad(5.0f);
@@ -88,7 +87,7 @@ public class Abstract_Screen {
 		
 		
 		stage.addActor(window);
-		
+		/**/
 		
 		
 		
@@ -98,7 +97,7 @@ public class Abstract_Screen {
 	
 	
 	
-	public void removeScreen() {
+	public void thisRemoveScreen() {
 		
 		for (Actor widget : widgetsOnStage) {
 			widget.remove();
@@ -108,28 +107,65 @@ public class Abstract_Screen {
 	}
 	
 	
-	//this is just the constructor
-	/*
-	public void addScreen() {
-		//
-	}
-	/**/
 	
-	public void removeWidget(Actor widget) {
+	//"Logic_Stage.constructStage(mediator);"
+	//this is just the constructor?
+	/**
+	 * possibly will be used by resize events
+	 */
+	public void thisConstructScreen() {
+		for (Actor widget : widgetsOnStage) {
+			//widget.remove();
+			stage.addActor(widget);
+		}
+	}
+	
+	
+	
+	public void thisRemoveWidget(Actor widget) {
 		widget.remove();
 		widgetsOnStage.remove(widget);
 	}
 	
-	public void addWidget(Actor widget) {
+	public void thisAddWidget(Actor widget) {
 		stage.addActor(widget);
 		widgetsOnStage.add(widget);
 	}
 	
 	
+	
+	//"Logic_Stage.constructStage(mediator);"
 	/*
 	public void loadOtherScreen(Abstract_Screen other) {
 		this.removeScreen();
 		
+	}
+	/**/
+	
+	
+	public void thisResizeEvent() {
+		stage = new Stage();
+		
+		//mediator.core.stage = newStage;
+		//mediator.stage = newStage;
+		//mediator.widgets.stage = newStage;
+		
+		Gdx.input.setInputProcessor(stage);
+		
+		
+		
+		for (Actor widget : widgetsOnStage) {
+			stage.addActor(widget);
+		}
+	}
+	
+	
+	
+	
+	
+	/*
+	public MainCoreClass getCore() {
+		return core;
 	}
 	/**/
 	

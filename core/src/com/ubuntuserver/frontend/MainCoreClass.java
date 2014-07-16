@@ -20,7 +20,8 @@ public class MainCoreClass implements ApplicationListener {
 	public int showWidth;
 	
 	
-	public boolean loggedIn = false;
+	//change to "graphView"?
+	//public boolean loggedIn = false;
 	
 	
 	//possibly unnecessary
@@ -34,7 +35,9 @@ public class MainCoreClass implements ApplicationListener {
 		stage = new Stage();
 		
 		
-		Widgets_Login loginWidgets = new Widgets_Login(this);
+		//Widgets_Login loginWidgets = new Widgets_Login(this);
+		
+		Widgets_Login2 loginWidgets2 = new Widgets_Login2(this);
 		
 		/*
 		
@@ -49,9 +52,14 @@ public class MainCoreClass implements ApplicationListener {
 	}
 	
 	
-	public void logInSuccess () {
+	public void setupGraphView () {
 		
 		//treat as resize event
+		
+		this.currentScreen.thisRemoveScreen();
+		this.currentScreen = null;
+		
+		
 		
 		mediator = new Mediator(stage);
 		mediator.registerCore(this);
@@ -74,7 +82,8 @@ public class MainCoreClass implements ApplicationListener {
 		//Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
 		
 		
-		if (loggedIn) {
+		//if (loggedIn || currentScreen == null) {
+		if (currentScreen == null) {
 			
 			mediator.widgets.drawWidgets();
 			
@@ -118,7 +127,9 @@ public class MainCoreClass implements ApplicationListener {
 		
 		
 		
-		if (loggedIn) {
+		//"loggedIn = true" == graph screen
+		//if (loggedIn || currentScreen == null) {
+		if (currentScreen == null) {
 			
 			
 			mediator.displayHeight = height;

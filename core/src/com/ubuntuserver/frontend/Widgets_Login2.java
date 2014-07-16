@@ -39,15 +39,15 @@ public class Widgets_Login2 extends Abstract_Screen {
 	
 	
 	
-	MainCoreClass core;
+	//MainCoreClass core;
 	
-	public Stage stage;
-	public Skin skin;
+	//public Stage stage;
+	//public Skin skin;
 	
-	//Window window;
-	//TextField userText;
-	
+	Window window;
 	TextField userText;
+	
+	//TextField userText;
 	
 	
 	
@@ -72,7 +72,7 @@ public class Widgets_Login2 extends Abstract_Screen {
 		
 		
 		
-		Window window = new Window("Log In Options", skin);
+		window = new Window("Log In Options", skin);
 		
 		window.defaults().pad(5.0f);
 		
@@ -93,10 +93,13 @@ public class Widgets_Login2 extends Abstract_Screen {
 		
 		
 		
+		
 		userText = new TextField("", skin);
 		
 		userText.setMessageText("Username");
 		window.add(userText).colspan(2);
+		
+		//this.addWidget(userText);
 		
 		
 		
@@ -114,6 +117,8 @@ public class Widgets_Login2 extends Abstract_Screen {
 		
 		window.add(passText).colspan(2);
 		
+		//this.addWidget(passText);
+		
 		
 		
 		
@@ -129,17 +134,21 @@ public class Widgets_Login2 extends Abstract_Screen {
 				
 				actor.getParent().remove();
 				
-				core.loggedIn = true;
+				//core.loggedIn = true;
 				
 				//userText.getText();
 				getUser();
 				
 				
 				//treat as resize event
-				
+				//core.currentScreen = null;
 				//Logic_Stage.constructStage(mediator);
 				
-				core.logInSuccess();
+				
+				
+				//core.currentScreen.thisRemoveScreen();
+				//core.currentScreen = null;
+				core.setupGraphView();
 				
 			}
 		});
@@ -170,8 +179,10 @@ public class Widgets_Login2 extends Abstract_Screen {
 		window.setBounds(300, 300, 350, 250);
 		
 		
-		stage.addActor(window);
 		
+		
+		//stage.addActor(window);
+		this.thisAddWidget(window);
 		
 		
 		
