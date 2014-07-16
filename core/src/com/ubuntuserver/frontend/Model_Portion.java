@@ -35,10 +35,10 @@ public class Model_Portion {
 	
 	
 	public class Results {
-		float bottom;
-		float left;
-		float height;
-		float width;
+		public float bottom;
+		public float left;
+		public float height;
+		public float width;
 	}
 	
 	

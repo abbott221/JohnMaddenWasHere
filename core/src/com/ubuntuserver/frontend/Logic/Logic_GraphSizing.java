@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.ubuntuserver.frontend.Graph_Main;
 import com.ubuntuserver.frontend.Mediator;
+import com.ubuntuserver.frontend.Model_Portion.Results;
 import com.ubuntuserver.frontend.Model_WidgetSizes;
 
 public class Logic_GraphSizing {
@@ -50,27 +51,7 @@ public class Logic_GraphSizing {
 		
 		//==================================================================
 		
-		//section = available absolute space from resizing
-		
-		float sectionHeight = med.displayHeight - sizing.dropDown_Space;
-		sectionHeight -= sizing.PAR1_ABS_TTL_BOTTOM;
-		
-		float sectionWidth = med.displayWidth;
-		sectionWidth -= sizing.PAR1_ABS_TTL_LEFT;
-		
-		
-		
-		float partitionBottom = sizing.PAR1_ABS_USE_BOTTOM;
-		partitionBottom += sectionHeight * sizing.PAR1_BOTTOM;
-		
-		float partitionLeft = sizing.PAR1_ABS_USE_LEFT;
-		partitionLeft += sectionWidth * sizing.PAR1_LEFT;
-		
-		
-		float partitionHeight = sectionHeight * sizing.PAR1_HEIGHT;
-		
-		float partitionWidth = sectionWidth * sizing.PAR1_WIDTH;
-		
+		Results bounds = sizing.portions.get(0).getResults();
 		
 		//==================================================================
 		
@@ -83,9 +64,15 @@ public class Logic_GraphSizing {
 		
 		Graph_Main bigTemp = med.model.bigGraph;
 		
-		bigTemp.setGraphLocation(partitionLeft, partitionBottom);
 		
-		bigTemp.setGraphSize((int) (partitionWidth), (int) (partitionHeight));
+		//Results bounds = sizing.portions.get(0).getResults();
+		
+		
+		//bigTemp.setGraphLocation(partitionLeft, partitionBottom);
+		bigTemp.setGraphLocation(bounds.left, bounds.bottom);
+		
+		//bigTemp.setGraphSize((int) (partitionWidth), (int) (partitionHeight));
+		bigTemp.setGraphSize((int) (bounds.width), (int) (bounds.height));
 		
 		
 		/**/
@@ -168,45 +155,6 @@ public class Logic_GraphSizing {
 		
 		
 		
-		
-		
-		/*
-		
-		graphList.get(0).setGraphLocation(25, 25); //25
-		graphList.get(0).setGraphSize(graphWidth, spaceHeight);
-		
-		graphList.get(1).setGraphLocation(graphWidth + 50, 25); //25 + width + 25
-		graphList.get(1).setGraphSize(graphWidth, spaceHeight);
-		
-		graphList.get(2).setGraphLocation(graphWidth * 2 + 75, 25); //25 + width + 25 + width + 25
-		graphList.get(2).setGraphSize(graphWidth, spaceHeight);
-		
-		/**/
-		
-		
-		
-		//==================================================================
-		
-		
-		
-		
-		
-		//NULL error originates from here?
-		//med.model.bigGraph = new Graph_Main(med, med.model);
-		
-		
-		
-		/*
-		firstGraph = new Graph_Main(med, 25, 25, 400, 400);
-		firstGraph.setGridSize(300, 300);
-		
-		int[] xData = {3, 4, 6, 5, 8};
-		int[] yData = {5, 6, 7, 3, 4};
-		
-		firstGraph.setData(xData, yData);
-		
-		graphs.add(firstGraph);
-		/**/
 		
 		
 	}

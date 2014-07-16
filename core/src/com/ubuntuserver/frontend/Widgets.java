@@ -424,67 +424,16 @@ public class Widgets {
 			
 			Model_WidgetSizes sizing = mediator.model.widgetSizes;
 			
-			/**/
-			float sectionHeight = mediator.displayHeight - sizing.dropDown_Space;
-			sectionHeight -= sizing.PAR2_ABS_TTL_BOTTOM;
-			
-			float sectionWidth = mediator.displayWidth;
-			sectionWidth -= sizing.PAR2_ABS_TTL_LEFT;
 			
 			
+			Results bounds = sizing.portions.get(1).getResults();
 			
-			float partitionBottom = sizing.PAR2_ABS_USE_BOTTOM;
-			partitionBottom += sectionHeight * sizing.PAR2_BOTTOM;
-			
-			float partitionLeft = sizing.PAR2_ABS_USE_LEFT;
-			partitionLeft += sectionWidth * sizing.PAR2_LEFT;
-			
-			
-			float partitionHeight = sectionHeight * sizing.PAR2_HEIGHT;
-			
-			float partitionWidth = sectionWidth * sizing.PAR2_WIDTH;
-			/**/
-			
-			//sizing.
-			
-			
-			//==================================================================
-			
-			imageActor.setBounds(partitionLeft, partitionBottom, partitionWidth, partitionHeight);
+			imageActor.setBounds(bounds.left, bounds.bottom, bounds.width, bounds.height);
 			
 			
 			
-			//==================================================================
+			bounds = sizing.portions.get(3).getResults();
 			
-			sizing = mediator.model.widgetSizes;
-			
-			/*
-			sectionHeight = mediator.displayHeight - sizing.dropDown_Space;
-			sectionHeight -= sizing.PAR4_ABS_TTL_BOTTOM;
-			
-			sectionWidth = mediator.displayWidth;
-			sectionWidth -= sizing.PAR4_ABS_TTL_LEFT;
-			
-			
-			
-			partitionBottom = sizing.PAR4_ABS_USE_BOTTOM;
-			partitionBottom += sectionHeight * sizing.PAR4_BOTTOM;
-			
-			partitionLeft = sizing.PAR4_ABS_USE_LEFT;
-			partitionLeft += sectionWidth * sizing.PAR4_LEFT;
-			
-			
-			partitionHeight = sectionHeight * sizing.PAR4_HEIGHT;
-			
-			partitionWidth = sectionWidth * sizing.PAR4_WIDTH;
-			/**/
-			
-			Results bounds = sizing.portions.get(3).getResults();
-			
-			//==================================================================
-			
-			//report.setBounds(partitionLeft, partitionBottom, partitionWidth, partitionHeight);
-			//reportPane.setBounds(partitionLeft, partitionBottom, partitionWidth, partitionHeight);
 			reportPane.setBounds(bounds.left, bounds.bottom, bounds.width, bounds.height);
 			
 		}

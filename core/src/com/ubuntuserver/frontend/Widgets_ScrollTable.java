@@ -26,6 +26,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.ubuntuserver.frontend.Logic.Logic_Dates;
 import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Model_Graph.ShowMode;
+import com.ubuntuserver.frontend.Model_Portion.Results;
 
 public class Widgets_ScrollTable {
 	
@@ -283,31 +284,16 @@ public class Widgets_ScrollTable {
 			
 			//==================================================================
 			
+			
 			Model_WidgetSizes sizing = mediator.model.widgetSizes;
 			
 			
-			float sectionHeight = mediator.displayHeight - sizing.dropDown_Space;
-			sectionHeight -= sizing.PAR3_ABS_TTL_BOTTOM;
-			
-			float sectionWidth = mediator.displayWidth;
-			sectionWidth -= sizing.PAR3_ABS_TTL_LEFT;
-			
-			
-			
-			float partitionBottom = sizing.PAR3_ABS_USE_BOTTOM;
-			partitionBottom += sectionHeight * sizing.PAR3_BOTTOM;
-			
-			float partitionLeft = sizing.PAR3_ABS_USE_LEFT;
-			partitionLeft += sectionWidth * sizing.PAR3_LEFT;
-			
-			
-			float partitionHeight = sectionHeight * sizing.PAR3_HEIGHT;
-			
-			float partitionWidth = sectionWidth * sizing.PAR3_WIDTH;
+			Results bounds = sizing.portions.get(2).getResults();
 			
 			//==================================================================
 			
-			tablePane.setBounds(partitionLeft, partitionBottom, partitionWidth, partitionHeight);
+			//tablePane.setBounds(partitionLeft, partitionBottom, partitionWidth, partitionHeight);
+			tablePane.setBounds(bounds.left, bounds.bottom, bounds.width, bounds.height);
 			
 			
 			
