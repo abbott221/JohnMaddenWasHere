@@ -249,7 +249,8 @@ public class Widgets_ScrollTable {
 		int h = mediator.displayHeight;
 		int w = mediator.displayWidth;
 		
-		if (h > 540 && w > 960) {
+		//if (h > 540 && w > 960) {
+		if (h > 100 && w > 100) {
 			
 			int spaceWidth = mediator.displayWidth - 50;
 			
@@ -276,6 +277,40 @@ public class Widgets_ScrollTable {
 			tablePane.setBounds(25, 25, sideWidth, graphH);
 			
 			//tablePane.setBounds(25, 25, 300, graphH);
+			
+			
+			
+			
+			//==================================================================
+			
+			Model_WidgetSizes sizing = mediator.model.widgetSizes;
+			
+			
+			float sectionHeight = mediator.displayHeight - sizing.dropDown_Space;
+			sectionHeight -= sizing.PAR3_ABS_TTL_BOTTOM;
+			
+			float sectionWidth = mediator.displayWidth;
+			sectionWidth -= sizing.PAR3_ABS_TTL_LEFT;
+			
+			
+			
+			float partitionBottom = sizing.PAR3_ABS_USE_BOTTOM;
+			partitionBottom += sectionHeight * sizing.PAR3_BOTTOM;
+			
+			float partitionLeft = sizing.PAR3_ABS_USE_LEFT;
+			partitionLeft += sectionWidth * sizing.PAR3_LEFT;
+			
+			
+			float partitionHeight = sectionHeight * sizing.PAR3_HEIGHT;
+			
+			float partitionWidth = sectionWidth * sizing.PAR3_WIDTH;
+			
+			//==================================================================
+			
+			tablePane.setBounds(partitionLeft, partitionBottom, partitionWidth, partitionHeight);
+			
+			
+			
 		}
 		
 		

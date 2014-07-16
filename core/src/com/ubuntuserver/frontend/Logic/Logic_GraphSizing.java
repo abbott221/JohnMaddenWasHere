@@ -68,30 +68,9 @@ public class Logic_GraphSizing {
 		
 		
 		float partitionHeight = sectionHeight * sizing.PAR1_HEIGHT;
-		//float partitionHeight = sectionHeight;
-		//partitionWidth -= 2 * sizing.PARS_MARGNS; //there is only one partition row
-		//height fraction/portion is 1.0
 		
 		float partitionWidth = sectionWidth * sizing.PAR1_WIDTH;
-		//float partitionWidth = med.displayWidth;
-		//partitionWidth -= (sizing.PARS_COLS + 1) * sizing.PARS_MARGNS;
-		//partitionWidth -= sizing.;
-		//partitionWidth *= sizing.PAR_1_WIDTH;
 		
-		//float partitionLeft = sizing.PAR1_ABS_USE_LEFT;
-		//float partitionBottom = sizing.PAR1_ABS_USE_BOTTOM;
-		
-		
-		/**/
-		float lol;
-		lol = sectionHeight;
-		lol = sectionWidth;
-		
-		lol = partitionLeft;
-		lol = partitionBottom;
-		lol = partitionWidth;
-		lol = partitionHeight;
-		/**/
 		
 		//==================================================================
 		
@@ -102,18 +81,10 @@ public class Logic_GraphSizing {
 		med.model.bigGraph.dataModel = med.model.selectedGraph.dataModel;
 		
 		
-		
-		
 		Graph_Main bigTemp = med.model.bigGraph;
-		//bigTemp.setGraphLocation(25, 25);
+		
 		bigTemp.setGraphLocation(partitionLeft, partitionBottom);
 		
-		
-		//int graphW = 2*sideWidth + 25; //thirds
-		//int graphH = spaceHeight; //thirds
-		//med.model.bigGraph.setGraphSize(graphW, graphH); //thirds
-		
-		//bigTemp.setGraphSize(graphW, graphH);
 		bigTemp.setGraphSize((int) (partitionWidth), (int) (partitionHeight));
 		
 		

@@ -4,15 +4,20 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
@@ -52,6 +57,15 @@ public class Widgets {
 	public Label startDateLabel;
 	public Label endDateLabel;
 	public Label stationLabel;
+	
+	
+	public Texture texture1;
+	public TextureRegion image;
+	public Image imageActor;
+	
+	
+	public TextArea report;
+	public ScrollPane reportPane;
 	
 	
 	
@@ -94,7 +108,19 @@ public class Widgets {
 		
 		
 		
-		int[] items = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+		
+		texture1 = new Texture(Gdx.files.internal("kitten.jpg"));
+		image = new TextureRegion(texture1);
+		//image.setRegion(100, 100, 100, 100);
+		imageActor = new Image(image);
+		imageActor.setBounds(100, 100, 100, 100);
+		stage.addActor(imageActor);
+		
+		
+		
+		
+		
+		//int[] items = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 		Object[] listEntries = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
 		
 		
@@ -255,6 +281,14 @@ public class Widgets {
 		
 		
 		
+		report = new TextArea( "Report goes here", skin );
+		//report.setBounds(100, 100, 100, 100);
+		//stage.addActor(report);
+		
+		reportPane = new ScrollPane(report, skin);
+		reportPane.setBounds(100, 100, 100, 100);
+		stage.addActor(reportPane);
+		
 	}
 	
 	
@@ -326,7 +360,8 @@ public class Widgets {
 		int h = mediator.displayHeight;
 		int w = mediator.displayWidth;
 		
-		if (h > 540 && w > 960) {
+		//if (h > 540 && w > 960) {
+		if (h > 100 && w > 100) {
 			
 			//boxLeft = 100;
 			//boxBottom = h - 40;
@@ -374,12 +409,74 @@ public class Widgets {
 			boxBottom = (int) (h - mediator.model.widgetSizes.dropDown_Row2);
 			
 			
-			startDateBox.setBounds(xStartDate, boxBottom, 100, 20);
+			//startDateBox.setBounds(xStartDate, boxBottom, 100, 20);
+			startDateBox.setBounds(xStartDate, boxBottom, 120, 20);
 			
-			endDateBox.setBounds(xEndDate, boxBottom, 100, 20);
+			//endDateBox.setBounds(xEndDate, boxBottom, 100, 20);
+			endDateBox.setBounds(xEndDate, boxBottom, 120, 20);
 			
 			stationBox.setBounds(xStation, boxBottom, 300, 20);
 			//stationBox.setBounds(xStation, boxBottom, 100, 20);
+			
+			
+			//==================================================================
+			
+			Model_WidgetSizes sizing = mediator.model.widgetSizes;
+			
+			
+			float sectionHeight = mediator.displayHeight - sizing.dropDown_Space;
+			sectionHeight -= sizing.PAR2_ABS_TTL_BOTTOM;
+			
+			float sectionWidth = mediator.displayWidth;
+			sectionWidth -= sizing.PAR2_ABS_TTL_LEFT;
+			
+			
+			
+			float partitionBottom = sizing.PAR2_ABS_USE_BOTTOM;
+			partitionBottom += sectionHeight * sizing.PAR2_BOTTOM;
+			
+			float partitionLeft = sizing.PAR2_ABS_USE_LEFT;
+			partitionLeft += sectionWidth * sizing.PAR2_LEFT;
+			
+			
+			float partitionHeight = sectionHeight * sizing.PAR2_HEIGHT;
+			
+			float partitionWidth = sectionWidth * sizing.PAR2_WIDTH;
+			
+			//==================================================================
+			
+			imageActor.setBounds(partitionLeft, partitionBottom, partitionWidth, partitionHeight);
+			
+			
+			
+			//==================================================================
+			
+			sizing = mediator.model.widgetSizes;
+			
+			
+			sectionHeight = mediator.displayHeight - sizing.dropDown_Space;
+			sectionHeight -= sizing.PAR4_ABS_TTL_BOTTOM;
+			
+			sectionWidth = mediator.displayWidth;
+			sectionWidth -= sizing.PAR4_ABS_TTL_LEFT;
+			
+			
+			
+			partitionBottom = sizing.PAR4_ABS_USE_BOTTOM;
+			partitionBottom += sectionHeight * sizing.PAR4_BOTTOM;
+			
+			partitionLeft = sizing.PAR4_ABS_USE_LEFT;
+			partitionLeft += sectionWidth * sizing.PAR4_LEFT;
+			
+			
+			partitionHeight = sectionHeight * sizing.PAR4_HEIGHT;
+			
+			partitionWidth = sectionWidth * sizing.PAR4_WIDTH;
+			
+			//==================================================================
+			
+			//report.setBounds(partitionLeft, partitionBottom, partitionWidth, partitionHeight);
+			reportPane.setBounds(partitionLeft, partitionBottom, partitionWidth, partitionHeight);
 			
 		}
 		

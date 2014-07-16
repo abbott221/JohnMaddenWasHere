@@ -50,8 +50,15 @@ public class Logic_Stage {
 		
 		newStage.addActor(mediator.widgets.startDateBox);
 		newStage.addActor(mediator.widgets.endDateBox);
-		
 		newStage.addActor(mediator.widgets.stationBox);
+		
+		
+		newStage.addActor(mediator.widgets.imageActor);
+		
+		//newStage.addActor(mediator.widgets.report);
+		newStage.addActor(mediator.widgets.reportPane);
+		
+		
 		
 		//newStage.addActor(mediator.widgets.dataModeBox);
 		
