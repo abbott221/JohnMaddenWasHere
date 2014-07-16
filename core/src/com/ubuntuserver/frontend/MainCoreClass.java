@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Logic.Logic_Polling;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
-import com.ubuntuserver.frontend.Login.Widgets_Login;
+import com.ubuntuserver.frontend.Login.Widgets_Login2;
 
 public class MainCoreClass implements ApplicationListener {
 	
@@ -166,7 +166,7 @@ public class MainCoreClass implements ApplicationListener {
 			//resize log-in stuff
 			
 			stage = new Stage();
-			Widgets_Login loginWidgets = new Widgets_Login(this);
+			Widgets_Login2 loginWidgets = new Widgets_Login2(this);
 		}
 		
 	}

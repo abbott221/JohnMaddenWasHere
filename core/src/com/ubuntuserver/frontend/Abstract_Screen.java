@@ -45,7 +45,7 @@ public class Abstract_Screen {
 	
 	
 	
-	MainCoreClass core;
+	public MainCoreClass core;
 	
 	
 	

@@ -22,10 +22,11 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.ubuntuserver.frontend.Logic.Logic_Dates;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
+import com.ubuntuserver.frontend.Abstract_Screen;
 import com.ubuntuserver.frontend.MainCoreClass;
 import com.ubuntuserver.frontend.Model_Graph.ShowMode;
 
-public class Widgets_Login {
+public class Widgets_Login2 extends Abstract_Screen {
 	
 	//Mediator mediator;
 	
@@ -39,36 +40,27 @@ public class Widgets_Login {
 	
 	
 	
-	MainCoreClass core;
+	//MainCoreClass core;
 	
-	public Stage stage;
-	public Skin skin;
+	//public Stage stage;
+	//public Skin skin;
 	
-	//Window window;
-	//TextField userText;
-	
+	Window window;
 	TextField userText;
 	
+	//TextField userText;
 	
 	
-	public Widgets_Login(MainCoreClass coreIn) {
+	
+	public Widgets_Login2(MainCoreClass coreIn) {
 		
-		core = coreIn;
 		
-		stage = core.stage;
-		
-		Gdx.input.setInputProcessor(stage);
-		
-		//mediator = med;
-		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
+		super(coreIn);
 		
 		
 		
-		//=====================================================
 		
-		
-		
-		Window window = new Window("Log In Options", skin);
+		window = new Window("Log In Options", skin);
 		
 		window.defaults().pad(5.0f);
 		
@@ -89,10 +81,13 @@ public class Widgets_Login {
 		
 		
 		
+		
 		userText = new TextField("", skin);
 		
 		userText.setMessageText("Username");
 		window.add(userText).colspan(2);
+		
+		//this.addWidget(userText);
 		
 		
 		
@@ -110,6 +105,8 @@ public class Widgets_Login {
 		
 		window.add(passText).colspan(2);
 		
+		//this.addWidget(passText);
+		
 		
 		
 		
@@ -125,29 +122,13 @@ public class Widgets_Login {
 				
 				actor.getParent().remove();
 				
-				
-				
-				
 				//core.loggedIn = true;
-				
-				
-				
 				
 				//userText.getText();
 				getUser();
 				
 				
-				//treat as resize event
-				
-				//Logic_Stage.constructStage(mediator);
-				
-				
-				
-				
 				core.setupGraphView();
-				
-				
-				
 				
 			}
 		});
@@ -178,8 +159,10 @@ public class Widgets_Login {
 		window.setBounds(300, 300, 350, 250);
 		
 		
-		stage.addActor(window);
 		
+		
+		//stage.addActor(window);
+		this.thisAddWidget(window);
 		
 		
 		
