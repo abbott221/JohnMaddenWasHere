@@ -1,4 +1,4 @@
-package com.ubuntuserver.frontend;
+package com.ubuntuserver.frontend.widgets;
 
 import java.util.ArrayList;
 
@@ -20,8 +20,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
+import com.ubuntuserver.frontend.Mediator;
 import com.ubuntuserver.frontend.Logic.Logic_Dates;
-import com.ubuntuserver.frontend.Model_Graph.ShowMode;
+import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
 
 public class Widgets_Scrollpanes {
 	

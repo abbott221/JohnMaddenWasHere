@@ -1,8 +1,9 @@
-package com.ubuntuserver.frontend;
+package com.ubuntuserver.frontend.model;
 
 import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.Color;
+import com.ubuntuserver.frontend.Mediator;
 
 public class Model_Station {
 	
@@ -24,20 +25,20 @@ public class Model_Station {
 	public ArrayList<AlertLevel> alerts;
 	
 	//check if less than 0 for displaying stuff on graph
-	float yBottom = -1;
-	float yTop = -1;
+	public float yBottom = -1;
+	public float yTop = -1;
 	
 	
 	
 	
-	class AlertLevel {
-		Color lineColor;
+	public class AlertLevel {
+		public Color lineColor;
 		
 		//alert, warning, name, seasonal level, standard level, etc.
 		//display this string in a label next to the line?
-		String purpose;
+		public String purpose;
 		
-		float waterLevel;
+		public float waterLevel;
 	}
 	
 	

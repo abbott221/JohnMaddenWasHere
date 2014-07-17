@@ -3,8 +3,11 @@ package com.ubuntuserver.frontend;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.ubuntuserver.frontend.Model_Graph.ShowMode;
-import com.ubuntuserver.frontend.Model_Station.AlertLevel;
+import com.ubuntuserver.frontend.model.Model_General;
+import com.ubuntuserver.frontend.model.Model_Graph;
+import com.ubuntuserver.frontend.model.Model_Station;
+import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
+import com.ubuntuserver.frontend.model.Model_Station.AlertLevel;
 
 public class Graph_Main {
 	

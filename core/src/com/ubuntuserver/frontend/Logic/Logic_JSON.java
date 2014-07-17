@@ -20,7 +20,7 @@ import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.ubuntuserver.frontend.Graph_Main;
 import com.ubuntuserver.frontend.Mediator;
-import com.ubuntuserver.frontend.Model_Station;
+import com.ubuntuserver.frontend.model.Model_Station;
 
 
 /**

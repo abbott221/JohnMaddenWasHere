@@ -6,8 +6,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.ubuntuserver.frontend.Graph_Main;
 import com.ubuntuserver.frontend.Mediator;
-import com.ubuntuserver.frontend.Model_Portion.Results;
-import com.ubuntuserver.frontend.Model_WidgetSizes;
+import com.ubuntuserver.frontend.model.Model_WidgetSizes;
+import com.ubuntuserver.frontend.model.Model_Portion.Results;
 
 public class Logic_GraphSizing {
 	

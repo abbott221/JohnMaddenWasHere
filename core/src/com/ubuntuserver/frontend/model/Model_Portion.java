@@ -1,8 +1,9 @@
-package com.ubuntuserver.frontend;
+package com.ubuntuserver.frontend.model;
 
 import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.Color;
+import com.ubuntuserver.frontend.Mediator;
 
 public class Model_Portion {
 	

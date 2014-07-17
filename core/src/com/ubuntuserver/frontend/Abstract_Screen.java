@@ -23,7 +23,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.ubuntuserver.frontend.Logic.Logic_Dates;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
 import com.ubuntuserver.frontend.MainCoreClass;
-import com.ubuntuserver.frontend.Model_Graph.ShowMode;
+import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
 
 //Or name is "Parent_Screen" and subclass it, instead of implementing it
 public class Abstract_Screen {

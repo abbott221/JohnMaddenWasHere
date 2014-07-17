@@ -4,12 +4,15 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
@@ -24,7 +27,7 @@ import com.ubuntuserver.frontend.Logic.Logic_Dates;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
 import com.ubuntuserver.frontend.Abstract_Screen;
 import com.ubuntuserver.frontend.MainCoreClass;
-import com.ubuntuserver.frontend.Model_Graph.ShowMode;
+import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
 
 public class Screen_Landing extends Abstract_Screen {
 	
@@ -34,6 +37,13 @@ public class Screen_Landing extends Abstract_Screen {
 	
 	TextButton DataReporter;
 	TextButton EventCreator;
+	
+	
+	
+	public Texture texture1;
+	public TextureRegion image;
+	public Image imageActor;
+	
 	
 	
 	public Screen_Landing(MainCoreClass coreIn) {
@@ -48,7 +58,7 @@ public class Screen_Landing extends Abstract_Screen {
 		
 		DataReporter = new TextButton("Data Reporter", skin);
 		
-		DataReporter.setBounds(300, 300, 100, 20);
+		DataReporter.setBounds(450, 200, 100, 20);
 		
 		DataReporter.addListener(new ChangeListener() {
 			@Override
@@ -66,7 +76,7 @@ public class Screen_Landing extends Abstract_Screen {
 		
 		EventCreator = new TextButton("Event Creator", skin);
 		
-		EventCreator.setBounds(600, 300, 100, 20);
+		EventCreator.setBounds(650, 200, 100, 20);
 		
 		EventCreator.addListener(new ChangeListener() {
 			@Override
@@ -76,6 +86,19 @@ public class Screen_Landing extends Abstract_Screen {
 		});
 		this.thisAddWidget(EventCreator);
 		
+		
+		
+		
+		
+		
+		texture1 = new Texture(Gdx.files.internal("kitten.jpg"));
+		image = new TextureRegion(texture1);
+		//image.setRegion(100, 100, 100, 100);
+		imageActor = new Image(image);
+		imageActor.setBounds(400, 250, 400, 400);
+		
+		//stage.addActor(imageActor);
+		this.thisAddWidget(imageActor);
 		
 		
 		

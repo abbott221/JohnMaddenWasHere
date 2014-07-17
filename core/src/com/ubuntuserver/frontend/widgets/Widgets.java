@@ -1,4 +1,4 @@
-package com.ubuntuserver.frontend;
+package com.ubuntuserver.frontend.widgets;
 
 import java.util.ArrayList;
 
@@ -23,12 +23,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
+import com.ubuntuserver.frontend.Graph_Main;
+import com.ubuntuserver.frontend.Mediator;
 import com.ubuntuserver.frontend.ListenerEvents.Logic_EventCall;
 import com.ubuntuserver.frontend.Logic.Logic_DateStrings;
 import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Logic.Logic_Dates;
-import com.ubuntuserver.frontend.Model_Graph.ShowMode;
-import com.ubuntuserver.frontend.Model_Portion.Results;
+import com.ubuntuserver.frontend.model.Model_WidgetSizes;
+import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
+import com.ubuntuserver.frontend.model.Model_Portion.Results;
 
 public class Widgets {
 	

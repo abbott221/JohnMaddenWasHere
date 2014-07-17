@@ -11,7 +11,7 @@ import com.ubuntuserver.frontend.Graph_Main;
 import com.ubuntuserver.frontend.Mediator;
 import com.ubuntuserver.frontend.Logic.Logic_DateStrings;
 import com.ubuntuserver.frontend.Logic.Logic_Dates;
-import com.ubuntuserver.frontend.Model_Graph.ShowMode;
+import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
 
 public class Logic_EventCall {
 	

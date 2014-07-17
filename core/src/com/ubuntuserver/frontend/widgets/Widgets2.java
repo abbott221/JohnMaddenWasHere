@@ -1,4 +1,4 @@
-package com.ubuntuserver.frontend;
+package com.ubuntuserver.frontend.widgets;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,13 +21,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
+import com.ubuntuserver.frontend.Mediator;
 import com.ubuntuserver.frontend.Logic.Logic_DateStrings;
 import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Logic.Logic_JSON;
 import com.ubuntuserver.frontend.Logic.Logic_JSON2;
 import com.ubuntuserver.frontend.Logic.Logic_JSON3;
 import com.ubuntuserver.frontend.Logic.Logic_JSON3.DataSource;
-import com.ubuntuserver.frontend.Model_Graph.ShowMode;
+import com.ubuntuserver.frontend.model.Model_Station;
+import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
 
 public class Widgets2 {
 	

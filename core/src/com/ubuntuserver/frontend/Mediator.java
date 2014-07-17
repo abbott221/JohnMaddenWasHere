@@ -3,6 +3,11 @@ package com.ubuntuserver.frontend;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.ubuntuserver.frontend.model.Model_General;
+import com.ubuntuserver.frontend.widgets.Widgets;
+import com.ubuntuserver.frontend.widgets.Widgets2;
+import com.ubuntuserver.frontend.widgets.Widgets_ScrollTable;
+import com.ubuntuserver.frontend.widgets.Widgets_Scrollpanes;
 
 public class Mediator {
 	
