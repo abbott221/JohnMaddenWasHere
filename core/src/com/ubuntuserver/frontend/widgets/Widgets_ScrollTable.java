@@ -113,8 +113,8 @@ public class Widgets_ScrollTable {
 		
 		
 		//System.out.println("End: " + theGraph.dataModel.dataClipEnd);
-		System.out.println( "End: " + theGraph.dataModel.getClipEnd() );
-		System.out.println("Start: " + theGraph.dataModel.dataClipStart);
+		//System.out.println( "End: " + theGraph.dataModel.getClipEnd() );
+		//System.out.println("Start: " + theGraph.dataModel.dataClipStart);
 		
 		
 		//int arraySize = theGraph.dataModel.dataClipEnd - theGraph.dataModel.dataClipStart;
@@ -256,32 +256,6 @@ public class Widgets_ScrollTable {
 		
 		//if (h > 540 && w > 960) {
 		if (h > 100 && w > 100) {
-			
-			int spaceWidth = mediator.displayWidth - 50;
-			
-			int spaceHeight = mediator.displayHeight - 90; //40 + 25 * 2 = 90
-			if (mediator.model.scrollpanesView == true) {
-				spaceHeight -= 145;
-			}
-			//temporary space for station names
-			else {
-				spaceHeight -= 65;
-			}
-			
-			
-			int sideWidth = (spaceWidth - 25 * 2) / 3; //thirds
-			
-			int graphWidth = (sideWidth - 10) / 2;
-			
-			int graphW = 2*sideWidth + 25; //thirds
-			int graphH = spaceHeight; //thirds
-			
-			
-			//tablePane.setBounds(25, 25, graphW, graphH);
-			
-			tablePane.setBounds(25, 25, sideWidth, graphH);
-			
-			//tablePane.setBounds(25, 25, 300, graphH);
 			
 			
 			

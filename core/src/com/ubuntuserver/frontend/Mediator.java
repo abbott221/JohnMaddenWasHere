@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.ubuntuserver.frontend.model.Model_General;
 import com.ubuntuserver.frontend.widgets.Widgets;
 import com.ubuntuserver.frontend.widgets.Widgets2;
+import com.ubuntuserver.frontend.widgets.Widgets_Labels;
 import com.ubuntuserver.frontend.widgets.Widgets_ScrollTable;
 import com.ubuntuserver.frontend.widgets.Widgets_Scrollpanes;
 
@@ -31,6 +32,7 @@ public class Mediator {
 	public Widgets2 widgets2;
 	public Widgets_Scrollpanes scrollpanes;
 	public Widgets_ScrollTable tablepane;
+	public Widgets_Labels labels;
 	
 	
 	
@@ -61,6 +63,7 @@ public class Mediator {
 		widgets2 = new Widgets2(this);
 		scrollpanes = new Widgets_Scrollpanes(this);
 		tablepane = new Widgets_ScrollTable(this);
+		labels = new Widgets_Labels(this);
 		
 		
 		model.fillModel();

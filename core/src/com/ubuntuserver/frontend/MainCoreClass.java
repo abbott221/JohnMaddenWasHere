@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
+import com.ubuntuserver.frontend.ListenerEvents.Logic_EventCall;
 import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Logic.Logic_Polling;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
@@ -75,6 +76,8 @@ public class MainCoreClass implements ApplicationListener {
 		Logic_Stage.constructStage(mediator);
 		
 		this.resize(this.showWidth, this.showHeight);
+		
+		Logic_EventCall.dateReporterOnCreate(mediator);
 	}
 	
 
@@ -164,6 +167,7 @@ public class MainCoreClass implements ApplicationListener {
 			mediator.widgets2.adjustBox();
 			mediator.scrollpanes.adjustBox();
 			mediator.tablepane.adjustBox();
+			mediator.labels.adjustBox();
 			
 			Logic_GraphSizing.setSizeByCount(mediator, mediator.model.graphs);
 			

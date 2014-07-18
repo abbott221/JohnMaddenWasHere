@@ -66,6 +66,14 @@ public class Logic_EventCall {
 	}
 	
 	
+	
+	public static void dateReporterOnCreate(Mediator mediator) {
+		//System.out.println("On Create Event");
+		
+		Logic_DateStrings.determineDates(mediator);
+	}
+	
+	
 }
 
 
