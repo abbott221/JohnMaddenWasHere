@@ -75,7 +75,7 @@ public class Logic_Stage {
 		
 		
 		newStage.addActor(mediator.labels.temp);
-		
+		newStage.addActor(mediator.labels.imageActor);
 	}
 	
 	
