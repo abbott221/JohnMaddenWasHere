@@ -282,11 +282,11 @@ public class Widgets {
 		
 		
 		
-		report = new TextArea( "Report goes here", skin );
+		mediator.model.report = new TextArea( "Report goes here", skin );
 		//report.setBounds(100, 100, 100, 100);
 		//stage.addActor(report);
 		
-		reportPane = new ScrollPane(report, skin);
+		reportPane = new ScrollPane(mediator.model.report, skin);
 		reportPane.setBounds(100, 100, 100, 100);
 		stage.addActor(reportPane);
 		

@@ -1,5 +1,6 @@
 package com.ubuntuserver.frontend.Logic;
 
+import java.awt.TextArea;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -8,10 +9,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.ubuntuserver.frontend.Graph_Main;
 import com.ubuntuserver.frontend.Mediator;
 import com.ubuntuserver.frontend.Model_Graph.ShowMode;
+import com.ubuntuserver.frontend.Report_Generator;
 
 public class Logic_Dates {
 	
-	
+	static Report_Generator report = new Report_Generator();
 	
 	/*
 	public static void changeEvent(Mediator med, SelectBox changedBox) {
@@ -74,10 +76,10 @@ public class Logic_Dates {
 		
 		Graph_Main activeGraph = mediator.model.selectedGraph;
 		
-		
 		//====================== Reused code ======================
 		
 		int stationIndex = stationBox.getSelectedIndex();
+		
 		
 		//Model_Station newStation = mediator.model.stations.get(stationIndex);
 		//activeGraph.dataModel.myStation = newStation;
@@ -87,7 +89,7 @@ public class Logic_Dates {
 		
 		
 		setDisplayData(activeGraph);
-		
+		report.updateReport(mediator, stationIndex);
 	}
 	
 	

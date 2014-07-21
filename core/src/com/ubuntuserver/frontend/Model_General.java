@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
@@ -28,6 +29,8 @@ public class Model_General {
 	public Graph_Main selectedGraph;
 	
 	public Graph_Main bigGraph;
+	
+	public TextArea report;
 	
 	
 	
@@ -129,6 +132,7 @@ public class Model_General {
 		
 		selectedGraph = null;
 		bigGraph = null;
+		report = null;
 		
 	}
 	
@@ -277,8 +281,6 @@ public class Model_General {
 		selectedGraph = tempGraph1;
 		
 		bigGraph = tempGraph1;
-		
-		
 		
 		
 		//Logic_JSON.parseJSONfromString(mediator, this.bigJSON);
