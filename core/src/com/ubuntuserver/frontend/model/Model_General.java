@@ -65,12 +65,22 @@ public class Model_General {
 	
 	
 	
+	public Model_Maps mapsModel;
+	
+	
+	
 	
 	public Model_General(Mediator med) {
 		
 		mediator = med;
 		
+		
+		
 		widgetSizes = new Model_WidgetSizes(mediator);
+		
+		this.mapsModel = new Model_Maps(mediator);
+		
+		
 		
 		
 		gaugeTimes = new ArrayList<String>();
