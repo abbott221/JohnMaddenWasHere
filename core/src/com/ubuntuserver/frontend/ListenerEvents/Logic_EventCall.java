@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.ubuntuserver.frontend.Graph_Main;
 import com.ubuntuserver.frontend.Mediator;
+import com.ubuntuserver.frontend.Report_Generator;
 import com.ubuntuserver.frontend.Logic.Logic_DateStrings;
 import com.ubuntuserver.frontend.Logic.Logic_Dates;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
@@ -24,7 +25,7 @@ public class Logic_EventCall {
 	
 	
 	public static void startDateEvent(Mediator mediator, SelectBox startDateBox) {
-		System.out.println("Start Date Change");
+		//System.out.println("Start Date Change");
 		
 		Logic_DateStrings.startDateChange(mediator, startDateBox);
 		
@@ -33,7 +34,7 @@ public class Logic_EventCall {
 	
 	
 	public static void endDateEvent(Mediator mediator, SelectBox endDateBox) {
-		System.out.println("End Date Change");
+		//System.out.println("End Date Change");
 		
 		Logic_DateStrings.endDateChange(mediator, endDateBox);
 		
@@ -42,10 +43,11 @@ public class Logic_EventCall {
 	
 	
 	public static void stationEvent(Mediator mediator, SelectBox stationBox) {
-		System.out.println("Station Change");
+		//System.out.println("Station Change");
 		
 		Logic_Dates.stationChange(mediator, stationBox);
 		
+		//mediator.model.mapsModel.setMap(0);
 	}
 	
 	
@@ -59,7 +61,7 @@ public class Logic_EventCall {
 	 * probably unnecessary for TextButtons)
 	 */
 	public static void exportEvent(Mediator mediator, TextButton exportButton) {
-		System.out.println("Export Event");
+		//System.out.println("Export Event");
 		
 		//
 		
@@ -71,6 +73,13 @@ public class Logic_EventCall {
 		//System.out.println("On Create Event");
 		
 		Logic_DateStrings.determineDates(mediator);
+		
+		
+		Report_Generator report = new Report_Generator();
+		report.updateReport(mediator, 0);
+		
+		
+		mediator.model.mapsModel.setMap(0);
 	}
 	
 	

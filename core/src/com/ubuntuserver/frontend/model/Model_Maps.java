@@ -100,6 +100,16 @@ public class Model_Maps {
 	
 	public void setMap(int position) {
 		
+		mediator.widgets.imageActor.remove();
+		
+		mediator.widgets.imageActor = new Image( maps.get(position) );
+		mediator.widgets.imageActor.setBounds(100, 100, 100, 100);
+		mediator.widgets.stage.addActor(mediator.widgets.imageActor);
+		
+		mediator.core.resize(mediator.core.showWidth, mediator.core.showHeight);
+		
+		
+		//imageActor.setBounds(100, 100, 100, 100);
 	}
 	
 	

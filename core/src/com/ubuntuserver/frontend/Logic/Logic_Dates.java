@@ -90,6 +90,14 @@ public class Logic_Dates {
 		
 		setDisplayData(activeGraph);
 		report.updateReport(mediator, stationIndex);
+		
+		
+		
+		
+		
+		
+		mediator.model.mapsModel.setMap(stationIndex);
+		
 	}
 	
 	

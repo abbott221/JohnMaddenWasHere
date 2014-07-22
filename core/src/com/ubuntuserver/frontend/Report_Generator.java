@@ -1,6 +1,7 @@
 package com.ubuntuserver.frontend;
 
 import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
+import com.ubuntuserver.frontend.model.Model_Station;
 
 public class Report_Generator {
 	
