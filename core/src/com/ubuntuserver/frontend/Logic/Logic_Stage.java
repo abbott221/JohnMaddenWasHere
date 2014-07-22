@@ -74,8 +74,12 @@ public class Logic_Stage {
 		
 		
 		
-		newStage.addActor(mediator.labels.temp);
-		newStage.addActor(mediator.labels.imageActor);
+		//newStage.addActor(mediator.labels.temp);
+		newStage.addActor(mediator.labels.dateImage);
+		newStage.addActor(mediator.labels.waterLevelImage);
+		
+		
+		
 	}
 	
 	

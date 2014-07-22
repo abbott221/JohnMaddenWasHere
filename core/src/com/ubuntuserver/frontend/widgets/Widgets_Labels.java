@@ -36,12 +36,13 @@ public class Widgets_Labels {
 	Mediator mediator;
 	
 	
-	public Label temp;
+	//public Label temp;
 	
 	
 	//public Texture texture;
 	//public TextureRegion image;
-	public Image imageActor;
+	public Image dateImage;
+	public Image waterLevelImage;
 	
 	
 	public Widgets_Labels(Mediator med) {
@@ -49,21 +50,29 @@ public class Widgets_Labels {
 		mediator = med;
 		
 		
-		temp = new Label("Place Holder", med.widgets.skin);
-		temp.setBounds(100, 100, 100, 100);
+		//temp = new Label("Place Holder", med.widgets.skin);
+		//temp.setBounds(100, 100, 100, 100);
 		
 		
 		
 		
 		
 		
-		Texture texture = new Texture(Gdx.files.internal("labels2date.png"));
-		TextureRegion image = new TextureRegion(texture);
+		Texture texture1 = new Texture(Gdx.files.internal("labels2date.png"));
+		TextureRegion image1 = new TextureRegion(texture1);
 		//image.setRegion(100, 100, 100, 100);
-		imageActor = new Image(image);
-		imageActor.setBounds(100, 100, 100, 100);
+		dateImage = new Image(image1);
+		dateImage.setBounds(100, 100, 73, 18);
 		//stage.addActor(imageActor);
 		
+		
+		
+		Texture texture2 = new Texture(Gdx.files.internal("labels2waterlevel.png"));
+		TextureRegion image2 = new TextureRegion(texture2);
+		//image.setRegion(100, 100, 100, 100);
+		waterLevelImage = new Image(image2);
+		waterLevelImage.setBounds(200, 100, 123, 20);
+		waterLevelImage.rotateBy(90.0f);
 		
 		
 	}
@@ -96,16 +105,24 @@ public class Widgets_Labels {
 			
 			
 			//float x = graph.left + 20;
-			float x = bounds.left + 20;
+			float x = bounds.left;
 			
 			//float y = graph.bottom + 20;
-			float y = bounds.bottom + 20;
+			float y = bounds.bottom;
 			
 			
 			
 			
 			//temp.setBounds(x, y, 100, 100);
-			temp.setBounds(x, y, 0, 0);
+			//temp.setBounds(x + 20, y + 20, 0, 0);
+			
+			
+			
+			
+			
+			dateImage.setPosition(x + 240, y + 10);
+			waterLevelImage.setPosition( (x+20) + 10, y + 80);
+			
 			
 			
 		}
