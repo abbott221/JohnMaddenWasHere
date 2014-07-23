@@ -13,6 +13,7 @@ import com.ubuntuserver.frontend.Report_Generator;
 import com.ubuntuserver.frontend.Logic.Logic_DateStrings;
 import com.ubuntuserver.frontend.Logic.Logic_Dates;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
+import com.ubuntuserver.frontend.model.Model_Station;
 
 public class Logic_EventCall {
 	
@@ -29,6 +30,7 @@ public class Logic_EventCall {
 		
 		Logic_DateStrings.startDateChange(mediator, startDateBox);
 		
+		mediator.tablepane.updateTable();
 	}
 	
 	
@@ -38,6 +40,7 @@ public class Logic_EventCall {
 		
 		Logic_DateStrings.endDateChange(mediator, endDateBox);
 		
+		mediator.tablepane.updateTable();
 	}
 	
 	
@@ -48,6 +51,23 @@ public class Logic_EventCall {
 		Logic_Dates.stationChange(mediator, stationBox);
 		
 		//mediator.model.mapsModel.setMap(0);
+		
+		mediator.tablepane.updateTable();
+		
+		
+		
+		/*
+		int index = 3;
+		Graph_Main selectedGraph = mediator.model.selectedGraph;
+		//mediator.model.stations.get(index)
+		ArrayList<Model_Station> stations = mediator.model.stations;
+		for (int i = 0; i < stations.size(); i++) {
+			if (stations.get(i).equals(selectedGraph.dataModel.myStation)) {
+				System.out.println(i);
+				index = i;
+			}
+		}
+		/**/
 	}
 	
 	
@@ -80,6 +100,42 @@ public class Logic_EventCall {
 		
 		
 		mediator.model.mapsModel.setMap(0);
+		
+		
+		mediator.tablepane.updateTable();
+	}
+	
+	
+	
+	public static void thumbnailEvent(Mediator mediator) {
+		//System.out.println("On Create Event");
+		
+		Logic_DateStrings.determineDates(mediator);
+		
+		
+		Report_Generator report = new Report_Generator();
+		report.updateReport(mediator, 0);
+		
+		
+		
+		
+		//MOVE THIS OUT LATER
+		int index = 3;
+		Graph_Main selectedGraph = mediator.model.selectedGraph;
+		//mediator.model.stations.get(index)
+		ArrayList<Model_Station> stations = mediator.model.stations;
+		for (int i = 0; i < stations.size(); i++) {
+			if (stations.get(i).equals(selectedGraph.dataModel.myStation)) {
+				//System.out.println(i);
+				index = i;
+			}
+		}
+		
+		
+		mediator.model.mapsModel.setMap(index);
+		
+		
+		mediator.tablepane.updateTable();
 	}
 	
 	

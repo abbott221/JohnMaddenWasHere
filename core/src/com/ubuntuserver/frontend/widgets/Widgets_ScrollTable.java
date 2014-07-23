@@ -281,6 +281,114 @@ public class Widgets_ScrollTable {
 	}
 	
 	
+	
+	
+	public void updateTable() {
+		
+		table.remove();
+		
+		table = new Table();
+		
+		//mediator.widgets.imageActor.setBounds(100, 100, 100, 100);
+		//mediator.widgets.stage.addActor(mediator.widgets.imageActor);
+		
+		tablePane = new ScrollPane(table, mediator.widgets.skin);
+		tablePane.setBounds(100, 100, 300, 300);
+		
+		dateList = new List( mediator.widgets.skin );
+		waterList = new List( mediator.widgets.skin );
+		dateWaterList = new List( mediator.widgets.skin );
+		
+		
+		
+		
+		Graph_Main theGraph = mediator.model.bigGraph;
+		Model_Station theStation = theGraph.dataModel.myStation;
+		
+		theGraph = mediator.model.selectedGraph;
+		theStation = theGraph.dataModel.myStation;
+		
+		
+		
+		
+		int arraySize = theGraph.dataModel.getClipEnd() - theGraph.dataModel.dataClipStart;
+		
+		Label temp = new Label("Water Level Data", mediator.widgets.skin);
+		table.add(temp).expandX().fillX().colspan(2);
+		table.row();
+		
+		Object[] dateEntries = new Object[arraySize];
+		Object[] waterEntries = new Object[arraySize];
+		Object[] dateWaterEntries = new Object[arraySize];
+		
+		
+		for (int i = 0; i < arraySize; i++) {
+			
+			String dateStamp = "";
+			
+			
+			if (mediator.model.multiStamps = false) {
+				dateStamp = mediator.model.gaugeTimes.get(theGraph.dataModel.dataClipStart + i);
+			}
+			else {
+				dateStamp = theStation.records.get(theGraph.dataModel.dataClipStart + i).timeStamp;
+			}
+			
+			dateEntries[i] = dateStamp;
+			
+			
+			
+			//float data = theStation.records.get(i).waterLevel;
+			float data = theStation.records.get(theGraph.dataModel.dataClipStart + i).waterLevel;
+			//does previous line need if-else statement for multiStamps?
+			
+			waterEntries[i] = Float.toString(data);
+			//waterEntries[i] = Float.toString(theGraph.dataModel.dataClipStart + data);
+			
+			
+			
+			String dateWaterStr = dateStamp + "      " + Float.toString(data);
+			dateWaterEntries[i] = dateWaterStr;
+			
+		}
+		
+		
+		
+		dateList.setItems(dateEntries);
+		dateList.getSelection().setMultiple(true);
+		dateList.addListener(new ChangeListener() {
+			public void changed (ChangeEvent event, Actor actor) {
+				waterList.setSelectedIndex( dateList.getSelectedIndex() );
+			}
+		});
+		
+		waterList.setItems(waterEntries);
+		waterList.getSelection().setMultiple(true);
+		waterList.addListener(new ChangeListener() {
+			public void changed (ChangeEvent event, Actor actor) {
+				//Logic_Dates.endDateChange(mediator, endDateList);
+			}
+		});
+		
+		dateWaterList.setItems(dateWaterEntries);
+		dateWaterList.getSelection().setMultiple(true);
+		dateWaterList.addListener(new ChangeListener() {
+			public void changed (ChangeEvent event, Actor actor) {
+				//Logic_Dates.endDateChange(mediator, endDateList);
+			}
+		});
+		
+		table.add(dateList);
+		table.add(waterList);
+		
+		
+		
+		mediator.core.resize(mediator.core.showWidth, mediator.core.showHeight);
+	}
+	
+	
+	
+	
 }
 
 

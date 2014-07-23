@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.ubuntuserver.frontend.Graph_Main;
 import com.ubuntuserver.frontend.Mediator;
+import com.ubuntuserver.frontend.ListenerEvents.Logic_EventCall;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
 
 public class Logic_Polling {
@@ -111,6 +112,9 @@ public class Logic_Polling {
 				if (mediator.model.thumbnailsView == true)
 				{
 					mediator.model.bigGraph.dataModel = potentialGraph.dataModel;
+					
+					//System.out.println("bkjdvsjsd");
+					Logic_EventCall.thumbnailEvent(mediator);
 				}
 				
 				
