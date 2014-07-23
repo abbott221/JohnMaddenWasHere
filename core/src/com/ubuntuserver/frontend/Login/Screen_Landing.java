@@ -91,7 +91,9 @@ public class Screen_Landing extends Abstract_Screen {
 		
 		
 		
-		texture1 = new Texture(Gdx.files.internal("kitten.jpg"));
+		//texture1 = new Texture(Gdx.files.internal("kitten.jpg"));
+		texture1 = new Texture(Gdx.files.internal("Flood_images.jpg"));
+		
 		image = new TextureRegion(texture1);
 		//image.setRegion(100, 100, 100, 100);
 		imageActor = new Image(image);
