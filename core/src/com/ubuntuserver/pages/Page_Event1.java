@@ -63,9 +63,7 @@ public class Page_Event1 extends Abstract_Screen {
 		DataReporter.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				
-				core.setupGraphView();
-				
+				//
 			}
 		});
 		this.thisAddWidget(DataReporter);

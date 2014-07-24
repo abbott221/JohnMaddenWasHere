@@ -81,7 +81,9 @@ public class Screen_Landing extends Abstract_Screen {
 		EventCreator.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				//
+				core.currentScreen.thisRemoveScreen();
+				core.currentScreen = null;
+				Page_Event1  landingScreen = new Page_Event1(core);
 			}
 		});
 		this.thisAddWidget(EventCreator);
