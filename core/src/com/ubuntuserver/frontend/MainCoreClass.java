@@ -9,6 +9,7 @@ import com.ubuntuserver.frontend.ListenerEvents.Logic_EventCall;
 import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Logic.Logic_Polling;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
+import com.ubuntuserver.frontend.model.Model_Core;
 import com.ubuntuserver.pages.Page_Event1;
 import com.ubuntuserver.pages.Screen_Landing;
 import com.ubuntuserver.pages.Widgets_Login2;
@@ -31,9 +32,15 @@ public class MainCoreClass implements ApplicationListener {
 	public Abstract_Screen currentScreen;
 	
 	
+	public Model_Core modelCore;
+	
 	
 	@Override
 	public void create () {
+		
+		modelCore = new Model_Core(this);
+		
+		
 		
 		stage = new Stage();
 		
@@ -59,6 +66,8 @@ public class MainCoreClass implements ApplicationListener {
 		Logic_Stage.constructStage(mediator);
 		/**/
 		
+		
+		modelCore.fillModel();
 	}
 	
 	

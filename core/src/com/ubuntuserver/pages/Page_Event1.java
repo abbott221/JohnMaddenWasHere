@@ -35,14 +35,9 @@ public class Page_Event1 extends Abstract_Screen {
 	//Window window;
 	//TextField userText;
 	
-	TextButton DataReporter;
-	TextButton EventCreator;
+	TextButton thing1;
+	TextButton thing2;
 	
-	
-	
-	public Texture texture1;
-	public TextureRegion image;
-	public Image imageActor;
 	
 	
 	
@@ -56,59 +51,40 @@ public class Page_Event1 extends Abstract_Screen {
 		
 		
 		
-		DataReporter = new TextButton("Thing 1", skin);
+		thing1 = new TextButton("Thing 1", skin);
 		
-		DataReporter.setBounds(450, 200, 100, 20);
+		thing1.setBounds(100, 400, 100, 20);
 		
-		DataReporter.addListener(new ChangeListener() {
+		thing1.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				//
 			}
 		});
-		this.thisAddWidget(DataReporter);
+		this.thisAddWidget(thing1);
 		
 		
 		
 		
 		
-		EventCreator = new TextButton("Thing 2", skin);
+		thing2 = new TextButton("Thing 2", skin);
 		
-		EventCreator.setBounds(650, 200, 100, 20);
+		thing2.setBounds(100, 200, 100, 20);
 		
-		EventCreator.addListener(new ChangeListener() {
+		thing2.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				//
 			}
 		});
-		this.thisAddWidget(EventCreator);
+		this.thisAddWidget(thing2);
 		
 		
 		
-		
-		
-		
-		//texture1 = new Texture(Gdx.files.internal("kitten.jpg"));
-		texture1 = new Texture(Gdx.files.internal("Flood_images.jpg"));
-		
-		image = new TextureRegion(texture1);
-		//image.setRegion(100, 100, 100, 100);
-		imageActor = new Image(image);
-		imageActor.setBounds(400, 250, 400, 400);
-		
-		//stage.addActor(imageActor);
-		this.thisAddWidget(imageActor);
 		
 		
 		
 	}
-	
-	/*
-	public String getUser() {
-		return userText.getText();
-	}
-	/**/
 	
 	
 }
