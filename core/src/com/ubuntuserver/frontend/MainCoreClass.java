@@ -9,8 +9,8 @@ import com.ubuntuserver.frontend.ListenerEvents.Logic_EventCall;
 import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Logic.Logic_Polling;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
-import com.ubuntuserver.frontend.Login.Screen_Landing;
-import com.ubuntuserver.frontend.Login.Widgets_Login2;
+import com.ubuntuserver.pages.Screen_Landing;
+import com.ubuntuserver.pages.Widgets_Login2;
 
 public class MainCoreClass implements ApplicationListener {
 	

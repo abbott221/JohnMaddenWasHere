@@ -12,8 +12,8 @@ import com.ubuntuserver.frontend.Mediator;
 import com.ubuntuserver.frontend.Report_Generator;
 import com.ubuntuserver.frontend.Logic.Logic_DateStrings;
 import com.ubuntuserver.frontend.Logic.Logic_Dates;
-import com.ubuntuserver.frontend.Logic.Logic_JSON3;
-import com.ubuntuserver.frontend.Logic.Logic_JSON3.DataSource;
+import com.ubuntuserver.frontend.Networking.Logic_JSON3;
+import com.ubuntuserver.frontend.Networking.Logic_JSON3.DataSource;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
 import com.ubuntuserver.frontend.model.Model_Station;
 

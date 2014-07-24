@@ -1,4 +1,4 @@
-package com.ubuntuserver.frontend.Logic;
+package com.ubuntuserver.frontend.Networking;
 
 import java.io.BufferedReader;
 import java.io.IOException;

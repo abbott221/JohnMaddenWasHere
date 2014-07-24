@@ -1,4 +1,4 @@
-package com.ubuntuserver.frontend.Login;
+package com.ubuntuserver.pages;
 
 import java.util.ArrayList;
 

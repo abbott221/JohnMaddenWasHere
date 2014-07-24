@@ -1,4 +1,4 @@
-package com.ubuntuserver.frontend.Login;
+package com.ubuntuserver.pages;
 
 import java.util.ArrayList;
 
@@ -29,7 +29,7 @@ import com.ubuntuserver.frontend.Abstract_Screen;
 import com.ubuntuserver.frontend.MainCoreClass;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
 
-public class Screen_Landing extends Abstract_Screen {
+public class Page_Event1 extends Abstract_Screen {
 	
 	
 	//Window window;
@@ -46,7 +46,7 @@ public class Screen_Landing extends Abstract_Screen {
 	
 	
 	
-	public Screen_Landing(MainCoreClass coreIn) {
+	public Page_Event1(MainCoreClass coreIn) {
 		
 		
 		super(coreIn);
@@ -56,7 +56,7 @@ public class Screen_Landing extends Abstract_Screen {
 		
 		
 		
-		DataReporter = new TextButton("Data Reporter", skin);
+		DataReporter = new TextButton("Thing 1", skin);
 		
 		DataReporter.setBounds(450, 200, 100, 20);
 		
@@ -74,7 +74,7 @@ public class Screen_Landing extends Abstract_Screen {
 		
 		
 		
-		EventCreator = new TextButton("Event Creator", skin);
+		EventCreator = new TextButton("Thing 2", skin);
 		
 		EventCreator.setBounds(650, 200, 100, 20);
 		
