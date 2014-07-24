@@ -61,8 +61,8 @@ public class Model_WidgetSizes {
 		
 		portion1.setAbsUsageLeft(1 * PARS_MARGNS);
 		portion1.setAbsTotalLeft(3 * PARS_MARGNS);
-		portion1.setAbsUsageBottom(2 * PARS_MARGNS);
-		portion1.setAbsTotalBottom(3 * PARS_MARGNS);
+		portion1.setAbsUsageBottom(2 * PARS_MARGNS + 45);
+		portion1.setAbsTotalBottom(3 * PARS_MARGNS + 45);
 		
 		portions.add(portion1);
 		
@@ -80,8 +80,8 @@ public class Model_WidgetSizes {
 		
 		portion2.setAbsUsageLeft(1 * PARS_MARGNS);
 		portion2.setAbsTotalLeft(3 * PARS_MARGNS);
-		portion2.setAbsUsageBottom(1 * PARS_MARGNS);
-		portion2.setAbsTotalBottom(3 * PARS_MARGNS);
+		portion2.setAbsUsageBottom(1 * PARS_MARGNS + 45);
+		portion2.setAbsTotalBottom(3 * PARS_MARGNS + 45);
 		
 		portions.add(portion2);
 		

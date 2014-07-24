@@ -70,6 +70,9 @@ public class Logic_Stage {
 		newStage.addActor(mediator.widgets.exportButton);
 		newStage.addActor(mediator.widgets.updateButton);
 		
+		newStage.addActor(mediator.widgets.landingButton);
+		
+		
 		
 		
 		//newStage.addActor(mediator.widgets.thumbnails);

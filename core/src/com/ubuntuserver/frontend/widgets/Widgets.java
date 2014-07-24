@@ -34,6 +34,8 @@ import com.ubuntuserver.frontend.Networking.Logic_JSON3.DataSource;
 import com.ubuntuserver.frontend.model.Model_WidgetSizes;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
 import com.ubuntuserver.frontend.model.Model_Portion.Results;
+import com.ubuntuserver.pages.Page_Event1;
+import com.ubuntuserver.pages.Screen_Landing;
 
 public class Widgets {
 	
@@ -61,6 +63,8 @@ public class Widgets {
 	
 	public TextButton exportButton;
 	public TextButton updateButton;
+	
+	public TextButton landingButton;
 	
 	
 	
@@ -330,6 +334,26 @@ public class Widgets {
 		
 		
 		
+		landingButton = new TextButton("Landing Page", skin);
+		//updateButton.setBounds(850, 450, 100, 20);
+		landingButton.setBounds(200, 25, 150, 20);
+		
+		landingButton.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				
+				mediator.core.currentScreen = null;
+				Screen_Landing  landingScreen = new Screen_Landing(mediator.core);
+				
+				mediator.core.resize(mediator.core.showWidth, mediator.core.showHeight);
+			}
+		});
+		
+		stage.addActor(landingButton);
+		
+		
+		
+		
 		mediator.model.report = new TextArea( "Report goes here", skin );
 		//report.setBounds(100, 100, 100, 100);
 		//stage.addActor(report);
@@ -443,6 +467,10 @@ public class Widgets {
 			
 			//updateButton.setBounds(850, boxBottom - 40, 100, 20);
 			updateButton.setBounds(880, boxBottom - 40, buttonWidth, 20);
+			
+			
+			
+			landingButton.setBounds(200, 25, 150, 20);
 			
 			
 			
