@@ -41,8 +41,8 @@ public class Logic_GraphSizing {
 		//40 + 25 * 2 = 90
 		
 		
-		int graphHeight;
-		int graphWidth;
+		float graphHeight;
+		float graphWidth;
 		
 		
 		
@@ -101,16 +101,30 @@ public class Logic_GraphSizing {
 		
 		
 		
+		bounds = sizing.portions.get(4).getResults();
+		
+		
+		
 		
 		
 		
 		//graphWidth = (spaceWidth - 25 * 2) / 3;
-		int sideWidth = (spaceWidth - 25 * 2) / 3; //thirds
+		float sideWidth = (spaceWidth - 25 * 2) / 3; //thirds
 		//int sideWidth = (spaceWidth - 25 * 3) / 4; //fourths
-		int sideHeight = spaceHeight;
+		float sideHeight = spaceHeight;
 		
-		graphWidth = (sideWidth - 10) / 2;
+		
+		sideWidth = bounds.width;
+		sideHeight = bounds.height;
+		
+		
+		graphWidth = (int) ((sideWidth - 10) / 2);
 		graphHeight = (spaceHeight - 4 * 10) / 5;
+		
+		
+		graphHeight = sideHeight;
+		graphWidth = (sideWidth - 20) / 3;
+		
 		
 		
 		
@@ -118,10 +132,13 @@ public class Logic_GraphSizing {
 		
 		//something with graphCount
 		
-		int xLeft = 2 * sideWidth + 3 * 25; //thirds
-		int yTop = 25 + sideHeight - graphHeight;
-		int x = xLeft;
-		int y = yTop;
+		float xLeft = (int) (2 * sideWidth + 3 * 25); //thirds
+		float yTop = (int) (25 + sideHeight - graphHeight);
+		float x = xLeft;
+		float y = yTop;
+		
+		xLeft = bounds.left;
+		yTop = bounds.bottom + bounds.height;
 		
 		for (int i = 0; i < graphCount; i ++) {
 			
@@ -132,23 +149,38 @@ public class Logic_GraphSizing {
 			//x = 2 * sideWidth + 3 * 25;
 			
 			
-			if (i % 2 == 0) //if even, starting at 0
+			if (i % 3 == 0) //if even, starting at 0
 			{
 				x = xLeft;
 				//y = yTop - ( ((i+1)/2) * (10+graphHeight) ); //move out
-				y = yTop - ( (i/2) * (10+graphHeight) ); //move out
+				//y = yTop - ( (i/2) * (10+graphHeight) ); //move out
+				
+				y = bounds.bottom;
 				
 				graphList.get(i).setGraphLocation(x, y); //move out
-				graphList.get(i).setGraphSize(graphWidth, graphHeight);
+				graphList.get(i).setGraphSize( (int) graphWidth, (int) graphHeight);
 			}
-			else
+			else if (i % 3 == 1)
 			{
 				x = xLeft + graphWidth + 10;
 				//y = yTop - ( ((i+1)/2) * (10+graphHeight) ); //move out
-				y = yTop - ( (i/2) * (10+graphHeight) ); //move out
+				//y = yTop - ( (i/2) * (10+graphHeight) ); //move out
+				
+				y = bounds.bottom;
 				
 				graphList.get(i).setGraphLocation(x, y); //move out
-				graphList.get(i).setGraphSize(graphWidth, graphHeight);
+				graphList.get(i).setGraphSize( (int) graphWidth, (int) graphHeight);
+			}
+			
+			else {
+				x = xLeft + (2 * (graphWidth + 10));
+				//y = yTop - ( ((i+1)/2) * (10+graphHeight) ); //move out
+				//y = yTop - ( (i/2) * (10+graphHeight) ); //move out
+				
+				y = bounds.bottom;
+				
+				graphList.get(i).setGraphLocation(x, y); //move out
+				graphList.get(i).setGraphSize( (int) graphWidth, (int) graphHeight);
 			}
 			
 		}

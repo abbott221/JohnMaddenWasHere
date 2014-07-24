@@ -114,7 +114,7 @@ public class Logic_EventCall {
 		
 		
 		Report_Generator report = new Report_Generator();
-		report.updateReport(mediator, 0);
+		//report.updateReport(mediator, 0);
 		
 		
 		
@@ -130,6 +130,9 @@ public class Logic_EventCall {
 				index = i;
 			}
 		}
+		
+		
+		report.updateReport(mediator, index);
 		
 		
 		mediator.model.mapsModel.setMap(index);

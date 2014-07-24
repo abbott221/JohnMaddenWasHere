@@ -29,67 +29,67 @@ public class Model_Maps {
 		/**/
 		
 		//Texture texture = new Texture(Gdx.files.internal("kitten.jpg"));
-		Texture texture = new Texture(Gdx.files.internal("maps/Oshaughnessy_Dam.png"));
+		Texture texture = new Texture(Gdx.files.internal("maps/Oshaughnessy_Dam.jpg"));
 		TextureRegion image = new TextureRegion(texture);
 		maps.add(image);
 		
 		
-		texture = new Texture(Gdx.files.internal("maps/Alum_Creek_at_Africa_Rd.png"));
+		texture = new Texture(Gdx.files.internal("maps/Alum_Creek_at_Africa_Rd.jpg"));
 		image = new TextureRegion(texture);
 		maps.add(image);
 		
 		
-		texture = new Texture(Gdx.files.internal("maps/Big_Walnut_Creek_at_Sunbury.png"));
+		texture = new Texture(Gdx.files.internal("maps/Big_Walnut_Creek_at_Sunbury.jpg"));
 		image = new TextureRegion(texture);
 		maps.add(image);
 		
 		
-		texture = new Texture(Gdx.files.internal("maps/Olentangy_River_near_Delaware.png"));
+		texture = new Texture(Gdx.files.internal("maps/Olentangy_River_near_Delaware.jpg"));
 		image = new TextureRegion(texture);
 		maps.add(image);
 		
 		
-		texture = new Texture(Gdx.files.internal("maps/Scioto_River_below_Oshaughnessy.png"));
+		texture = new Texture(Gdx.files.internal("maps/Scioto_River_below_Oshaughnessy.jpg"));
 		image = new TextureRegion(texture);
 		maps.add(image);
 		
 		
-		texture = new Texture(Gdx.files.internal("maps/Griggs_Dam.png"));
+		texture = new Texture(Gdx.files.internal("maps/Griggs_Dam.jpg"));
 		image = new TextureRegion(texture);
 		maps.add(image);
 		
 		
-		texture = new Texture(Gdx.files.internal("maps/Hoover_Dam.png"));
+		texture = new Texture(Gdx.files.internal("maps/Hoover_Dam.jpg"));
 		image = new TextureRegion(texture);
 		maps.add(image);
 		
 		
-		texture = new Texture(Gdx.files.internal("maps/Big_Walnut_Creek_at_Central_College.png"));
+		texture = new Texture(Gdx.files.internal("maps/Big_Walnut_Creek_at_Central_College.jpg"));
 		image = new TextureRegion(texture);
 		maps.add(image);
 		
 		
-		texture = new Texture(Gdx.files.internal("maps/Big_Walnut_Creek_at_Rees.png"));
+		texture = new Texture(Gdx.files.internal("maps/Big_Walnut_Creek_at_Rees.jpg"));
 		image = new TextureRegion(texture);
 		maps.add(image);
 		
 		
-		texture = new Texture(Gdx.files.internal("maps/Olentangy_River_near_Worthington.png"));
+		texture = new Texture(Gdx.files.internal("maps/Olentangy_River_near_Worthington.jpg"));
 		image = new TextureRegion(texture);
 		maps.add(image);
 		
 		
-		texture = new Texture(Gdx.files.internal("maps/Scioto_River_at_Columbus.png"));
+		texture = new Texture(Gdx.files.internal("maps/Scioto_River_at_Columbus.jpg"));
 		image = new TextureRegion(texture);
 		maps.add(image);
 		
 		
-		texture = new Texture(Gdx.files.internal("maps/Alum_Creek_Dam.png"));
+		texture = new Texture(Gdx.files.internal("maps/Alum_Creek_Dam.jpg"));
 		image = new TextureRegion(texture);
 		maps.add(image);
 		
 		
-		texture = new Texture(Gdx.files.internal("maps/Delaware_Dam.png"));
+		texture = new Texture(Gdx.files.internal("maps/Delaware_Dam.jpg"));
 		image = new TextureRegion(texture);
 		maps.add(image);
 		

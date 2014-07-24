@@ -100,7 +100,7 @@ public class Model_WidgetSizes {
 		portion3.setAbsUsageLeft(2 * PARS_MARGNS);
 		portion3.setAbsTotalLeft(3 * PARS_MARGNS);
 		portion3.setAbsUsageBottom(1 * PARS_MARGNS);
-		portion3.setAbsTotalBottom(3 * PARS_MARGNS);
+		portion3.setAbsTotalBottom(4 * PARS_MARGNS);
 		
 		portions.add(portion3);
 		
@@ -119,9 +119,30 @@ public class Model_WidgetSizes {
 		portion4.setAbsUsageLeft(2 * PARS_MARGNS);
 		portion4.setAbsTotalLeft(3 * PARS_MARGNS);
 		portion4.setAbsUsageBottom(2 * PARS_MARGNS);
-		portion4.setAbsTotalBottom(3 * PARS_MARGNS);
+		portion4.setAbsTotalBottom(4 * PARS_MARGNS);
 		
 		portions.add(portion4);
+		
+		
+		
+		
+		
+		//partition 5 is thumbnails
+		
+		Model_Portion portion5 = new Model_Portion(med);
+		portion5.setMargin(PARS_MARGNS);
+		
+		portion5.setRelativeSize(0.5f, 0.3f);
+		portion5.setRelativeStart(0.5f, 0.7f);
+		
+		portion5.setAbsUsageLeft(2 * PARS_MARGNS);
+		portion5.setAbsTotalLeft(3 * PARS_MARGNS);
+		portion5.setAbsUsageBottom(3 * PARS_MARGNS);
+		portion5.setAbsTotalBottom(4 * PARS_MARGNS);
+		
+		portions.add(portion5);
+		
+		
 		
 		
 		
