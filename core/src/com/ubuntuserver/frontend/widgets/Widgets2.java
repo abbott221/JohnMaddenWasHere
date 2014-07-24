@@ -24,7 +24,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.ubuntuserver.frontend.Mediator;
 import com.ubuntuserver.frontend.Logic.Logic_DateStrings;
 import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
-import com.ubuntuserver.frontend.Logic.Logic_JSON;
 import com.ubuntuserver.frontend.Logic.Logic_JSON2;
 import com.ubuntuserver.frontend.Logic.Logic_JSON3;
 import com.ubuntuserver.frontend.Logic.Logic_JSON3.DataSource;

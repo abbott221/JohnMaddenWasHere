@@ -44,6 +44,17 @@ public class Graph_Main {
 	
 	
 	
+	
+	//public int positionStartDate = -1;
+	//public int positionEndDate = -1;
+	public int positionStartDate = 0;
+	public int positionEndDate = 0;
+	//public int positionStation = -1;
+	public int positionStation = 0;
+	
+	
+	
+	
 	public Graph_Main(Mediator med, Model_General mod) {
 		
 		//mode = GraphMode.BAR_GRAPH;

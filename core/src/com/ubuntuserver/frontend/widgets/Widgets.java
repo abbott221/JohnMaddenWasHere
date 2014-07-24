@@ -29,6 +29,8 @@ import com.ubuntuserver.frontend.ListenerEvents.Logic_EventCall;
 import com.ubuntuserver.frontend.Logic.Logic_DateStrings;
 import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Logic.Logic_Dates;
+import com.ubuntuserver.frontend.Logic.Logic_JSON3;
+import com.ubuntuserver.frontend.Logic.Logic_JSON3.DataSource;
 import com.ubuntuserver.frontend.model.Model_WidgetSizes;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
 import com.ubuntuserver.frontend.model.Model_Portion.Results;
@@ -56,6 +58,10 @@ public class Widgets {
 	//Button buttonMulti = new TextButton("Multi\nLine\nToggle", skin, "toggle");
 	public TextButton newGraph;
 	public TextButton deleteGraph;
+	
+	public TextButton exportButton;
+	public TextButton updateButton;
+	
 	
 	
 	public Label startDateLabel;
@@ -262,7 +268,8 @@ public class Widgets {
 		
 		
 		deleteGraph = new TextButton("Delete Graph", skin);
-		deleteGraph.setBounds(850, 500, 100, 20);
+		//deleteGraph.setBounds(850, 500, 100, 20);
+		deleteGraph.setBounds(880, 500, 100, 20);
 		
 		deleteGraph.addListener(new ChangeListener() {
 			@Override
@@ -282,6 +289,43 @@ public class Widgets {
 		});
 		
 		stage.addActor(deleteGraph);
+		
+		
+		
+		
+		exportButton = new TextButton("Export", skin);
+		exportButton.setBounds(700, 450, 100, 20);
+		
+		exportButton.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				//Logic_EventCall.stationEvent(mediator, stationBox);
+				Logic_EventCall.exportEvent(mediator, exportButton);
+			}
+		});
+		
+		stage.addActor(exportButton);
+		
+		
+		
+		
+		updateButton = new TextButton("Update", skin);
+		//updateButton.setBounds(850, 450, 100, 20);
+		updateButton.setBounds(880, 450, 100, 20);
+		
+		updateButton.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				//Logic_EventCall.stationEvent(mediator, stationBox);
+				
+				//Logic_JSON3.EntryPoint(mediator, DataSource.LOCALHOST, mediator.model.secondTable);
+				Logic_JSON3.EntryPoint(mediator, DataSource.INTERNAL_IP, mediator.model.secondTable);
+				
+				Logic_DateStrings.determineDates(mediator);
+			}
+		});
+		
+		stage.addActor(updateButton);
 		
 		
 		
@@ -376,13 +420,29 @@ public class Widgets {
 			
 			
 			
+			//int buttonWidth = 100;
+			
 			dataModeBox.setBounds(550, boxBottom, 100, 20);
 			
 			
 			
-			newGraph.setBounds(700, boxBottom, 100, 20);
 			
-			deleteGraph.setBounds(850, boxBottom, 100, 20);
+			
+			
+			final int buttonWidth = 120;
+			
+			
+			
+			newGraph.setBounds(700, boxBottom, buttonWidth, 20);
+			
+			//deleteGraph.setBounds(850, boxBottom, 100, 20);
+			deleteGraph.setBounds(880, boxBottom, buttonWidth, 20);
+			
+			
+			exportButton.setBounds(700, boxBottom - 40, buttonWidth, 20);
+			
+			//updateButton.setBounds(850, boxBottom - 40, 100, 20);
+			updateButton.setBounds(880, boxBottom - 40, buttonWidth, 20);
 			
 			
 			

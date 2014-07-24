@@ -62,8 +62,15 @@ public class Logic_Stage {
 		
 		//newStage.addActor(mediator.widgets.dataModeBox);
 		
+		
+		
 		newStage.addActor(mediator.widgets.newGraph);
 		newStage.addActor(mediator.widgets.deleteGraph);
+		
+		newStage.addActor(mediator.widgets.exportButton);
+		newStage.addActor(mediator.widgets.updateButton);
+		
+		
 		
 		//newStage.addActor(mediator.widgets.thumbnails);
 		

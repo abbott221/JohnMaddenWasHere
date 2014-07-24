@@ -12,6 +12,8 @@ import com.ubuntuserver.frontend.Mediator;
 import com.ubuntuserver.frontend.Report_Generator;
 import com.ubuntuserver.frontend.Logic.Logic_DateStrings;
 import com.ubuntuserver.frontend.Logic.Logic_Dates;
+import com.ubuntuserver.frontend.Logic.Logic_JSON3;
+import com.ubuntuserver.frontend.Logic.Logic_JSON3.DataSource;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
 import com.ubuntuserver.frontend.model.Model_Station;
 
@@ -31,6 +33,9 @@ public class Logic_EventCall {
 		Logic_DateStrings.startDateChange(mediator, startDateBox);
 		
 		mediator.tablepane.updateTable();
+		
+		
+		Logic_Random.storeWidgets(mediator);
 	}
 	
 	
@@ -41,6 +46,9 @@ public class Logic_EventCall {
 		Logic_DateStrings.endDateChange(mediator, endDateBox);
 		
 		mediator.tablepane.updateTable();
+		
+		
+		Logic_Random.storeWidgets(mediator);
 	}
 	
 	
@@ -56,18 +64,9 @@ public class Logic_EventCall {
 		
 		
 		
-		/*
-		int index = 3;
-		Graph_Main selectedGraph = mediator.model.selectedGraph;
-		//mediator.model.stations.get(index)
-		ArrayList<Model_Station> stations = mediator.model.stations;
-		for (int i = 0; i < stations.size(); i++) {
-			if (stations.get(i).equals(selectedGraph.dataModel.myStation)) {
-				System.out.println(i);
-				index = i;
-			}
-		}
-		/**/
+		Logic_Random.storeWidgets(mediator);
+		
+		
 	}
 	
 	
@@ -91,6 +90,9 @@ public class Logic_EventCall {
 	
 	public static void dateReporterOnCreate(Mediator mediator) {
 		//System.out.println("On Create Event");
+		
+		
+		Logic_JSON3.EntryPoint(mediator, DataSource.INTERNAL_IP, mediator.model.secondTable);
 		
 		Logic_DateStrings.determineDates(mediator);
 		
@@ -139,6 +141,9 @@ public class Logic_EventCall {
 		
 		
 		mediator.tablepane.updateTable();
+		
+		
+		Logic_Random.respondWidgets(mediator);
 	}
 	
 	

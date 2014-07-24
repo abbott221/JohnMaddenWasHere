@@ -57,6 +57,8 @@ public class Logic_JSON3 {
 	
 	public static void EntryPoint(final Mediator mediator, DataSource source, Model_JSONread table) {
 		
+		System.out.println("Running update");
+		
 		String bigJSON = "";
 		FileHandle file;
 		
