@@ -1,4 +1,4 @@
-package com.ubuntuserver.frontend.Login;
+package com.ubuntuserver.pages;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -27,11 +27,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.badlogic.gdx.utils.JsonValue;
 import com.ubuntuserver.frontend.Logic.Logic_Dates;
-import com.ubuntuserver.frontend.Logic.Logic_JSONPI;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
 import com.ubuntuserver.frontend.Networking.Logic_JSON;
+import com.ubuntuserver.frontend.Networking.Logic_JSONPI;
 import com.ubuntuserver.frontend.MainCoreClass;
-import com.ubuntuserver.frontend.Model_Graph.ShowMode;
 
 /**
  * @author Brandon
@@ -119,27 +118,27 @@ public class Widgets_Login {
                 public void changed(ChangeEvent event, Actor actor) {
 
                     try {
-login();
-
-if(core.loggedIn = true && core.id >0)
-{
-	actor.getParent().remove();
-	core.loggedIn = true;
-	core.logInSuccess();
-}
-else
-{
-	core.loggedIn = false;
-       Dialog dialog = new Dialog("Improper login", skin, "dialog") {
-               protected void result (Object object) {
-                   System.out.println("Improper login");
-               }
-       }.text("If this problem remains then please contact your IT department").button("Cancel", true).key(Keys.ENTER, true).show(stage);
-}
-} catch (Exception e) {
-e.printStackTrace();
-}
-
+                    	login();
+                    	
+                    	if(core.loggedIn = true && core.id >0)
+                    	{
+                    		actor.getParent().remove();
+                    		core.loggedIn = true;
+                    		core.logInSuccess();
+                    	}
+                    	else
+                    	{
+                    		core.loggedIn = false;
+                    		Dialog dialog = new Dialog("Improper login", skin, "dialog") {
+                    			protected void result (Object object) {
+                    				System.out.println("Improper login");
+                    			}
+                    		}.text("If this problem remains then please contact your IT department").button("Cancel", true).key(Keys.ENTER, true).show(stage);
+                    	}
+                    } catch (Exception e) {
+                    	e.printStackTrace();
+                    }
+                    
                 }
             }
         );

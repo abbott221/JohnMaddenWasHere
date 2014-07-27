@@ -22,8 +22,6 @@ import com.badlogic.gdx.utils.JsonValue;
 import com.ubuntuserver.frontend.Graph_Main;
 import com.ubuntuserver.frontend.MainCoreClass;
 import com.ubuntuserver.frontend.Mediator;
-import com.ubuntuserver.frontend.Model_JSONread;
-import com.ubuntuserver.frontend.Model_Station;
 
 
 /**
@@ -70,7 +68,7 @@ public class Logic_JSONPI {
 			System.out.println(credentials[i]);
 		}
 		
-		core.userlogin(credentials);
+		core.modelCore.userlogin(credentials);
 	}
 	
 	

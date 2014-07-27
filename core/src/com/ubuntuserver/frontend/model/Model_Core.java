@@ -24,6 +24,17 @@ public class Model_Core {
 	
 	
 	
+	
+	public String username;
+	public String firstname;
+	public String lastname;
+	public int id =0;
+	public String email;
+	public String rights;
+	
+	
+	
+	
 	//create new instances here
 	public Model_Core(MainCoreClass c) {
 		
@@ -39,6 +50,20 @@ public class Model_Core {
 	//give possibly dependent meaning of those new instances here
 	public void fillModel() {
 		//
+	}
+	
+	
+	
+	
+	public void userlogin(String[] credentials)
+	{
+		//loggedIn = true;
+		id = Integer.parseInt(credentials[0]);
+		username = credentials[1];
+		lastname = credentials[2];
+		firstname = credentials[3];
+		email = credentials[4];
+		rights = credentials[5];
 	}
 	
 }
