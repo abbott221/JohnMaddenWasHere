@@ -69,20 +69,8 @@ public class Widgets_Login2 extends Abstract_Screen {
 		
 		window.defaults().pad(5.0f);
 		
-		/*
-		TextButton close = new TextButton("X", skin);
 		
-		window.getButtonTable().add(close).height(window.getPadTop());
 		
-		close.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				//first parent = Table
-				//second parent = window
-				actor.getParent().getParent().remove();
-			}
-		});
-		/**/
 		
 		
 		
@@ -148,7 +136,7 @@ public class Widgets_Login2 extends Abstract_Screen {
 					
 					//"core.loggedIn = true" -> "core.loggedIn == true" could've been an issue
 					//if(core.loggedIn = true && core.id >0) {
-					if (core.currentScreen == null && core.modelCore.id > 0) {
+					if ( core.modelCore.testingMode == true || (core.currentScreen == null && core.modelCore.id > 0) ) {
 						//if true conditions, successful login?
 						
 						actor.getParent().remove();

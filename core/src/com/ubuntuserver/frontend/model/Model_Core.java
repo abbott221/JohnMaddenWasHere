@@ -22,6 +22,9 @@ public class Model_Core {
 	
 	public MainCoreClass core;
 	
+	//true to circumvent networking login, false for publishing
+	public final boolean testingMode = true;
+	
 	
 	
 	
