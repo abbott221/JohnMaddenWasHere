@@ -27,6 +27,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.badlogic.gdx.utils.JsonValue;
 import com.ubuntuserver.frontend.Logic.Logic_Dates;
+import com.ubuntuserver.frontend.Logic.Logic_JSONPI;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
 import com.ubuntuserver.frontend.Networking.Logic_JSON;
 import com.ubuntuserver.frontend.MainCoreClass;
@@ -115,47 +116,32 @@ public class Widgets_Login {
                 public void changed(ChangeEvent event, Actor actor) {
 
                     try {
-                    	if ( login() )
-                    	{
-                    		
-                    		actor.getParent().remove();
-                    		
-                    		core.loggedIn = true;
-                    		
-                    		core.logInSuccess();
-                    	}
-                    	else
-                    	{
-                    		Dialog dialog = new Dialog("Improper login", skin, "dialog") {
-                    			protected void result (Object object) {
-                    				System.out.println("Improper login");
-                    			}
-                    		}.text("Are you enjoying this demo?").button("Cancel", true).key(Keys.ENTER, true).show(stage);
-                    	}
-                    } catch (Exception e) {
-                    	// TODO Auto-generated catch block
-                    	e.printStackTrace();
-                    }
-                    
+login();
+
+if(core.loggedIn = true && core.id >0)
+{
+	actor.getParent().remove();
+	core.loggedIn = true;
+	core.logInSuccess();
+}
+else
+{
+	core.loggedIn = false;
+       Dialog dialog = new Dialog("Improper login", skin, "dialog") {
+               protected void result (Object object) {
+                   System.out.println("Improper login");
+               }
+       }.text("If this problem remains then please contact your IT department").button("Cancel", true).key(Keys.ENTER, true).show(stage);
+}
+} catch (Exception e) {
+e.printStackTrace();
+}
+
                 }
             }
         );
         window.add(logInButton);
 
-
-
-
-/*
-        TextButton changeButton = new TextButton("Input User", skin);
-
-        changeButton.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                    toggleFields();
-            }
-        });
-        window.add(changeButton);
-*/
 
         TextButton exitButton = new TextButton("exit", skin);
 
@@ -182,35 +168,13 @@ public class Widgets_Login {
 
     }
 
-    public void toggleFields()
-    {
-        if(hasFields())
-        {
-            window.add(userText);
-            window.add(passText);
-        }
-        else
-        {
-            userText.remove();
-            passText.remove();
-        }
-    }
-
-    public boolean hasFields()
-    {
-        return userText.hasParent();
-    }
-    public boolean login()
+    public void login()
     {
         String user = System.getProperty("user.name");
         user = user.replaceAll("[-+.^:,]","");
         String url = "http://10.119.0.52/login.php?username="+user;
-        JsonValue json = Logic_JSON.getJSONfromURL(null, url);
-        System.out.print(json);
-        return true;
+        Logic_JSONPI.EntryPoint(core, url);
     }
 
+
 }
-
-
-

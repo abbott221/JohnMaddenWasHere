@@ -22,9 +22,27 @@ public class MainCoreClass implements ApplicationListener {
 	
 	public boolean loggedIn = false;
 	
+	public String username;
+	public String firstname;
+	public String lastname;
+	public int id =0;
+	public String email;
+	public String rights;
+	
 	
 	//possibly unnecessary
 	Abstract_Screen currentScreen;
+	
+	public void userlogin(String[] credentials)
+	{
+		loggedIn = true;
+		id = Integer.parseInt(credentials[0]);
+		username = credentials[1];
+		lastname = credentials[2];
+		firstname = credentials[3];
+		email = credentials[4];
+		rights = credentials[5];
+	}
 	
 	
 	
