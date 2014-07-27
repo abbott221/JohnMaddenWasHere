@@ -120,6 +120,8 @@ public class Widgets_Login {
                     try {
                     	login();
                     	
+                    	
+                    	/*
                     	if(core.loggedIn = true && core.id >0)
                     	{
                     		actor.getParent().remove();
@@ -135,6 +137,9 @@ public class Widgets_Login {
                     			}
                     		}.text("If this problem remains then please contact your IT department").button("Cancel", true).key(Keys.ENTER, true).show(stage);
                     	}
+                    	/**/
+                    	
+                    	
                     } catch (Exception e) {
                     	e.printStackTrace();
                     }

@@ -12,6 +12,7 @@ import com.ubuntuserver.frontend.Logic.Logic_Stage;
 import com.ubuntuserver.frontend.model.Model_Core;
 import com.ubuntuserver.pages.Page_Event1;
 import com.ubuntuserver.pages.Screen_Landing;
+import com.ubuntuserver.pages.Widgets_Login;
 import com.ubuntuserver.pages.Widgets_Login2;
 
 public class MainCoreClass implements ApplicationListener {
@@ -50,8 +51,10 @@ public class MainCoreClass implements ApplicationListener {
 		
 		
 		
-		
+		//Widgets_Login loginWidgets2 = new Widgets_Login(this);
 		Widgets_Login2 loginWidgets2 = new Widgets_Login2(this);
+		
+		
 		
 		//Screen_Landing screenLanding = new Screen_Landing(this);
 		
