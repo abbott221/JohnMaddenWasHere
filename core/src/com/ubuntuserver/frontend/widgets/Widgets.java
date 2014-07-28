@@ -34,7 +34,7 @@ import com.ubuntuserver.frontend.Networking.Logic_JSON3.DataSource;
 import com.ubuntuserver.frontend.model.Model_WidgetSizes;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
 import com.ubuntuserver.frontend.model.Model_Portion.Results;
-import com.ubuntuserver.pages.Page_Event1;
+import com.ubuntuserver.pages.Page_NewOrActive;
 import com.ubuntuserver.pages.Screen_Landing;
 
 public class Widgets {

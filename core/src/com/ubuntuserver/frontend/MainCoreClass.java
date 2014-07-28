@@ -10,7 +10,7 @@ import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Logic.Logic_Polling;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
 import com.ubuntuserver.frontend.model.Model_Core;
-import com.ubuntuserver.pages.Page_Event1;
+import com.ubuntuserver.pages.Page_NewOrActive;
 import com.ubuntuserver.pages.Screen_Landing;
 import com.ubuntuserver.pages.Widgets_Login;
 import com.ubuntuserver.pages.Widgets_Login2;
@@ -206,8 +206,8 @@ public class MainCoreClass implements ApplicationListener {
 			else if (this.currentScreen instanceof Screen_Landing) {
 				this.currentScreen = new Screen_Landing(this);
 			}
-			else if (this.currentScreen instanceof Page_Event1) {
-				this.currentScreen = new Page_Event1(this);
+			else if (this.currentScreen instanceof Page_NewOrActive) {
+				this.currentScreen = new Page_NewOrActive(this);
 			}
 			
 			
