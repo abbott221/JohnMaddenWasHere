@@ -31,7 +31,7 @@ import com.ubuntuserver.frontend.Abstract_Screen;
 import com.ubuntuserver.frontend.MainCoreClass;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
 
-public class Page_Event1 extends Abstract_Screen {
+public class Page_Event2 extends Abstract_Screen {
 	
 	
 	
@@ -48,7 +48,7 @@ public class Page_Event1 extends Abstract_Screen {
 	
 	
 	
-	public Page_Event1(MainCoreClass coreIn) {
+	public Page_Event2(MainCoreClass coreIn) {
 		
 		
 		super(coreIn);
@@ -58,16 +58,23 @@ public class Page_Event1 extends Abstract_Screen {
 		
 		
 		
-		temp = new Label("1. Information Verification", skin);
+		temp = new Label("2. Broadcast flash flood warnings and flash flood "
+				+ "emergencies on Metro Alert", skin);
 		temp.setPosition(100, 700);
 		this.thisAddWidget(temp);
 		
 		
-		//Verify message for warnings and emergencies with NWS Information verification
 		
-		Label temp2 = new Label("Verify message for warnings and emergencies with NWS Information verification", skin);
+		
+		
+		Label temp2 = new Label("1. Depress and hold ALERT 1 tone for about 5 seconds\n"
+				+ "2. Depress Red transmit button and say:\n"
+				+ "The National Weather Service has issued a flash "
+				+ "flood (warning or emergency) for (location) until (time).\n"
+				+ "-Repeat message-\n"
+				+ "Franklin County Emergency Management and Homeland Security Clear.", skin);
 		//temp2.setColor(Color.BLACK);
-		temp2.setPosition(100, 650);
+		temp2.setPosition(100, 550);
 		this.thisAddWidget(temp2);
 		
 		
@@ -75,7 +82,7 @@ public class Page_Event1 extends Abstract_Screen {
 		
 		
 		
-		
+		/*
 		TextArea description = new TextArea("Gage site name\nWater level\nLast reading time\n"
 				+ "Increase rate in the last 4 hours\nActual precipitation\nForecast\n"
 				+ "Flood warning issued: (all alert records in alert table"
@@ -84,6 +91,7 @@ public class Page_Event1 extends Abstract_Screen {
 		description.setBounds(100, 100, 500, 400);
 		
 		this.thisAddWidget(description);
+		/**/
 		
 		
 		
@@ -98,11 +106,12 @@ public class Page_Event1 extends Abstract_Screen {
 			public void changed(ChangeEvent event, Actor actor) {
 				core.currentScreen.thisRemoveScreen();
 				core.currentScreen = null;
-				Page_Event2 landingScreen = new Page_Event2(core);
+				Page_Event3 landingScreen = new Page_Event3(core);
 			}
 		});
 		
 		this.thisAddWidget(nextButton);
+		
 		
 		
 		
