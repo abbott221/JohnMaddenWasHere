@@ -11,20 +11,21 @@ public class Model_Event {
 	
 	
 	
-	String eventName;
-	String description;
+	public String eventName;
+	public String description;
+	public String date;
 	
-	boolean active;
-	
-	
-	int currentStep;
+	public boolean active = false;
 	
 	
-	
+	public int currentStep = 0;
 	
 	
 	
-	ArrayList<EventStep> steps;
+	
+	
+	
+	public ArrayList<EventStep> steps;
 	
 	
 	public Model_Event() {
@@ -64,7 +65,7 @@ public class Model_Event {
 		//change to a time object or something like that?
 		String lastChange;
 		
-		boolean completed;
+		//boolean completed;
 		//int selection;
 	}
 	
@@ -81,7 +82,7 @@ public class Model_Event {
 		 * 1 = first option
 		 * 2 = second option
 		 */
-		int selection;
+		int selection = 0;
 	}
 	
 	

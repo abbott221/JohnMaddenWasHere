@@ -27,11 +27,11 @@ public class Model_Core {
 	 * true = circumvent networking login
 	 * false = publish
 	 */
-	public final boolean testingMode = false;
+	public final boolean testingMode = true;
 	
 	
-	ArrayList<Model_Event> events;
-	int selectedEvent;
+	public ArrayList<Model_Event> events;
+	public int selectedEvent;
 	
 	
 	
@@ -50,7 +50,7 @@ public class Model_Core {
 	//create new instances here
 	public Model_Core(MainCoreClass c) {
 		
-		System.out.println("Model_Core constructed");
+		//System.out.println("Model_Core constructed");
 		
 		core = c;
 		
@@ -65,6 +65,19 @@ public class Model_Core {
 	//give possibly dependent meaning of those new instances here
 	public void fillModel() {
 		Model_Event example = new Model_Event();
+		example.eventName = "Example Fake Event 1";
+		example.date = "7/29/14";
+		example.active = true;
+		
+		events.add(example);
+		
+		
+		Model_Event example2 = new Model_Event();
+		example2.eventName = "Example Fake Event 2";
+		example2.date = "7/30/14";
+		example2.active = true;
+		
+		events.add(example2);
 	}
 	
 	

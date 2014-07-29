@@ -94,10 +94,15 @@ public class Page_NewOrActive extends Abstract_Screen {
 			public void changed(ChangeEvent event, Actor actor) {
 				core.currentScreen.thisRemoveScreen();
 				core.currentScreen = null;
-				//Page_Event1 landingScreen = new Page_Event1(core);
+				Page_ActiveEvents newPage = new Page_ActiveEvents(core);
 			}
 		});
 		this.thisAddWidget(activeEventsPage);
+		
+		
+		
+		
+		
 		
 		
 		
@@ -112,7 +117,7 @@ public class Page_NewOrActive extends Abstract_Screen {
 			public void changed(ChangeEvent event, Actor actor) {
 				core.currentScreen.thisRemoveScreen();
 				core.currentScreen = null;
-				Screen_Landing landingScreen = new Screen_Landing(core);
+				Screen_Landing newPage = new Screen_Landing(core);
 			}
 		});
 		

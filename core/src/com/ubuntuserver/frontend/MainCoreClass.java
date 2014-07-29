@@ -10,6 +10,7 @@ import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Logic.Logic_Polling;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
 import com.ubuntuserver.frontend.model.Model_Core;
+import com.ubuntuserver.pages.Page_ActiveEvents;
 import com.ubuntuserver.pages.Page_Event1;
 import com.ubuntuserver.pages.Page_NewEvent;
 import com.ubuntuserver.pages.Page_NewOrActive;
@@ -213,6 +214,9 @@ public class MainCoreClass implements ApplicationListener {
 			}
 			else if (this.currentScreen instanceof Page_NewEvent) {
 				this.currentScreen = new Page_NewEvent(this);
+			}
+			else if (this.currentScreen instanceof Page_ActiveEvents) {
+				this.currentScreen = new Page_ActiveEvents(this);
 			}
 			else if (this.currentScreen instanceof Page_Event1) {
 				this.currentScreen = new Page_Event1(this);
