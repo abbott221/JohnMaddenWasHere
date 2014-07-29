@@ -22,8 +22,17 @@ public class Model_Core {
 	
 	public MainCoreClass core;
 	
-	//true to circumvent networking login, false for publishing
-	public final boolean testingMode = true;
+	
+	/**
+	 * true = circumvent networking login
+	 * false = publish
+	 */
+	public final boolean testingMode = false;
+	
+	
+	ArrayList<Model_Event> events;
+	int selectedEvent;
+	
 	
 	
 	
@@ -31,7 +40,7 @@ public class Model_Core {
 	public String username;
 	public String firstname;
 	public String lastname;
-	public int id =0;
+	public int id = 0;
 	public String email;
 	public String rights;
 	
@@ -46,13 +55,16 @@ public class Model_Core {
 		core = c;
 		
 		
+		
+		events = new ArrayList<Model_Event>();
+		//Model_Event example = new Model_Event();
 	}
 	
 	
 	
 	//give possibly dependent meaning of those new instances here
 	public void fillModel() {
-		//
+		Model_Event example = new Model_Event();
 	}
 	
 	
