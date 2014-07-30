@@ -1,6 +1,9 @@
 package com.ubuntuserver.pages;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -29,6 +32,7 @@ import com.ubuntuserver.frontend.Logic.Logic_Dates;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
 import com.ubuntuserver.frontend.Abstract_Screen;
 import com.ubuntuserver.frontend.MainCoreClass;
+import com.ubuntuserver.frontend.model.Model_Event;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
 
 public class Page_NewEvent extends Abstract_Screen {
@@ -51,7 +55,13 @@ public class Page_NewEvent extends Abstract_Screen {
 	
 	
 	
+	
+	TextButton nextButton;
+	
+	
+	
 	public Page_NewEvent(MainCoreClass coreIn) {
+		
 		
 		
 		super(coreIn);
@@ -59,99 +69,31 @@ public class Page_NewEvent extends Abstract_Screen {
 		
 		
 		
-		
 		title = new Label("Create a New Flood Event", skin);
-		
 		title.setPosition(100, 700);
-		
 		this.thisAddWidget(title);
 		
 		
 		
-		
-		
 		nameField = new TextField("Event Name", skin);
-		
 		nameField.setBounds(100, 600, 200, 20);
-		
 		this.thisAddWidget(nameField);
 		
 		
 		
-		
-		
 		description = new TextArea("Description", skin);
-		
 		description.setBounds(100, 100, 500, 400);
-		
 		this.thisAddWidget(description);
 		
 		
 		
 		
 		
-		/*
-		
-		newEventPage = new TextButton("Create New Event 2", skin);
-		
-		newEventPage.setBounds(100, 200, 200, 20);
-		
-		newEventPage.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				core.currentScreen.thisRemoveScreen();
-				core.currentScreen = null;
-				//Page_Event1 landingScreen = new Page_Event1(core);
-			}
-		});
-		this.thisAddWidget(newEventPage);
-		
-		
-		
-		
-		
-		activeEventsPage = new TextButton("Active Events 2", skin);
-		
-		activeEventsPage.setBounds(400, 200, 200, 20);
-		
-		activeEventsPage.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				core.currentScreen.thisRemoveScreen();
-				core.currentScreen = null;
-				//Page_Event1 landingScreen = new Page_Event1(core);
-			}
-		});
-		this.thisAddWidget(activeEventsPage);
-		
-		/**/
-		
-		
-		
-		
-		TextButton nextButton = new TextButton("Next Page", skin);
-		
-		nextButton.setBounds(200, 20, 140, 20);
-		
-		nextButton.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				core.currentScreen.thisRemoveScreen();
-				core.currentScreen = null;
-				Page_Event1 landingScreen = new Page_Event1(core);
-			}
-		});
-		
-		this.thisAddWidget(nextButton);
-		
-		
 		
 		
 		
 		TextButton landingButton = new TextButton("Landing Page", skin);
-		
-		landingButton.setBounds(20, 20, 140, 20);
-		
+		landingButton.setBounds(20, 20, 160, 20);
 		landingButton.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
@@ -160,13 +102,117 @@ public class Page_NewEvent extends Abstract_Screen {
 				Screen_Landing landingScreen = new Screen_Landing(core);
 			}
 		});
-		
 		this.thisAddWidget(landingButton);
 		
 		
 		
 		
 		
+		
+		
+		
+		
+		TextButton prevButton = new TextButton("Previous Page", skin);
+		prevButton.setBounds(320, 20, 160, 20);
+		prevButton.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				core.currentScreen.thisRemoveScreen();
+				core.currentScreen = null;
+				Page_NewOrActive landingScreen = new Page_NewOrActive(core);
+			}
+		});
+		this.thisAddWidget(prevButton);
+		
+		
+		
+		TextButton submitButton = new TextButton("Submit", skin);
+		submitButton.setBounds(520, 20, 160, 20);
+		submitButton.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				
+				
+				//core.currentScreen.thisRemoveScreen();
+				//core.currentScreen = null;
+				//Page_Event1 landingScreen = new Page_Event1(core);
+				submitEvent();
+				
+			}
+		});
+		this.thisAddWidget(submitButton);
+		
+		
+		
+		nextButton = new TextButton("Next Page", skin);
+		nextButton.setBounds(720, 20, 160, 20);
+		nextButton.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				core.currentScreen.thisRemoveScreen();
+				core.currentScreen = null;
+				Page_Event1 landingScreen = new Page_Event1(core);
+			}
+		});
+		this.thisAddWidget(nextButton);
+		
+		
+		
+		nextButton.setColor(Color.GRAY);
+		nextButton.setDisabled(true);
+		
+	}
+	
+	
+	
+	public void submitEvent() {
+		
+		
+		Model_Event newEvent = new Model_Event();
+		
+		newEvent.eventName = this.nameField.getText();
+		newEvent.description = this.description.getText();
+		
+		
+		//System.
+		Calendar cal = Calendar.getInstance();
+		
+		int month = 1 + cal.get(Calendar.MONTH);
+		int day = cal.get(Calendar.DAY_OF_MONTH);
+		int year = cal.get(Calendar.YEAR);
+		
+		//System.out.println("Month:" + month);
+		//System.out.println("Day:" + day);
+		//System.out.println("Year:" + year);
+		
+		
+		
+		
+		
+		StringBuilder dateBuilder = new StringBuilder();
+		
+		//newEvent.date = "7/30/14";
+		//newEvent.date = Integer.toString(month) + Integer.toString(day) + Integer.toString(year);
+		
+		dateBuilder.append(Integer.toString(month));
+		dateBuilder.append("/");
+		dateBuilder.append(Integer.toString(day));
+		dateBuilder.append("/");
+		dateBuilder.append(Integer.toString(year));
+		
+		newEvent.date = dateBuilder.toString();
+		
+		
+		//newEvent.date = "7/30/14";
+		newEvent.active = true;
+		
+		
+		core.modelCore.events.add(newEvent);
+		
+		//nextButton.getColor();
+		//System.out.println( nextButton.getColor() );
+		nextButton.setColor(Color.valueOf("ffffffff"));
+		nextButton.setDisabled(false);
 	}
 	
 	
