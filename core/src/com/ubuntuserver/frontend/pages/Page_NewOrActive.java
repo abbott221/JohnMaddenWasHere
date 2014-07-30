@@ -1,4 +1,4 @@
-package com.ubuntuserver.pages;
+package com.ubuntuserver.frontend.pages;
 
 import java.util.ArrayList;
 

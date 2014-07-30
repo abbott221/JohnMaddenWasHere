@@ -10,15 +10,15 @@ import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Logic.Logic_Polling;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
 import com.ubuntuserver.frontend.model.Model_Core;
-import com.ubuntuserver.pages.Page_ActiveEvents;
-import com.ubuntuserver.pages.Page_Event1;
-import com.ubuntuserver.pages.Page_Event2;
-import com.ubuntuserver.pages.Page_Event3;
-import com.ubuntuserver.pages.Page_NewEvent;
-import com.ubuntuserver.pages.Page_NewOrActive;
-import com.ubuntuserver.pages.Screen_Landing;
-import com.ubuntuserver.pages.Widgets_Login;
-import com.ubuntuserver.pages.Widgets_Login2;
+import com.ubuntuserver.frontend.pages.Page_ActiveEvents;
+import com.ubuntuserver.frontend.pages.Page_Event1;
+import com.ubuntuserver.frontend.pages.Page_Event2;
+import com.ubuntuserver.frontend.pages.Page_Event3;
+import com.ubuntuserver.frontend.pages.Page_NewEvent;
+import com.ubuntuserver.frontend.pages.Page_NewOrActive;
+import com.ubuntuserver.frontend.pages.Screen_Landing;
+import com.ubuntuserver.frontend.pages.Widgets_Login;
+import com.ubuntuserver.frontend.pages.Widgets_Login2;
 
 public class MainCoreClass implements ApplicationListener {
 	

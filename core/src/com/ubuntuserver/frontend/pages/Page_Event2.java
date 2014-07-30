@@ -1,4 +1,4 @@
-package com.ubuntuserver.pages;
+package com.ubuntuserver.frontend.pages;
 
 import java.util.ArrayList;
 
@@ -32,6 +32,7 @@ import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
 import com.ubuntuserver.frontend.Abstract_Screen;
 import com.ubuntuserver.frontend.MainCoreClass;
+import com.ubuntuserver.frontend.model.Model_Event.SelectBoxStep;
 import com.ubuntuserver.frontend.model.Model_Event.SummaryStep;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
 
@@ -60,7 +61,7 @@ public class Page_Event2 extends Abstract_Screen {
 	public CheckBox yesBox;
 	public CheckBox noBox;
 	
-	ChangeListener yesListener;
+	//ChangeListener yesListener;
 	
 	
 	
@@ -180,7 +181,23 @@ public class Page_Event2 extends Abstract_Screen {
 		/**/
 		
 		
-
+		
+		TextButton landingButton = new TextButton("Landing Page", skin);
+		landingButton.setBounds(20, 20, 160, 20);
+		landingButton.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				core.currentScreen.thisRemoveScreen();
+				core.currentScreen = null;
+				Screen_Landing landingScreen = new Screen_Landing(core);
+			}
+		});
+		this.thisAddWidget(landingButton);
+		
+		
+		
+		
+		
 		TextButton prevButton = new TextButton("Previous Page", skin);
 		prevButton.setBounds(320, 20, 160, 20);
 		prevButton.addListener(new ChangeListener() {
@@ -192,7 +209,6 @@ public class Page_Event2 extends Abstract_Screen {
 			}
 		});
 		this.thisAddWidget(prevButton);
-		
 		
 		
 		TextButton submitButton = new TextButton("Submit", skin);
@@ -210,7 +226,6 @@ public class Page_Event2 extends Abstract_Screen {
 			}
 		});
 		this.thisAddWidget(submitButton);
-		
 		
 		
 		nextButton = new TextButton("Next Page", skin);
@@ -273,6 +288,28 @@ public class Page_Event2 extends Abstract_Screen {
 		}
 		
 		if (goodToGo) {
+			
+			
+			
+			//====================================================================
+			
+			
+			core.modelCore.selectedEvent.steps.get(1);
+			SelectBoxStep thisStep = (SelectBoxStep) core.modelCore.selectedEvent.steps.get(1);
+			
+			//thisStep.selection = 2;
+			if (yesBox.isChecked() == true) {
+				thisStep.selection = 1;
+			}
+			else {
+				thisStep.selection = 2;
+			}
+			
+			
+			//====================================================================
+			
+			
+			
 			nextButton.setColor(Color.valueOf("ffffffff"));
 			nextButton.setDisabled(false);
 		}

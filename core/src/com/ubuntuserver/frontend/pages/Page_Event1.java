@@ -1,4 +1,4 @@
-package com.ubuntuserver.pages;
+package com.ubuntuserver.frontend.pages;
 
 import java.util.ArrayList;
 
@@ -138,6 +138,22 @@ public class Page_Event1 extends Abstract_Screen {
 		
 		
 		
+		TextButton landingButton = new TextButton("Landing Page", skin);
+		landingButton.setBounds(20, 20, 160, 20);
+		landingButton.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				core.currentScreen.thisRemoveScreen();
+				core.currentScreen = null;
+				Screen_Landing landingScreen = new Screen_Landing(core);
+			}
+		});
+		this.thisAddWidget(landingButton);
+		
+		
+		
+		
+		
 		TextButton prevButton = new TextButton("Previous Page", skin);
 		prevButton.setBounds(320, 20, 160, 20);
 		prevButton.addListener(new ChangeListener() {
@@ -149,7 +165,6 @@ public class Page_Event1 extends Abstract_Screen {
 			}
 		});
 		this.thisAddWidget(prevButton);
-		
 		
 		
 		TextButton submitButton = new TextButton("Submit", skin);
@@ -167,7 +182,6 @@ public class Page_Event1 extends Abstract_Screen {
 			}
 		});
 		this.thisAddWidget(submitButton);
-		
 		
 		
 		nextButton = new TextButton("Next Page", skin);

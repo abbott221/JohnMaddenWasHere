@@ -1,4 +1,4 @@
-package com.ubuntuserver.pages;
+package com.ubuntuserver.frontend.pages;
 
 import java.util.ArrayList;
 
@@ -13,10 +13,12 @@ import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
@@ -29,24 +31,24 @@ import com.ubuntuserver.frontend.Abstract_Screen;
 import com.ubuntuserver.frontend.MainCoreClass;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
 
-public class Screen_Landing extends Abstract_Screen {
+public class Page_Event4 extends Abstract_Screen {
+	
+	
 	
 	
 	//Window window;
 	//TextField userText;
 	
-	TextButton DataReporter;
-	TextButton EventCreator;
+	public Label temp;
+	
+	TextButton newEventPage;
+	TextButton activeEventsPage;
 	
 	
 	
-	public Texture texture1;
-	public TextureRegion image;
-	public Image imageActor;
 	
 	
-	
-	public Screen_Landing(MainCoreClass coreIn) {
+	public Page_Event4(MainCoreClass coreIn) {
 		
 		
 		super(coreIn);
@@ -56,63 +58,56 @@ public class Screen_Landing extends Abstract_Screen {
 		
 		
 		
-		DataReporter = new TextButton("Data Reporter", skin);
-		
-		DataReporter.setBounds(450, 200, 100, 20);
-		
-		DataReporter.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				
-				core.setupGraphView();
-				
-			}
-		});
-		this.thisAddWidget(DataReporter);
+		temp = new Label("4. Determine the appropriate staff for the event", skin);
+		temp.setPosition(100, 700);
+		this.thisAddWidget(temp);
 		
 		
 		
 		
 		
-		EventCreator = new TextButton("Event Creator", skin);
 		
-		EventCreator.setBounds(650, 200, 100, 20);
+		TextButton nextButton = new TextButton("Next Page", skin);
 		
-		EventCreator.addListener(new ChangeListener() {
+		nextButton.setBounds(200, 20, 140, 20);
+		
+		nextButton.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				core.currentScreen.thisRemoveScreen();
 				core.currentScreen = null;
-				Page_NewOrActive  landingScreen = new Page_NewOrActive(core);
+				Page_Event4 landingScreen = new Page_Event4(core);
 			}
 		});
-		this.thisAddWidget(EventCreator);
+		
+		this.thisAddWidget(nextButton);
 		
 		
 		
 		
 		
 		
-		//texture1 = new Texture(Gdx.files.internal("kitten.jpg"));
-		texture1 = new Texture(Gdx.files.internal("Flood_images.jpg"));
 		
-		image = new TextureRegion(texture1);
-		//image.setRegion(100, 100, 100, 100);
-		imageActor = new Image(image);
-		imageActor.setBounds(400, 250, 400, 400);
 		
-		//stage.addActor(imageActor);
-		this.thisAddWidget(imageActor);
+		TextButton landingButton = new TextButton("Landing Page", skin);
+		
+		landingButton.setBounds(20, 20, 140, 20);
+		
+		landingButton.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				core.currentScreen.thisRemoveScreen();
+				core.currentScreen = null;
+				Screen_Landing landingScreen = new Screen_Landing(core);
+			}
+		});
+		
+		this.thisAddWidget(landingButton);
+		
 		
 		
 		
 	}
-	
-	/*
-	public String getUser() {
-		return userText.getText();
-	}
-	/**/
 	
 	
 }

@@ -1,4 +1,4 @@
-package com.ubuntuserver.pages;
+package com.ubuntuserver.frontend.pages;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

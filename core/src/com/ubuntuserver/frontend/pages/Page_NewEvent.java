@@ -1,6 +1,9 @@
-package com.ubuntuserver.pages;
+package com.ubuntuserver.frontend.pages;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -18,7 +21,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
@@ -30,9 +32,10 @@ import com.ubuntuserver.frontend.Logic.Logic_Dates;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
 import com.ubuntuserver.frontend.Abstract_Screen;
 import com.ubuntuserver.frontend.MainCoreClass;
+import com.ubuntuserver.frontend.model.Model_Event;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
 
-public class Page_ActiveEvents extends Abstract_Screen {
+public class Page_NewEvent extends Abstract_Screen {
 	
 	
 	
@@ -51,19 +54,14 @@ public class Page_ActiveEvents extends Abstract_Screen {
 	TextArea description;
 	
 	
-	//==============================
 	
-	public List eventList;
-	public List dateList;
-	public ScrollPane scrollPane;
-	public Table table;
+	
+	TextButton nextButton;
 	
 	
 	
-	public TextButton nextButton;
-	
-	
-	public Page_ActiveEvents(MainCoreClass coreIn) {
+	public Page_NewEvent(MainCoreClass coreIn) {
+		
 		
 		
 		super(coreIn);
@@ -71,108 +69,30 @@ public class Page_ActiveEvents extends Abstract_Screen {
 		
 		
 		
-		
-		title = new Label("Active Events", skin);
+		title = new Label("Create a New Flood Event", skin);
 		title.setPosition(100, 700);
 		this.thisAddWidget(title);
 		
 		
-		//nameField = new TextField("Event Name", skin);
-		//nameField.setBounds(100, 600, 200, 20);
-		//this.thisAddWidget(nameField);
+		
+		nameField = new TextField("Event Name", skin);
+		nameField.setBounds(100, 600, 200, 20);
+		this.thisAddWidget(nameField);
+		
+		
+		
+		description = new TextArea("Description", skin);
+		description.setBounds(100, 100, 500, 400);
+		this.thisAddWidget(description);
 		
 		
 		
 		
 		
-		//==============================================================
-		
-		
-		//use this space
-		//description = new TextArea("Description", skin);
-		//description.setBounds(100, 100, 500, 400);
-		//this.thisAddWidget(description);
-		
-		table = new Table();
-		scrollPane = new ScrollPane(table, skin);
-		scrollPane.setBounds(100, 100, 500, 400);
-		
-		eventList = new List( skin );
-		dateList = new List( skin );
-		
-		
-		int arraySize = core.modelCore.events.size();
-		System.out.println( "Event Count: " + arraySize );
-		
-		
-		Object[] eventEntries = new Object[arraySize];
-		Object[] dateEntries = new Object[arraySize];
-		
-		for (int i = 0; i < arraySize; i++) {
-			eventEntries[i] = core.modelCore.events.get(i).eventName;
-			
-			String dateObject = Integer.toString(i+1) + "  " + core.modelCore.events.get(i).date;
-			dateEntries[i] = dateObject;
-		}
-		
-		
-		eventList.setItems(eventEntries);
-		eventList.getSelection().setMultiple(true);
-		eventList.addListener(new ChangeListener() {
-			public void changed (ChangeEvent event, Actor actor) {
-				int index = eventList.getSelectedIndex();
-				
-				eventList.setSelectedIndex( index );
-				dateList.setSelectedIndex( index );
-				
-				core.modelCore.selectedEvent = core.modelCore.events.get(index);
-			}
-		});
-		
-		
-		dateList.setItems(dateEntries);
-		dateList.getSelection().setMultiple(true);
-		dateList.addListener(new ChangeListener() {
-			public void changed (ChangeEvent event, Actor actor) {
-				int index = dateList.getSelectedIndex();
-				
-				eventList.setSelectedIndex( index );
-				dateList.setSelectedIndex( index );
-				
-				core.modelCore.selectedEvent = core.modelCore.events.get(index);
-			}
-		});
 		
 		
 		
-		
-		
-		Label temp = new Label("Event List", skin);
-		table.add(temp).expandX().fillX().colspan(2);
-		table.row();
-		
-		
-		
-		
-		
-		table.add(dateList);
-		
-		table.add(eventList);
-		//table.add(eventList).expandX().fillX();
-		//table.add(eventList).expandX().fillX().colspan(2);
-		
-		
-		
-		
-		
-		//this.thisAddWidget(table);
-		this.thisAddWidget(scrollPane);
-		
-		
-		//==============================================================
-		
-		
-
+		//====================================================================
 		
 		
 		TextButton landingButton = new TextButton("Landing Page", skin);
@@ -190,9 +110,7 @@ public class Page_ActiveEvents extends Abstract_Screen {
 		
 		
 		
-		
-		
-		
+		//=============================================
 		
 		
 		TextButton prevButton = new TextButton("Previous Page", skin);
@@ -202,7 +120,7 @@ public class Page_ActiveEvents extends Abstract_Screen {
 			public void changed(ChangeEvent event, Actor actor) {
 				core.currentScreen.thisRemoveScreen();
 				core.currentScreen = null;
-				Page_NewOrActive newPage = new Page_NewOrActive(core);
+				Page_NewOrActive landingScreen = new Page_NewOrActive(core);
 			}
 		});
 		this.thisAddWidget(prevButton);
@@ -214,7 +132,13 @@ public class Page_ActiveEvents extends Abstract_Screen {
 		submitButton.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				//
+				
+				
+				//core.currentScreen.thisRemoveScreen();
+				//core.currentScreen = null;
+				//Page_Event1 landingScreen = new Page_Event1(core);
+				submitEvent();
+				
 			}
 		});
 		this.thisAddWidget(submitButton);
@@ -228,20 +152,70 @@ public class Page_ActiveEvents extends Abstract_Screen {
 			public void changed(ChangeEvent event, Actor actor) {
 				core.currentScreen.thisRemoveScreen();
 				core.currentScreen = null;
-				Page_Event1 newPage = new Page_Event1(core);
+				Page_Event1 landingScreen = new Page_Event1(core);
 			}
 		});
 		this.thisAddWidget(nextButton);
 		
 		
 		
-		//nextButton.setColor(Color.GRAY);
-		//nextButton.setDisabled(true);
+		nextButton.setColor(Color.GRAY);
+		nextButton.setDisabled(true);
 		
-		submitButton.setColor(Color.GRAY);
-		submitButton.setDisabled(true);
+	}
+	
+	
+	
+	public void submitEvent() {
 		
 		
+		Model_Event newEvent = new Model_Event();
+		
+		newEvent.eventName = this.nameField.getText();
+		newEvent.description = this.description.getText();
+		
+		
+		//System.
+		Calendar cal = Calendar.getInstance();
+		
+		int month = 1 + cal.get(Calendar.MONTH);
+		int day = cal.get(Calendar.DAY_OF_MONTH);
+		int year = cal.get(Calendar.YEAR);
+		
+		//System.out.println("Month:" + month);
+		//System.out.println("Day:" + day);
+		//System.out.println("Year:" + year);
+		
+		
+		
+		
+		
+		StringBuilder dateBuilder = new StringBuilder();
+		
+		//newEvent.date = "7/30/14";
+		//newEvent.date = Integer.toString(month) + Integer.toString(day) + Integer.toString(year);
+		
+		dateBuilder.append(Integer.toString(month));
+		dateBuilder.append("/");
+		dateBuilder.append(Integer.toString(day));
+		dateBuilder.append("/");
+		dateBuilder.append(Integer.toString(year));
+		
+		newEvent.date = dateBuilder.toString();
+		
+		
+		//newEvent.date = "7/30/14";
+		newEvent.active = true;
+		
+		
+		core.modelCore.events.add(newEvent);
+		core.modelCore.selectedEvent = newEvent;
+		
+		
+		//nextButton.getColor();
+		//System.out.println( nextButton.getColor() );
+		nextButton.setColor(Color.valueOf("ffffffff"));
+		nextButton.setDisabled(false);
 	}
 	
 	
