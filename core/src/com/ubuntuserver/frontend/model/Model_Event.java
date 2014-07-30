@@ -18,7 +18,8 @@ public class Model_Event {
 	public boolean active = false;
 	
 	
-	public int currentStep = 0;
+	//change to a EventStep object? or unnecessary?
+	//public int currentStep = 0;
 	
 	
 	
@@ -60,10 +61,10 @@ public class Model_Event {
 	
 	//public class action {
 	public class EventStep {
-		String author;
+		public String author;
 		
 		//change to a time object or something like that?
-		String lastChange;
+		public String lastChange;
 		
 		//boolean completed;
 		//int selection;
@@ -73,7 +74,7 @@ public class Model_Event {
 	
 	
 	public class SummaryStep extends EventStep {
-		String summary;
+		public String summary;
 	}
 	
 	public class SelectBoxStep extends EventStep {
@@ -82,7 +83,7 @@ public class Model_Event {
 		 * 1 = first option
 		 * 2 = second option
 		 */
-		int selection = 0;
+		public int selection = 0;
 	}
 	
 	

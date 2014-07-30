@@ -3,6 +3,7 @@ package com.ubuntuserver.pages;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -12,6 +13,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.List;
@@ -26,9 +28,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.ubuntuserver.frontend.Logic.Logic_Dates;
+import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
 import com.ubuntuserver.frontend.Abstract_Screen;
 import com.ubuntuserver.frontend.MainCoreClass;
+import com.ubuntuserver.frontend.model.Model_Event.SummaryStep;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
 
 public class Page_Event2 extends Abstract_Screen {
@@ -45,6 +49,28 @@ public class Page_Event2 extends Abstract_Screen {
 	TextButton activeEventsPage;
 	
 	
+	
+	public TextButton nextButton;
+	
+	
+	
+	
+	
+	
+	public CheckBox yesBox;
+	public CheckBox noBox;
+	
+	ChangeListener yesListener;
+	
+	
+	
+	
+	
+	
+	
+	
+	//experienced some overflow error from possibly setting off event from setChecked()
+	public boolean changing = false;
 	
 	
 	
@@ -82,25 +108,51 @@ public class Page_Event2 extends Abstract_Screen {
 		
 		
 		
+		yesBox = new CheckBox("Yes, I did it.", skin);
+		yesBox.setChecked(false);
+		yesBox.setPosition(100, 450);
+		yesBox.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				if (changing) {
+					//do nothing
+				} else {
+					changing = true;
+					checkEvent(true);
+					changing = false;
+				}
+			}
+		});
+		this.thisAddWidget(yesBox);
+		
+		
+		
+		noBox = new CheckBox("No, skip it.", skin);
+		noBox.setChecked(false);
+		noBox.setPosition(100, 400);
+		noBox.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				if (changing) {
+					//do nothing
+				} else {
+					changing = true;
+					checkEvent(false);
+					changing = false;
+				}
+			}
+		});
+		this.thisAddWidget(noBox);
+		
+		
+		
+		
+		
+		
 		/*
-		TextArea description = new TextArea("Gage site name\nWater level\nLast reading time\n"
-				+ "Increase rate in the last 4 hours\nActual precipitation\nForecast\n"
-				+ "Flood warning issued: (all alert records in alert table"
-				+ " for the last 3 hours)", skin);
-		
-		description.setBounds(100, 100, 500, 400);
-		
-		this.thisAddWidget(description);
-		/**/
-		
-		
-		
-		
 		
 		TextButton nextButton = new TextButton("Next Page", skin);
-		
 		nextButton.setBounds(200, 20, 140, 20);
-		
 		nextButton.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
@@ -109,18 +161,12 @@ public class Page_Event2 extends Abstract_Screen {
 				Page_Event3 landingScreen = new Page_Event3(core);
 			}
 		});
-		
 		this.thisAddWidget(nextButton);
 		
 		
 		
-		
-		
-		
 		TextButton landingButton = new TextButton("Landing Page", skin);
-		
 		landingButton.setBounds(20, 20, 140, 20);
-		
 		landingButton.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
@@ -129,13 +175,123 @@ public class Page_Event2 extends Abstract_Screen {
 				Screen_Landing landingScreen = new Screen_Landing(core);
 			}
 		});
-		
 		this.thisAddWidget(landingButton);
 		
+		/**/
 		
+		
+
+		TextButton prevButton = new TextButton("Previous Page", skin);
+		prevButton.setBounds(320, 20, 160, 20);
+		prevButton.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				core.currentScreen.thisRemoveScreen();
+				core.currentScreen = null;
+				Page_NewOrActive landingScreen = new Page_NewOrActive(core);
+			}
+		});
+		this.thisAddWidget(prevButton);
+		
+		
+		
+		TextButton submitButton = new TextButton("Submit", skin);
+		submitButton.setBounds(520, 20, 160, 20);
+		submitButton.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				
+				
+				//core.currentScreen.thisRemoveScreen();
+				//core.currentScreen = null;
+				//Page_Event1 landingScreen = new Page_Event1(core);
+				submitEvent();
+				
+			}
+		});
+		this.thisAddWidget(submitButton);
+		
+		
+		
+		nextButton = new TextButton("Next Page", skin);
+		nextButton.setBounds(720, 20, 160, 20);
+		nextButton.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				core.currentScreen.thisRemoveScreen();
+				core.currentScreen = null;
+				Page_Event3 newPage = new Page_Event3(core);
+			}
+		});
+		this.thisAddWidget(nextButton);
+		
+		
+		
+		nextButton.setColor(Color.GRAY);
+		nextButton.setDisabled(true);
+	}
+	
+	
+	
+	public void checkEvent(boolean state) {
+		
+		if (state) {
+			if (noBox.isChecked() == true) {
+				noBox.setChecked(false);
+			}
+		} else {
+			if (yesBox.isChecked() == true) {
+				yesBox.setChecked(false);
+			}
+		}
 		
 		
 	}
+	
+	
+	
+	public void submitEvent() {
+		
+		//newEvent.eventName = this.nameField.getText();
+		//newEvent.description = this.description.getText();
+		
+		
+		
+		//((SummaryStep) core.modelCore.selectedEvent.steps.get(0)).summary = this.description.getText();
+		
+		//SummaryStep thisStep = (SummaryStep) core.modelCore.selectedEvent.steps.get(0);
+		//thisStep.summary = this.description.getText();
+		
+		
+		boolean goodToGo = false;
+		
+		if (yesBox.isChecked() == true || noBox.isChecked() == true) {
+			goodToGo = true;
+		}
+		if (yesBox.isChecked() == true && noBox.isChecked() == true) {
+			goodToGo = false;
+		}
+		
+		if (goodToGo) {
+			nextButton.setColor(Color.valueOf("ffffffff"));
+			nextButton.setDisabled(false);
+		}
+		else {
+			//Dialog: check one option
+			
+			Dialog dialog = new Dialog("Invalid Data", skin, "dialog") {
+				protected void result (Object object) {
+					//System.out.println("Improper login");
+				}
+			}.text("No records have been changed. Please select one option.")
+				.button("Cancel", true)
+				.key(Keys.ENTER, true).show(stage);
+		}
+		
+		//nextButton.setColor(Color.valueOf("ffffffff"));
+		//nextButton.setDisabled(false);
+	}
+	
 	
 	
 }

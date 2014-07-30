@@ -29,6 +29,7 @@ import com.ubuntuserver.frontend.Logic.Logic_Dates;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
 import com.ubuntuserver.frontend.Abstract_Screen;
 import com.ubuntuserver.frontend.MainCoreClass;
+import com.ubuntuserver.frontend.model.Model_Event.SummaryStep;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
 
 public class Page_Event1 extends Abstract_Screen {
@@ -45,7 +46,12 @@ public class Page_Event1 extends Abstract_Screen {
 	TextButton activeEventsPage;
 	
 	
+	public TextButton nextButton;
 	
+	TextArea description;
+	
+	//experienced some overflow error from possibly setting off event from setChecked()
+	public boolean changing;
 	
 	
 	public Page_Event1(MainCoreClass coreIn) {
@@ -65,7 +71,8 @@ public class Page_Event1 extends Abstract_Screen {
 		
 		//Verify message for warnings and emergencies with NWS Information verification
 		
-		Label temp2 = new Label("Verify message for warnings and emergencies with NWS Information verification", skin);
+		Label temp2 = new Label("Verify message for warnings "
+				+ "and emergencies with NWS Information verification", skin);
 		//temp2.setColor(Color.BLACK);
 		temp2.setPosition(100, 650);
 		this.thisAddWidget(temp2);
@@ -76,7 +83,7 @@ public class Page_Event1 extends Abstract_Screen {
 		
 		
 		
-		TextArea description = new TextArea("Gage site name\nWater level\nLast reading time\n"
+		description = new TextArea("Gage site name\nWater level\nLast reading time\n"
 				+ "Increase rate in the last 4 hours\nActual precipitation\nForecast\n"
 				+ "Flood warning issued: (all alert records in alert table"
 				+ " for the last 3 hours)", skin);
@@ -88,6 +95,10 @@ public class Page_Event1 extends Abstract_Screen {
 		
 		
 		
+		
+		
+		
+		/*
 		
 		TextButton nextButton = new TextButton("Next Page", skin);
 		
@@ -123,10 +134,82 @@ public class Page_Event1 extends Abstract_Screen {
 		
 		this.thisAddWidget(landingButton);
 		
+		/**/
 		
+		
+		
+		TextButton prevButton = new TextButton("Previous Page", skin);
+		prevButton.setBounds(320, 20, 160, 20);
+		prevButton.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				core.currentScreen.thisRemoveScreen();
+				core.currentScreen = null;
+				Page_NewEvent newPage = new Page_NewEvent(core);
+			}
+		});
+		this.thisAddWidget(prevButton);
+		
+		
+		
+		TextButton submitButton = new TextButton("Submit", skin);
+		submitButton.setBounds(520, 20, 160, 20);
+		submitButton.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				
+				
+				//core.currentScreen.thisRemoveScreen();
+				//core.currentScreen = null;
+				//Page_Event1 landingScreen = new Page_Event1(core);
+				submitEvent();
+				
+			}
+		});
+		this.thisAddWidget(submitButton);
+		
+		
+		
+		nextButton = new TextButton("Next Page", skin);
+		nextButton.setBounds(720, 20, 160, 20);
+		nextButton.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				core.currentScreen.thisRemoveScreen();
+				core.currentScreen = null;
+				Page_Event2 newPage = new Page_Event2(core);
+			}
+		});
+		this.thisAddWidget(nextButton);
+		
+		
+		
+		nextButton.setColor(Color.GRAY);
+		nextButton.setDisabled(true);
 		
 		
 	}
+	
+	
+	
+	public void submitEvent() {
+		
+		//newEvent.eventName = this.nameField.getText();
+		//newEvent.description = this.description.getText();
+		
+		
+		
+		//((SummaryStep) core.modelCore.selectedEvent.steps.get(0)).summary = this.description.getText();
+		
+		SummaryStep thisStep = (SummaryStep) core.modelCore.selectedEvent.steps.get(0);
+		thisStep.summary = this.description.getText();
+		
+		
+		
+		nextButton.setColor(Color.valueOf("ffffffff"));
+		nextButton.setDisabled(false);
+	}
+	
 	
 	
 }

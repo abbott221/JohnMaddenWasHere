@@ -92,6 +92,9 @@ public class Page_NewEvent extends Abstract_Screen {
 		
 		
 		
+		//====================================================================
+		
+		
 		TextButton landingButton = new TextButton("Landing Page", skin);
 		landingButton.setBounds(20, 20, 160, 20);
 		landingButton.addListener(new ChangeListener() {
@@ -107,9 +110,7 @@ public class Page_NewEvent extends Abstract_Screen {
 		
 		
 		
-		
-		
-		
+		//=============================================
 		
 		
 		TextButton prevButton = new TextButton("Previous Page", skin);
