@@ -106,7 +106,9 @@ public class Page_ActiveEvents extends Abstract_Screen {
 		
 		for (int i = 0; i < arraySize; i++) {
 			eventEntries[i] = core.modelCore.events.get(i).eventName;
-			dateEntries[i] = core.modelCore.events.get(i).date;
+			
+			String dateObject = Integer.toString(i+1) + "  " + core.modelCore.events.get(i).date;
+			dateEntries[i] = dateObject;
 		}
 		
 		
@@ -114,7 +116,12 @@ public class Page_ActiveEvents extends Abstract_Screen {
 		eventList.getSelection().setMultiple(true);
 		eventList.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
-				eventList.setSelectedIndex( eventList.getSelectedIndex() );
+				int index = eventList.getSelectedIndex();
+				
+				eventList.setSelectedIndex( index );
+				dateList.setSelectedIndex( index );
+				
+				core.modelCore.selectedEvent = core.modelCore.events.get(index);
 			}
 		});
 		
@@ -123,7 +130,12 @@ public class Page_ActiveEvents extends Abstract_Screen {
 		dateList.getSelection().setMultiple(true);
 		dateList.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
-				dateList.setSelectedIndex( dateList.getSelectedIndex() );
+				int index = dateList.getSelectedIndex();
+				
+				eventList.setSelectedIndex( index );
+				dateList.setSelectedIndex( index );
+				
+				core.modelCore.selectedEvent = core.modelCore.events.get(index);
 			}
 		});
 		

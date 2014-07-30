@@ -31,8 +31,8 @@ public class Model_Core {
 	
 	
 	public ArrayList<Model_Event> events;
-	public int selectedEvent;
-	
+	//public int selectedEvent;
+	public Model_Event selectedEvent;
 	
 	
 	
