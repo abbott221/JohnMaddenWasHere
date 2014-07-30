@@ -59,6 +59,10 @@ public class Page_ActiveEvents extends Abstract_Screen {
 	public Table table;
 	
 	
+	
+	public TextButton nextButton;
+	
+	
 	public Page_ActiveEvents(MainCoreClass coreIn) {
 		
 		
@@ -168,61 +172,11 @@ public class Page_ActiveEvents extends Abstract_Screen {
 		//==============================================================
 		
 		
+
 		
-		
-		
-		/**/
-		
-		TextButton nextButton = new TextButton("Disabled button", skin);
-		
-		nextButton.setBounds(200, 20, 140, 20);
-		
-		ChangeListener listener = new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				System.out.println("Listener is active");
-				
-				core.currentScreen.thisRemoveScreen();
-				core.currentScreen = null;
-				Page_Event1 landingScreen = new Page_Event1(core);
-			}
-		};
-		
-		nextButton.addListener(listener);
-		
-		/*
-		nextButton.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				core.currentScreen.thisRemoveScreen();
-				core.currentScreen = null;
-				Page_Event1 landingScreen = new Page_Event1(core);
-			}
-		});
-		/**/
-		
-		
-		this.thisAddWidget(nextButton);
-		
-		
-		nextButton.removeListener(listener);
-		
-		//nextButton.setDisabled(true);
-		//nextButton.setColor(Color.DARK_GRAY);
-		nextButton.setColor(Color.GRAY);
-		//nextButton.setColor(Color.LIGHT_GRAY);
-		
-		
-		
-		
-		
-		
-		/**/
 		
 		TextButton landingButton = new TextButton("Landing Page", skin);
-		
-		landingButton.setBounds(20, 20, 140, 20);
-		
+		landingButton.setBounds(20, 20, 160, 20);
 		landingButton.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
@@ -231,11 +185,61 @@ public class Page_ActiveEvents extends Abstract_Screen {
 				Screen_Landing landingScreen = new Screen_Landing(core);
 			}
 		});
-		
 		this.thisAddWidget(landingButton);
 		
-		/**/
 		
+		
+		
+		
+		
+		
+		
+		
+		TextButton prevButton = new TextButton("Previous Page", skin);
+		prevButton.setBounds(320, 20, 160, 20);
+		prevButton.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				core.currentScreen.thisRemoveScreen();
+				core.currentScreen = null;
+				Page_NewOrActive newPage = new Page_NewOrActive(core);
+			}
+		});
+		this.thisAddWidget(prevButton);
+		
+		
+		
+		TextButton submitButton = new TextButton("Submit", skin);
+		submitButton.setBounds(520, 20, 160, 20);
+		submitButton.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				//
+			}
+		});
+		this.thisAddWidget(submitButton);
+		
+		
+		
+		nextButton = new TextButton("Next Page", skin);
+		nextButton.setBounds(720, 20, 160, 20);
+		nextButton.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				core.currentScreen.thisRemoveScreen();
+				core.currentScreen = null;
+				Page_Event1 newPage = new Page_Event1(core);
+			}
+		});
+		this.thisAddWidget(nextButton);
+		
+		
+		
+		//nextButton.setColor(Color.GRAY);
+		//nextButton.setDisabled(true);
+		
+		submitButton.setColor(Color.GRAY);
+		submitButton.setDisabled(true);
 		
 		
 	}
