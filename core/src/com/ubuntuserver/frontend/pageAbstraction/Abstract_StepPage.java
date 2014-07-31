@@ -98,6 +98,8 @@ public abstract class Abstract_StepPage extends Abstract_Screen {
 		submitButton.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
+				System.out.println("Submit Event");
+				
 				submitEvent();
 			}
 		});
@@ -146,7 +148,7 @@ public abstract class Abstract_StepPage extends Abstract_Screen {
 		
 		
 		
-		
+		System.out.println("Good To Go: " + goodToGo);
 		
 		if (goodToGo) {
 			submitSuccess();

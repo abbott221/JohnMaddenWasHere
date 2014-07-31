@@ -209,7 +209,9 @@ public class Page_NewEvent extends Abstract_Screen {
 		
 		
 		core.modelCore.events.add(newEvent);
-		core.modelCore.selectedEvent = newEvent;
+		//core.modelCore.selectedEvent = newEvent;
+		core.modelCore.selectedEvent = core.modelCore.events.get(core.modelCore.events.size() - 1);
+		
 		
 		
 		//nextButton.getColor();

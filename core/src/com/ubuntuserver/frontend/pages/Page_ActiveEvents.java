@@ -116,6 +116,9 @@ public class Page_ActiveEvents extends Abstract_Screen {
 		}
 		
 		
+		
+		core.modelCore.selectedEvent = core.modelCore.events.get(0);
+		
 		eventList.setItems(eventEntries);
 		eventList.getSelection().setMultiple(true);
 		eventList.addListener(new ChangeListener() {
