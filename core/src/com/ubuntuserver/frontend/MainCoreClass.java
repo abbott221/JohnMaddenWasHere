@@ -30,7 +30,7 @@ import com.ubuntuserver.frontend.pages.Widgets_Login2;
 
 public class MainCoreClass implements ApplicationListener {
 	
-	Mediator mediator;
+	public Mediator mediator;
 	
 	public Stage stage;
 	

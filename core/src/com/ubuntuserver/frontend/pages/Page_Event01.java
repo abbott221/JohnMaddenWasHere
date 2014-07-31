@@ -26,8 +26,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.ubuntuserver.frontend.ListenerEvents.Logic_EventCall;
+import com.ubuntuserver.frontend.Logic.Logic_DateStrings;
 import com.ubuntuserver.frontend.Logic.Logic_Dates;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
+import com.ubuntuserver.frontend.Networking.Logic_JSON3;
+import com.ubuntuserver.frontend.Networking.Logic_JSON3.DataSource;
 import com.ubuntuserver.frontend.Abstract_Screen;
 import com.ubuntuserver.frontend.MainCoreClass;
 import com.ubuntuserver.frontend.Mediator;
@@ -89,6 +92,10 @@ public class Page_Event01 extends Abstract_StepPage {
 		
 		
 		
+		if (core.mediator == null) {
+			System.out.println("No mediator");
+		}
+		
 		
 		//final Mediator mediator = new Mediator(this.stage);
 		
@@ -111,7 +118,7 @@ public class Page_Event01 extends Abstract_StepPage {
 		
 		stationBox.setItems(stationEntries);
 		
-		stationBox.setBounds(400, 500, 100, 20);
+		stationBox.setBounds(100, 550, 300, 20);
 		
 		stationBox.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
@@ -129,9 +136,30 @@ public class Page_Event01 extends Abstract_StepPage {
 			}
 		});
 		
+		this.thisAddWidget(stationBox);
 		
 		
 		
+		TextButton updateButton = new TextButton("Update", skin);
+		//updateButton.setBounds(850, 450, 100, 20);
+		updateButton.setBounds(450, 550, 100, 20);
+		
+		updateButton.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				//Logic_EventCall.stationEvent(mediator, stationBox);
+				
+				//Logic_JSON3.EntryPoint(mediator, DataSource.LOCALHOST, mediator.model.secondTable);
+				
+				
+				
+				//Logic_JSON3.EntryPoint(mediator, DataSource.INTERNAL_IP, mediator.model.secondTable);
+				
+				//Logic_DateStrings.determineDates(mediator);
+			}
+		});
+		
+		stage.addActor(updateButton);
 		
 		
 		

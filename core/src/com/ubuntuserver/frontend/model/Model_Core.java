@@ -36,6 +36,10 @@ public class Model_Core {
 	
 	
 	
+	//SB_General thisShouldNotBeHere;
+	
+	
+	
 	
 	public String username;
 	public String firstname;
@@ -58,6 +62,10 @@ public class Model_Core {
 		
 		events = new ArrayList<Model_Event>();
 		//Model_Event example = new Model_Event();
+		
+		
+		//thisShouldNotBeHere = new SB_General();
+		
 	}
 	
 	

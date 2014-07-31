@@ -23,10 +23,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
+import com.ubuntuserver.frontend.ListenerEvents.Logic_EventCall;
 import com.ubuntuserver.frontend.Logic.Logic_Dates;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
 import com.ubuntuserver.frontend.Abstract_Screen;
 import com.ubuntuserver.frontend.MainCoreClass;
+import com.ubuntuserver.frontend.Mediator;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
 
 public class Screen_Landing extends Abstract_Screen {
@@ -81,9 +83,39 @@ public class Screen_Landing extends Abstract_Screen {
 		EventCreator.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
+				
+				
+				
+				
+				
+				/**
+				 * I feel so "agile" right now
+				 */
+				
+				//MAKE MEDIATOR
+				core.mediator = new Mediator(core.stage);
+				core.mediator.registerCore(core);
+				Logic_Stage.constructStage(core.mediator);
+				core.resize(core.showWidth, core.showHeight);
+				Logic_EventCall.dateReporterOnCreate(core.mediator);
+				
+				//GET RID OF MEDIATOR
+				core.currentScreen = null;
+				Screen_Landing  landingScreen = new Screen_Landing(core);
+				core.resize(core.showWidth, core.showHeight);
+				
+				if (core.mediator == null) {
+					System.out.println("No mediator");
+				}
+				
+				
+				
+				
+				
+				
 				core.currentScreen.thisRemoveScreen();
 				core.currentScreen = null;
-				Page_NewOrActive  landingScreen = new Page_NewOrActive(core);
+				Page_NewOrActive  newPage = new Page_NewOrActive(core);
 			}
 		});
 		this.thisAddWidget(EventCreator);
