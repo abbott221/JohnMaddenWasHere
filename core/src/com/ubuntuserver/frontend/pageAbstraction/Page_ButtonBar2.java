@@ -1,4 +1,4 @@
-package com.ubuntuserver.frontend.pages;
+package com.ubuntuserver.frontend.pageAbstraction;
 
 import java.util.ArrayList;
 
@@ -35,10 +35,11 @@ import com.ubuntuserver.frontend.MainCoreClass;
 import com.ubuntuserver.frontend.model.Model_Event.SelectBoxStep;
 import com.ubuntuserver.frontend.model.Model_Event.SummaryStep;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
-import com.ubuntuserver.frontend.pageAbstraction.Abstract_StepPage;
+import com.ubuntuserver.frontend.pages.Page_Event3;
+import com.ubuntuserver.frontend.pages.Page_NewOrActive;
+import com.ubuntuserver.frontend.pages.Screen_Landing;
 
-public class Page_Event2 extends Abstract_StepPage {
-	
+public class Page_ButtonBar2 extends Abstract_StepPage {
 	
 	
 	
@@ -58,7 +59,8 @@ public class Page_Event2 extends Abstract_StepPage {
 	
 	
 	
-	public Page_Event2(MainCoreClass coreIn) {
+	
+	public Page_ButtonBar2(MainCoreClass coreIn) {
 		
 		
 		super(coreIn);
@@ -127,11 +129,12 @@ public class Page_Event2 extends Abstract_StepPage {
 		this.thisAddWidget(noBox);
 		
 		
+		
+		
 	}
 	
 	
-	
-public void checkEvent(boolean state) {
+	public void checkEvent(boolean state) {
 		
 		if (state) {
 			if (noBox.isChecked() == true) {
@@ -176,20 +179,20 @@ public void checkEvent(boolean state) {
 		
 		boolean result = false;
 		
-		
+		/*
+		if (yesBox.isChecked() == true || noBox.isChecked() == true) {
+			result = true;
+		}
+		if (yesBox.isChecked() == true && noBox.isChecked() == true) {
+			result = false;
+		}
+		/**/
 		
 		if (submitAttemptLocal() == true) {
-			
-			if ( core.modelCore.offlineMode ) {
+			if (submitAttemptNetwork() == true) {
 				result = true;
-			} else {
-				if (submitAttemptNetwork() == true) {
-					result = true;
-				}
 			}
-			
 		}
-		
 		
 		
 		return result;
@@ -209,14 +212,10 @@ public void checkEvent(boolean state) {
 		return result;
 	}
 	
-	
-	
-	
 	public boolean submitAttemptNetwork() {
 		//
 		return false;
 	}
-	
 	
 	
 	

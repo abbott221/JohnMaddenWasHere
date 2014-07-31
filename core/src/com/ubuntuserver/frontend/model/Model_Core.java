@@ -24,10 +24,10 @@ public class Model_Core {
 	
 	
 	/**
-	 * true = circumvent networking login
+	 * true = circumvent networking
 	 * false = publish
 	 */
-	public final boolean testingMode = true;
+	public final boolean offlineMode = true;
 	
 	
 	public ArrayList<Model_Event> events;

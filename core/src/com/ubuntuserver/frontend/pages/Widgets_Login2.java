@@ -136,7 +136,7 @@ public class Widgets_Login2 extends Abstract_Screen {
 					
 					//"core.loggedIn = true" -> "core.loggedIn == true" could've been an issue
 					//if(core.loggedIn = true && core.id >0) {
-					if ( core.modelCore.testingMode == true || (core.currentScreen == null && core.modelCore.id > 0) ) {
+					if ( core.modelCore.offlineMode == true || (core.currentScreen == null && core.modelCore.id > 0) ) {
 						//if true conditions, successful login?
 						
 						actor.getParent().remove();
