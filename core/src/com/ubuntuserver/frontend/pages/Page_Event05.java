@@ -67,7 +67,8 @@ public class Page_Event05 extends Abstract_StepPage {
 		
 		
 		
-		temp = new Label("Determine the appropriate staff for the event", skin);
+		temp = new Label("Brief FCEM&HS Director or "
+				+ "Deputy Director and / or recommend CAS Level", skin);
 		temp.setPosition(100, 700);
 		this.thisAddWidget(temp);
 		
@@ -142,7 +143,7 @@ public class Page_Event05 extends Abstract_StepPage {
 	public void previousPage() {
 		core.currentScreen.thisRemoveScreen();
 		core.currentScreen = null;
-		Page_Event02 newPage = new Page_Event02(core);
+		Page_Event04 newPage = new Page_Event04(core);
 	}
 	
 	
@@ -150,7 +151,7 @@ public class Page_Event05 extends Abstract_StepPage {
 	public void nextPage() {
 		core.currentScreen.thisRemoveScreen();
 		core.currentScreen = null;
-		Page_Event05 newPage = new Page_Event05(core);
+		Page_Event06 newPage = new Page_Event06(core);
 	}
 	
 	
@@ -210,7 +211,7 @@ public class Page_Event05 extends Abstract_StepPage {
 	@Override
 	public void submitSuccess() {
 		
-		int pageNum = 3;
+		int pageNum = 5;
 		pageNum--;
 		
 		

@@ -215,7 +215,7 @@ public class Page_Event03 extends Abstract_StepPage {
 		pageNum--;
 		
 		
-		core.modelCore.selectedEvent.steps.get(pageNum);
+		//core.modelCore.selectedEvent.steps.get(pageNum);
 		SelectBoxStep thisStep = (SelectBoxStep) core.modelCore.selectedEvent.steps.get(pageNum);
 		
 		if (yesBox.isChecked() == true) {

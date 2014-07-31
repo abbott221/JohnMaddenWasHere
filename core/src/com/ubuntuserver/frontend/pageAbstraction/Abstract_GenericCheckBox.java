@@ -1,4 +1,4 @@
-package com.ubuntuserver.frontend.pages;
+package com.ubuntuserver.frontend.pageAbstraction;
 
 import java.util.ArrayList;
 
@@ -36,13 +36,15 @@ import com.ubuntuserver.frontend.model.Model_Event.SelectBoxStep;
 import com.ubuntuserver.frontend.model.Model_Event.SummaryStep;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
 import com.ubuntuserver.frontend.pageAbstraction.Abstract_StepPage;
+import com.ubuntuserver.frontend.pages.Page_Event01;
+import com.ubuntuserver.frontend.pages.Page_Event03;
 
-public class Page_Event09 extends Abstract_StepPage {
+public abstract class Abstract_GenericCheckBox extends Abstract_StepPage {
 	
 	
 	
 	
-	public Label temp;
+	public Label title;
 	
 	
 	
@@ -58,7 +60,16 @@ public class Page_Event09 extends Abstract_StepPage {
 	
 	
 	
-	public Page_Event09(MainCoreClass coreIn) {
+	
+	
+	public int pageNum = 2;
+	
+	
+	
+	
+	
+	
+	public Abstract_GenericCheckBox(MainCoreClass coreIn) {
 		
 		
 		super(coreIn);
@@ -67,19 +78,24 @@ public class Page_Event09 extends Abstract_StepPage {
 		
 		
 		
-		temp = new Label("Document reservoir and river gauges "
-				+ "on Flood Monitoring Report", skin);
-		temp.setPosition(100, 700);
-		this.thisAddWidget(temp);
 		
 		
 		
 		
+		
+		title = new Label("0. Generic Placeholder Text (this is an error message)", skin);
+		title.setPosition(100, 700);
+		this.thisAddWidget(title);
+		
+		/*
+		title.setText("2. Broadcast flash flood warnings and flash flood "
+				+ "emergencies on Metro Alert");
+		/**/
 		
 		
 		
 		yesBox = new CheckBox("Yes, I did it.", skin);
-		yesBox.setChecked(false);
+		//yesBox.setChecked(false);
 		yesBox.setPosition(100, 450);
 		yesBox.addListener(new ChangeListener() {
 			@Override
@@ -98,7 +114,7 @@ public class Page_Event09 extends Abstract_StepPage {
 		
 		
 		noBox = new CheckBox("No, skip it.", skin);
-		noBox.setChecked(false);
+		//noBox.setChecked(false);
 		noBox.setPosition(100, 400);
 		noBox.addListener(new ChangeListener() {
 			@Override
@@ -115,7 +131,45 @@ public class Page_Event09 extends Abstract_StepPage {
 		this.thisAddWidget(noBox);
 		
 		
+		
+		
+		
 	}
+	
+	
+	
+	public void postConstruction() {
+		pageNum--;
+		
+		
+		
+		SelectBoxStep thisStep = (SelectBoxStep) core.modelCore.selectedEvent.steps.get(pageNum);
+		
+		
+		
+		//abstract what to do if the step is already completed or not?
+		if ( thisStep.completed ) {
+			if (thisStep.selection == 0) {
+				yesBox.setChecked(false);
+				noBox.setChecked(false);
+			} else if (thisStep.selection == 1) {
+				yesBox.setChecked(true);
+				noBox.setChecked(false);
+			} else if (thisStep.selection == 2) {
+				yesBox.setChecked(false);
+				noBox.setChecked(true);
+			}
+			
+			nextButton.setColor(Color.valueOf("ffffffff"));
+			nextButton.setDisabled(false);
+			
+		} else {
+			yesBox.setChecked(false);
+			noBox.setChecked(false);
+		}
+	}
+	
+	
 	
 	
 	
@@ -138,12 +192,12 @@ public class Page_Event09 extends Abstract_StepPage {
 	
 	
 	
-	
+	/*
 	@Override
 	public void previousPage() {
 		core.currentScreen.thisRemoveScreen();
 		core.currentScreen = null;
-		Page_Event08 newPage = new Page_Event08(core);
+		Page_Event01 newPage = new Page_Event01(core);
 	}
 	
 	
@@ -151,9 +205,9 @@ public class Page_Event09 extends Abstract_StepPage {
 	public void nextPage() {
 		core.currentScreen.thisRemoveScreen();
 		core.currentScreen = null;
-		Page_Event10 newPage = new Page_Event10(core);
+		Page_Event03 newPage = new Page_Event03(core);
 	}
-	
+	/**/
 	
 	
 	
@@ -211,11 +265,11 @@ public class Page_Event09 extends Abstract_StepPage {
 	@Override
 	public void submitSuccess() {
 		
-		int pageNum = 9;
-		pageNum--;
+		//remove one in order to use proper array position
+		//pageNum--;
 		
 		
-		core.modelCore.selectedEvent.steps.get(pageNum);
+		//core.modelCore.selectedEvent.steps.get(pageNum);
 		SelectBoxStep thisStep = (SelectBoxStep) core.modelCore.selectedEvent.steps.get(pageNum);
 		
 		if (yesBox.isChecked() == true) {
@@ -225,10 +279,15 @@ public class Page_Event09 extends Abstract_StepPage {
 			thisStep.selection = 2;
 		}
 		
+		thisStep.completed = true;
+		
 		nextButton.setColor(Color.valueOf("ffffffff"));
 		nextButton.setDisabled(false);
 		
 	}
+	
+	
+	//public abstract void titleString();
 	
 	
 	

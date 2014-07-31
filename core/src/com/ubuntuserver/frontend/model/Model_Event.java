@@ -40,7 +40,9 @@ public class Model_Event {
 		
 		
 		for (int i = 0; i < 10; i++) {
-			EventStep temp = new SelectBoxStep();
+			//EventStep temp = new SelectBoxStep();
+			SelectBoxStep temp = new SelectBoxStep();
+			temp.selection = 0;
 			steps.add(temp);
 		}
 		
@@ -66,7 +68,9 @@ public class Model_Event {
 		//change to a time object or something like that?
 		public String lastChange;
 		
-		//boolean completed;
+		
+		
+		public boolean completed = false;
 		//int selection;
 	}
 	

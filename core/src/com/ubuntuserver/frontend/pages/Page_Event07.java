@@ -67,7 +67,8 @@ public class Page_Event07 extends Abstract_StepPage {
 		
 		
 		
-		temp = new Label("Determine the appropriate staff for the event", skin);
+		temp = new Label("Match appropriate reservoir(s) "
+				+ "and / or river(s) with NWS notification", skin);
 		temp.setPosition(100, 700);
 		this.thisAddWidget(temp);
 		
@@ -142,7 +143,7 @@ public class Page_Event07 extends Abstract_StepPage {
 	public void previousPage() {
 		core.currentScreen.thisRemoveScreen();
 		core.currentScreen = null;
-		Page_Event02 newPage = new Page_Event02(core);
+		Page_Event06 newPage = new Page_Event06(core);
 	}
 	
 	
@@ -150,7 +151,7 @@ public class Page_Event07 extends Abstract_StepPage {
 	public void nextPage() {
 		core.currentScreen.thisRemoveScreen();
 		core.currentScreen = null;
-		Page_Event07 newPage = new Page_Event07(core);
+		Page_Event08 newPage = new Page_Event08(core);
 	}
 	
 	
@@ -210,7 +211,7 @@ public class Page_Event07 extends Abstract_StepPage {
 	@Override
 	public void submitSuccess() {
 		
-		int pageNum = 3;
+		int pageNum = 7;
 		pageNum--;
 		
 		

@@ -14,6 +14,14 @@ import com.ubuntuserver.frontend.pages.Page_ActiveEvents;
 import com.ubuntuserver.frontend.pages.Page_Event01;
 import com.ubuntuserver.frontend.pages.Page_Event02;
 import com.ubuntuserver.frontend.pages.Page_Event03;
+import com.ubuntuserver.frontend.pages.Page_Event04;
+import com.ubuntuserver.frontend.pages.Page_Event05;
+import com.ubuntuserver.frontend.pages.Page_Event06;
+import com.ubuntuserver.frontend.pages.Page_Event07;
+import com.ubuntuserver.frontend.pages.Page_Event08;
+import com.ubuntuserver.frontend.pages.Page_Event09;
+import com.ubuntuserver.frontend.pages.Page_Event10;
+import com.ubuntuserver.frontend.pages.Page_Event11;
 import com.ubuntuserver.frontend.pages.Page_NewEvent;
 import com.ubuntuserver.frontend.pages.Page_NewOrActive;
 import com.ubuntuserver.frontend.pages.Screen_Landing;
@@ -220,6 +228,7 @@ public class MainCoreClass implements ApplicationListener {
 			else if (this.currentScreen instanceof Page_ActiveEvents) {
 				this.currentScreen = new Page_ActiveEvents(this);
 			}
+			
 			else if (this.currentScreen instanceof Page_Event01) {
 				this.currentScreen = new Page_Event01(this);
 			}
@@ -228,6 +237,30 @@ public class MainCoreClass implements ApplicationListener {
 			}
 			else if (this.currentScreen instanceof Page_Event03) {
 				this.currentScreen = new Page_Event03(this);
+			}
+			else if (this.currentScreen instanceof Page_Event04) {
+				this.currentScreen = new Page_Event04(this);
+			}
+			else if (this.currentScreen instanceof Page_Event05) {
+				this.currentScreen = new Page_Event05(this);
+			}
+			else if (this.currentScreen instanceof Page_Event06) {
+				this.currentScreen = new Page_Event06(this);
+			}
+			else if (this.currentScreen instanceof Page_Event07) {
+				this.currentScreen = new Page_Event07(this);
+			}
+			else if (this.currentScreen instanceof Page_Event08) {
+				this.currentScreen = new Page_Event08(this);
+			}
+			else if (this.currentScreen instanceof Page_Event09) {
+				this.currentScreen = new Page_Event09(this);
+			}
+			else if (this.currentScreen instanceof Page_Event10) {
+				this.currentScreen = new Page_Event10(this);
+			}
+			else if (this.currentScreen instanceof Page_Event11) {
+				this.currentScreen = new Page_Event11(this);
 			}
 			
 			

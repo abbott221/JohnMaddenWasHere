@@ -67,7 +67,7 @@ public class Page_Event11 extends Abstract_StepPage {
 		
 		
 		
-		temp = new Label("Determine the appropriate staff for the event", skin);
+		temp = new Label("Close this flood event", skin);
 		temp.setPosition(100, 700);
 		this.thisAddWidget(temp);
 		
@@ -210,7 +210,7 @@ public class Page_Event11 extends Abstract_StepPage {
 	@Override
 	public void submitSuccess() {
 		
-		int pageNum = 3;
+		int pageNum = 11;
 		pageNum--;
 		
 		
