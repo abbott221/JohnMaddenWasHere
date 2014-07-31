@@ -152,7 +152,7 @@ public class Page_NewEvent extends Abstract_Screen {
 			public void changed(ChangeEvent event, Actor actor) {
 				core.currentScreen.thisRemoveScreen();
 				core.currentScreen = null;
-				Page_Event1 landingScreen = new Page_Event1(core);
+				Page_Event01 landingScreen = new Page_Event01(core);
 			}
 		});
 		this.thisAddWidget(nextButton);

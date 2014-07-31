@@ -11,9 +11,9 @@ import com.ubuntuserver.frontend.Logic.Logic_Polling;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
 import com.ubuntuserver.frontend.model.Model_Core;
 import com.ubuntuserver.frontend.pages.Page_ActiveEvents;
-import com.ubuntuserver.frontend.pages.Page_Event1;
-import com.ubuntuserver.frontend.pages.Page_Event2;
-import com.ubuntuserver.frontend.pages.Page_Event3;
+import com.ubuntuserver.frontend.pages.Page_Event01;
+import com.ubuntuserver.frontend.pages.Page_Event02;
+import com.ubuntuserver.frontend.pages.Page_Event03;
 import com.ubuntuserver.frontend.pages.Page_NewEvent;
 import com.ubuntuserver.frontend.pages.Page_NewOrActive;
 import com.ubuntuserver.frontend.pages.Screen_Landing;
@@ -220,14 +220,14 @@ public class MainCoreClass implements ApplicationListener {
 			else if (this.currentScreen instanceof Page_ActiveEvents) {
 				this.currentScreen = new Page_ActiveEvents(this);
 			}
-			else if (this.currentScreen instanceof Page_Event1) {
-				this.currentScreen = new Page_Event1(this);
+			else if (this.currentScreen instanceof Page_Event01) {
+				this.currentScreen = new Page_Event01(this);
 			}
-			else if (this.currentScreen instanceof Page_Event2) {
-				this.currentScreen = new Page_Event2(this);
+			else if (this.currentScreen instanceof Page_Event02) {
+				this.currentScreen = new Page_Event02(this);
 			}
-			else if (this.currentScreen instanceof Page_Event3) {
-				this.currentScreen = new Page_Event3(this);
+			else if (this.currentScreen instanceof Page_Event03) {
+				this.currentScreen = new Page_Event03(this);
 			}
 			
 			

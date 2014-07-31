@@ -1,9 +1,8 @@
-package com.ubuntuserver.frontend.pageAbstraction;
+package com.ubuntuserver.frontend.pages;
 
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -13,7 +12,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
-import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.List;
@@ -28,18 +26,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.ubuntuserver.frontend.Logic.Logic_Dates;
-import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
 import com.ubuntuserver.frontend.Abstract_Screen;
 import com.ubuntuserver.frontend.MainCoreClass;
-import com.ubuntuserver.frontend.model.Model_Event.SelectBoxStep;
 import com.ubuntuserver.frontend.model.Model_Event.SummaryStep;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
-import com.ubuntuserver.frontend.pages.Page_Event3;
-import com.ubuntuserver.frontend.pages.Page_NewOrActive;
-import com.ubuntuserver.frontend.pages.Screen_Landing;
 
-public class Page_Event2 extends Abstract_Screen {
+public class Page_Event01 extends Abstract_Screen {
 	
 	
 	
@@ -49,36 +42,19 @@ public class Page_Event2 extends Abstract_Screen {
 	
 	public Label temp;
 	
-	//TextButton newEventPage;
-	//TextButton activeEventsPage;
-	
+	TextButton newEventPage;
+	TextButton activeEventsPage;
 	
 	
 	public TextButton nextButton;
 	
-	
-	
-	
-	
-	
-	public CheckBox yesBox;
-	public CheckBox noBox;
-	
-	//ChangeListener yesListener;
-	
-	
-	
-	
-	
-	
-	
+	TextArea description;
 	
 	//experienced some overflow error from possibly setting off event from setChecked()
-	public boolean changing = false;
+	public boolean changing;
 	
 	
-	
-	public Page_Event2(MainCoreClass coreIn) {
+	public Page_Event01(MainCoreClass coreIn) {
 		
 		
 		super(coreIn);
@@ -88,23 +64,17 @@ public class Page_Event2 extends Abstract_Screen {
 		
 		
 		
-		temp = new Label("2. Broadcast flash flood warnings and flash flood "
-				+ "emergencies on Metro Alert", skin);
+		temp = new Label("1. Information Verification", skin);
 		temp.setPosition(100, 700);
 		this.thisAddWidget(temp);
 		
 		
+		//Verify message for warnings and emergencies with NWS Information verification
 		
-		
-		
-		Label temp2 = new Label("1. Depress and hold ALERT 1 tone for about 5 seconds\n"
-				+ "2. Depress Red transmit button and say:\n"
-				+ "The National Weather Service has issued a flash "
-				+ "flood (warning or emergency) for (location) until (time).\n"
-				+ "-Repeat message-\n"
-				+ "Franklin County Emergency Management and Homeland Security Clear.", skin);
+		Label temp2 = new Label("Verify message for warnings "
+				+ "and emergencies with NWS Information verification", skin);
 		//temp2.setColor(Color.BLACK);
-		temp2.setPosition(100, 550);
+		temp2.setPosition(100, 650);
 		this.thisAddWidget(temp2);
 		
 		
@@ -112,41 +82,16 @@ public class Page_Event2 extends Abstract_Screen {
 		
 		
 		
-		yesBox = new CheckBox("Yes, I did it.", skin);
-		yesBox.setChecked(false);
-		yesBox.setPosition(100, 450);
-		yesBox.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				if (changing) {
-					//do nothing
-				} else {
-					changing = true;
-					checkEvent(true);
-					changing = false;
-				}
-			}
-		});
-		this.thisAddWidget(yesBox);
 		
+		description = new TextArea("Gage site name\nWater level\nLast reading time\n"
+				+ "Increase rate in the last 4 hours\nActual precipitation\nForecast\n"
+				+ "Flood warning issued: (all alert records in alert table"
+				+ " for the last 3 hours)", skin);
 		
+		description.setBounds(100, 100, 500, 400);
 		
-		noBox = new CheckBox("No, skip it.", skin);
-		noBox.setChecked(false);
-		noBox.setPosition(100, 400);
-		noBox.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				if (changing) {
-					//do nothing
-				} else {
-					changing = true;
-					checkEvent(false);
-					changing = false;
-				}
-			}
-		});
-		this.thisAddWidget(noBox);
+		this.thisAddWidget(description);
+		
 		
 		
 		
@@ -156,21 +101,28 @@ public class Page_Event2 extends Abstract_Screen {
 		/*
 		
 		TextButton nextButton = new TextButton("Next Page", skin);
+		
 		nextButton.setBounds(200, 20, 140, 20);
+		
 		nextButton.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				core.currentScreen.thisRemoveScreen();
 				core.currentScreen = null;
-				Page_Event3 landingScreen = new Page_Event3(core);
+				Page_Event2 landingScreen = new Page_Event2(core);
 			}
 		});
+		
 		this.thisAddWidget(nextButton);
 		
 		
 		
+		
+		
 		TextButton landingButton = new TextButton("Landing Page", skin);
+		
 		landingButton.setBounds(20, 20, 140, 20);
+		
 		landingButton.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
@@ -179,6 +131,7 @@ public class Page_Event2 extends Abstract_Screen {
 				Screen_Landing landingScreen = new Screen_Landing(core);
 			}
 		});
+		
 		this.thisAddWidget(landingButton);
 		
 		/**/
@@ -208,7 +161,7 @@ public class Page_Event2 extends Abstract_Screen {
 			public void changed(ChangeEvent event, Actor actor) {
 				core.currentScreen.thisRemoveScreen();
 				core.currentScreen = null;
-				Page_NewOrActive landingScreen = new Page_NewOrActive(core);
+				Page_NewEvent newPage = new Page_NewEvent(core);
 			}
 		});
 		this.thisAddWidget(prevButton);
@@ -238,7 +191,7 @@ public class Page_Event2 extends Abstract_Screen {
 			public void changed(ChangeEvent event, Actor actor) {
 				core.currentScreen.thisRemoveScreen();
 				core.currentScreen = null;
-				Page_Event3 newPage = new Page_Event3(core);
+				Page_Event02 newPage = new Page_Event02(core);
 			}
 		});
 		this.thisAddWidget(nextButton);
@@ -247,21 +200,6 @@ public class Page_Event2 extends Abstract_Screen {
 		
 		nextButton.setColor(Color.GRAY);
 		nextButton.setDisabled(true);
-	}
-	
-	
-	
-	public void checkEvent(boolean state) {
-		
-		if (state) {
-			if (noBox.isChecked() == true) {
-				noBox.setChecked(false);
-			}
-		} else {
-			if (yesBox.isChecked() == true) {
-				yesBox.setChecked(false);
-			}
-		}
 		
 		
 	}
@@ -277,59 +215,13 @@ public class Page_Event2 extends Abstract_Screen {
 		
 		//((SummaryStep) core.modelCore.selectedEvent.steps.get(0)).summary = this.description.getText();
 		
-		//SummaryStep thisStep = (SummaryStep) core.modelCore.selectedEvent.steps.get(0);
-		//thisStep.summary = this.description.getText();
+		SummaryStep thisStep = (SummaryStep) core.modelCore.selectedEvent.steps.get(0);
+		thisStep.summary = this.description.getText();
 		
 		
-		boolean goodToGo = false;
 		
-		if (yesBox.isChecked() == true || noBox.isChecked() == true) {
-			goodToGo = true;
-		}
-		if (yesBox.isChecked() == true && noBox.isChecked() == true) {
-			goodToGo = false;
-		}
-		
-		if (goodToGo) {
-			
-			
-			
-			//====================================================================
-			
-			
-			core.modelCore.selectedEvent.steps.get(1);
-			SelectBoxStep thisStep = (SelectBoxStep) core.modelCore.selectedEvent.steps.get(1);
-			
-			//thisStep.selection = 2;
-			if (yesBox.isChecked() == true) {
-				thisStep.selection = 1;
-			}
-			else {
-				thisStep.selection = 2;
-			}
-			
-			
-			//====================================================================
-			
-			
-			
-			nextButton.setColor(Color.valueOf("ffffffff"));
-			nextButton.setDisabled(false);
-		}
-		else {
-			//Dialog: check one option
-			
-			Dialog dialog = new Dialog("Invalid Data", skin, "dialog") {
-				protected void result (Object object) {
-					//System.out.println("Improper login");
-				}
-			}.text("No records have been changed. Please select one option.")
-				.button("Cancel", true)
-				.key(Keys.ENTER, true).show(stage);
-		}
-		
-		//nextButton.setColor(Color.valueOf("ffffffff"));
-		//nextButton.setDisabled(false);
+		nextButton.setColor(Color.valueOf("ffffffff"));
+		nextButton.setDisabled(false);
 	}
 	
 	

@@ -1,4 +1,4 @@
-package com.ubuntuserver.frontend.pageAbstraction;
+package com.ubuntuserver.frontend.pages;
 
 import java.util.ArrayList;
 
@@ -35,11 +35,10 @@ import com.ubuntuserver.frontend.MainCoreClass;
 import com.ubuntuserver.frontend.model.Model_Event.SelectBoxStep;
 import com.ubuntuserver.frontend.model.Model_Event.SummaryStep;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
-import com.ubuntuserver.frontend.pages.Page_Event3;
-import com.ubuntuserver.frontend.pages.Page_NewOrActive;
-import com.ubuntuserver.frontend.pages.Screen_Landing;
+import com.ubuntuserver.frontend.pageAbstraction.Abstract_StepPage;
 
-public class Page_ButtonBar2 extends Abstract_StepPage {
+public class Page_Event03 extends Abstract_StepPage {
+	
 	
 	
 	
@@ -59,8 +58,7 @@ public class Page_ButtonBar2 extends Abstract_StepPage {
 	
 	
 	
-	
-	public Page_ButtonBar2(MainCoreClass coreIn) {
+	public Page_Event03(MainCoreClass coreIn) {
 		
 		
 		super(coreIn);
@@ -69,24 +67,12 @@ public class Page_ButtonBar2 extends Abstract_StepPage {
 		
 		
 		
-		temp = new Label("2. Broadcast flash flood warnings and flash flood "
-				+ "emergencies on Metro Alert", skin);
+		temp = new Label("Match notification with"
+				+ " Crisis Action System (CAS) Level", skin);
 		temp.setPosition(100, 700);
 		this.thisAddWidget(temp);
 		
 		
-		
-		
-		
-		Label temp2 = new Label("1. Depress and hold ALERT 1 tone for about 5 seconds\n"
-				+ "2. Depress Red transmit button and say:\n"
-				+ "The National Weather Service has issued a flash "
-				+ "flood (warning or emergency) for (location) until (time).\n"
-				+ "-Repeat message-\n"
-				+ "Franklin County Emergency Management and Homeland Security Clear.", skin);
-		//temp2.setColor(Color.BLACK);
-		temp2.setPosition(100, 550);
-		this.thisAddWidget(temp2);
 		
 		
 		
@@ -129,9 +115,8 @@ public class Page_ButtonBar2 extends Abstract_StepPage {
 		this.thisAddWidget(noBox);
 		
 		
-		
-		
 	}
+	
 	
 	
 	public void checkEvent(boolean state) {
@@ -158,7 +143,7 @@ public class Page_ButtonBar2 extends Abstract_StepPage {
 	public void previousPage() {
 		core.currentScreen.thisRemoveScreen();
 		core.currentScreen = null;
-		Page_NewOrActive landingScreen = new Page_NewOrActive(core);
+		Page_Event02 newPage = new Page_Event02(core);
 	}
 	
 	
@@ -166,7 +151,7 @@ public class Page_ButtonBar2 extends Abstract_StepPage {
 	public void nextPage() {
 		core.currentScreen.thisRemoveScreen();
 		core.currentScreen = null;
-		Page_Event3 newPage = new Page_Event3(core);
+		Page_Event04 newPage = new Page_Event04(core);
 	}
 	
 	
@@ -179,20 +164,20 @@ public class Page_ButtonBar2 extends Abstract_StepPage {
 		
 		boolean result = false;
 		
-		/*
-		if (yesBox.isChecked() == true || noBox.isChecked() == true) {
-			result = true;
-		}
-		if (yesBox.isChecked() == true && noBox.isChecked() == true) {
-			result = false;
-		}
-		/**/
+		
 		
 		if (submitAttemptLocal() == true) {
-			if (submitAttemptNetwork() == true) {
+			
+			if ( core.modelCore.offlineMode ) {
 				result = true;
+			} else {
+				if (submitAttemptNetwork() == true) {
+					result = true;
+				}
 			}
+			
 		}
+		
 		
 		
 		return result;
@@ -212,6 +197,9 @@ public class Page_ButtonBar2 extends Abstract_StepPage {
 		return result;
 	}
 	
+	
+	
+	
 	public boolean submitAttemptNetwork() {
 		//
 		return false;
@@ -219,21 +207,23 @@ public class Page_ButtonBar2 extends Abstract_StepPage {
 	
 	
 	
+	
 	@Override
 	public void submitSuccess() {
 		
-		/**/
-		core.modelCore.selectedEvent.steps.get(1);
-		SelectBoxStep thisStep = (SelectBoxStep) core.modelCore.selectedEvent.steps.get(1);
+		int pageNum = 3;
+		pageNum--;
 		
-		//thisStep.selection = 2;
+		
+		core.modelCore.selectedEvent.steps.get(pageNum);
+		SelectBoxStep thisStep = (SelectBoxStep) core.modelCore.selectedEvent.steps.get(pageNum);
+		
 		if (yesBox.isChecked() == true) {
 			thisStep.selection = 1;
 		}
 		else {
 			thisStep.selection = 2;
 		}
-		/**/
 		
 		nextButton.setColor(Color.valueOf("ffffffff"));
 		nextButton.setDisabled(false);

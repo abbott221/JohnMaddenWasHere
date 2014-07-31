@@ -35,7 +35,7 @@ import com.ubuntuserver.frontend.MainCoreClass;
 import com.ubuntuserver.frontend.model.Model_Event.SelectBoxStep;
 import com.ubuntuserver.frontend.model.Model_Event.SummaryStep;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
-import com.ubuntuserver.frontend.pages.Page_Event3;
+import com.ubuntuserver.frontend.pages.Page_Event03;
 import com.ubuntuserver.frontend.pages.Page_NewOrActive;
 import com.ubuntuserver.frontend.pages.Screen_Landing;
 
@@ -149,27 +149,9 @@ public abstract class Abstract_StepPage extends Abstract_Screen {
 		
 		
 		if (goodToGo) {
-			
-			
-			
-			//====================================================================
-			
-			
 			submitSuccess();
-			
-			
-			//====================================================================
-			
-			
-			
-			
-			//successful submit ends
-		}
-		else {
-			//Dialog: check one option
-			
+		} else {
 			submitFailed();
-			
 		}
 		
 	}
