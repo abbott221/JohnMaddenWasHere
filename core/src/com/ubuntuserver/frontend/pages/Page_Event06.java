@@ -35,106 +35,29 @@ import com.ubuntuserver.frontend.MainCoreClass;
 import com.ubuntuserver.frontend.model.Model_Event.SelectBoxStep;
 import com.ubuntuserver.frontend.model.Model_Event.SummaryStep;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
+import com.ubuntuserver.frontend.pageAbstraction.Abstract_GenericCheckBox;
 import com.ubuntuserver.frontend.pageAbstraction.Abstract_StepPage;
 
-public class Page_Event06 extends Abstract_StepPage {
-	
-	
-	
-	
-	public Label temp;
-	
-	
-	
-	public CheckBox yesBox;
-	public CheckBox noBox;
-	
-	
-	
-	//experienced some overflow error from possibly setting off event from setChecked()
-	public boolean changing = false;
-	
-	
-	
+public class Page_Event06 extends Abstract_GenericCheckBox {
 	
 	
 	public Page_Event06(MainCoreClass coreIn) {
 		
-		
 		super(coreIn);
-		//core.currentScreen = this;
 		
 		
 		
-		
-		temp = new Label("Follow CAS level procedures", skin);
-		temp.setPosition(100, 700);
-		this.thisAddWidget(temp);
+		this.title.setText("6. Follow CAS level procedures");
 		
 		
 		
+		this.pageNum = 6;
 		
+		this.postConstruction();
 		
-		
-		
-		yesBox = new CheckBox("Yes, I did it.", skin);
-		yesBox.setChecked(false);
-		yesBox.setPosition(100, 450);
-		yesBox.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				if (changing) {
-					//do nothing
-				} else {
-					changing = true;
-					checkEvent(true);
-					changing = false;
-				}
-			}
-		});
-		this.thisAddWidget(yesBox);
-		
-		
-		
-		noBox = new CheckBox("No, skip it.", skin);
-		noBox.setChecked(false);
-		noBox.setPosition(100, 400);
-		noBox.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				if (changing) {
-					//do nothing
-				} else {
-					changing = true;
-					checkEvent(false);
-					changing = false;
-				}
-			}
-		});
-		this.thisAddWidget(noBox);
 		
 		
 	}
-	
-	
-	
-	public void checkEvent(boolean state) {
-		
-		if (state) {
-			if (noBox.isChecked() == true) {
-				noBox.setChecked(false);
-			}
-		} else {
-			if (yesBox.isChecked() == true) {
-				yesBox.setChecked(false);
-			}
-		}
-		
-		
-	}
-	
-	
-	
 	
 	
 	
@@ -146,89 +69,13 @@ public class Page_Event06 extends Abstract_StepPage {
 	}
 	
 	
+	
 	@Override
 	public void nextPage() {
 		core.currentScreen.thisRemoveScreen();
 		core.currentScreen = null;
 		Page_Event07 newPage = new Page_Event07(core);
 	}
-	
-	
-	
-	
-	
-	
-	@Override
-	public boolean submitAttempt() {
-		
-		boolean result = false;
-		
-		
-		
-		if (submitAttemptLocal() == true) {
-			
-			if ( core.modelCore.offlineMode ) {
-				result = true;
-			} else {
-				if (submitAttemptNetwork() == true) {
-					result = true;
-				}
-			}
-			
-		}
-		
-		
-		
-		return result;
-	}
-	
-	
-	public boolean submitAttemptLocal() {
-		boolean result = false;
-		
-		if (yesBox.isChecked() == true || noBox.isChecked() == true) {
-			result = true;
-		}
-		if (yesBox.isChecked() == true && noBox.isChecked() == true) {
-			result = false;
-		}
-		
-		return result;
-	}
-	
-	
-	
-	
-	public boolean submitAttemptNetwork() {
-		//
-		return false;
-	}
-	
-	
-	
-	
-	@Override
-	public void submitSuccess() {
-		
-		int pageNum = 6;
-		pageNum--;
-		
-		
-		core.modelCore.selectedEvent.steps.get(pageNum);
-		SelectBoxStep thisStep = (SelectBoxStep) core.modelCore.selectedEvent.steps.get(pageNum);
-		
-		if (yesBox.isChecked() == true) {
-			thisStep.selection = 1;
-		}
-		else {
-			thisStep.selection = 2;
-		}
-		
-		nextButton.setColor(Color.valueOf("ffffffff"));
-		nextButton.setDisabled(false);
-		
-	}
-	
 	
 	
 }
