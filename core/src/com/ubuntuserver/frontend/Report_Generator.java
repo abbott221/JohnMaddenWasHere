@@ -37,4 +37,24 @@ public class Report_Generator {
 				+ "Water Rising Rate (Past 2 Hours): " + String.format("%.3f", rate) + " \n");
 	}
 	
+	
+	public String updateReport(Mediator mediator, int stationIndex, boolean eventCreator)
+	{
+		//TextArea report = ;
+		Model_Station station = mediator.model.stations.get(stationIndex);
+		String update = station.records.get(station.records.size()-1).timeStamp;
+		float rate = station.records.get(station.records.size()-2).waterLevel 
+				- station.records.get(station.records.size()-1).waterLevel;
+		
+		
+		String returnMe = "Station Name: " + stationEntries[stationIndex] + " \n"
+				+ "Waterway: " + " \n"
+				+ "Data Capturing Frequency: Every 5 minutes\n"
+				+ "Most Recent Update: " + update + " \n"
+				+ "Data Source: " + " \n"
+				+ "Water Rising Rate (Past 2 Hours): " + String.format("%.3f", rate) + " \n";
+		
+		return returnMe;
+	}
+	
 }

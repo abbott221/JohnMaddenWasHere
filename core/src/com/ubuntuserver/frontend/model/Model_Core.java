@@ -36,6 +36,17 @@ public class Model_Core {
 	
 	
 	
+	
+	
+	
+	public int pageOnePosition = 0;
+	public String pageOneString = "Gage site name\nWater level\nLast reading time\n"
+				+ "Increase rate in the last 4 hours\nActual precipitation\nForecast\n"
+				+ "Flood warning issued: (all alert records in alert table"
+				+ " for the last 3 hours)";
+	
+	
+	
 	//SB_General thisShouldNotBeHere;
 	
 	

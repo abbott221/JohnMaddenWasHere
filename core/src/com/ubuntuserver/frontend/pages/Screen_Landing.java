@@ -92,17 +92,19 @@ public class Screen_Landing extends Abstract_Screen {
 				 * I feel so "agile" right now
 				 */
 				
-				//MAKE MEDIATOR
-				core.mediator = new Mediator(core.stage);
-				core.mediator.registerCore(core);
-				Logic_Stage.constructStage(core.mediator);
-				core.resize(core.showWidth, core.showHeight);
-				Logic_EventCall.dateReporterOnCreate(core.mediator);
-				
-				//GET RID OF MEDIATOR
-				core.currentScreen = null;
-				Screen_Landing  landingScreen = new Screen_Landing(core);
-				core.resize(core.showWidth, core.showHeight);
+				if (core.mediator == null) {
+					//MAKE MEDIATOR
+					core.mediator = new Mediator(core.stage);
+					core.mediator.registerCore(core);
+					Logic_Stage.constructStage(core.mediator);
+					core.resize(core.showWidth, core.showHeight);
+					Logic_EventCall.dateReporterOnCreate(core.mediator);
+					
+					//GET RID OF MEDIATOR
+					core.currentScreen = null;
+					Screen_Landing  landingScreen = new Screen_Landing(core);
+					core.resize(core.showWidth, core.showHeight);
+				}
 				
 				if (core.mediator == null) {
 					System.out.println("No mediator");

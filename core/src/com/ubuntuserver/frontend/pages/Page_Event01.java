@@ -70,6 +70,9 @@ public class Page_Event01 extends Abstract_StepPage {
 		
 		
 		
+		//System.out.println("reconstructed");
+		
+		
 		
 		
 		temp = new Label("1. Information Verification", skin);
@@ -123,7 +126,12 @@ public class Page_Event01 extends Abstract_StepPage {
 		stationBox.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
 				
-				//Logic_EventCall.stationEvent(mediator, (SelectBox) actor);
+				core.modelCore.pageOnePosition = ((SelectBox) actor).getSelectedIndex();
+				
+				
+				
+				
+				Logic_EventCall.stationEvent(core.mediator, (SelectBox) actor);
 				
 				//Logic_Dates.stationChange(mediator, stationBox);
 				
@@ -131,12 +139,35 @@ public class Page_Event01 extends Abstract_StepPage {
 				
 				int stationIndex = ((SelectBox) actor).getSelectedIndex();
 				Report_Generator report = new Report_Generator();
-				//report.updateReport(mediator, stationIndex);
+				String useThis = report.updateReport(core.mediator, stationIndex, true);
 				
+				
+				
+				//System.out.println(useThis);
+				
+				
+				core.modelCore.pageOneString = useThis;
+				
+				//String text = core.mediator.model.report.getText();
+				//updateDescription(text);
+				updateDescription(useThis);
+				
+				
+				
+				core.modelCore.pageOneString = useThis;
+				
+				
+				
+				
+				
+				core.currentScreen.thisRemoveScreen();
+				core.currentScreen = null;
+				Page_Event01 newPage = new Page_Event01(core);
 			}
 		});
 		
 		this.thisAddWidget(stationBox);
+		
 		
 		
 		
@@ -153,14 +184,35 @@ public class Page_Event01 extends Abstract_StepPage {
 				
 				
 				
-				//Logic_JSON3.EntryPoint(mediator, DataSource.INTERNAL_IP, mediator.model.secondTable);
+				Logic_JSON3.EntryPoint(core.mediator, DataSource.INTERNAL_IP, core.mediator.model.secondTable);
 				
 				//Logic_DateStrings.determineDates(mediator);
+				
+				
+				
+				
+				
+				
+				
+				int stationIndex = ((SelectBox) actor).getSelectedIndex();
+				Report_Generator report = new Report_Generator();
+				String useThis = report.updateReport(core.mediator, stationIndex, true);
+				
+				core.modelCore.pageOneString = useThis;
+				updateDescription(useThis);
+				core.modelCore.pageOneString = useThis;
+				
+				
+				
+				
+				core.currentScreen.thisRemoveScreen();
+				core.currentScreen = null;
+				Page_Event01 newPage = new Page_Event01(core);
 			}
 		});
 		
-		stage.addActor(updateButton);
-		
+		//stage.addActor(updateButton);
+		this.thisAddWidget(updateButton);
 		
 		
 		
@@ -180,6 +232,13 @@ public class Page_Event01 extends Abstract_StepPage {
 		
 		
 		
+		stationBox.setSelectedIndex(core.modelCore.pageOnePosition);
+		description.setText(core.modelCore.pageOneString);
+		
+		
+		
+		
+		
 		//SelectBoxStep thisStep = (SelectBoxStep) core.modelCore.selectedEvent.steps.get(0);
 		SummaryStep thisStep = (SummaryStep) core.modelCore.selectedEvent.steps.get(0);
 		
@@ -189,47 +248,6 @@ public class Page_Event01 extends Abstract_StepPage {
 		}
 		
 	}
-	
-	
-	
-	
-	/*
-	//NOT USED
-	public void submitEvent() {
-		
-		
-		if (core.modelCore == null) {
-			System.out.println("Model core is null");
-		}
-		if (core.modelCore.selectedEvent == null) {
-			System.out.println("Selected event is null");
-		}
-		if (core.modelCore.selectedEvent.steps == null) {
-			System.out.println("steps is null");
-		}
-		if (core.modelCore.selectedEvent.steps.get(0) == null) {
-			System.out.println("get 0 is null");
-		}
-		
-		
-		
-		SummaryStep thisStep = (SummaryStep) core.modelCore.selectedEvent.steps.get(0);
-		thisStep.summary = this.description.getText();
-		
-		
-		
-		
-		
-		//super.nextButton.setColor(Color.valueOf("ffffffff"));
-		//this.nextButton.setColor(Color.valueOf("ffffffff"));
-		
-		super.nextButton.setColor(Color.valueOf("ffffffff"));
-		super.nextButton.setDisabled(false);
-	}
-	/**/
-
-
-	
 	
 	
 	
@@ -339,9 +357,14 @@ public class Page_Event01 extends Abstract_StepPage {
 		core.currentScreen = null;
 		Page_Event02 newPage = new Page_Event02(core);
 		
-		System.out.println("Completed: " + core.modelCore.selectedEvent.steps.get(0).completed);
+		//System.out.println("Completed: " + core.modelCore.selectedEvent.steps.get(0).completed);
 	}
 	
+	
+	
+	public void updateDescription(String text) {
+		this.description.setText(text);
+	}
 	
 	
 }
