@@ -142,7 +142,14 @@ public class Widgets_Login2 extends Abstract_Screen {
 					//if ( core.modelCore.offlineMode == true || (core.currentScreen == null && core.modelCore.id > 0) ) {
 					//if ( (core.currentScreen == null && core.modelCore.id > 0) ) {
 					
-					if ( core.modelCore.offlineMode == true || (core.currentScreen == null && core.modelCore.id > 0) ) {
+					
+					
+					System.out.println( (core.currentScreen == null) );
+					System.out.println( core.modelCore.id );
+					
+					
+					/*
+					if ( (core.currentScreen == null && core.modelCore.id > 0) ) {
 						//if true conditions, successful login?
 						
 						actor.getParent().remove();
@@ -156,14 +163,16 @@ public class Widgets_Login2 extends Abstract_Screen {
 					else {
 						//core.loggedIn = false;
 						
-						Dialog dialog = new Dialog("Improper login", skin, "dialog") {
+						Dialog dialog = new Dialog("Improper login michael", skin, "dialog") {
 							protected void result (Object object) {
-								System.out.println("Improper login");
+								System.out.println("Improper login michael");
 							}
 						}.text("If this problem remains then please contact your IT department")
 							.button("Cancel", true)
 							.key(Keys.ENTER, true).show(stage);
 					}
+					/**/
+					
 					
 				} catch (Exception e) {
 					e.printStackTrace();

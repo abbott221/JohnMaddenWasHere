@@ -10,18 +10,21 @@ import java.util.List;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Net.HttpMethods;
 import com.badlogic.gdx.Net.HttpRequest;
 import com.badlogic.gdx.Net.HttpResponse;
 import com.badlogic.gdx.Net.HttpResponseListener;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.net.HttpParametersUtils;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.ubuntuserver.frontend.Graph_Main;
 import com.ubuntuserver.frontend.MainCoreClass;
 import com.ubuntuserver.frontend.Mediator;
+import com.ubuntuserver.frontend.pages.Screen_Landing;
 
 
 /**
@@ -69,6 +72,45 @@ public class Logic_JSONPI {
 		}
 		
 		core.modelCore.userlogin(credentials);
+		
+		
+		System.out.println("credentials id 3: StartLine" + core.modelCore.id + "EndLine");
+		
+		
+		
+		
+		
+		
+		
+		
+		if ( (core.modelCore.id > 0) ) {
+			//if true conditions, successful login?
+			
+			//actor.getParent().remove();
+			
+			//core.logInSuccess();
+			
+			System.out.println("Landing Screen has been made 1");
+			
+			core.currentScreen.thisRemoveScreen();
+			core.currentScreen = null;
+			Screen_Landing  landingScreen = new Screen_Landing(core);
+			
+			System.out.println("Landing Screen has been made 2");
+			
+			//core.currentScreen = landingScreen;
+		}
+		else {
+			//core.loggedIn = false;
+			
+			Dialog dialog = new Dialog("Improper login michael", core.currentScreen.skin, "dialog") {
+				protected void result (Object object) {
+					System.out.println("Improper login michael");
+				}
+			}.text("If this problem remains then please contact your IT department")
+				.button("Cancel", true)
+				.key(Keys.ENTER, true).show(core.currentScreen.stage);
+		}
 	}
 	
 	
@@ -91,14 +133,16 @@ public class Logic_JSONPI {
 				String text = httpResponse.getResultAsString();
 				JsonValue root = new JsonReader().parse(text);
 				
-				parseJSONfromString(core, text);
 				
+				System.out.println("PI Checkpoint 1");
+				parseJSONfromString(core, text);
+				System.out.println("PI Checkpoint 2");
 				
 			}
 			
 			@Override
 			public void failed(Throwable t) {
-				System.out.println("http failed");
+				System.out.println("http failed - JSON PI");
 			}
 			
 			@Override

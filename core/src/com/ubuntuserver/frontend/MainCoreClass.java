@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.ubuntuserver.frontend.ListenerEvents.Logic_EventCall;
 import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Logic.Logic_Polling;
@@ -34,6 +35,10 @@ public class MainCoreClass implements ApplicationListener {
 	
 	public Stage stage;
 	
+	
+	public Skin skn;
+	
+	
 	public int showHeight;
 	public int showWidth;
 	
@@ -51,6 +56,12 @@ public class MainCoreClass implements ApplicationListener {
 	
 	@Override
 	public void create () {
+		
+		
+		
+		skn = new Skin(Gdx.files.internal("data/uiskin.json"));
+		
+		
 		
 		modelCore = new Model_Core(this);
 		
@@ -104,6 +115,8 @@ public class MainCoreClass implements ApplicationListener {
 		this.resize(this.showWidth, this.showHeight);
 		
 		Logic_EventCall.dateReporterOnCreate(mediator);
+		
+		mediator.dataReporterMode = true;
 	}
 	
 
@@ -120,7 +133,11 @@ public class MainCoreClass implements ApplicationListener {
 		
 		
 		//if (loggedIn || currentScreen == null) {
-		if (currentScreen == null) {
+		//if (currentScreen == null) {
+		
+		
+		
+		if (mediator != null && mediator.dataReporterMode == true ) {
 			
 			mediator.widgets.drawWidgets();
 			
@@ -166,7 +183,10 @@ public class MainCoreClass implements ApplicationListener {
 		
 		//"loggedIn = true" == graph screen
 		//if (loggedIn || currentScreen == null) {
-		if (currentScreen == null) {
+		
+		//if (mediator != null && mediator.dataReporterMode == true) {
+		
+		if (mediator != null && mediator.dataReporterMode == true) {
 			
 			
 			mediator.displayHeight = height;

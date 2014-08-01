@@ -56,6 +56,8 @@ public class Screen_Landing extends Abstract_Screen {
 		
 		
 		
+		System.out.println("Landing Page Constructor");
+		
 		
 		
 		DataReporter = new TextButton("Data Reporter", skin);

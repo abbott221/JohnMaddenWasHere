@@ -22,6 +22,10 @@ public class Mediator {
 	
 	
 	
+	public boolean dataReporterMode = false;
+	
+	
+	
 	public Model_General model;
 	
 	//public Model_WidgetSizing widgetSizes;
