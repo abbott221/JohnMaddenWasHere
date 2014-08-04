@@ -135,14 +135,43 @@ public class Widgets_Login2 extends Abstract_Screen {
 				
 				
 				
-				login();
+				
+				
+				
+				//login()'s code has been moved into this function
+				//login();
+				
+				String user = System.getProperty("user.name");
+		        user = user.replaceAll("[-+.^:,]","");
+		        String url = "http://10.119.0.52/login.php?username="+user;
+		        Logic_JSONPI.EntryPoint(core, url);
+		        
+		        
+		        
+		        //core.currentScreen == null && core.modelCore.id > 0
+		        
+		        if (core.currentScreen == null) {
+		        	System.out.println("Current Screen is null");
+		        } else {
+		        	System.out.println("Current Screen is NOT null");
+		        }
+		        System.out.println("Model_Core's id: " + core.modelCore.id);
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				
 				//"core.loggedIn = true" -> "core.loggedIn == true" could've been an issue
 				//if(core.loggedIn = true && core.id >0) {
 				if ( core.modelCore.offlineMode == true || (core.currentScreen == null && core.modelCore.id > 0) ) {
 					//if true conditions, successful login?
 					
-					actor.getParent().remove();
+					//actor.getParent().remove();
 					
 					//core.logInSuccess();
 					
@@ -152,10 +181,11 @@ public class Widgets_Login2 extends Abstract_Screen {
 				}
 				else {
 					//core.loggedIn = false;
+					System.out.println("Improper login 1");
 					
 					Dialog dialog = new Dialog("Improper login", skin, "dialog") {
 						protected void result (Object object) {
-							System.out.println("Improper login");
+							System.out.println("Improper login 2");
 						}
 					}.text("If this problem remains then please contact your IT department")
 						.button("Cancel", true)

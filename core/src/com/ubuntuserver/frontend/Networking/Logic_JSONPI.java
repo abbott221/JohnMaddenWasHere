@@ -69,6 +69,14 @@ public class Logic_JSONPI {
 		}
 		
 		core.modelCore.userlogin(credentials);
+		
+		
+		
+		
+		
+		//move Widget_Login's if-else statement here
+		
+		
 	}
 	
 	
