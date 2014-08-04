@@ -131,6 +131,43 @@ public class Widgets_Login2 extends Abstract_Screen {
 				Screen_Landing  landingScreen = new Screen_Landing(core);
 				/**/
 				
+				
+				
+				
+				
+				login();
+				
+				//"core.loggedIn = true" -> "core.loggedIn == true" could've been an issue
+				//if(core.loggedIn = true && core.id >0) {
+				if ( core.modelCore.offlineMode == true || (core.currentScreen == null && core.modelCore.id > 0) ) {
+					//if true conditions, successful login?
+					
+					actor.getParent().remove();
+					
+					//core.logInSuccess();
+					
+					core.currentScreen.thisRemoveScreen();
+					core.currentScreen = null;
+					Screen_Landing  landingScreen = new Screen_Landing(core);
+				}
+				else {
+					//core.loggedIn = false;
+					
+					Dialog dialog = new Dialog("Improper login", skin, "dialog") {
+						protected void result (Object object) {
+							System.out.println("Improper login");
+						}
+					}.text("If this problem remains then please contact your IT department")
+						.button("Cancel", true)
+						.key(Keys.ENTER, true).show(stage);
+				}
+				
+				
+				
+				
+				
+				
+				/*
 				try {
 					login();
 					
@@ -162,7 +199,7 @@ public class Widgets_Login2 extends Abstract_Screen {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				
+				/**/
 				
 				
 			}
@@ -212,6 +249,18 @@ public class Widgets_Login2 extends Abstract_Screen {
         user = user.replaceAll("[-+.^:,]","");
         String url = "http://10.119.0.52/login.php?username="+user;
         Logic_JSONPI.EntryPoint(core, url);
+        
+        
+        
+        //core.currentScreen == null && core.modelCore.id > 0
+        
+        if (core.currentScreen == null) {
+        	System.out.println("Current Screen is null");
+        } else {
+        	System.out.println("Current Screen is NOT null");
+        }
+        System.out.println("Model_Core's id: " + core.modelCore.id);
+        
     }
 	
 	
