@@ -59,43 +59,13 @@ public class Abstract_Screen {
 		
 		core = coreIn;
 		
-		
-		
-		System.out.println("Abstract Screen Constructor 1");
-		
-		
-		
-		
-		
-		
 		stage = core.stage;
-		
-		System.out.println("Abstract Screen Constructor 1.1");
 		
 		Gdx.input.setInputProcessor(stage);
 		
-		
-		System.out.println("Abstract Screen Constructor 1.2");
-		
 		//mediator = med;
+		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
 		
-		skin = core.skn;
-		/*
-		try {
-			skin = new Skin(Gdx.files.internal("data/uiskin.json"));
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		/**/
-		
-		
-		
-		
-		
-		
-		
-		System.out.println("Abstract Screen Constructor 2");
 		
 		
 		core.currentScreen = this;
@@ -119,7 +89,6 @@ public class Abstract_Screen {
 		stage.addActor(window);
 		/**/
 		
-		System.out.println("Abstract Screen Constructor 3");
 		
 		
 	}

@@ -27,7 +27,7 @@ public class Model_Core {
 	 * true = circumvent networking
 	 * false = publish
 	 */
-	public final boolean offlineMode = true;
+	public final boolean offlineMode = false;
 	
 	
 	public ArrayList<Model_Event> events;
@@ -105,17 +105,12 @@ public class Model_Core {
 	public void userlogin(String[] credentials)
 	{
 		//loggedIn = true;
-		
-		System.out.println("credentials id: StartLine" + credentials[0] + "EndLine");
-		
 		id = Integer.parseInt(credentials[0]);
 		username = credentials[1];
 		lastname = credentials[2];
 		firstname = credentials[3];
 		email = credentials[4];
 		rights = credentials[5];
-		
-		System.out.println("credentials id 2: StartLine" + id + "EndLine");
 	}
 	
 }
