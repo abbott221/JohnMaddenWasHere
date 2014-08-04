@@ -27,7 +27,7 @@ public class Model_Core {
 	 * true = circumvent networking
 	 * false = publish
 	 */
-	public final boolean offlineMode = false;
+	public final boolean offlineMode = true;
 	
 	
 	public ArrayList<Model_Event> events;

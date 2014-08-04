@@ -64,8 +64,8 @@ public class Abstract_Screen {
 		Gdx.input.setInputProcessor(stage);
 		
 		//mediator = med;
-		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
-		
+		//skin = new Skin(Gdx.files.internal("data/uiskin.json"));
+		skin = core.skn;
 		
 		
 		core.currentScreen = this;
