@@ -252,7 +252,17 @@ public class Widgets_Login2 extends Abstract_Screen {
 	
 	
 	public void loginComplete() {
-		if ( core.modelCore.offlineMode == true || (core.currentScreen == null && core.modelCore.id > 0) ) {
+		
+		if (core.currentScreen == null) {
+        	System.out.println("3 Current Screen is null");
+        } else {
+        	System.out.println("3 Current Screen is NOT null");
+        }
+        System.out.println("3 Model_Core's id: " + core.modelCore.id);
+		
+		
+        //if ( core.modelCore.offlineMode == true || (core.currentScreen == null && core.modelCore.id > 0) ) {
+		if ( core.modelCore.offlineMode == true || (core.currentScreen != null && core.modelCore.id > 0) ) {
 			
 			core.currentScreen.thisRemoveScreen();
 			core.currentScreen = null;
