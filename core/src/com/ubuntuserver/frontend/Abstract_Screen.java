@@ -79,7 +79,6 @@ public class Abstract_Screen {
 		
 		//mediator = med;
 		
-		
 		skin = core.skn;
 		/*
 		try {
