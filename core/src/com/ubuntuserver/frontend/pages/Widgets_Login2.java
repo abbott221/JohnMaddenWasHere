@@ -114,27 +114,6 @@ public class Widgets_Login2 extends Abstract_Screen {
 			public void changed(ChangeEvent event, Actor actor) {
 				
 				
-				/*
-				actor.getParent().remove();
-				
-				//core.loggedIn = true;
-				
-				//userText.getText();
-				//getUser();
-				
-				
-				
-				
-				//core.setupGraphView();
-				core.currentScreen.thisRemoveScreen();
-				core.currentScreen = null;
-				Screen_Landing  landingScreen = new Screen_Landing(core);
-				/**/
-				
-				
-				
-				
-				
 				
 				
 				
@@ -160,7 +139,10 @@ public class Widgets_Login2 extends Abstract_Screen {
 				
 				
 				
-				
+		        
+		        
+		        
+				core.modelCore.buttonWaiting = true;
 				
 				
 				
@@ -168,16 +150,15 @@ public class Widgets_Login2 extends Abstract_Screen {
 				
 				//"core.loggedIn = true" -> "core.loggedIn == true" could've been an issue
 				//if(core.loggedIn = true && core.id >0) {
+		        
+		        //THE PROBLEMATIC IF-ELSE BLOCK
+		        /*
 				if ( core.modelCore.offlineMode == true || (core.currentScreen == null && core.modelCore.id > 0) ) {
-					//if true conditions, successful login?
-					
-					//actor.getParent().remove();
-					
-					//core.logInSuccess();
 					
 					core.currentScreen.thisRemoveScreen();
 					core.currentScreen = null;
 					Screen_Landing  landingScreen = new Screen_Landing(core);
+					
 				}
 				else {
 					//core.loggedIn = false;
@@ -192,44 +173,19 @@ public class Widgets_Login2 extends Abstract_Screen {
 						.key(Keys.ENTER, true).show(stage);
 				}
 				
-				
-				
-				
-				
-				
-				/*
-				try {
-					login();
-					
-					//"core.loggedIn = true" -> "core.loggedIn == true" could've been an issue
-					//if(core.loggedIn = true && core.id >0) {
-					if ( core.modelCore.offlineMode == true || (core.currentScreen == null && core.modelCore.id > 0) ) {
-						//if true conditions, successful login?
-						
-						actor.getParent().remove();
-						
-						//core.logInSuccess();
-						
-						core.currentScreen.thisRemoveScreen();
-						core.currentScreen = null;
-						Screen_Landing  landingScreen = new Screen_Landing(core);
-					}
-					else {
-						//core.loggedIn = false;
-						
-						Dialog dialog = new Dialog("Improper login", skin, "dialog") {
-							protected void result (Object object) {
-								System.out.println("Improper login");
-							}
-						}.text("If this problem remains then please contact your IT department")
-							.button("Cancel", true)
-							.key(Keys.ENTER, true).show(stage);
-					}
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
 				/**/
+				
+				
+				
+				
+				
+				if ( core.modelCore.offlineMode == true) {
+					
+					core.currentScreen.thisRemoveScreen();
+					core.currentScreen = null;
+					Screen_Landing  landingScreen = new Screen_Landing(core);
+				}
+				
 				
 				
 			}
@@ -292,6 +248,30 @@ public class Widgets_Login2 extends Abstract_Screen {
         System.out.println("Model_Core's id: " + core.modelCore.id);
         
     }
+	
+	
+	
+	public void loginComplete() {
+		if ( core.modelCore.offlineMode == true || (core.currentScreen == null && core.modelCore.id > 0) ) {
+			
+			core.currentScreen.thisRemoveScreen();
+			core.currentScreen = null;
+			Screen_Landing  landingScreen = new Screen_Landing(core);
+			
+		}
+		else {
+			//core.loggedIn = false;
+			System.out.println("Improper login 1");
+			
+			Dialog dialog = new Dialog("Improper login", skin, "dialog") {
+				protected void result (Object object) {
+					System.out.println("Improper login 2");
+				}
+			}.text("If this problem remains then please contact your IT department")
+				.button("Cancel", true)
+				.key(Keys.ENTER, true).show(stage);
+		}
+	}
 	
 	
 }

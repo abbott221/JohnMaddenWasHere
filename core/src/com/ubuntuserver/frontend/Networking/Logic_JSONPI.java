@@ -10,18 +10,21 @@ import java.util.List;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Net.HttpMethods;
 import com.badlogic.gdx.Net.HttpRequest;
 import com.badlogic.gdx.Net.HttpResponse;
 import com.badlogic.gdx.Net.HttpResponseListener;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.net.HttpParametersUtils;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.ubuntuserver.frontend.Graph_Main;
 import com.ubuntuserver.frontend.MainCoreClass;
 import com.ubuntuserver.frontend.Mediator;
+import com.ubuntuserver.frontend.pages.Screen_Landing;
 
 
 /**
@@ -74,9 +77,36 @@ public class Logic_JSONPI {
 		
 		
 		
-		//move Widget_Login's if-else statement here
+		//move Widget_Login's if-else statement here?
 		
 		
+		core.modelCore.networkResponse = true;
+		/*
+		if ( core.modelCore.offlineMode == true || (core.currentScreen == null && core.modelCore.id > 0) ) {
+		//if ( core.currentScreen == null && core.modelCore.id > 0 ) {
+			//if true conditions, successful login?
+			
+			//actor.getParent().remove();
+			
+			//core.logInSuccess();
+			
+			core.currentScreen.thisRemoveScreen();
+			core.currentScreen = null;
+			Screen_Landing  landingScreen = new Screen_Landing(core);
+		}
+		else {
+			//core.loggedIn = false;
+			System.out.println("Improper login 1");
+			
+			Dialog dialog = new Dialog("Improper login", core.currentScreen.skin, "dialog") {
+				protected void result (Object object) {
+					System.out.println("Improper login 2");
+				}
+			}.text("If this problem remains then please contact your IT department")
+				.button("Cancel", true)
+				.key(Keys.ENTER, true).show(core.currentScreen.stage);
+		}
+		/**/
 	}
 	
 	

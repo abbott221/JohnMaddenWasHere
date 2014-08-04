@@ -36,7 +36,7 @@ public class MainCoreClass implements ApplicationListener {
 	public Stage stage;
 	
 	
-	public Skin skn;
+	//public Skin skn;
 	
 	
 	public int showHeight;
@@ -57,7 +57,7 @@ public class MainCoreClass implements ApplicationListener {
 	@Override
 	public void create () {
 		
-		skn = new Skin(Gdx.files.internal("data/uiskin.json"));
+		//skn = new Skin(Gdx.files.internal("data/uiskin.json"));
 		
 		
 		modelCore = new Model_Core(this);
@@ -137,6 +137,33 @@ public class MainCoreClass implements ApplicationListener {
 		else {
 			stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
 			stage.draw();
+			
+			
+			
+			
+			//if ( this.modelCore.offlineMode == false && this.modelCore.networkResponse == true) {
+			//when online mode and 
+			if ( this.modelCore.networkResponse == true) {
+				this.modelCore.networkResponse = false;
+				
+				System.out.println("The network has responded");
+				
+				//call dialog or go to next page
+				
+				//these calls can also be made from the network listener and cast
+				//core's current page to one of type Widgets_Login2
+				
+				//((Widgets_Login2) this.currentScreen).loginComplete();
+				if (this.currentScreen instanceof Widgets_Login2) {
+					((Widgets_Login2) this.currentScreen).loginComplete();
+				}
+			}
+			
+			
+			
+			
+			
+			
 		}
 		
 		

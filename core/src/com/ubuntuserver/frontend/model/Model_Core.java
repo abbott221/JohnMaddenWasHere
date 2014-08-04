@@ -23,6 +23,15 @@ public class Model_Core {
 	public MainCoreClass core;
 	
 	
+	
+	
+	//public int networkResponse = 0;
+	public boolean buttonWaiting = false;
+	public boolean networkResponse = false;
+	
+	
+	
+	
 	/**
 	 * true = circumvent networking
 	 * false = publish
