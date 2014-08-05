@@ -29,8 +29,8 @@ public class Model_Core {
 	//public String targetURL = "http://10.119.0.52/michael/michael_recorded.php";
 	//public String targetURL = "http://localhost/FCEMHS/michael/michael_recorded.php";
 	
-	public String targetURL = "http://localhost/FCEMHS/";
-	//public String targetURL = "http://10.119.0.52/";
+	//public String targetURL = "http://localhost/FCEMHS/";
+	public String targetURL = "http://10.119.0.52/";
 	
 	
 	
