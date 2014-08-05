@@ -23,6 +23,8 @@ import com.ubuntuserver.frontend.pages.Page_Event08;
 import com.ubuntuserver.frontend.pages.Page_Event09;
 import com.ubuntuserver.frontend.pages.Page_Event10;
 import com.ubuntuserver.frontend.pages.Page_Event11;
+import com.ubuntuserver.frontend.pages.Page_Event12No;
+import com.ubuntuserver.frontend.pages.Page_Event12Yes;
 import com.ubuntuserver.frontend.pages.Page_NewEvent;
 import com.ubuntuserver.frontend.pages.Page_NewOrActive;
 import com.ubuntuserver.frontend.pages.Screen_Landing;
@@ -298,6 +300,12 @@ public class MainCoreClass implements ApplicationListener {
 				this.currentScreen = new Page_Event11(this);
 			}
 			
+			else if (this.currentScreen instanceof Page_Event12Yes) {
+				this.currentScreen = new Page_Event12Yes(this);
+			}
+			else if (this.currentScreen instanceof Page_Event12No) {
+				this.currentScreen = new Page_Event12No(this);
+			}
 			
 			
 			

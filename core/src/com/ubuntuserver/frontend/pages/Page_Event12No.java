@@ -38,70 +38,37 @@ import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
 import com.ubuntuserver.frontend.pageAbstraction.Abstract_GenericCheckBox;
 import com.ubuntuserver.frontend.pageAbstraction.Abstract_StepPage;
 
-public class Page_Event11 extends Abstract_GenericCheckBox {
+public class Page_Event12No extends Abstract_GenericCheckBox {
 	
 	
-	public Page_Event11(MainCoreClass coreIn) {
+	public Page_Event12No(MainCoreClass coreIn) {
 		
 		super(coreIn);
 		
 		
 		
-		this.title.setText("11. Close this flood event");
+		this.title.setText("Thank You.");
 		
 		
 		
-		//this.yesBox.setText("Yes, close the event.");
+		this.thisRemoveWidget(this.yesBox);
+		this.thisRemoveWidget(this.noBox);
 		//this.noBox.setText("No, leave it as active.");
 		
-		this.thisRemoveWidget(yesBox);
-		//this.thisAddWidget(yesBox);
-		this.thisRemoveWidget(noBox);
-		//this.thisAddWidget(noBox);
-		
-		
-		yesBox = new CheckBox("Yes, close the event.", skin);
-		//yesBox.setChecked(false);
-		yesBox.setPosition(100, 450);
-		yesBox.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				if (changing) {
-					//do nothing
-				} else {
-					changing = true;
-					checkEvent(true);
-					changing = false;
-				}
-			}
-		});
-		this.thisAddWidget(yesBox);
 		
 		
 		
-		noBox = new CheckBox("No, leave it as active.", skin);
-		//noBox.setChecked(false);
-		noBox.setPosition(100, 400);
-		noBox.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				if (changing) {
-					//do nothing
-				} else {
-					changing = true;
-					checkEvent(false);
-					changing = false;
-				}
-			}
-		});
-		this.thisAddWidget(noBox);
+		Label temp2 = new Label("The event will remain active.", skin);
+		//temp2.setColor(Color.BLACK);
+		temp2.setPosition(100, 550);
+		this.thisAddWidget(temp2);
 		
 		
 		
 		
 		
 		
-		this.pageNum = 11;
+		this.pageNum = 12;
 		
 		this.postConstruction();
 		
@@ -115,7 +82,7 @@ public class Page_Event11 extends Abstract_GenericCheckBox {
 	public void previousPage() {
 		core.currentScreen.thisRemoveScreen();
 		core.currentScreen = null;
-		Page_Event10 newPage = new Page_Event10(core);
+		Page_Event11 newPage = new Page_Event11(core);
 	}
 	
 	
@@ -123,20 +90,11 @@ public class Page_Event11 extends Abstract_GenericCheckBox {
 	@Override
 	public void nextPage() {
 		
-		//if-else block goes here
-		if ( yesBox.isChecked() ) {
-			core.currentScreen.thisRemoveScreen();
-			core.currentScreen = null;
-			Page_Event12Yes newPage = new Page_Event12Yes(core);
-		} else {
-			core.currentScreen.thisRemoveScreen();
-			core.currentScreen = null;
-			Page_Event12No newPage = new Page_Event12No(core);
-		}
-		
-		//core.currentScreen.thisRemoveScreen();
-		//core.currentScreen = null;
+		core.currentScreen.thisRemoveScreen();
+		core.currentScreen = null;
 		//Page_Event03 newPage = new Page_Event03(core);
+		Screen_Landing newPage = new Screen_Landing(core);
+		
 	}
 	
 	
