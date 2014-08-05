@@ -28,6 +28,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.ubuntuserver.frontend.Logic.Logic_Dates;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
+import com.ubuntuserver.frontend.Networking.Logic_JSONevents;
 import com.ubuntuserver.frontend.Abstract_Screen;
 import com.ubuntuserver.frontend.MainCoreClass;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
@@ -69,7 +70,8 @@ public class Page_ActiveEvents extends Abstract_Screen {
 		super(coreIn);
 		//core.currentScreen = this;
 		
-		
+		//String url = core.modelCore.targetURL + "michael/michael_events.php";
+		//Logic_JSONevents.getJSONfromURL(core, url);
 		
 		
 		title = new Label("Active Events", skin);
@@ -245,6 +247,11 @@ public class Page_ActiveEvents extends Abstract_Screen {
 		submitButton.setDisabled(true);
 		
 		
+		
+		//String url = core.modelCore.targetURL + "michael/michael_events.php";
+		//Logic_JSONevents.getJSONfromURL(core, url);
+		
+		//core.resize(core.showWidth, core.showHeight);
 	}
 	
 	
