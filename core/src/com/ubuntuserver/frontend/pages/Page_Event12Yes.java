@@ -74,6 +74,11 @@ public class Page_Event12Yes extends Abstract_GenericCheckBox {
 		
 		
 		
+		submitButton.setColor(Color.GRAY);
+		submitButton.setDisabled(true);
+		
+		nextButton.setColor(Color.valueOf("ffffffff"));
+		nextButton.setDisabled(false);
 	}
 	
 	

@@ -25,6 +25,17 @@ public class Model_Core {
 	
 	
 	
+	
+	//public String targetURL = "http://10.119.0.52/michael/michael_recorded.php";
+	//public String targetURL = "http://localhost/FCEMHS/michael/michael_recorded.php";
+	
+	public String targetURL = "http://localhost/FCEMHS/";
+	//public String targetURL = "http://10.119.0.52/";
+	
+	
+	
+	
+	
 	//public int networkResponse = 0;
 	public boolean buttonWaiting = false;
 	public boolean networkResponse = false;
@@ -36,7 +47,7 @@ public class Model_Core {
 	 * true = circumvent networking
 	 * false = publish
 	 */
-	public final boolean offlineMode = true;
+	public final boolean offlineMode = false;
 	
 	
 	public ArrayList<Model_Event> events;

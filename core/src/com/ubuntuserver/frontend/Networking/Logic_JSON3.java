@@ -106,7 +106,17 @@ public class Logic_JSON3 {
 		}
 		
 		else if (source == DataSource.INTERNAL_IP) {
-			url = "http://10.119.0.52/michael/michael_recorded.php";
+			
+			
+			//url = "http://10.119.0.52/michael/michael_recorded.php";
+			
+			
+			url = mediator.core.modelCore.targetURL + "michael/michael_recorded.php";
+			
+			
+			
+			
+			
 			getJSONfromURL(mediator, url);
 		}
 		

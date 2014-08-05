@@ -122,7 +122,13 @@ public class Widgets_Login2 extends Abstract_Screen {
 				
 				String user = System.getProperty("user.name");
 		        user = user.replaceAll("[-+.^:,]","");
-		        String url = "http://10.119.0.52/login.php?username="+user;
+		        
+		        
+		        //String url = "http://10.119.0.52/login.php?username="+user;
+		        
+		        String url = core.modelCore.targetURL + "login.php?username="+user;
+		        
+		        
 		        Logic_JSONPI.EntryPoint(core, url);
 		        
 		        
