@@ -34,8 +34,9 @@ import com.ubuntuserver.frontend.Abstract_Screen;
 import com.ubuntuserver.frontend.MainCoreClass;
 import com.ubuntuserver.frontend.model.Model_Event;
 import com.ubuntuserver.frontend.model.Model_Graph.ShowMode;
+import com.ubuntuserver.frontend.pageAbstraction.Abstract_StepPage;
 
-public class Page_NewEvent extends Abstract_Screen {
+public class Page_NewEvent extends Abstract_StepPage {
 	
 	
 	
@@ -45,8 +46,8 @@ public class Page_NewEvent extends Abstract_Screen {
 	
 	public Label title;
 	
-	TextButton newEventPage;
-	TextButton activeEventsPage;
+	//TextButton newEventPage;
+	//TextButton activeEventsPage;
 	
 	
 	
@@ -56,7 +57,7 @@ public class Page_NewEvent extends Abstract_Screen {
 	
 	
 	
-	TextButton nextButton;
+	//TextButton nextButton;
 	
 	
 	
@@ -89,86 +90,63 @@ public class Page_NewEvent extends Abstract_Screen {
 		
 		
 		
-		
-		
-		
-		//====================================================================
-		
-		
-		TextButton landingButton = new TextButton("Landing Page", skin);
-		landingButton.setBounds(20, 20, 160, 20);
-		landingButton.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				core.currentScreen.thisRemoveScreen();
-				core.currentScreen = null;
-				Screen_Landing landingScreen = new Screen_Landing(core);
-			}
-		});
-		this.thisAddWidget(landingButton);
-		
-		
-		
-		
-		//=============================================
-		
-		
-		TextButton prevButton = new TextButton("Previous Page", skin);
-		prevButton.setBounds(320, 20, 160, 20);
-		prevButton.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				core.currentScreen.thisRemoveScreen();
-				core.currentScreen = null;
-				Page_NewOrActive landingScreen = new Page_NewOrActive(core);
-			}
-		});
-		this.thisAddWidget(prevButton);
-		
-		
-		
-		TextButton submitButton = new TextButton("Submit", skin);
-		submitButton.setBounds(520, 20, 160, 20);
-		submitButton.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				
-				
-				//core.currentScreen.thisRemoveScreen();
-				//core.currentScreen = null;
-				//Page_Event1 landingScreen = new Page_Event1(core);
-				submitEvent();
-				
-			}
-		});
-		this.thisAddWidget(submitButton);
-		
-		
-		
-		nextButton = new TextButton("Next Page", skin);
-		nextButton.setBounds(720, 20, 160, 20);
-		nextButton.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				core.currentScreen.thisRemoveScreen();
-				core.currentScreen = null;
-				Page_Event01 landingScreen = new Page_Event01(core);
-			}
-		});
-		this.thisAddWidget(nextButton);
-		
-		
-		
-		nextButton.setColor(Color.GRAY);
-		nextButton.setDisabled(true);
-		
 	}
 	
 	
 	
-	public void submitEvent() {
+	
+	
+	@Override
+	public boolean submitAttempt() {
+		
+		boolean result = false;
 		
 		
+		
+		if (submitAttemptLocal() == true) {
+			
+			if ( core.modelCore.offlineMode ) {
+				result = true;
+			} else {
+				if (submitAttemptNetwork() == true) {
+					result = true;
+				}
+			}
+			
+		}
+		
+		
+		
+		return result;
+	}
+	
+	
+	public boolean submitAttemptLocal() {
+		boolean result = true;
+		
+		/*
+		if (yesBox.isChecked() == true || noBox.isChecked() == true) {
+			result = true;
+		}
+		if (yesBox.isChecked() == true && noBox.isChecked() == true) {
+			result = false;
+		}
+		/**/
+		
+		return result;
+	}
+	
+	
+	
+	
+	public boolean submitAttemptNetwork() {
+		//
+		return false;
+	}
+	
+	
+	@Override
+	public void submitSuccess() {
 		Model_Event newEvent = new Model_Event();
 		
 		newEvent.eventName = this.nameField.getText();
@@ -218,6 +196,24 @@ public class Page_NewEvent extends Abstract_Screen {
 		//System.out.println( nextButton.getColor() );
 		nextButton.setColor(Color.valueOf("ffffffff"));
 		nextButton.setDisabled(false);
+	}
+
+
+
+	@Override
+	public void previousPage() {
+		core.currentScreen.thisRemoveScreen();
+		core.currentScreen = null;
+		Page_NewOrActive landingScreen = new Page_NewOrActive(core);
+	}
+
+
+
+	@Override
+	public void nextPage() {
+		core.currentScreen.thisRemoveScreen();
+		core.currentScreen = null;
+		Page_Event01 landingScreen = new Page_Event01(core);
 	}
 	
 	
