@@ -101,6 +101,14 @@ public class Page_Event12No extends Abstract_GenericCheckBox {
 		Screen_Landing newPage = new Screen_Landing(core);
 		
 	}
+
+
+
+	@Override
+	public void sendPacket() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

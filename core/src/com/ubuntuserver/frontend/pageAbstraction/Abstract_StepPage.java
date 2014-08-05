@@ -57,7 +57,7 @@ public abstract class Abstract_StepPage extends Abstract_Screen {
 	
 	public boolean submitPressed = false;
 	public boolean networkResponse = false;
-	
+	public String responseText = "";
 	
 	
 	
@@ -154,6 +154,7 @@ public abstract class Abstract_StepPage extends Abstract_Screen {
 		System.out.println("Good To Go: " + goodToGo);
 		
 		if (goodToGo) {
+			sendPacket();
 			submitSuccess();
 		} else {
 			submitFailed();
@@ -205,6 +206,17 @@ public abstract class Abstract_StepPage extends Abstract_Screen {
 	public abstract void nextPage();
 	
 	
+	public abstract void sendPacket();
+	
+	/*
+	public void sendPacket() {
+		//
+	}
+	/**/
+	
+	public void handleResponse() {
+		System.out.println("StepPage response handler: " + responseText);
+	}
 }
 
 

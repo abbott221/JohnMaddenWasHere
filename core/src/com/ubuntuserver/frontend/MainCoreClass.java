@@ -11,6 +11,7 @@ import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Logic.Logic_Polling;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
 import com.ubuntuserver.frontend.model.Model_Core;
+import com.ubuntuserver.frontend.pageAbstraction.Abstract_StepPage;
 import com.ubuntuserver.frontend.pages.Page_ActiveEvents;
 import com.ubuntuserver.frontend.pages.Page_Event01;
 import com.ubuntuserver.frontend.pages.Page_Event02;
@@ -150,12 +151,6 @@ public class MainCoreClass implements ApplicationListener {
 				
 				System.out.println("The network has responded");
 				
-				//call dialog or go to next page
-				
-				//these calls can also be made from the network listener and cast
-				//core's current page to one of type Widgets_Login2
-				
-				//((Widgets_Login2) this.currentScreen).loginComplete();
 				if (this.currentScreen instanceof Widgets_Login2) {
 					((Widgets_Login2) this.currentScreen).loginComplete();
 				}
@@ -163,7 +158,19 @@ public class MainCoreClass implements ApplicationListener {
 			
 			
 			
-			
+			if (this.currentScreen != null && this.currentScreen instanceof Abstract_StepPage) {
+				//System.out.println("Step Page instance");
+				
+				Abstract_StepPage currentPage = (Abstract_StepPage) this.currentScreen;
+				
+				if ( currentPage.networkResponse == true ) {
+					currentPage.networkResponse = false;
+					
+					System.out.println("The network has responded 2");
+					
+					currentPage.handleResponse();
+				}
+			}
 			
 			
 		}

@@ -22,6 +22,7 @@ import com.badlogic.gdx.utils.JsonValue;
 import com.ubuntuserver.frontend.Graph_Main;
 import com.ubuntuserver.frontend.MainCoreClass;
 import com.ubuntuserver.frontend.Mediator;
+import com.ubuntuserver.frontend.pageAbstraction.Abstract_StepPage;
 
 
 /**
@@ -52,12 +53,24 @@ public class Logic_PHP {
 				
 				System.out.println("Response: " + text);
 				
+				
+				Abstract_StepPage currentPage = (Abstract_StepPage) core.currentScreen;
+				
+				
+				
+				currentPage.responseText = text;
+				currentPage.networkResponse = true;
+				
+				
+				
 				//parseJSONfromString(core, text);
 				
+				/*
 				if ( text.contains("true") ) {
 					//
+					//core.currentScreen
 				}
-				
+				/**/
 				
 			}
 			

@@ -77,6 +77,14 @@ public class Page_Event07 extends Abstract_GenericCheckBox {
 		core.currentScreen = null;
 		Page_Event08 newPage = new Page_Event08(core);
 	}
+
+
+
+	@Override
+	public void sendPacket() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

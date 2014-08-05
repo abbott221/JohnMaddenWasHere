@@ -392,6 +392,22 @@ public class Page_Event01 extends Abstract_StepPage {
 		core.currentScreen = null;
 		Page_Event01 newPage = new Page_Event01(core);
 	}
+
+
+
+
+
+
+
+
+
+
+
+	@Override
+	public void sendPacket() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }
