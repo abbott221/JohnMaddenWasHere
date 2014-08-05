@@ -30,15 +30,9 @@ import com.ubuntuserver.frontend.Mediator;
 public class Logic_PHP {
 	
 	
-	MainCoreClass core;
-	
-	public static void EntryPoint(final MainCoreClass core, String url) {
-			getJSONfromURL(core, url);
-	}
-	
 	
 	//start here
-	public static void getJSONfromURL(final MainCoreClass core, String url) {
+	public static void getResponseFromURL(final MainCoreClass core, String url) {
 
 		
 		HttpRequest httpGet = new HttpRequest(HttpMethods.GET);
@@ -53,9 +47,16 @@ public class Logic_PHP {
 
 				
 				String text = httpResponse.getResultAsString();
-				JsonValue root = new JsonReader().parse(text);
+				//JsonValue root = new JsonReader().parse(text);
 				
-				parseJSONfromString(core, text);
+				
+				System.out.println("Response: " + text);
+				
+				//parseJSONfromString(core, text);
+				
+				if ( text.contains("true") ) {
+					//
+				}
 				
 				
 			}
@@ -76,36 +77,6 @@ public class Logic_PHP {
 	}
 	
 	
-	
-	
-	public static void parseJSONfromString(MainCoreClass core, String JSONtext) {
-
-		
-		String text = JSONtext;
-		
-		
-		
-		JsonValue root = null;
-		
-		root = new JsonReader().parse(text);
-		System.out.println(root);
-		/*
-		try {
-			root = new JsonReader().parse(text);
-		} catch (Exception e) {
-			//
-		}
-		/**/
-		
-		String[] credentials = new String[6];
-		for(int i=0; i<6; i++)
-		{
-			credentials[i] = root.get(i).asString();
-			System.out.println(credentials[i]);
-		}
-		
-		core.modelCore.userlogin(credentials);
-	}
 	
 	
 	

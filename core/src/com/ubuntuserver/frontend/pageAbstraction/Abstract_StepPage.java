@@ -55,6 +55,9 @@ public abstract class Abstract_StepPage extends Abstract_Screen {
 	
 	
 	
+	public boolean submitPressed = false;
+	public boolean networkResponse = false;
+	
 	
 	
 	

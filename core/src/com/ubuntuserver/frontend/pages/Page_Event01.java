@@ -43,7 +43,7 @@ import com.ubuntuserver.frontend.pageAbstraction.Abstract_StepPage;
 public class Page_Event01 extends Abstract_StepPage {
 	
 	
-	
+	SelectBox stationBox;
 	
 	//Window window;
 	//TextField userText;
@@ -102,7 +102,7 @@ public class Page_Event01 extends Abstract_StepPage {
 		
 		//final Mediator mediator = new Mediator(this.stage);
 		
-		SelectBox stationBox = new SelectBox( skin );
+		stationBox = new SelectBox( skin );
 		String s1 = "O'shaughness Dam";
 		String s2 = "Alum Creek - Africa Road";
 		String s3 = "Big Walnut Creek - Sunbury";
@@ -137,6 +137,10 @@ public class Page_Event01 extends Abstract_StepPage {
 				
 				
 				
+				
+				
+				reportUpdate();
+				/*
 				int stationIndex = ((SelectBox) actor).getSelectedIndex();
 				Report_Generator report = new Report_Generator();
 				String useThis = report.updateReport(core.mediator, stationIndex, true);
@@ -163,6 +167,7 @@ public class Page_Event01 extends Abstract_StepPage {
 				core.currentScreen.thisRemoveScreen();
 				core.currentScreen = null;
 				Page_Event01 newPage = new Page_Event01(core);
+				/**/
 			}
 		});
 		
@@ -192,8 +197,8 @@ public class Page_Event01 extends Abstract_StepPage {
 				
 				
 				
-				
-				
+				reportUpdate();
+				/*
 				int stationIndex = ((SelectBox) actor).getSelectedIndex();
 				Report_Generator report = new Report_Generator();
 				String useThis = report.updateReport(core.mediator, stationIndex, true);
@@ -208,6 +213,7 @@ public class Page_Event01 extends Abstract_StepPage {
 				core.currentScreen.thisRemoveScreen();
 				core.currentScreen = null;
 				Page_Event01 newPage = new Page_Event01(core);
+				/**/
 			}
 		});
 		
@@ -324,6 +330,8 @@ public class Page_Event01 extends Abstract_StepPage {
 		}
 		/**/
 		
+		
+		
 		SummaryStep thisStep = (SummaryStep) core.modelCore.selectedEvent.steps.get(0);
 		thisStep.summary = this.description.getText();
 		
@@ -364,6 +372,25 @@ public class Page_Event01 extends Abstract_StepPage {
 	
 	public void updateDescription(String text) {
 		this.description.setText(text);
+	}
+	
+	
+	
+	
+	public void reportUpdate() {
+		int stationIndex = stationBox.getSelectedIndex();
+		Report_Generator report = new Report_Generator();
+		String useThis = report.updateReport(core.mediator, stationIndex, true);
+		
+		core.modelCore.pageOneString = useThis;
+		updateDescription(useThis);
+		core.modelCore.pageOneString = useThis;
+		
+		
+		
+		core.currentScreen.thisRemoveScreen();
+		core.currentScreen = null;
+		Page_Event01 newPage = new Page_Event01(core);
 	}
 	
 	
