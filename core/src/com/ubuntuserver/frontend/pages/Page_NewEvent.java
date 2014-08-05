@@ -30,6 +30,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.ubuntuserver.frontend.Logic.Logic_Dates;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
+import com.ubuntuserver.frontend.Networking.Logic_PHP;
 import com.ubuntuserver.frontend.Abstract_Screen;
 import com.ubuntuserver.frontend.MainCoreClass;
 import com.ubuntuserver.frontend.model.Model_Event;
@@ -224,6 +225,19 @@ public class Page_NewEvent extends Abstract_StepPage {
 	public void sendPacket() {
 		// TODO Auto-generated method stub
 		
+		Abstract_StepPage currentPage = (Abstract_StepPage) core.currentScreen;
+		
+		StringBuilder theURL = new StringBuilder();
+		
+		theURL.append(core.modelCore.targetURL);
+		theURL.append("michael/eventcreate.php?");
+		theURL.append("name=" + this.nameField.getText() +"&");
+		theURL.append("description=" + this.description.getText() +"&");
+		theURL.append("user=" + core.modelCore.username);
+		
+		System.out.println( theURL.toString() );
+		
+		Logic_PHP.getResponseFromURL(core, theURL.toString());
 	}
 	
 	

@@ -76,7 +76,7 @@ public class Logic_PHP {
 			
 			@Override
 			public void failed(Throwable t) {
-				System.out.println("http failed");
+				System.out.println("PHP http failed");
 			}
 			
 			@Override

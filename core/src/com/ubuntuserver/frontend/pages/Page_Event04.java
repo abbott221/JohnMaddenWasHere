@@ -30,6 +30,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.ubuntuserver.frontend.Logic.Logic_Dates;
 import com.ubuntuserver.frontend.Logic.Logic_GraphSizing;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
+import com.ubuntuserver.frontend.Networking.Logic_PHP;
 import com.ubuntuserver.frontend.Abstract_Screen;
 import com.ubuntuserver.frontend.MainCoreClass;
 import com.ubuntuserver.frontend.model.Model_Event.SelectBoxStep;
@@ -83,6 +84,20 @@ public class Page_Event04 extends Abstract_GenericCheckBox {
 	public void sendPacket() {
 		// TODO Auto-generated method stub
 		
+		Abstract_StepPage currentPage = (Abstract_StepPage) core.currentScreen;
+		
+		StringBuilder theURL = new StringBuilder();
+		
+		theURL.append(core.modelCore.targetURL);
+		theURL.append("michael/updateevent.php?");
+		theURL.append("page=" + "four" +"&"); //page = "three"&
+		theURL.append("name=" + core.modelCore.selectedEvent.eventName +"&");
+		theURL.append("answer=" + yesBox.isChecked() +"&");
+		theURL.append("user=" + core.modelCore.username);
+		
+		System.out.println( theURL.toString() );
+		
+		Logic_PHP.getResponseFromURL(core, theURL.toString());
 	}
 	
 	

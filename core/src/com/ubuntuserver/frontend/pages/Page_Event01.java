@@ -30,6 +30,7 @@ import com.ubuntuserver.frontend.Logic.Logic_DateStrings;
 import com.ubuntuserver.frontend.Logic.Logic_Dates;
 import com.ubuntuserver.frontend.Logic.Logic_Stage;
 import com.ubuntuserver.frontend.Networking.Logic_JSON3;
+import com.ubuntuserver.frontend.Networking.Logic_PHP;
 import com.ubuntuserver.frontend.Networking.Logic_JSON3.DataSource;
 import com.ubuntuserver.frontend.Abstract_Screen;
 import com.ubuntuserver.frontend.MainCoreClass;
@@ -407,6 +408,20 @@ public class Page_Event01 extends Abstract_StepPage {
 	public void sendPacket() {
 		// TODO Auto-generated method stub
 		
+		Abstract_StepPage currentPage = (Abstract_StepPage) core.currentScreen;
+		
+		StringBuilder theURL = new StringBuilder();
+		
+		theURL.append(core.modelCore.targetURL);
+		theURL.append("michael/updateevent.php?");
+		theURL.append("page=" + "two" +"&"); //page = "three"&
+		theURL.append("name=" + core.modelCore.selectedEvent.eventName +"&");
+		theURL.append("answer=" + description.getText() +"&");
+		theURL.append("user=" + core.modelCore.username);
+		
+		System.out.println( theURL.toString() );
+		
+		Logic_PHP.getResponseFromURL(core, theURL.toString());
 	}
 	
 	
