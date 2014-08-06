@@ -5,13 +5,16 @@ import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
@@ -54,6 +57,12 @@ public class Widgets_Login2 extends Abstract_Screen {
 	
 	
 	
+	public Texture texture1;
+	public TextureRegion image;
+	public Image imageActor;
+	
+	
+	
 	public Widgets_Login2(MainCoreClass coreIn) {
 		
 		
@@ -65,15 +74,14 @@ public class Widgets_Login2 extends Abstract_Screen {
 		
 		
 		
-		window = new Window("Log In Options", skin);
+		window = new Window("Flood SOP Automation System", skin);
 		
 		window.defaults().pad(5.0f);
 		
 		
 		
 		
-		
-		
+		/*
 		
 		userText = new TextField("", skin);
 		
@@ -82,13 +90,7 @@ public class Widgets_Login2 extends Abstract_Screen {
 		
 		//this.addWidget(userText);
 		
-		
-		
-		
 		window.row();
-		
-		
-		
 		
 		TextField passText = new TextField("", skin);
 		passText.setMessageText("Password");
@@ -100,10 +102,26 @@ public class Widgets_Login2 extends Abstract_Screen {
 		
 		//this.addWidget(passText);
 		
+		window.row();
 		
+		/**/
+		
+		
+		
+		//texture1 = new Texture(Gdx.files.internal("logo.png"));
+		texture1 = new Texture(Gdx.files.internal("logo2.JPG"));
+		image = new TextureRegion(texture1);
+		imageActor = new Image(image);
+		
+		imageActor.setSize(288, 209);
+		//imageActor.setBounds(400, 250, 400, 400);
+		//this.thisAddWidget(imageActor);
+		window.add(imageActor).colspan(2);
 		
 		
 		window.row();
+		
+		
 		
 		
 		
@@ -221,8 +239,10 @@ public class Widgets_Login2 extends Abstract_Screen {
 		
 		
 		//window.setBounds(300, 300, 350, 350);
-		window.setBounds(300, 300, 350, 250);
-		
+		//window.setBounds(300, 300, 350, 250);
+		//x, y, width, height
+		//window.setBounds(100, 100, 980, 400);
+		window.setBounds(250, 150, 400, 350);
 		
 		
 		
