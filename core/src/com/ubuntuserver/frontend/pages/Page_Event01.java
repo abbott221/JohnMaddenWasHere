@@ -76,9 +76,23 @@ public class Page_Event01 extends Abstract_StepPage {
 		
 		
 		
+		
+		String name = "ACTION PLAN FOR FLOOD EVENT " + core.modelCore.selectedEvent.eventName;
+		Label eventName = new Label(name, skin);
+		eventName.setPosition(100, 700);
+		this.thisAddWidget(eventName);
+		eventName.setColor(Color.BLUE);
+		
+		
+		
+		
+		
+		
 		temp = new Label("1. Information Verification", skin);
-		temp.setPosition(100, 700);
+		//temp.setPosition(100, 700);
+		temp.setPosition(150, 625);
 		this.thisAddWidget(temp);
+		temp.setColor(Color.BLUE);
 		
 		
 		//Verify message for warnings and emergencies with NWS Information verification
@@ -86,9 +100,9 @@ public class Page_Event01 extends Abstract_StepPage {
 		Label temp2 = new Label("Verify message for warnings "
 				+ "and emergencies with NWS Information verification", skin);
 		//temp2.setColor(Color.BLACK);
-		temp2.setPosition(100, 650);
+		temp2.setPosition(100, 550);
 		this.thisAddWidget(temp2);
-		
+		temp2.setColor(Color.BLUE);
 		
 		
 		
@@ -122,7 +136,8 @@ public class Page_Event01 extends Abstract_StepPage {
 		
 		stationBox.setItems(stationEntries);
 		
-		stationBox.setBounds(100, 550, 300, 20);
+		//stationBox.setBounds(100, 550, 300, 20);
+		stationBox.setBounds(100, 500, 300, 20);
 		
 		stationBox.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
@@ -179,7 +194,8 @@ public class Page_Event01 extends Abstract_StepPage {
 		
 		TextButton updateButton = new TextButton("Update", skin);
 		//updateButton.setBounds(850, 450, 100, 20);
-		updateButton.setBounds(450, 550, 100, 20);
+		//updateButton.setBounds(450, 550, 100, 20);
+		updateButton.setBounds(450, 500, 100, 20);
 		
 		updateButton.addListener(new ChangeListener() {
 			@Override
@@ -231,10 +247,11 @@ public class Page_Event01 extends Abstract_StepPage {
 				+ "Flood warning issued: (all alert records in alert table"
 				+ " for the last 3 hours)", skin);
 		
-		description.setBounds(100, 100, 500, 400);
+		//description.setBounds(100, 100, 500, 400);
+		description.setBounds(100, 100, 500, 350);
 		
 		this.thisAddWidget(description);
-		
+		//description.setColor(Color.BLUE);
 		
 		
 		

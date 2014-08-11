@@ -77,14 +77,19 @@ public abstract class Abstract_GenericCheckBox extends Abstract_StepPage {
 		
 		
 		
-		
+		String name = "ACTION PLAN FOR FLOOD EVENT " + core.modelCore.selectedEvent.eventName;
+		Label eventName = new Label(name, skin);
+		eventName.setPosition(100, 700);
+		this.thisAddWidget(eventName);
+		eventName.setColor(Color.BLUE);
 		
 		
 		
 		
 		
 		title = new Label("0. Generic Placeholder Text (this is an error message)", skin);
-		title.setPosition(100, 700);
+		//title.setPosition(100, 700);
+		title.setPosition(150, 625);
 		this.thisAddWidget(title);
 		
 		/*
@@ -96,7 +101,8 @@ public abstract class Abstract_GenericCheckBox extends Abstract_StepPage {
 		
 		yesBox = new CheckBox("Yes, I did it.", skin);
 		//yesBox.setChecked(false);
-		yesBox.setPosition(100, 450);
+		//yesBox.setPosition(100, 450);
+		yesBox.setPosition(100, 350);
 		yesBox.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
@@ -115,7 +121,8 @@ public abstract class Abstract_GenericCheckBox extends Abstract_StepPage {
 		
 		noBox = new CheckBox("No, skip it.", skin);
 		//noBox.setChecked(false);
-		noBox.setPosition(100, 400);
+		//noBox.setPosition(100, 400);
+		noBox.setPosition(100, 300);
 		noBox.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
@@ -132,8 +139,11 @@ public abstract class Abstract_GenericCheckBox extends Abstract_StepPage {
 		
 		
 		
+		//title.setColor(Color.CYAN);
+		title.setColor(Color.BLUE);
 		
-		
+		yesBox.setColor(Color.BLUE);
+		noBox.setColor(Color.BLUE);
 	}
 	
 	

@@ -52,7 +52,7 @@ public class Widgets2 {
 			}
 		});
 		
-		med.widgets.stage.addActor(optionsButton);
+		//med.widgets.stage.addActor(optionsButton);
 		
 		/**/
 		

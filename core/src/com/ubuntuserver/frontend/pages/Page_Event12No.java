@@ -62,7 +62,7 @@ public class Page_Event12No extends Abstract_GenericCheckBox {
 		//temp2.setColor(Color.BLACK);
 		temp2.setPosition(100, 550);
 		this.thisAddWidget(temp2);
-		
+		temp2.setColor(Color.BLUE);
 		
 		
 		

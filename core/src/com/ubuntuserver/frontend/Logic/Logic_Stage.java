@@ -77,7 +77,7 @@ public class Logic_Stage {
 		
 		//newStage.addActor(mediator.widgets.thumbnails);
 		
-		newStage.addActor(mediator.widgets2.optionsButton);
+		//newStage.addActor(mediator.widgets2.optionsButton);
 		
 		newStage.addActor(mediator.tablepane.tablePane);
 		

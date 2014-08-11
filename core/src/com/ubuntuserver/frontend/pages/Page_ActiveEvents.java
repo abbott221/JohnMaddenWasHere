@@ -77,6 +77,7 @@ public class Page_ActiveEvents extends Abstract_Screen {
 		title = new Label("Active Events", skin);
 		title.setPosition(100, 700);
 		this.thisAddWidget(title);
+		title.setColor(Color.BLUE);
 		
 		
 		//nameField = new TextField("Event Name", skin);

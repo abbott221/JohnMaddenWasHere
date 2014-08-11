@@ -62,7 +62,7 @@ public class Page_NewOrActive extends Abstract_Screen {
 		temp.setPosition(300, 500);
 		
 		this.thisAddWidget(temp);
-		
+		temp.setColor(Color.BLUE);
 		
 		
 		
@@ -84,7 +84,6 @@ public class Page_NewOrActive extends Abstract_Screen {
 		
 		
 		
-		
 		activeEventsPage = new TextButton("Active Events", skin);
 		
 		activeEventsPage.setBounds(400, 200, 200, 20);
@@ -98,7 +97,6 @@ public class Page_NewOrActive extends Abstract_Screen {
 			}
 		});
 		this.thisAddWidget(activeEventsPage);
-		
 		
 		
 		

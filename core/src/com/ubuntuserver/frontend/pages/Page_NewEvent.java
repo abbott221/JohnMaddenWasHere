@@ -74,19 +74,19 @@ public class Page_NewEvent extends Abstract_StepPage {
 		title = new Label("Create a New Flood Event", skin);
 		title.setPosition(100, 700);
 		this.thisAddWidget(title);
-		
+		title.setColor(Color.BLUE);
 		
 		
 		nameField = new TextField("Event Name", skin);
 		nameField.setBounds(100, 600, 200, 20);
 		this.thisAddWidget(nameField);
-		
+		//nameField.setColor(Color.BLUE);
 		
 		
 		description = new TextArea("Description", skin);
 		description.setBounds(100, 100, 500, 400);
 		this.thisAddWidget(description);
-		
+		//description.setColor(Color.BLUE);
 		
 		
 		

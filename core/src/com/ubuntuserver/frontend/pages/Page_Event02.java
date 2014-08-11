@@ -60,8 +60,9 @@ public class Page_Event02 extends Abstract_GenericCheckBox {
 				+ "-Repeat message-\n"
 				+ "Franklin County Emergency Management and Homeland Security Clear.", skin);
 		//temp2.setColor(Color.BLACK);
-		temp2.setPosition(100, 550);
+		temp2.setPosition(100, 450);
 		this.thisAddWidget(temp2);
+		temp2.setColor(Color.BLUE);
 		
 		
 		
