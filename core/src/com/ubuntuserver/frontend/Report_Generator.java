@@ -2,6 +2,7 @@ package com.ubuntuserver.frontend;
 
 import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.ubuntuserver.frontend.Logic.Logic_SourceInfo;
+import com.ubuntuserver.frontend.Networking.Logic_getForecast;
 import com.ubuntuserver.frontend.model.Model_Station;
 
 public class Report_Generator {
@@ -46,6 +47,13 @@ public class Report_Generator {
 				+ "Most Recent Update: " + update + " \n"
 				+ "Data Source: " + info.source + " \n"
 				+ "Water Rising Rate (Past 2 Hours): " + String.format("%.3f", rate) + " \n");
+		
+		Logic_getForecast.setInModelCore(mediator.core);
+		
+		String original = report.getText();
+		String adjusted = original + mediator.core.modelCore.forecastLine;
+		
+		report.setText(adjusted);
 	}
 	
 	
@@ -67,12 +75,31 @@ public class Report_Generator {
 		
 		
 		
+		Logic_getForecast.setInModelCore(mediator.core);
+		
+		/*
 		String returnMe = "Station Name: " + stationEntries[stationIndex] + " \n"
 				+ "Waterway: " + info.waterway + " \n"
 				+ "Data Capturing Frequency: Every 5 minutes\n"
 				+ "Most Recent Update: " + update + " \n"
 				+ "Data Source: " + info.source + " \n"
 				+ "Water Rising Rate (Past 2 Hours): " + String.format("%.3f", rate) + " \n";
+		/**/
+		
+		String returnMe = "Station Name: " + stationEntries[stationIndex] + " \n"
+				+ "Waterway: " + info.waterway + " \n"
+				+ "Data Capturing Frequency: Every 5 minutes\n"
+				+ "Most Recent Update: " + update + " \n"
+				+ "Data Source: " + info.source + " \n"
+				+ "Water Rising Rate (Past 2 Hours): " + String.format("%.3f", rate) + " \n"
+				+ mediator.core.modelCore.forecastLine;
+		
+		//Logic_getForecast.setInModelCore(mediator.core);
+		
+		//String original = report.getText();
+		//String adjusted = original + mediator.core.modelCore.forecastLine;
+		
+		//report.setText(adjusted);
 		
 		return returnMe;
 	}

@@ -25,6 +25,8 @@ public class Model_Core {
 	
 	
 	
+	public String forecastLine = "";
+	
 	
 	//public String targetURL = "http://10.119.0.52/michael/michael_recorded.php";
 	//public String targetURL = "http://localhost/FCEMHS/michael/michael_recorded.php";
@@ -47,8 +49,8 @@ public class Model_Core {
 	 * true = circumvent networking
 	 * false = publish
 	 */
-	//public final boolean offlineMode = true;
-	public final boolean offlineMode = false;
+	public final boolean offlineMode = true;
+	//public final boolean offlineMode = false;
 	
 	
 	public ArrayList<Model_Event> events;

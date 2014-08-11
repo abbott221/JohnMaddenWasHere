@@ -32,14 +32,13 @@ public class Logic_getForecast {
 	
 	
 	
-	//start here
-	public static void getResponseFromURL(final MainCoreClass core) {
-
+	
+	public static void setInModelCore(final MainCoreClass core) {
 		
 		HttpRequest httpGet = new HttpRequest(HttpMethods.GET);
 		
 		String url = core.modelCore.targetURL + "flood/weathertext.php";
-		httpGet.setUrl(core.modelCore.targetURL);
+		httpGet.setUrl(url);
 		
 		
 		Gdx.net.sendHttpRequest(httpGet, new HttpResponseListener() {
@@ -48,36 +47,31 @@ public class Logic_getForecast {
 			public void handleHttpResponse(HttpResponse httpResponse) {
 
 				
-				String text = httpResponse.getResultAsString();
+				String reply = httpResponse.getResultAsString();
 				//JsonValue root = new JsonReader().parse(text);
 				
 				
 				
+				System.out.println("Response: " + reply);
+				
+				
+				//String prefix = core.mediator.widgets.report.getText();
+				//String both = prefix + suffix;
+				
+				//core.mediator.widgets.report.setText(both);
+				//core.mediator.model.report.setText(both);
+				
+				core.modelCore.forecastLine = reply;
+				
+				
+				//Abstract_StepPage currentPage = (Abstract_StepPage) core.currentScreen;
 				
 				
 				
+				//currentPage.responseText = text;
+				//currentPage.networkResponse = true;
 				
 				
-				System.out.println("Response: " + text);
-				
-				
-				Abstract_StepPage currentPage = (Abstract_StepPage) core.currentScreen;
-				
-				
-				
-				currentPage.responseText = text;
-				currentPage.networkResponse = true;
-				
-				
-				
-				//parseJSONfromString(core, text);
-				
-				/*
-				if ( text.contains("true") ) {
-					//
-					//core.currentScreen
-				}
-				/**/
 				
 			}
 			
@@ -95,8 +89,6 @@ public class Logic_getForecast {
 		
 		//return core.id != null;
 	}
-	
-	
 	
 	
 	
