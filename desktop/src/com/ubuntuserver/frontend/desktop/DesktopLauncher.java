@@ -43,6 +43,13 @@ public class DesktopLauncher {
 		//h = 1080;
 		//w = 1920;
 		
+		
+		
+		config.title = "Flood SOP Automation System";
+		//config.title = "FSAS";
+		
+		
+		
 		config.height = h;
 		config.width = w;
 		
