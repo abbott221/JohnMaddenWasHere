@@ -1,7 +1,7 @@
 GITHUB DOES NOT PROPERLY FORMAT THIS TEXT FILE. VIEW IT RAW FOR BETTER FORMATTING.
 
 To set up the programming environment,
-
+https://github.com/libgdx/libgdx/wiki/Setting-up-your-Development-Environment-%28Eclipse%2C-Intellij-IDEA%2C-NetBeans%29
 
 
 
