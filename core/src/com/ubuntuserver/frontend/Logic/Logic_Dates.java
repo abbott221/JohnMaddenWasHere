@@ -162,7 +162,11 @@ public class Logic_Dates {
 					
 				}
 				else {
-					tempData[i] = activeGraph.dataModel.myStation.records.get(i + startIndex).waterLevel;
+					try {
+						tempData[i] = activeGraph.dataModel.myStation.records.get(i + startIndex).waterLevel;
+					} catch (Exception e) {
+						tempData[i] = 0;
+					}
 				}
 				//tempData[i] = activeGraph.dataModel.myStation.gauge[i + startIndex];
 				//tempData[i] = activeGraph.dataModel.myStation.records.get(i + startIndex).waterLevel;

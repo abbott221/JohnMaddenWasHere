@@ -95,7 +95,15 @@ public class Logic_DateStrings {
 	public static String dateWithoutTime(Object entry) {
 		String date = (String) entry;
 		
-		date = date.substring(0, 10);
+		int lastCharPos = date.length() - 1;
+		
+		if (lastCharPos < 10) {
+			date = date.substring(0, lastCharPos);
+		} else {
+			date = date.substring(0, 10);
+		}
+		
+		//date = date.substring(0, 10);
 		
 		return date;
 	}

@@ -1,6 +1,7 @@
 package com.ubuntuserver.frontend;
 
 import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
+import com.ubuntuserver.frontend.Logic.Logic_SourceInfo;
 import com.ubuntuserver.frontend.model.Model_Station;
 
 public class Report_Generator {
@@ -29,11 +30,21 @@ public class Report_Generator {
 		float rate = station.records.get(station.records.size()-2).waterLevel 
 				- station.records.get(station.records.size()-1).waterLevel;
 		
+		
+		
+		
+		//Logic_SourceInfo.ExtraInfo info = new Logic_SourceInfo.ExtraInfo();
+		//ExtraInfo info = Logic_SourceInfo.getExtraInfo(stationIndex);
+		Logic_SourceInfo info = new Logic_SourceInfo();
+		info.getExtraInfo(stationIndex);
+		
+		
+		
 		report.setText("Station Name: " + stationEntries[stationIndex] + " \n"
-				+ "Waterway: " + " \n"
+				+ "Waterway: " + info.waterway + " \n"
 				+ "Data Capturing Frequency: Every 5 minutes\n"
 				+ "Most Recent Update: " + update + " \n"
-				+ "Data Source: " + " \n"
+				+ "Data Source: " + info.source + " \n"
 				+ "Water Rising Rate (Past 2 Hours): " + String.format("%.3f", rate) + " \n");
 	}
 	
@@ -45,13 +56,22 @@ public class Report_Generator {
 		String update = station.records.get(station.records.size()-1).timeStamp;
 		float rate = station.records.get(station.records.size()-2).waterLevel 
 				- station.records.get(station.records.size()-1).waterLevel;
+
+		
+		
+		
+		//Logic_SourceInfo.ExtraInfo info = new Logic_SourceInfo.ExtraInfo();
+		//ExtraInfo info = Logic_SourceInfo.getExtraInfo(stationIndex);
+		Logic_SourceInfo info = new Logic_SourceInfo();
+		info.getExtraInfo(stationIndex);
+		
 		
 		
 		String returnMe = "Station Name: " + stationEntries[stationIndex] + " \n"
-				+ "Waterway: " + " \n"
+				+ "Waterway: " + info.waterway + " \n"
 				+ "Data Capturing Frequency: Every 5 minutes\n"
 				+ "Most Recent Update: " + update + " \n"
-				+ "Data Source: " + " \n"
+				+ "Data Source: " + info.source + " \n"
 				+ "Water Rising Rate (Past 2 Hours): " + String.format("%.3f", rate) + " \n";
 		
 		return returnMe;

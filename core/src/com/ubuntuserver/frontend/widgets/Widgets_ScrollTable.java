@@ -313,9 +313,22 @@ public class Widgets_ScrollTable {
 		
 		int arraySize = theGraph.dataModel.getClipEnd() - theGraph.dataModel.dataClipStart;
 		
+		
+		
+		
 		Label temp = new Label("Water Level Data", mediator.widgets.skin);
 		table.add(temp).expandX().fillX().colspan(2);
 		table.row();
+		
+		
+		Label temp1 = new Label("Date/time", mediator.widgets.skin);
+		table.add(temp1).expandX().fillX().colspan(1);
+		Label temp2 = new Label("Feet", mediator.widgets.skin);
+		table.add(temp2).expandX().fillX().colspan(1);
+		table.row();
+		
+		
+		
 		
 		Object[] dateEntries = new Object[arraySize];
 		Object[] waterEntries = new Object[arraySize];
@@ -331,7 +344,13 @@ public class Widgets_ScrollTable {
 				dateStamp = mediator.model.gaugeTimes.get(theGraph.dataModel.dataClipStart + i);
 			}
 			else {
-				dateStamp = theStation.records.get(theGraph.dataModel.dataClipStart + i).timeStamp;
+				//dateStamp = theStation.records.get(theGraph.dataModel.dataClipStart + i).timeStamp;
+				
+				try {
+					dateStamp = theStation.records.get(theGraph.dataModel.dataClipStart + i).timeStamp;
+				} catch (Exception e) {
+					dateStamp = "0000-00-00";
+				}
 			}
 			
 			dateEntries[i] = dateStamp;
@@ -339,7 +358,16 @@ public class Widgets_ScrollTable {
 			
 			
 			//float data = theStation.records.get(i).waterLevel;
-			float data = theStation.records.get(theGraph.dataModel.dataClipStart + i).waterLevel;
+			//float data = theStation.records.get(theGraph.dataModel.dataClipStart + i).waterLevel;
+			float data = 0.0f;
+			
+			try {
+				data = theStation.records.get(theGraph.dataModel.dataClipStart + i).waterLevel;
+			} catch (Exception e) {
+				//dateStamp = "0000-00-00";
+			}
+			
+			
 			//does previous line need if-else statement for multiStamps?
 			
 			waterEntries[i] = Float.toString(data);
@@ -351,6 +379,8 @@ public class Widgets_ScrollTable {
 			dateWaterEntries[i] = dateWaterStr;
 			
 		}
+		
+		
 		
 		
 		
@@ -377,6 +407,12 @@ public class Widgets_ScrollTable {
 				//Logic_Dates.endDateChange(mediator, endDateList);
 			}
 		});
+		
+		
+		
+		dateList.getItems().reverse();
+		waterList.getItems().reverse();
+		
 		
 		table.add(dateList);
 		table.add(waterList);

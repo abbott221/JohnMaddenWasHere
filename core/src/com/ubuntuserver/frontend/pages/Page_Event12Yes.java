@@ -56,7 +56,7 @@ public class Page_Event12Yes extends Abstract_GenericCheckBox {
 		//this.noBox.setText("No, leave it as active.");
 		
 		
-		
+		//core.modelCore.events.remove(core.modelCore.selectedEvent);
 		
 		Label temp2 = new Label("The event has been successfully closed.", skin);
 		//temp2.setColor(Color.BLACK);

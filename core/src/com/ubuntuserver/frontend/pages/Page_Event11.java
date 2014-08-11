@@ -126,6 +126,8 @@ public class Page_Event11 extends Abstract_GenericCheckBox {
 		
 		//if-else block goes here
 		if ( yesBox.isChecked() ) {
+			core.modelCore.events.remove(core.modelCore.selectedEvent);
+			
 			core.currentScreen.thisRemoveScreen();
 			core.currentScreen = null;
 			Page_Event12Yes newPage = new Page_Event12Yes(core);
